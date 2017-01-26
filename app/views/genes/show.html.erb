@@ -1,0 +1,97 @@
+<div id="knowledge_search_results" class="container container-trans knowledge_search">
+  
+  <ul class="nav nav-tabs" id="myTabs" role="tablist">
+    
+    <div class="pull-right">
+      <a href='#' class="text-white">Community Curation Project</a>
+      <a href='#' class="btn btn-primary btn-sm btn-search-login">Register</a>
+      <a href='#' class="btn btn-primary btn-sm btn-search-login">Login</a>
+    </div>
+    
+    <li role="presentation" class="active">
+      <a href="#summary" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
+        Gene &amp; Curation Summary
+      </a>
+    </li> 
+    <li role="presentation" class="">
+      <a href="#variants" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
+        Related Variants
+      </a>
+    </li>
+    <!--<li role="presentation" class="">
+         <a href="#summary" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
+         Synomyms &amp; Ontological Relationships
+         </a>
+         </li>-->
+    <li role="presentation" class="">
+      <a href="#infobutton" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
+        External Genomic Resources
+      </a>
+    </li>
+  </ul>
+</div>
+<div id="summary" role="tabpanel" class="tab-pane active  container results_curation_summary">
+  <div class="row">
+    <div class="col-sm-12">
+      <h3 class="padding-top-xs"><strong><%= @gene.symbol %></strong> Gene Summary</h3>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class='col-sm-6'>
+            <dl class='dl-horizontal'>
+              <dt>Official Name</dt>
+              <dd><%= @gene.symbol %></dd>
+              <dt>Cytogenetic Location</dt>
+              <dd><%= @gene.location %></dd>
+              <dt>Genomic Coordinates</dt>
+              <dd>chr13: 32,889,617-32,973,809 (GRCh38)</dd>
+              <dd>chr13: 32,889,617-32,973,809 (GRCh37)</dd>
+            </dl>
+          </div>
+          <div class='col-sm-6'>
+            <dl class='dl-horizontal'>
+              <dt>ClinVar Variants</dt>
+              <dd><a href="#variants" role="tab" data-toggle="tab" class="label label-primary">543</a></dd>
+              <dt>Curated Conditions</dt>
+              <dd><a href='#condition1' class="label label-primary">Breast cancer</a> <a href='#condition2' class="label label-primary">Gastric cancer</a></dd>
+              <dt>Genomic Resources</dt>
+              <dd><a href='#infobutton' role="tab" data-toggle="tab">12 external resources located</a></dd>
+              <dt>GeneReviews&reg;</dt>
+              <dd><a href="#">Learn more</a></dd>
+            </dl>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="">
+        
+        <h3>
+          <a href='#' class="btn btn-xs btn-link pull-right margin-left-sm"><i class="glyphicon glyphicon-ok"></i> Follow</a>
+          <a href='#' class="btn btn-xs btn-link pull-right margin-left-sm"><i class="glyphicon glyphicon-plus"></i> Community Curation Project</a>
+          ClinGen Curation Summaries
+          
+        </h3>
+        <div class="panel panel-default">
+          <div class="panel-heading" id='results_curation_summary_heading'>
+            
+            
+            <div class="row"><div class="col-sm-2">
+              Condition
+            </div>
+            <div class="col-sm-10 ">
+              <span class="border-left">ClinGen Curation Results</span>
+            </div>
+            </div>
+          </div>
+          <div id='results_curation_summary_details' class="panel-body results_curation_summary_details">
+            <% @diseases.each do |d| %>
+            <%= render 'disease_detail', disease: d %>
+            <hr class="results_curation_summary_details_spacer" />
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,7 +2,7 @@ class RDFClass
   include Neo4j::ActiveNode
 
   id_property :iri
-  property :label, index: :exact
+  property :label
   
   has_many :out, :superclasses, type: :subClassOf, model_class: RDFClass
   has_many :in, :subclasses, type: :subClassOf, model_class: RDFClass

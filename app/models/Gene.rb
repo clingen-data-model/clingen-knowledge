@@ -3,9 +3,18 @@ class Gene
   
   self.mapped_label_name = 'region'
 
-  id_property :hgnc_id
-  property :symbol, index: :exact
-  property :name, index: :exact
+  property :hgnc_id
+  property :symbol
+  property :name
+  property :location
+
+  has_many :in, :assertions, model_class: :Assertion, type: :has_subject
+
+  def actionability_for_disease(disease)
+    assertions.query_as(:a)
+      .where('(a)-[:has_predicate]->(:Class {iri: "http://datamodel.clinicalgenome.org/clingen.owl#CG_000082"})').where("(a)-[:has_object]->(:Class {iri: '#{disease.iri}'})").pluck(:a).first
+    # TODO String interp in query string is very insecure, fix urgently
+  end
   
   def as_json(options = {})
     {
