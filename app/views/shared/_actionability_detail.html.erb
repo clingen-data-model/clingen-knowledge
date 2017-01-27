@@ -19,7 +19,7 @@
   <tbody>
     <% gene.actionability_for_disease(disease).evidence.each do |a| %>
       <tr>
-        <td><%= ""   %></td>
+        <td><%= a.objects.first.label %></td>
         <td class=" text-center">2</td>
         <td class=" text-center">3C</td>
         <td class=" text-center">1B</td>

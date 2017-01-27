@@ -1,6 +1,10 @@
 class Entity
   include Neo4j::ActiveNode
 
+  property :date
+  property :label
+  property :description
+
   def self.type_class_map
     {
       "cg:publication" => Publication,
