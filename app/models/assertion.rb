@@ -19,7 +19,8 @@ class Assertion < Entity
   
   def actionability_score(category)
     iri = act_cat_map(category)
-    evidence.query_as(:e).match("(e)-[:has_predicate]->(i)").where("(i)-[:subClassOf]->
+    # TODO start here and finish represenation of actionability score
+    evidence.query_as(:e).match("(e)-[:has_predicate]->(i)").where("(i)-[:subClassOf]->")
   end
 
 end
