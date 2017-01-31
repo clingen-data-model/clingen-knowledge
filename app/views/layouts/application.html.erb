@@ -6,12 +6,132 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link href="http://clingen-pw3-v2.creationproject.net/site/templates/assets/css/rebrand.css" rel="stylesheet">
+    <link href="http://clingen-pw3-v2.creationproject.net/site/templates/assets/css/helpers.css" rel="stylesheet">
   </head>
 
   <body>
-    <!-- TODO format flash messages -->
+
+<div id="header_nav_micro">
+    <div class="container container-trans">
+      <div class="clearfix row">
+        
+         <nav id='nav_micro' class=" hidden-sm hidden-xs">
+              <ul class='list-inline'>
+        <li class=''>
+          <a class='' href='#' title='$' >Contact</a>
+        </li>
+        <li class=''>
+          <a class='' href='#' title='$' >Site Search</a>
+        </li>
+        <li class=''>
+          <a class='' href='#' title='$' >News &amp; Announcements</a>
+        </li></ul>          </nav>
+          <ol class='pull-left breadcrumb'><li class=''><a href='http://clingen-pw3-v2.creationproject.net/' class='' title=''>ClinGen</a></li></ol>      </div>
+    </div>
+  </div>
+  <div id="header_nav_micro_tray" style="display:none">
+    <div class="container">
+      <div class="clearfix row">
+        Buttons
+      </div>
+    </div>
+  </div>
+  <div id="header_nav_main">
+      <div class="container">
+        <div class="header clearfix row">
+          <div id='header_logo_div' class="text-muted pull-left">
+            <a id='header_logo_href' href="/">
+              <img  id='header_logo_img' src="http://clingen-pw3-v2.creationproject.net/site/templates/assets/rebrand/logo/logo.png" alt="" />
+            </a>
+          </div>
+          <div id='nav_mobile' class="dropdown pull-right visible-sm visible-xs">
+            <button id="SiteNav" class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Navigation
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="SiteNav">
+              <ul class='nav nav-pills pull-right'>
+          <li class='' role='presentation' id='ref_5297' >
+            <a class='' href='http://clingen-pw3-v2.creationproject.net/clingen-tools/' title='' >Resources &amp; Tools</a>
+          </li>
+          <li class='' role='presentation' id='ref_1119' >
+            <a class='' href='http://clingen-pw3-v2.creationproject.net/genomeconnect/' title='' >GenomeConnect</a>
+          </li>
+          <li class='' role='presentation' id='ref_1001' >
+            <a class='' href='http://clingen-pw3-v2.creationproject.net/about/' title='' >About</a>
+          </li>
+          <li class='' role='presentation' id='ref_5396' >
+            <a class='' href='http://clingen-pw3-v2.creationproject.net/share-your-data/' title='' >How to share your data</a>
+          </li>
+          <li class='' role='presentation' id='ref_5397' >
+            <a class='' href='http://clingen-pw3-v2.creationproject.net/curation-starts-here/' title='' >Learn about ClinGen curation activities</a>
+          </li></ul>
+          </div>
+          <div id='header_search' class="input-group">
+            <input type="text" class="form-control" placeholder="Search for genes, diseases, variants, and more...
+">
+            <span class="input-group-btn">
+              <a href='http://clingen-pw3-v2.creationproject.net/curated-search/query/' class="btn btn-default"><i class="glyphicon glyphicon-search"></i></a>
+            </span>
+          </div>
+          <nav id='nav_primary' class=" hidden-sm hidden-xs">
+              <ul class='nav nav-pills pull-right'>
+          <li class='' role='presentation' id='ref_5297' >
+            <a class='' href='http://clingen-pw3-v2.creationproject.net/clingen-tools/' title='' >Resources &amp; Tools</a>
+          </li>
+          <li class='' role='presentation' id='ref_1119' >
+            <a class='' href='http://clingen-pw3-v2.creationproject.net/genomeconnect/' title='' >GenomeConnect</a>
+          </li>
+          <li class='' role='presentation' id='ref_1001' >
+            <a class='' href='http://clingen-pw3-v2.creationproject.net/about/' title='' >About</a>
+          </li>
+          <li class='' role='presentation' id='ref_5396' >
+            <a class='' href='http://clingen-pw3-v2.creationproject.net/share-your-data/' title='' >How to share your data</a>
+          </li>
+          <li class='' role='presentation' id='ref_5397' >
+            <a class='' href='http://clingen-pw3-v2.creationproject.net/curation-starts-here/' title='' >Learn about ClinGen curation activities</a>
+          </li></nav>
+          
+        </div>
+      </div>
+  </div>
+
+
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
+
+
+
+<div id="footer" class="container  background-trans padding-top-xl">
+
+
+<div id="" class="text-center visible-xs visible-sm hidden-print"><br><a name="footnav" id="footnav"></a>
+          <div><a class="btn btn-default btn-lg  btn-block" href="http://clingen-pw3-v2.creationproject.net/clingen-tools/" title="">Resources &amp; Tools</a></div><div><a class="btn btn-default btn-lg  btn-block" href="http://clingen-pw3-v2.creationproject.net/genomeconnect/" title="">GenomeConnect</a></div><div><a class="btn btn-default btn-lg  btn-block" href="http://clingen-pw3-v2.creationproject.net/about/" title="">About</a></div><div><a class="btn btn-default btn-lg  btn-block" href="http://clingen-pw3-v2.creationproject.net/share-your-data/" title="">How to share your data</a></div><div><a class="btn btn-default btn-lg  btn-block" href="http://clingen-pw3-v2.creationproject.net/curation-starts-here/" title="">Learn about ClinGen curation activities</a></div><div><a class="btn btn-default btn-lg  btn-block" href="/consent-form-test/" title="">Consent Form Test</a></div>        </div>
+
+        <div class="row">
+                <div id="footer_disclaimer" class="col-md-12 text-sm text-muted">
+                  <hr>
+                  The information on this website is not intended for direct diagnostic use or medical decision-making without review by a genetics professional. Individuals should not change their health behavior solely on the basis of information contained on this website. If you have questions about the information contained on this website, please see a health care professional.
+                  <hr>
+                </div>
+                <div class="col-md-4 col-sm-12 padding-sm"> 
+                   <ul class="list-inline margin-none">
+                      <li class="text-sm">© 2017 <a href="http://clingen-pw3-v2.creationproject.net/" title="ClinGen" class="">ClinGen</a> - All rights reserved</li>
+                    </ul>
+                </div>
+        <div class="col-sm-8 padding-sm hidden-xs hidden-sm ">
+        <ul class="list-inline margin-none pull-right ">
+        
+            </li>                  <li><a class="text-sm" href="http://clingen-pw3-v2.creationproject.net//site-map/">Site Map</a></li>
+                  <li><a class="text-sm" href="http://clingen-pw3-v2.creationproject.net//contact/">Contact ClinGen</a></li>
+        </ul>
+        </div>
+            </div>
+        
+</div>
   </body>
 </html>
