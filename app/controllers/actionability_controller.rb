@@ -1,0 +1,2 @@
+class ActionabilityController < ApplicationController
+end

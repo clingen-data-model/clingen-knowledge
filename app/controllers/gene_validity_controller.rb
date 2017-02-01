@@ -1,0 +1,2 @@
+class GeneValidityController < ApplicationController
+end
