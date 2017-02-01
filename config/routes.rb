@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :gene_dosage, only: :index, path: "/gene-dosage"
   resources :gene_validity, only: [:show, :index], path: "/gene-validity"
   resources :actionability, only: [:show, :index]
+  resources :home, only: [:index]
 
   devise_for :agents
 
