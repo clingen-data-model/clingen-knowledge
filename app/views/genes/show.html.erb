@@ -74,8 +74,6 @@
         </h3>
         <div class="panel panel-default">
           <div class="panel-heading" id='results_curation_summary_heading'>
-            
-            
             <div class="row"><div class="col-sm-2">
               Condition
             </div>
@@ -85,6 +83,7 @@
             </div>
           </div>
           <div id='results_curation_summary_details' class="panel-body results_curation_summary_details">
+            <!-- TODO pick up here rewriting actionability query -->
             <% @diseases.each do |d| %>
             <%= render 'disease_detail', disease: d %>
             <hr class="results_curation_summary_details_spacer" />

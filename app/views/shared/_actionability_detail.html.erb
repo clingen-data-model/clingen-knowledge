@@ -1,29 +1,37 @@
 <table class="table table-hover border-left table-condensed">
   <thead>
     <tr>
-      <th class="col-sm-10" colspan="5">Clinical Actionablity of <%= gene.symbol %> and <%= disease.label %></th>
+      <th class="col-sm-10" colspan="5">Clinical Actionablity of <%= @gene.symbol %> and <%= disease.label %></th>
       <th class="col-sm-2 text-center"><a class="btn btn-link btn-xs"><i class="glyphicon glyphicon-file"></i> View Details</a></th>
     </tr>
   </thead>
 
   <thead class="thead-labels ">
     <tr>
-      <th class="col-sm-5">Outcome/Intervention Pair</td>
-        <th class="text-center">Severity</td>
-          <th class="text-center">Likelihood</td>
-            <th class="text-center">Effectiveness</td>
-              <th class="text-center">Intervention</td>
-                <th class="text-center">Score</th>
+      <th class="col-sm-5">Outcome/Intervention Pair</th>
+      <th class="text-center">Severity</th>
+      <th class="text-center">Likelihood</th>
+      <th class="text-center">Effectiveness</th>
+      <th class="text-center">Intervention</th>
+      <th class="text-center">Score</th>
     </tr>
   </thead>
   <tbody>
-    <% gene.actionability_for_disease(disease).evidence.each do |a| %>
+    <% actionability.find { |a| a[:disease].include?(disease.iri) }[:interventions].each do |i| %>
       <tr>
-        <td><%= a.objects.first ? a.objects.first.label : "" %></td>
-        <td class=" text-center"><%= a.actionability_score(:severity) %></td>
-        <td class=" text-center"><%= a.actionability_score(:likelihood) %></td>
-        <td class=" text-center"><%= a.actionability_score(:effectiveness) %></td>
-        <td class=" text-center"><%= a.actionability_score(:intervention) %></td>
+        <td><%= i[:label] %></td>
+        <td class=" text-center">
+          <%= i[:scores].find { |s| Assertion.act_scores[:severity].keys.include?() }.score %>
+        </td>
+        <td class=" text-center">
+          <%= 1 %>
+        </td>
+        <td class=" text-center">
+          <%= 1 %>
+        </td>
+        <td class=" text-center">
+          <%= 1 %>
+        </td>
         <td class=" text-center">
           <span class="label label-success" title="Aug 08, 2016">
             8CB
