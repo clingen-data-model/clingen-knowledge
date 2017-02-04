@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :conditions, only: [:show, :index] do
     resources :external_resources, only: :index
   end
+  resources :dashboard, only: [:index]  #should only be registered agents
   resources :drugs, only: [:show, :index]
   resources :curations, only: :index
   resources :gene_dosage, only: :index, path: "/gene-dosage"
