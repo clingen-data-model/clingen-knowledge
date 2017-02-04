@@ -1,0 +1,28 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class='col-sm-6'>
+      <dl class='dl-horizontal'>
+        <dt>Official Name</dt>
+        <dd><%= @gene.symbol %></dd>
+        <dt>Cytogenetic Location</dt>
+        <dd><%= @gene.location %></dd>
+        <dt>Genomic Coordinates</dt>
+        <dd>chr13: 32,889,617-32,973,809 (GRCh38)</dd>
+        <dd>chr13: 32,889,617-32,973,809 (GRCh37)</dd>
+      </dl>
+    </div>
+    <div class='col-sm-6'>
+      <dl class='dl-horizontal'>
+        <dt>ClinVar Variants</dt>
+        <dd><a href="#variants" role="tab" data-toggle="tab" class="label label-primary">543 ClinVar Variants</a></dd>
+        <dt>Curated Conditions</dt>
+        <dd><a href='#condition1' class="label label-primary">Breast cancer</a> <a href='#condition2' class="label label-primary">Gastric cancer</a></dd>
+        <dt>Genomic Resources</dt>
+        <dd><a href='#infobutton' role="tab" data-toggle="tab">12 external resources located</a></dd>
+        <dt>GenomeConnect&reg;</dt>
+        <dd><a href='#' role="tab" data-toggle="tab">12 <%= @gene.symbol %> cases</a></dd>
+        <dt>GeneReviews&reg;</dt>
+        <dd><a href="#">Learn more</a></dd>
+      </dl>
+    </div>
+  </div>
