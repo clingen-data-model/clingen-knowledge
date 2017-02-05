@@ -103,7 +103,11 @@
     <p class="alert"><%= alert %></p>
 <div id="knowledge_search_results" class="container">
   
-  <ul class="nav nav-tabs">
+  <div class="nav nav-tabs">
+
+    <%= link_to root_path, :class => "btn btn-default btn-sm btn-search-edit margin-bottom-md"  do %>
+        <i class="glyphicon glyphicon-search"></i> Genomic Search
+      <% end %>
     
     <div class="pull-right text-white">
       <% if agent_signed_in? %>
@@ -127,7 +131,7 @@
       <% end %>
     </div>
     
-  </ul>
+  </div>
 </div>
     <%= yield %>
 
