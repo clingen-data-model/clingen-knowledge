@@ -1,9 +1,10 @@
 class ConditionsController < ApplicationController
 
-  def show
+  def index
+  	  	@conditions = Condition.limit(10)
   end
 
-  def index
+  def show
   end
 
 end
