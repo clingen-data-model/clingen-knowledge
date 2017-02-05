@@ -1,12 +1,14 @@
 <div id="home_index" class="container">
 
-SHOW IF SEARCHED
+<% if(params.has_key?(:q)) %>
+	
     <%= render "shared/result_list_gene" %>
     <%= render "shared/result_list_condition" %>
     <%= render "shared/result_list_drug" %>
-ELSE
-    <%= render "shared/splash_curated_facts" %>
     
+<% else %>
+    <%= render "shared/splash_curated_facts" %>
+<% end %>    
   
 
 </div>
