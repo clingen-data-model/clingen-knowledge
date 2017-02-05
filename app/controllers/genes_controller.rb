@@ -1,7 +1,10 @@
 class GenesController < ApplicationController
-  layout 'application'
+
 
   def index
+  	@genes = Gene.limit(10)
+  	# @genes = Gene.order(:name).page params[:page]
+  	# @genes = Gene.paginate(:page => params[:page], :per_page => 30)
   end
 
   def show

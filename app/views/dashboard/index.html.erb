@@ -1,9 +1,16 @@
 <div class="container">
     <div id="curation_dashboard" class="row"> 
         
+        <%= @agents %>
+        <%= @agents.inspect %>
+        <%= @hello_message %>
+
+        <% @agents.each do |f| %>
+          <%= f.email %><br/><hr/>
+        <% end %>
        
        <div class="col-sm-12 padding-top-md">
-         <h2>Hello Scott!</h2>
+         <h2>Hello Scott!!!</h2>
          
          <div class="panel panel-default ">
          <div class="panel-heading">
