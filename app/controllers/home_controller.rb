@@ -9,8 +9,12 @@ class HomeController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @results}
+      format.json {render json: @results, root: false}
     end
+
   end
 
 end
+
+
+	

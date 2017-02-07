@@ -1,1 +1,58 @@
-<h1>Condition</h1>
+<div id="genes_show" class="container">
+  
+  <ul class="nav nav-tabs">
+    
+    <li role="presentation" class="active">
+      <a href="#summary" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
+        Condition &amp; Curation Summary
+      </a>
+    </li> 
+  </ul>
+</div>
+<div id="summary" role="tabpanel" class="tab-pane active  container results_curation_summary">
+  <div class="row">
+    <div class="col-sm-12">
+      <h3 class="padding-top-xs">
+        <a href='#' class="btn btn-xs btn-link pull-right margin-left-sm"><i class="glyphicon glyphicon-ok"></i> Request Alerts</a>
+        <a href='#' class="btn btn-xs btn-link pull-right margin-left-sm"><i class="glyphicon glyphicon-plus"></i>Community Curation Project</a>
+        <strong><%= @condition.label %></strong> Gene Summary</h3>
+        <%= render 'gene_facts' %>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="">
+        <ul class="nav nav-tabs">        
+          <li class="active">
+            <a href="#summary">
+              ClinGen's <%= @condition.label %> Curation Summaries
+            </a>
+          </li> 
+          <li class="">
+            <a href="#infobutton">
+              External Genomic Resources <span class="badge">#####</span>
+            </a>
+          </li>
+        </ul>
+        <div class="panel panel-default">
+          <div class="panel-heading" id='results_curation_summary_heading'>
+            
+            
+            <div class="row"><div class="col-sm-2">
+              Condition
+            </div>
+            <div class="col-sm-10 ">
+              <span class="border-left">ClinGen Curation Results</span>
+            </div>
+            </div>
+          </div>
+          <div id='results_curation_summary_details' class="panel-body results_curation_summary_details">
+            <% @genes.each do |d| %>
+            <%= render 'condition_detail', disease: d %>
+            <hr class="results_curation_summary_details_spacer" />
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

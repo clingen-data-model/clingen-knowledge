@@ -1,1 +1,8 @@
+<div id="conditions_index" class="container">
+
 <h1>Conditions</h1>
+	<%= @conditions.each do |n|  %>
+		<%= render "shared/result_list_condition", condition: n %>
+	<% end %>
+
+</div>

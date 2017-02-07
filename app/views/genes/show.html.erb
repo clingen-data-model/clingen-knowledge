@@ -1,77 +1,43 @@
-<div id="knowledge_search_results" class="container container-trans knowledge_search">
+<div id="genes_show" class="container">
   
-  <ul class="nav nav-tabs" id="myTabs" role="tablist">
-    
-    <div class="pull-right">
-      <a href='#' class="text-white">Community Curation Project</a>
-      <a href='#' class="btn btn-primary btn-sm btn-search-login">Register</a>
-      <a href='#' class="btn btn-primary btn-sm btn-search-login">Login</a>
-    </div>
+  <ul class="nav nav-tabs">
     
     <li role="presentation" class="active">
       <a href="#summary" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
         Gene &amp; Curation Summary
       </a>
     </li> 
-    <li role="presentation" class="">
-      <a href="#variants" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
-        Related Variants
-      </a>
-    </li>
-    <!--<li role="presentation" class="">
-         <a href="#summary" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
-         Synomyms &amp; Ontological Relationships
-         </a>
-         </li>-->
-    <li role="presentation" class="">
-      <a href="#infobutton" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
-        External Genomic Resources
-      </a>
-    </li>
   </ul>
 </div>
 <div id="summary" role="tabpanel" class="tab-pane active  container results_curation_summary">
   <div class="row">
     <div class="col-sm-12">
-      <h3 class="padding-top-xs"><strong><%= @gene.symbol %></strong> Gene Summary</h3>
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class='col-sm-6'>
-            <dl class='dl-horizontal'>
-              <dt>Official Name</dt>
-              <dd><%= @gene.symbol %></dd>
-              <dt>Cytogenetic Location</dt>
-              <dd><%= @gene.location %></dd>
-              <dt>Genomic Coordinates</dt>
-              <dd>chr13: 32,889,617-32,973,809 (GRCh38)</dd>
-              <dd>chr13: 32,889,617-32,973,809 (GRCh37)</dd>
-            </dl>
-          </div>
-          <div class='col-sm-6'>
-            <dl class='dl-horizontal'>
-              <dt>ClinVar Variants</dt>
-              <dd><a href="#variants" role="tab" data-toggle="tab" class="label label-primary">543</a></dd>
-              <dt>Curated Conditions</dt>
-              <dd><a href='#condition1' class="label label-primary">Breast cancer</a> <a href='#condition2' class="label label-primary">Gastric cancer</a></dd>
-              <dt>Genomic Resources</dt>
-              <dd><a href='#infobutton' role="tab" data-toggle="tab">12 external resources located</a></dd>
-              <dt>GeneReviews&reg;</dt>
-              <dd><a href="#">Learn more</a></dd>
-            </dl>
-          </div>
-        </div>
-        
+      <h3 class="padding-top-xs">
+        <a href='#' class="btn btn-xs btn-link pull-right margin-left-sm"><i class="glyphicon glyphicon-ok"></i> Request Alerts</a>
+        <a href='#' class="btn btn-xs btn-link pull-right margin-left-sm"><i class="glyphicon glyphicon-plus"></i>Community Curation Project</a>
+        <strong><%= @gene.symbol %></strong> Gene Summary</h3>
+        <%= render 'gene_facts' %>
       </div>
     </div>
     <div class="col-sm-12">
       <div class="">
-        
-        <h3>
-          <a href='#' class="btn btn-xs btn-link pull-right margin-left-sm"><i class="glyphicon glyphicon-ok"></i> Follow</a>
-          <a href='#' class="btn btn-xs btn-link pull-right margin-left-sm"><i class="glyphicon glyphicon-plus"></i> Community Curation Project</a>
-          ClinGen Curation Summaries
-          
-        </h3>
+        <ul class="nav nav-tabs">        
+          <li class="active">
+            <a href="#summary">
+              ClinGen's <%= @gene.symbol %> Curation Summaries
+            </a>
+          </li> 
+          <li class="">
+            <a href="#variants">
+              ClinVar Variants <span class="badge">#####</span>
+            </a>
+          </li>
+          <li class="">
+            <a href="#infobutton">
+              External Genomic Resources <span class="badge">#####</span>
+            </a>
+          </li>
+        </ul>
         <div class="panel panel-default">
           <div class="panel-heading" id='results_curation_summary_heading'>
             <div class="row"><div class="col-sm-2">

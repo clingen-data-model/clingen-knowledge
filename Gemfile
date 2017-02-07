@@ -22,6 +22,12 @@ gem 'coffee-rails', '~> 4.2'
 
 gem "twitter-bootstrap-rails"
 
+# gem 'will_paginate', '>= 3.1'
+# gem 'will_paginate', '~> 3.0'
+# gem 'neo4j-will_paginate_redux'
+# gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
+# gem 'kaminari-neo4j'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

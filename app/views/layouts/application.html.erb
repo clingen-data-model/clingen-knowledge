@@ -7,8 +7,8 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <link href="http://clingen-pw3-v2.creationproject.net/site/templates/assets/css/rebrand.css" rel="stylesheet">
-    <link href="http://clingen-pw3-v2.creationproject.net/site/templates/assets/css/helpers.css" rel="stylesheet">
+    <%= stylesheet_link_tag "http://clingen-pw3-v2.creationproject.net/site/templates/assets/css/rebrand.css" %>
+    <%= stylesheet_link_tag "http://clingen-pw3-v2.creationproject.net/site/templates/assets/css/helpers.css" %>
   </head>
 
   <body>
@@ -69,13 +69,14 @@
             <a class='' href='http://clingen-pw3-v2.creationproject.net/curation-starts-here/' title='' >Learn about ClinGen curation activities</a>
           </li></ul>
           </div>
-          <div id='header_search' class="input-group">
-            <input type="text" class="form-control" placeholder="Search for genes, diseases, variants, and more...
-">
-            <span class="input-group-btn">
-              <a href='http://clingen-pw3-v2.creationproject.net/curated-search/query/' class="btn btn-default"><i class="glyphicon glyphicon-search"></i></a>
-            </span>
-          </div>
+            <%= form_tag(home_index_path, method: "get") do %>
+              <div id='header_search' class="input-group">
+                <%= text_field_tag :q, "", class: 'form-control' %>
+                <span class="input-group-btn">
+                  <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                </span>
+              </div>
+            <% end %>
           <nav id='nav_primary' class=" hidden-sm hidden-xs">
               <ul class='nav nav-pills pull-right'>
           <li class='' role='presentation' id='ref_5297' >
@@ -98,10 +99,40 @@
       </div>
   </div>
 
-
-
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+<div id="knowledge_search_results" class="container">
+  
+  <div class="nav nav-tabs">
+
+    <%= link_to root_path, :class => "btn btn-default btn-sm btn-search-edit margin-bottom-md"  do %>
+        <i class="glyphicon glyphicon-search"></i> Genomic Search
+      <% end %>
+    
+    <div class="pull-right text-white">
+      <% if agent_signed_in? %>
+      <%= link_to dashboard_index_path, :class => "btn btn-default btn-sm btn-search-edit margin-bottom-md"  do %>
+        <i class="glyphicon glyphicon-th-list"></i> Your Dashboard
+      <% end %>
+      <%= link_to edit_agent_registration_path, :class => "btn btn-default btn-sm btn-search-edit margin-bottom-md"  do %>
+        <i class="glyphicon glyphicon-user"></i> Profile
+      <% end %>
+      <%= link_to destroy_agent_session_path, :method => :delete, :class => "btn btn-default btn-sm btn-search-signout margin-bottom-md"  do %>
+        <i class="glyphicon glyphicon-off text-danger"></i> Sign Out
+      <% end %>
+
+      <% else %>
+      <%= link_to new_agent_registration_path, :method => :get, :class => "btn btn-default btn-sm btn-search-edit margin-bottom-md"  do %>
+        <i class="glyphicon glyphicon-th-list"></i> Register
+      <% end %>
+      <%= link_to new_agent_session_path, :method => :get, :class => "btn btn-default btn-sm btn-search-edit margin-bottom-md"  do %>
+        <i class="glyphicon glyphicon-th-list"></i> Login
+      <% end %>
+      <% end %>
+    </div>
+    
+  </div>
+</div>
     <%= yield %>
 
 
