@@ -1,7 +1,12 @@
 class HomeController < ApplicationController
 
   def index
-    @results = Entity.where(label: params[:term]) if params[:term]
+    t = params[:term]
+    @genes = Gene.all(:g)
+               .where("g.symbol starts with {term}")
+               .params(term: t)
+               .limit(10)
+
     respond_to do |format|
       format.html
       format.json { render json: @results}

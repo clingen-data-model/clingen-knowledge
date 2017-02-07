@@ -1,8 +1,6 @@
 class Gene
   include Neo4j::ActiveNode
   
-  self.mapped_label_name = 'region'
-
   property :hgnc_id
   property :symbol
   property :name
