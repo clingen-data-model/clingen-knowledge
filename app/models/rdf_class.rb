@@ -4,11 +4,10 @@ class RDFClass
   id_property :iri
   property :label
   property :score
-  
+  property :synonym
+
   has_many :out, :superclasses, type: :subClassOf, model_class: RDFClass
   has_many :in, :subclasses, type: :subClassOf, model_class: RDFClass
-
-  self.mapped_label_name = 'Class'
 
   def as_json(options = {}) 
     {

@@ -71,7 +71,7 @@
           </div>
             <%= form_tag(home_index_path, method: "get") do %>
               <div id='header_search' class="input-group">
-                <%= text_field_tag :q, "", class: 'form-control' %>
+                <%= text_field_tag :term, "", class: 'form-control' %>
                 <span class="input-group-btn">
                   <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
                 </span>

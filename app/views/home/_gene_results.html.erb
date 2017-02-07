@@ -1,6 +1,4 @@
+<h3>Genes</h3>
 <% @genes.each do |g| %>
-  <h3>Genes</h3>
-  <div class="row">
-    <%= g.symbol %>
-  </div>
+  <%= render 'gene', gene: g %>
 <% end %>

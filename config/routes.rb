@@ -14,6 +14,14 @@ Rails.application.routes.draw do
   resources :actionability, only: [:show, :index]
   resources :home, only: [:show, :index]
 
+
+  # TODO refine routes later, for now want routes for 
+  # disease, conditions, and phenotypes
+  resources :diseases
+  resources :conditions
+  # no phenotypes yet, but soon!
+  # resources :phenotypes
+
   devise_for :agents
 
   root to: 'home#index'
