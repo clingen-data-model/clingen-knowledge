@@ -1,0 +1,2 @@
+class ActionabilityInterventionAssertion < Assertion
+end
