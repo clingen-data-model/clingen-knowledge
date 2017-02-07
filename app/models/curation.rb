@@ -1,0 +1,2 @@
+class Curation < Entity
+end

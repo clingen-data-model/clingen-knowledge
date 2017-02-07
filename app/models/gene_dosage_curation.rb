@@ -1,0 +1,2 @@
+class GeneDosageCuration < Curation
+end

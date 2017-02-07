@@ -1,0 +1,2 @@
+class GeneDosageAssertion < Assertion
+end
