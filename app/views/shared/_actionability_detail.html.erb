@@ -17,27 +17,30 @@
     </tr>
   </thead>
   <tbody>
-    <% actionability.find { |a| a[:disease].include?(disease.iri) }[:interventions].each do |i| %>
-      <tr>
-        <td><%= i[:label] %></td>
-        <td class=" text-center">
-          <%= i[:scores].find { |s| Assertion.act_scores[:severity].keys.include?() }.score %>
-        </td>
-        <td class=" text-center">
-          <%= 1 %>
-        </td>
-        <td class=" text-center">
-          <%= 1 %>
-        </td>
-        <td class=" text-center">
-          <%= 1 %>
-        </td>
-        <td class=" text-center">
-          <span class="label label-success" title="Aug 08, 2016">
-            8CB
-          </span>
-        </td>
-      </tr>
-    <% end %>
+    <% if assertion = actionability.find { |a| a[:disease].include?(disease.iri) } %>
+      <% assertion[:interventions].each do |i| %>
+        <% scores = ActionabilityScore.scores_to_h(i[:scores]) %>
+        <tr>
+          <td><%= i[:label] %></td>
+          <td class=" text-center">
+            <%= scores[:severity] %>
+          </td>
+          <td class=" text-center">
+            <%= scores[:likelihood] %>
+          </td>
+          <td class=" text-center">
+            <%= scores[:efficacy] %>
+          </td>
+          <td class=" text-center">
+            <%= scores[:safety] %>
+          </td>
+          <td class=" text-center">
+            <span class="label label-success" title="Aug 08, 2016">
+              <%= scores[:total] %>
+            </span>
+          </td>
+        </tr>
+      <% end %>
+    <% end  %>
   </tbody>
 </table>

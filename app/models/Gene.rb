@@ -21,10 +21,13 @@ class Gene
   # retrieve actionability scores for a given curation
   def actionability_scores
     assertions.query_as(:a)
-      .where("(a)-[:has_predicate]->(:Class {iri: 'http://datamodel.clinicalgenome.org/clingen.owl#CG_000082'})")
-      .return("a {.uuid, disease: [(a)-[:has_object]-(d:Class) | d.iri],
- interventions: [(a)-[:has_supporting_evidence]->(a2:Assertion)-[:has_object]->(i:Intervention) |
- a2 {label: i.label, scores: [(a2)-[:has_supporting_evidence]->(a3:Assertion) | [(a3)-[:has_predicate]->(sp:Class)-[:subClassOf]->(super) | sp {.iri, .score} ] ]}]}")
+      .where("(a:ActionabilityAssertion)")
+      .return(" a {.uuid, 
+	disease: [(a)-[:has_object]->(d:RDFClass) | d.iri],
+    interventions: [(a)                             <-[:was_generated_by]-(a2:ActionabilityInterventionAssertion)-[:has_object]->(i:Intervention) | a2 {label: i.label,
+    scores: [(a2)<-[:was_generated_by]-(a3:ActionabilityScore) |
+            	a3 {score: [(a3)-[:has_predicate]->(s) | s.iri ],
+                	strength: [(a3)-[:has_evidence_strength]->(s) | s.iri] } ]      }]}")
       .to_a.map(&:a)
   end
 

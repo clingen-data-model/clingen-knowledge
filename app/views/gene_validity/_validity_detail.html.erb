@@ -1,0 +1,25 @@
+<% interp = @diseases_detail[disease.iri].interpretation.first %>
+<table class="table table-hover  border-left table-condensed">
+  <thead>
+    <tr>
+      <th class="col-sm-10" colspan="2">Clinical validity of <%= @gene.symbol %> and <%= disease.label %></th>
+      <th class="col-sm-2 text-center"><a class="btn btn-link btn-xs"><i class="glyphicon glyphicon-file"></i> View Details</a></th>
+    </tr>
+  </thead>
+  <thead class="thead-labels">
+    <tr>
+      <th class="col-sm-5">Classifications</th>
+      <th class="col-sm-5">Description</th>
+      <th class="col-sm-2 text-center">Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Gene-disease association</td>
+      <td><%= interp.label %> association between <%= @gene.symbol %> and <%= disease.label %>. </td>
+      <td class=" text-center"><span class="label label-success" title="Jun 02, 2016">
+        <%= interp.label %>
+      </span></td>
+    </tr>
+  </tbody>
+</table>

@@ -18,7 +18,13 @@
         <dt>ClinVar Variants</dt>
         <dd><a href="#variants" role="tab" data-toggle="tab" class="label label-primary">543 ClinVar Variants</a></dd>
         <dt>Curated Conditions</dt>
-        <dd><a href='#condition1' class="label label-primary">Breast cancer</a> <a href='#condition2' class="label label-primary">Gastric cancer</a></dd>
+        <dd>
+          <% @diseases.each do |d| %>
+            <%= link_to d.label, d, {class: "label label-primary"} %>
+          <% end %>
+        </dd>
+        <!-- <a href='#condition1' class="label label-primary">Breast cancer</a> <a href='#condition2' class="label label-primary">Gastric cancer</a> -->
+        </dd>
         <dt>Genomic Resources</dt>
         <dd><a href='#infobutton' role="tab" data-toggle="tab">12 external resources located</a></dd>
         <dt>GenomeConnect&reg;</dt>
