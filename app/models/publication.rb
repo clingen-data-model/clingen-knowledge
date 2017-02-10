@@ -5,13 +5,13 @@ class Publication < Entity
   property :first_author
   property :authors_abbrev
 
-  has_many :in, :study_cases, type: :in_publication
-  has_many :in, :case_control_studies, type: :in_publication
-  has_many :in, :experimental_evidence, type: :in_publication
-  has_many :in, :evidence, type: :wasDerivedFrom
-  has_one :in, :interpretation, type: :uses_publication
+  # has_many :in, :study_cases, type: :in_publication
+  # has_many :in, :case_control_studies, type: :in_publication
+  # has_many :in, :experimental_evidence, type: :in_publication
+  # has_many :in, :evidence, type: :wasDerivedFrom
+  # has_one :in, :interpretation, type: :uses_publication
 
-  validate :confirm_pmid
+  # validate :confirm_pmid
 
   def as_json(options = {})
     {

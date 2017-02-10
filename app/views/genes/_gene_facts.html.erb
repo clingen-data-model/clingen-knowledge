@@ -4,13 +4,17 @@
       <dl class='dl-horizontal'>
         <dt>Official Name</dt>
         <dd><%= @gene.symbol %></dd>
-        <dt>Ontological Reference</dt>
-        <dd>[GENEID]</dd>
+        <dt>HGNC ID</dt>
+        <dd><%= @gene.hgnc_id %></dd>
         <dt>Cytogenetic Location</dt>
         <dd><%= @gene.location %></dd>
         <dt>Genomic Coordinates</dt>
         <dd>chr13: 32,889,617-32,973,809 (GRCh38)</dd>
         <dd>chr13: 32,889,617-32,973,809 (GRCh37)</dd>
+        <dt>Gene Dosage</dt>
+        <% @dosage.each do |d| %>
+          <dd> <%= d.interpretation.first.label %> </dd>
+        <% end %>
       </dl>
     </div>
     <div class='col-sm-6'>

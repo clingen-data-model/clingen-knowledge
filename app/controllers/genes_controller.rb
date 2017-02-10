@@ -11,6 +11,8 @@ class GenesController < ApplicationController
     @gene = Gene.find_by(hgnc_id: params[:id])
     @diseases = @gene.assertions.diseases
     @actionability = @gene.actionability_scores
+    @dosage = @gene.assertions(:a).with_associations(:interpretation, :diseases)
+                .where("a:GeneDosageAssertion")
     @validity = @gene.assertions(:n).with_associations(:interpretation, :diseases)
                   .where("n:GeneDiseaseAssertion")
     @diseases_detail = @validity.reduce({}) do |h, i|
