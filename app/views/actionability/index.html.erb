@@ -1,3 +1,24 @@
 <div id="actionability_curation_index" class="container">
-	<h1>Actionability curations </h1>
+  <h1>Actionability curations </h1>
+  <% @assertions.each do |a| %>
+    <div class="row">
+      <div class="col-sm-6"
+        <ul>
+          <% a.genes.each do |g| %>
+            <li>
+            <%= g.symbol %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <div class="col-sm-6">
+      <ul>
+        <% a.diseases.each do |c| %>
+          <li>
+            <%= c.label %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 </div>

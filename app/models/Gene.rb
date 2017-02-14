@@ -12,6 +12,10 @@ class Gene
     hgnc_id
   end
 
+  def label
+    symbol
+  end
+
   # Grand query matching all actionability scores (given a gene)
   # Restricting returns in this query to actionability, but 
   # is feasible to do more

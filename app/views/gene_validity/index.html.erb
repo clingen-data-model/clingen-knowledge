@@ -1,3 +1,8 @@
 <div id="gene_validity_index" class="container">
-	<h1>Gene Validity Curation</h1>
+  <h1>Gene Validity Curation</h1>
+  <% @assertions.each do |a| %>
+    <div class="row">
+      <%= a.genes.first.label %>
+    </div>
+  <% end %>
 </div>
