@@ -9,14 +9,9 @@ class Gene
   has_many :in, :assertions, model_class: :Assertion, type: :has_subject
 
 
-# Grand query matching all actionability scores (given a gene)
-# Restricting returns in this query to actionability, but 
-# is feasible to do more
-
-# match(g:region {symbol: "TP53"})<-[:has_subject]-(a:Assertion)-[:has_predicate]->(:Class {iri: "http://datamodel.clinicalgenome.org/clingen.owl#CG_000082"})
-# return a {.uuid, disease: [(a)-[:has_object]-(d:Class) | d.label],
-# interventions: [(a)-[:has_supporting_evidence]->(a2:Assertion)-[:has_object]->(i:Intervention) |
-# a2 {intervention: i.label, scores: [(a2)-[:has_supporting_evidence]->(a3:Assertion) | [(a3)-[:has_predicate]->(sp:Class) | sp {.iri, .score} ] ]}]}
+  # Grand query matching all actionability scores (given a gene)
+  # Restricting returns in this query to actionability, but 
+  # is feasible to do more
 
   # retrieve actionability scores for a given curation
   def actionability_scores

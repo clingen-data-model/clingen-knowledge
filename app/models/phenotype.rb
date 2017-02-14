@@ -1,2 +1,0 @@
-class Phenotype < Condition
-end

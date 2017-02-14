@@ -1,0 +1,18 @@
+<div id='condition1' name='condition1' class="row">
+  <div class="col-sm-2">
+    <h4><%= link_to gene.symbol, gene %></h4>
+  </div>
+  <div class="col-sm-10">
+    <% if @validity_detail[gene.uuid] %>
+      <%= render "gene_validity/validity_detail.html.erb", assertions: @validity_detail[gene.uuid], disease: @condition, gene: gene %>
+      <hr />
+    <% end %>
+
+    <%#= render "gene_dosage/dosage_detail.html.erb"%>
+
+    <% if @actionability.length > 0 %>
+      <hr />
+      <%= render "shared/actionability_detail", actionability: @actionability, disease: @condition, gene: gene, index: :gene, index_id: gene.uuid %>
+    <% end %>
+  </div>
+</div>

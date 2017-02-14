@@ -5,9 +5,11 @@ class RDFClass
   property :label
   property :score
   property :synonym
+  property :curie
 
   has_many :out, :superclasses, type: :subClassOf, model_class: RDFClass
   has_many :in, :subclasses, type: :subClassOf, model_class: RDFClass
+
 
   def as_json(options = {}) 
     {

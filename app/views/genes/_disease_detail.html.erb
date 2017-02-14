@@ -1,6 +1,6 @@
 <div id='condition1' name='condition1' class="row">
   <div class="col-sm-2">
-    <h4><%= disease.label %></h4>
+    <h4><%= link_to disease.label, disease %></h4>
   </div>
   <div class="col-sm-10">
     <% if @diseases_detail[disease.iri] %>
@@ -13,6 +13,6 @@
     <% if @actionability.length > 0 %>
       <hr />
       <%= render "shared/actionability_detail", actionability: @actionability, disease: disease %>
-      <% end %>
+    <% end %>
   </div>
 </div>

@@ -1,2 +1,0 @@
-class Disease < Condition
-end

@@ -16,7 +16,6 @@
         <a href='#' class="btn btn-xs btn-link pull-right margin-left-sm"><i class="glyphicon glyphicon-ok"></i> Request Alerts</a>
         <a href='#' class="btn btn-xs btn-link pull-right margin-left-sm"><i class="glyphicon glyphicon-plus"></i>Community Curation Project</a>
         <strong><%= @condition.label %></strong> Gene Summary</h3>
-        <%= render 'gene_facts' %>
       </div>
     </div>
     <div class="col-sm-12">
@@ -46,8 +45,8 @@
             </div>
           </div>
           <div id='results_curation_summary_details' class="panel-body results_curation_summary_details">
-            <% @genes.each do |d| %>
-            <%= render 'condition_detail', disease: d %>
+            <% @genes.each do |g| %>
+            <%= render 'gene_detail', gene: g %>
             <hr class="results_curation_summary_details_spacer" />
             <% end %>
           </div>

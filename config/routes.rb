@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   # TODO refine routes later, for now want routes for 
   # disease, conditions, and phenotypes
-  resources :diseases
+  # resources :diseases
   resources :conditions
   # no phenotypes yet, but soon!
   # resources :phenotypes
