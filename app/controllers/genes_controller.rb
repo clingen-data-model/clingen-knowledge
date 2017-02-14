@@ -9,7 +9,7 @@ class GenesController < ApplicationController
 
   def show
     @gene = Gene.find_by(hgnc_id: params[:id])
-    @diseases = @gene.assertions.diseases
+    @diseases = @gene.assertions.diseases.distinct
     @actionability = @gene.actionability_scores
     @dosage = @gene.assertions(:a).with_associations(:interpretation, :diseases)
                 .where("a:GeneDosageAssertion")

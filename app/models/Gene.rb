@@ -8,6 +8,9 @@ class Gene
 
   has_many :in, :assertions, model_class: :Assertion, type: :has_subject
 
+  def to_param
+    hgnc_id
+  end
 
   # Grand query matching all actionability scores (given a gene)
   # Restricting returns in this query to actionability, but 
