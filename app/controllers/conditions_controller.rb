@@ -8,7 +8,7 @@ class ConditionsController < ApplicationController
   def show
     @condition = Condition.find_by(curie: params[:id])
     @term_label = truncate(@condition.label, :length => 20, :omission => '...')
-    @term_id = @condition.curie.gsub! '_', ':'
+    @term_id = @condition.curie
 
     @genes = @condition.assertions.genes.distinct
     @actionability  = @condition.actionability_scores
