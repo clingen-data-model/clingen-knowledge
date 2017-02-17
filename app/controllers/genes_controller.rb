@@ -1,4 +1,5 @@
 class GenesController < ApplicationController
+  include ActionView::Helpers::TextHelper
 
 
   def index
@@ -9,6 +10,8 @@ class GenesController < ApplicationController
 
   def show
     @gene = Gene.find_by(hgnc_id: params[:id])
+    @term_label = truncate(@gene.symbol, :length => 20, :omission => '...')
+    @term_id = truncate(@gene.hgnc_id)
     @diseases = @gene.assertions.diseases.distinct
     @actionability = @gene.actionability_scores
     @dosage = @gene.assertions(:a).with_associations(:interpretation, :diseases)

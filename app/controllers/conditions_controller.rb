@@ -1,4 +1,5 @@
 class ConditionsController < ApplicationController
+  include ActionView::Helpers::TextHelper
 
   def index
     @conditions = Condition.all.limit(10)
@@ -6,6 +7,9 @@ class ConditionsController < ApplicationController
 
   def show
     @condition = Condition.find_by(curie: params[:id])
+    @term_label = truncate(@condition.label, :length => 20, :omission => '...')
+    @term_id = truncate(@condition.curie)
+
     @genes = @condition.assertions.genes.distinct
     @actionability  = @condition.actionability_scores
     @validity = @condition.assertions(:n).with_associations(:interpretation, :genes)
