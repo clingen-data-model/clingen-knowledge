@@ -9,6 +9,7 @@ class ConditionsController < ApplicationController
     @condition = Condition.find_by(curie: params[:id])
     @term_label = truncate(@condition.label, :length => 20, :omission => '...')
     @term_id = @condition.curie
+    @term_curie = @condition.curie.gsub! '_', ':'
 
     @genes = @condition.assertions.genes.distinct
     @actionability  = @condition.actionability_scores

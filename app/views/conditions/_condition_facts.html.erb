@@ -5,7 +5,7 @@
         <dt>Official Name</dt>
         <dd><%= @condition.label %></dd>
         <dt>Ontological Reference</dt>
-        <dd><%= @condition.curie %></dd>
+        <dd><%= @term_curie %></dd>
         <dt>Definition</dt>
         <dd>@condition.definition</dd>
         <dt>Synonyms</dt>
@@ -15,7 +15,11 @@
     <div class='col-sm-6'>
       <dl class='dl-horizontal'>
         <dt>Curated Genes</dt>
-        <dd><a href='#condition1' class="label label-primary">GENE123</a> <a href='#condition2' class="label label-primary">GENE345</a></dd>
+        <dd>
+          <% @genes.each do |g| %>
+            <%= link_to g.label, g, {class: "label label-primary"} %>
+          <% end %>
+        </dd>
         <dt>Genomic Resources</dt>
         <dd><a href='#infobutton' role="tab" data-toggle="tab">9 external resources located</a></dd>
       </dl>
