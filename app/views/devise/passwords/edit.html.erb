@@ -1,5 +1,7 @@
 <div id="agents_passwords_edit" class="container">
-  <div class='col-sm-6 col-sm-offset-3'>
+  <div class="col-sm-12 padding-top-md">
+
+  <%= render 'shared/dashboard_links' %>
   <h2>Change your password</h2>
 
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>

@@ -1,10 +1,12 @@
 <div id="agents_register_edit" class="container">
-  <div class='col-sm-6 col-sm-offset-3'>
-    <h2>Edit <%= resource_name.to_s.humanize %></h2>
+  <div class="col-sm-12 padding-top-md">
 
+    <%= render 'shared/dashboard_links' %>
+    <h2>Edit <%= resource_name.to_s.humanize %></h2>
+    <div class='col-sm-6'>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= devise_error_messages! %>
-
+    
       <div class="form-group">
         <%= f.label :email, :class => "control-label" %>
         <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Password", required: "required" %>
@@ -45,5 +47,6 @@
 
       <%= link_to "Back", :back,  class: "btn btn-link" %>
       </div>
+    </div>
     </div>
 </div>
