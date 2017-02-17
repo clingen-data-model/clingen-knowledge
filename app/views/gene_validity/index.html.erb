@@ -1,8 +1,42 @@
 <div id="gene_validity_index" class="container">
   <h1>Gene Validity Curation</h1>
-  <% @assertions.each do |a| %>
-    <div class="row">
-      <%= a.genes.first.label %>
-    </div>
-  <% end %>
+  <table class="table table-condensed">
+		<thead>
+			<th>Gene</th>
+			<th>Disease curated</th>
+			<th>Summary</th>
+      		<th>Reviewed</th>
+			<th></th>
+		</thead>
+		<tbody>
+		<% @assertions.each do |a| %>
+			<tr>
+				<td>
+					<%= link_to genes_path+"/"+a.genes.first.hgnc_id, :method => :get, :class => ""  do %>
+				    <%= a.genes.first.label %>
+				  <% end %>
+
+				</td>
+				<td>
+					<%= link_to conditions_path+"/"+a.diseases.first.curie, :method => :get, :class => ""  do %>
+						<%= a.diseases.first.label %>
+					<% end %>
+					<ul class="list-inline">
+						<% a.diseases.each do |c| %>
+						<li>
+							<%= link_to conditions_path+"/"+c.curie, :method => :get, :class => "text-muted text-sm"  do %>
+								<%= c.curie.gsub! '_', ':' %>
+							<% end %>
+						</li>
+						<% end %>
+					</ul>
+
+				</td>
+        		<td><%= a.interpretation.first.label %></td>
+        		<td>DATE</td>
+				<td><a href="#"><i class="glyphicon glyphicon-new-window"></i></a></td>
+			</tr>
+  	<% end %>
+		</tbody>
+	</table>
 </div>
