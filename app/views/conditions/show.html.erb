@@ -1,21 +1,15 @@
-<div id="genes_show" class="container">
-  
-  <ul class="nav nav-tabs">
-    
-    <li role="presentation" class="active">
-      <a href="#summary" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
-        Condition &amp; Curation Summary
-      </a>
-    </li> 
-  </ul>
+<div id="conditions_show" class="container">
 </div>
-<div id="summary" role="tabpanel" class="tab-pane active  container results_curation_summary">
+<div id="conditions_show_summary" role="tabpanel" class="tab-pane active  container results_curation_summary">
   <div class="row">
     <div class="col-sm-12">
-      <h3 class="padding-top-xs">
-        <a href='#' class="btn btn-xs btn-link pull-right margin-left-sm"><i class="glyphicon glyphicon-ok"></i> Request Alerts</a>
-        <a href='#' class="btn btn-xs btn-link pull-right margin-left-sm"><i class="glyphicon glyphicon-plus"></i>Community Curation Project</a>
-        <strong><%= @condition.label %></strong> Gene Summary</h3>
+      <h2 class="padding-top-xs">
+        <%= render 'shared/agent_links_show_views', term_id: @condition.label %>
+
+        <strong><%= @condition.label %></strong>
+        </h2>
+        <%= render 'condition_facts' %>
+
       </div>
     </div>
     <div class="col-sm-12">

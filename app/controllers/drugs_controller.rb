@@ -1,6 +1,6 @@
 class DrugsController < ApplicationController
 	
- def show
+  def show
   end
 
   def index

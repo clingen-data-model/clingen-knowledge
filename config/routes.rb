@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :gene_validity, only: [:show, :index], path: "/gene-validity"
   resources :actionability, only: [:show, :index]
   resources :home, only: [:show, :index]
+  resources :subscriptions
+  resources :notes
 
 
   # TODO refine routes later, for now want routes for 

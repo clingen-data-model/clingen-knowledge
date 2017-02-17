@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
 	
 	def index
-		@agents = Agent.all 
+		@agent = current_agent
   end
 
 end

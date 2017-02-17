@@ -109,27 +109,6 @@
         <i class="glyphicon glyphicon-search"></i> Genomic Search
       <% end %>
     
-    <div class="pull-right text-white">
-      <% if agent_signed_in? %>
-      <%= link_to dashboard_index_path, :class => "btn btn-default btn-sm btn-search-edit margin-bottom-md"  do %>
-        <i class="glyphicon glyphicon-th-list"></i> Your Dashboard
-      <% end %>
-      <%= link_to edit_agent_registration_path, :class => "btn btn-default btn-sm btn-search-edit margin-bottom-md"  do %>
-        <i class="glyphicon glyphicon-user"></i> Profile
-      <% end %>
-      <%= link_to destroy_agent_session_path, :method => :delete, :class => "btn btn-default btn-sm btn-search-signout margin-bottom-md"  do %>
-        <i class="glyphicon glyphicon-off text-danger"></i> Sign Out
-      <% end %>
-
-      <% else %>
-      <%= link_to new_agent_registration_path, :method => :get, :class => "btn btn-default btn-sm btn-search-edit margin-bottom-md"  do %>
-        <i class="glyphicon glyphicon-th-list"></i> Register
-      <% end %>
-      <%= link_to new_agent_session_path, :method => :get, :class => "btn btn-default btn-sm btn-search-edit margin-bottom-md"  do %>
-        <i class="glyphicon glyphicon-th-list"></i> Login
-      <% end %>
-      <% end %>
-    </div>
     
   </div>
 </div>
