@@ -1,3 +1,30 @@
 <div id="gene_dosage_index" class="container">
 	<h1>Gene Dosage Curation</h1>
+
+	<table class="table table-condensed">
+		<thead>
+			<th>Gene</th>
+			<th>Haploinsufficiency</th>
+			<th>Triplosensitivity</th>
+			<th></th>
+		</thead>
+		<tbody>
+		<% @assertions.each do |a| %>
+			<tr>
+				<td>
+					<%= link_to genes_path+"/"+a.genes.first.hgnc_id, :method => :get, :class => ""  do %>
+				    <%= a.genes.first.label %>
+				  <% end %>
+
+				</td>
+				<td><%= a.interpretation.first.label %></td>
+				<td><%= a.interpretation.first.label %></td>
+				<td><a href="#"><i class="glyphicon glyphicon-new-window"></i></a></td>
+			</tr>
+  	<% end %>
+		</tbody>
+	</table>
+    <div class="row">
+      
+    </div>
 </div>
