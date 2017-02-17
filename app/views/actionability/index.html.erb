@@ -1,5 +1,48 @@
 <div id="actionability_curation_index" class="container">
   <h1>Actionability curations </h1>
+
+  <table class="table table-condensed">
+    <thead>
+      <th class="col-sm-2">Gene</th>
+      <th class="col-sm-4">Condition</th>
+      <th class="col-sm-5">Outcome/ Intervention Pair</th>
+      <th>Reviewed</th>
+      <th></th>
+    </thead>
+    <tbody>
+    <% @assertions.each do |a| %>
+      <tr>
+        <td>
+          <ul class="list-inline">
+          <% a.genes.each do |g| %>
+            <li>
+              <%= link_to genes_path+"/"+g.hgnc_id, :method => :get, :class => ""  do %>
+                <%= g.symbol %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+        </td>
+        <td>
+          <ul class="list-inline">
+          <% a.diseases.each do |c| %>
+            <li>
+              
+            <%= link_to conditions_path+"/"+c.curie, :method => :get, :class => ""  do %>
+                <%= c.label %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+
+        </td>
+        <td>Outcome/ Intervention Pair GOES HERE</td>
+        <td>DATE</td>
+        <td><a href="#"><i class="glyphicon glyphicon-new-window"></i></a></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
   <% @assertions.each do |a| %>
     <% begin %>
     <div class="row">
