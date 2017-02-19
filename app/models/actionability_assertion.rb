@@ -1,6 +1,7 @@
 class ActionabilityAssertion < Assertion
   
-  has_one :out, :curation, model_class: :ActionabilityInterventionCuration, type: :was_generated_by
+  # has_one :out, :curation, model_class: :ActionabilityInterventionCuration, type: :was_generated_by
+  has_many :in, :intervention_assertions, model_class: :ActionabilityInterventionAssertion, type: :was_generated_by
   # inherits interpretation from Assertion
   has_one :out, :evidence_strength, model_class: :Interpretation, type: :has_evidence_strength
 

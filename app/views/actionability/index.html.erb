@@ -36,8 +36,14 @@
         </ul>
 
         </td>
-        <td>Outcome/ Intervention Pair GOES HERE</td>
-        <td>DATE</td>
+        <td>
+          <ul>
+            <% a.intervention_assertions.interventions.each do |a| %>
+              <li><%= a.label %></li>
+            <% end  %>
+          </ul>
+        </td>
+        <td><%= a.date %></td>
         <td><a href="#"><i class="glyphicon glyphicon-new-window"></i></a></td>
       </tr>
     <% end %>
