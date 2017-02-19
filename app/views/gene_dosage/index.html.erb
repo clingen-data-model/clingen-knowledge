@@ -10,20 +10,27 @@
 			<th></th>
 		</thead>
 		<tbody>
-		<% @assertions.each do |a| %>
-			<tr>
-				<td>
-					<%= link_to genes_path+"/"+a.genes.first.hgnc_id, :method => :get, :class => ""  do %>
-				    <%= a.genes.first.label %>
-				  <% end %>
-
-				</td>
-				<td><%= a.interpretation.first.label %></td>
-				<td><%= a.interpretation.first.label %></td>
-        <td>DATE</td>
-				<td><a href="#"><i class="glyphicon glyphicon-new-window"></i></a></td>
-			</tr>
-  	<% end %>
+                  <% @genes.each do |g| %>
+		    <tr>
+		      <td>
+			<%= link_to g.label, g %>
+		      </td>
+                      <td>
+                        <% if a = g.dosage_assertions.select {|i| i.haplo_assertion?}.first %>
+                          <%= a.interpretation.first.label %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if a = g.dosage_assertions.select {|i| i.triplo_assertion?}.first %>
+                          <%= a.interpretation.first.label %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <%= g.dosage_assertions.first.date %>
+                      </td>
+		    <td><a href="#"><i class="glyphicon glyphicon-new-window"></i></a></td>
+		    </tr>
+  	          <% end %>
 		</tbody>
 	</table>
 </div>
