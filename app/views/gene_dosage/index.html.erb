@@ -6,8 +6,7 @@
 			<th>Gene</th>
 			<th>Haploinsufficiency</th>
 			<th>Triplosensitivity</th>
-      <th>Reviewed</th>
-			<th></th>
+      <th>Dosage Sensitivity Classification</th>
 		</thead>
 		<tbody>
                   <% @genes.each do |g| %>
@@ -25,10 +24,10 @@
                           <%= a.interpretation.first.label %>
                         <% end %>
                       </td>
-                      <td>
-                        <%= g.dosage_assertions.first.date %>
-                      </td>
-		    <td><a href="#"><i class="glyphicon glyphicon-new-window"></i></a></td>
+                    <td>
+                    		
+                     <a href="https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=<%= g.label %>&subject=" target="ncbi" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-file"></i> <strong>View Details</strong> - <%= g.dosage_assertions.first.date %></a></td>
+
 		    </tr>
   	          <% end %>
 		</tbody>
