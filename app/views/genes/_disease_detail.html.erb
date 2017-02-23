@@ -1,17 +1,21 @@
 <div id='condition1' name='condition1' class="row">
   <div class="col-sm-2">
     <h4><%= link_to disease.label, disease %></h4>
+
+    <% disease.inspect %>
   </div>
   <div class="col-sm-10">
     <% if @diseases_detail[disease.iri] %>
       <%= render "gene_validity/validity_detail.html.erb", assertions: @validity, disease: disease, gene: @gene %>
-      <hr />
+      
     <% end %>
 
     <%#= render "gene_dosage/dosage_detail.html.erb"%>
 
     <% if @actionability.length > 0 && @actionability_diseases.include?(disease.iri) %>
-      <hr />
+      <% if @diseases_detail[disease.iri] %>
+        <hr />
+      <% end %>
       <%= render "shared/actionability_detail", actionability: @actionability, disease: disease, gene: @gene, index: :disease, index_id: disease.iri %>
     <% end %>
   </div>
