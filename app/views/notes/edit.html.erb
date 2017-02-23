@@ -6,62 +6,201 @@
       ClinGen wants to hear about the papers and publications you have read that may help our curation efforts.
 
       <hr />
-      <%= form_for @note, url: {action: "create"}, html: {class: "form-horizontal"} do |f| %>
-	<div class="form-group">
-	  <%= f.label :gene, "Gene", class: "col-sm-2 control-label" %>
-	  <div class="col-sm-10">
-	    <div class="row">
-	      <div class="col-sm-6">
-		<%= f.text_field :gene, autofocus: true, class: "form-control gene-typeahead", placeholder: "Gene", required: "required" %>
-                <%#= select_tag(:gene_id, options_for_select([['BDNF', 0],['TP53', 1]]), class: "gene-typeahead") %>
-	      </div>
-	      <div class="col-sm-6">
-		<p class="help-block">A gene is required to continue</p>
-	      </div>
-	    </div>
+      <%= form_for @note, url: {action: "create"}, html: {class: ""} do |f| %>
+    
+	<div class="row">
+	  <div class="col-sm-3">
+	  <h3><strong>1.</strong> About the publication</h3>
+		<p class="help-block padding-left-md">
+    		Please provide a PubMed ID for the publication so our review team is able to utilize its information.</p>
 	  </div>
-	</div>
-	<div class="form-group">
-	  <%= f.label :disease, "Condition", class: "col-sm-2 control-label" %>
-	  <div class="col-sm-10">
-	    <div class="row">
-	      <div class="col-sm-6">
-		<%= f.text_field :condition, autofocus: true, class: "form-control condition-typeahead", placeholder: "Condition", required: "required" %>
-	      </div>
-	      <div class="col-sm-6">
-		<p class="help-block">At least one OrphaNET or OMIM disease is required to continue.</p>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	<div class="form-group">
-	  <%= f.label :publication, "Publication", class: "col-sm-2 control-label" %>
-	  <div class="col-sm-10">
+	  <div class="col-sm-9 border-left">
+	  <%= f.label :publication, "PubMed ID", class: "control-label" %>
 	    <div class="row">
 	      <div class="col-sm-6">
 		<%= f.text_field :publication, autofocus: true, class: "form-control", placeholder: "PubMed ID", required: "required" %>
 	      </div>
+	    <div class="col-sm-6"><p class="help-block">
+    		Simply start typing the PubMed ID</p></div>
+	  </div>
+	  	<%= f.label :gene, "Gene", class: "control-label clear-left margin-top-md" %>
+	    <div class="row">
 	      <div class="col-sm-6">
-		<p class="help-block">A publication is required to continue</p>
+			<%= f.text_field :gene, autofocus: true, class: "form-control gene-typeahead", placeholder: "Gene", required: "required" %>
+                <%#= select_tag(:gene_id, options_for_select([['BDNF', 0],['TP53', 1]]), class: "gene-typeahead") %>
 	      </div>
+	      <div class="col-sm-6"><p class="help-block">
+    		At gene is required to continue.</p></div>
+	    </div>
+	  	<%= f.label :disease, "Condition", class: "control-label clear-left margin-top-md" %>
+	     <div class="row">
+	      <div class="col-sm-6">
+			<%= f.text_field :condition, autofocus: true, class: "form-control condition-typeahead", placeholder: "Condition", required: "required" %>
+	      </div>
+	      <div class="col-sm-6"><p class="help-block">
+    		At least one OrphaNET or OMIM disease is required to continue.</p></div>
 	    </div>
 	  </div>
 	</div>
-	<div class="form-group">
-	  <%= f.label :comments, "Comments", class: "col-sm-2 control-label" %>
-	  <div class="col-sm-10">
+
+	<hr />
+	<div class="row">
+	<div class="col-sm-3">
+	<h3><strong>2.</strong> Case-Level Data</h3>
+		<p class="help-block padding-left-md">
+    		Many of our curation efforts rely on gene/condition associations so please provide a gene (HGNC) and a condition (OrphaNet and/or OMIM) for our team to review.</p>
+	  </div>
+	  <div class="col-sm-9 border-left">
+
+	  	<%= f.label :comments, "Evidence Types", class: "control-label" %>
 	    <div class="row">
-	      <div class="col-sm-12">
-		<%= f.text_area :comments, autofocus: true, size: "100x6", class: "form-control", placeholder: "Publication", required: "required" %>
+	      <div class="col-sm-6">
+	      <ul class="list-inline margin-bottom-none">
+		      <li class="checkbox margin-top-none">
+		      	<label>
+		      		<%= f.check_box :condition, class: "" %>
+		      		Variant Evidence
+		      	</label>
+		      </li>
+		      <li class="checkbox margin-top-none">
+		      	<label>
+		      		<%= f.check_box :condition, class: "" %>
+		      		Segregation Evidence
+		      	</label>
+		      </li>
+	      </ul>
 	      </div>
-	      <div class="col-sm-12">
+	      <div class="col-sm-6">
+		<p class="help-block">What evidence types were utilized in the research?</p>
+	      </div>
+	    </div>
+
+	  	<%= f.label :comments, "Case-Level Data Summary", class: "control-label" %>
+	    <div class="row">
+	      <div class="col-sm-6">
+		<%= f.text_area :comments, autofocus: true, size: "100x4", class: "form-control", placeholder: "Summarize case-level data findings...", required: "required" %>
+	      </div>
+	      <div class="col-sm-6">
 		<p class="help-block">Tell our team about this publication and how we may be able to use it in our curation efforts.</p>
 	      </div>
 	    </div>
 	  </div>
 	</div>
-	<div class="form-group">
-	  <div class="col-sm-9 col-sm-offset-2">
+	<hr />
+	
+	<div class="row">
+	<div class="col-sm-3">
+	<h3><strong>3.</strong> Case-Control Data</h3>
+		<p class="help-block padding-left-md">
+    		Many of our curation efforts rely on gene/condition associations so please provide a gene (HGNC) and a condition (OrphaNet and/or OMIM) for our team to review.</p>
+	  </div>
+	  <div class="col-sm-9 border-left">
+
+	  	<%= f.label :comments, "Study Types", class: "control-label" %>
+	    <div class="row">
+	      <div class="col-sm-6">
+	      <ul class="list-inline margin-bottom-none">
+		      <li class="checkbox margin-top-none">
+		      	<label>
+		      		<%= f.check_box :condition, class: "" %>
+		      		Single Variant Analysis
+		      	</label>
+		      </li>
+		      <li class="checkbox margin-top-none">
+		      	<label>
+		      		<%= f.check_box :condition, class: "" %>
+		      		Aggregate Variant Analysis
+		      	</label>
+		      </li>
+	      </ul>
+	      </div>
+	      <div class="col-sm-6">
+		<p class="help-block">What study types were utilized in the research?</p>
+	      </div>
+	    </div>
+
+	  	<%= f.label :comments, "Case-Control Data Summary", class: "control-label" %>
+	    <div class="row">
+	      <div class="col-sm-6">
+		<%= f.text_area :comments, autofocus: true, size: "100x4", class: "form-control", placeholder: "Summarize case-level data findings...", required: "required" %>
+	      </div>
+	      <div class="col-sm-6">
+		<p class="help-block">Tell our team about this publication and how we may be able to use it in our curation efforts.</p>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<hr />
+	<div class="row">
+	<div class="col-sm-3">
+	<h3><strong>4.</strong> Experimental Evidence</h3>
+		<p class="help-block padding-left-md">
+    		Many of our curation efforts rely on gene/condition associations so please provide a gene (HGNC) and a condition (OrphaNet and/or OMIM) for our team to review.</p>
+	  </div>
+	  <div class="col-sm-9 border-left">
+
+	  	<%= f.label :comments, "Evidence Categories", class: "control-label" %>
+	    <div class="row">
+	      <div class="col-sm-6">
+	      <ul class="list-inline margin-bottom-none">
+		      <li class="checkbox margin-top-none">
+		      	<label>
+		      		<%= f.check_box :condition, class: "" %>
+		      		Function
+		      	</label>
+		      </li>
+		      <li class="checkbox margin-top-none">
+		      	<label>
+		      		<%= f.check_box :condition, class: "" %>
+		      		Functional Alteration
+		      	</label>
+		      </li>
+		      <li class="checkbox margin-top-none">
+		      	<label>
+		      		<%= f.check_box :condition, class: "" %>
+		      		Models &amp; Rescue
+		      	</label>
+		      </li>
+	      </ul>
+	      </div>
+	      <div class="col-sm-6">
+		<p class="help-block">What evidence categories were utilized in the research?</p>
+	      </div>
+	    </div>
+
+	  	<%= f.label :comments, "Case-Level Data Summary", class: "control-label" %>
+	    <div class="row">
+	      <div class="col-sm-6">
+		<%= f.text_area :comments, autofocus: true, size: "100x4", class: "form-control", placeholder: "Summarize case-level data findings...", required: "required" %>
+	      </div>
+	      <div class="col-sm-6">
+		<p class="help-block">Tell our team about this publication and how we may be able to use it in our curation efforts.</p>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<hr />
+	<div class="row">
+	<div class="col-sm-3">
+	<h3><strong>5.</strong> Comments</h3>
+		<p class="help-block padding-left-md">
+    		Many of our curation efforts rely on gene/condition associations so please provide a gene (HGNC) and a condition (OrphaNet and/or OMIM) for our team to review.</p>
+	  </div>
+	  <div class="col-sm-9 border-left">
+	  	<%= f.label :comments, "Additional comments", class: "control-label" %>
+	    <div class="row">
+	      <div class="col-sm-6">
+		<%= f.text_area :comments, autofocus: true, size: "100x4", class: "form-control", placeholder: "Additional comments...", required: "required" %>
+	      </div>
+	      <div class="col-sm-6">
+		<p class="help-block">Tell our team about this publication and how we may be able to use it in our curation efforts.</p>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<hr />
+	<div class="row">
+	  <div class="col-sm-9 col-sm-offset-3">
 	    <%= f.submit "Submit", class: "btn btn-primary" %>
 	    <%= f.submit "Delete", class: "btn btn-danger pull-right" %>
 	  </div>
