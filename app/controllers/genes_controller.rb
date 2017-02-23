@@ -9,6 +9,15 @@ class GenesController < ApplicationController
         end
   	# @genes = Gene.order(:name).page params[:page]
   	# @genes = Gene.paginate(:page => params[:page], :per_page => 30)
+
+        respond_to do |format|
+          format.json do 
+            @genes = Gene.all(:g).where("g.symbol starts with {symbol}")
+                       .params(symbol: params[:term]).limit(10)
+            render json: @genes, root: false
+          end
+          format.html
+        end
   end
 
   def show

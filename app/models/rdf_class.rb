@@ -11,12 +11,12 @@ class RDFClass
   has_many :in, :subclasses, type: :subClassOf, model_class: RDFClass
 
 
-  def as_json(options = {}) 
-    {
-      "@id" => self.id,
-      "label" => label
-    }
-  end
+  # def as_json(options = {}) 
+  #   {
+  #     "@id" => self.id,
+  #     "label" => label
+  #   }
+  # end
 
   # Render json sutiable for rendering experimental evidence options for vue
   # Offer array of category name, with array of id, label assoc

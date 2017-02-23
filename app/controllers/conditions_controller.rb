@@ -2,7 +2,16 @@ class ConditionsController < ApplicationController
   include ActionView::Helpers::TextHelper
 
   def index
-    @conditions = Condition.all.limit(10)
+    if params[:term]
+      @conditions = Condition.all(:c).where("c.label contains {term}")
+                      .params(term: params[:term]).limit(10)
+    else
+      @conditions = Condition.all.limit(10)
+    end
+    respond_to do |format|
+      format.json { render json: @conditions, root: false }
+      format.html
+    end
   end
 
   def show

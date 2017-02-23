@@ -41,14 +41,14 @@ class Gene
     # TODO String interp in query string is very insecure, fix urgently
   end
   
-  def as_json(options = {})
-    {
-      "@id" => self.id,
-      "@class" => "so:gene",
-      "symbol" => symbol,
-      "name" => name,
-      "hgnc_id" => self.id
-    }
-  end
+  # def as_json(options = {})
+  #   {
+  #     "@id" => self.id,
+  #     "@class" => "so:gene",
+  #     "symbol" => symbol,
+  #     "name" => name,
+  #     "hgnc_id" => self.id
+  #   }
+  # end
 
 end
