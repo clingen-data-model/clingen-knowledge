@@ -3,17 +3,16 @@
 
   <table class="table table-condensed">
     <thead>
-      <th class="col-sm-2">Gene</th>
+      <th class="col-sm-1">Gene</th>
       <th class="col-sm-4">Condition</th>
       <th class="col-sm-5">Outcome/ Intervention Pair</th>
-      <th>Reviewed</th>
-      <th></th>
+      <th class="col-sm-2">Actionability Report</th>
     </thead>
     <tbody>
     <% @assertions.each do |a| %>
       <tr>
         <td>
-          <ul class="list-inline">
+          <ul class="list-unstyled">
           <% a.genes.each do |g| %>
             <li>
               <%= link_to genes_path+"/"+g.hgnc_id, :method => :get, :class => ""  do %>
@@ -24,7 +23,7 @@
         </ul>
         </td>
         <td>
-          <ul class="list-inline">
+          <ul class="list-unstyled">
           <% a.diseases.each do |c| %>
             <li>
               
@@ -37,14 +36,13 @@
 
         </td>
         <td>
-          <ul>
+          <ul class='list-unstyled'>
             <% a.intervention_assertions.interventions.each do |a| %>
               <li><%= a.label %></li>
             <% end  %>
           </ul>
         </td>
-        <td><%= a.date %></td>
-        <td><a href="#"><i class="glyphicon glyphicon-new-window"></i></a></td>
+        <td><a href="#" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-file"></i> <strong>View Details</strong> - <%= a.date %></a></td>
       </tr>
     <% end %>
     </tbody>
