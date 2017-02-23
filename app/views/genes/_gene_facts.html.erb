@@ -1,6 +1,6 @@
 <div class="panel panel-default">
   <div class="panel-body">
-    <div class='col-sm-6'>
+    <div class='col-sm-5'>
       <dl class='dl-horizontal'>
         <dt>Official Name</dt>
         <dd><%= @gene.symbol %></dd>
@@ -8,33 +8,39 @@
         <dd><%= @gene.hgnc_id %></dd>
         <dt>Cytogenetic Location</dt>
         <dd><%= @gene.location %></dd>
-        <dt>Genomic Coordinates</dt>
+        <!--<dt>Genomic Coordinates</dt>
         <dd>chr13: 32,889,617-32,973,809 (GRCh38)</dd>
-        <dd>chr13: 32,889,617-32,973,809 (GRCh37)</dd>
-        <dt>Gene Dosage</dt>
+        <dd>chr13: 32,889,617-32,973,809 (GRCh37)</dd>-->
+
+        <dt>ClinGen Haploinsufficiency</dt>
+        <dd><a href="https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=<%= @gene.symbol %>&subject=" target="ncbi">Sufficient Evidence <i class="glyphicon glyphicon-new-window text-sm"></i></a></dd>
+        <dt>ClinGen Triplosensitivity</dt>
+        <dd><a href="https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=<%= @gene.symbol %>&subject=" target="ncbi">No Evidence <i class="glyphicon glyphicon-new-window text-sm"></i></a></dd>
+
+         <!-- <dt>Gene Dosage</dt>
         <% @dosage.each do |d| %>
           <dd> <%= d.interpretation.first.label %> </dd>
-        <% end %>
+        <% end %> -->
       </dl>
     </div>
-    <div class='col-sm-6'>
+    <div class='col-sm-7'>
       <dl class='dl-horizontal'>
-        <dt>ClinVar Variants</dt>
-        <dd><a href="#variants" role="tab" data-toggle="tab" class="label label-primary">543 ClinVar Variants</a></dd>
         <dt>Curated Conditions</dt>
         <dd>
           <% @diseases.each do |d| %>
             <%= link_to d.label, d, {class: "label label-primary"} %>
           <% end %>
         </dd>
+        <dt>ClinVar Variants</dt>
+        <dd><a href="#variants" role="tab" data-toggle="tab" class="">View ClinVar Variants  <i class="glyphicon glyphicon-new-window text-sm"></i></a></dd>
         <!-- <a href='#condition1' class="label label-primary">Breast cancer</a> <a href='#condition2' class="label label-primary">Gastric cancer</a> -->
         </dd>
         <dt>Genomic Resources</dt>
-        <dd><a href='#infobutton' role="tab" data-toggle="tab">12 external resources located</a></dd>
-        <dt>GenomeConnect&reg;</dt>
-        <dd><a href='#' role="tab" data-toggle="tab">12 <%= @gene.symbol %> cases</a></dd>
+        <dd><a href='#infobutton' role="tab" data-toggle="tab">View external resources</a></dd>
+        <!-- <dt>GenomeConnect&reg;</dt>
+        <dd><a href='#' role="tab" data-toggle="tab">12 <%= @gene.symbol %> cases</a></dd> -->
         <dt>GeneReviews&reg;</dt>
-        <dd><a href="#">Learn more</a></dd>
+        <dd><a href="#">Learn more  <i class="glyphicon glyphicon-new-window text-sm"></i></a></dd>
       </dl>
     </div>
   </div>
