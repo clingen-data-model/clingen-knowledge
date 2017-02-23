@@ -53,14 +53,15 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="SiteNav">
               <ul class='nav nav-pills pull-right'>
+
+          <li class='' role='presentation' id='ref_1001' >
+            <a class='' href='http://clingen-pw3-v2.creationproject.net/about/' title='' >About</a>
+          </li> 
           <li class='' role='presentation' id='ref_5297' >
             <a class='' href='http://clingen-pw3-v2.creationproject.net/clingen-tools/' title='' >Resources &amp; Tools</a>
           </li>
           <li class='' role='presentation' id='ref_1119' >
             <a class='' href='http://clingen-pw3-v2.creationproject.net/genomeconnect/' title='' >GenomeConnect</a>
-          </li>
-          <li class='' role='presentation' id='ref_1001' >
-            <a class='' href='http://clingen-pw3-v2.creationproject.net/about/' title='' >About</a>
           </li>
           <li class='' role='presentation' id='ref_5396' >
             <a class='' href='http://clingen-pw3-v2.creationproject.net/share-your-data/' title='' >How to share your data</a>
@@ -71,7 +72,7 @@
           </div>
             <%= form_tag(home_index_path, method: "get") do %>
               <div id='header_search' class="input-group">
-                <%= text_field_tag :term, "", class: 'form-control' %>
+                <%= text_field_tag :term, "", class: 'form-control', placeholder: 'Search our knowledge-base for genes and diseases...' %>
                 <span class="input-group-btn">
                   <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
                 </span>
@@ -79,54 +80,53 @@
             <% end %>
           <nav id='nav_primary' class=" hidden-sm hidden-xs">
               <ul class='nav nav-pills pull-right'>
+          <li class='' role='presentation' id='ref_1001' >
+            <a class='' href='http://clingen-pw3-v2.creationproject.net/about/' title='' >About</a>
+          </li>
           <li class='' role='presentation' id='ref_5297' >
             <a class='' href='http://clingen-pw3-v2.creationproject.net/clingen-tools/' title='' >Resources &amp; Tools</a>
           </li>
           <li class='' role='presentation' id='ref_1119' >
             <a class='' href='http://clingen-pw3-v2.creationproject.net/genomeconnect/' title='' >GenomeConnect</a>
           </li>
-          <li class='' role='presentation' id='ref_1001' >
-            <a class='' href='http://clingen-pw3-v2.creationproject.net/about/' title='' >About</a>
-          </li>
-          <li class='' role='presentation' id='ref_5396' >
+          <li class='' role='presentation' id='ref_5329' >
             <a class='' href='http://clingen-pw3-v2.creationproject.net/share-your-data/' title='' >How to share your data</a>
           </li>
-          <li class='' role='presentation' id='ref_5397' >
+          <li class='' role='presentation' id='ref_5296' >
             <a class='' href='http://clingen-pw3-v2.creationproject.net/curation-starts-here/' title='' >Learn about ClinGen curation activities</a>
           </li></nav>
           
         </div>
       </div>
   </div>
-
+<div id="header_highlight" class="container-fluid container-trans">  </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-<div id="knowledge_search_results" class="container">
-  
-  <div class="nav nav-tabs">
+    <%= yield %>
 
-    <%= link_to root_path, :class => "btn btn-default btn-sm btn-search-edit margin-bottom-md"  do %>
-        <i class="glyphicon glyphicon-search"></i> Genomic Search
+<div class="container">
+  <hr />
+  <div class="">
+
+    <%= link_to root_path, :class => "btn btn-link btn-sm btn-search-edit margin-bottom-md text-muted"  do %>
+        ClinGen Knowledge-base Quick Links:
       <% end %>
 
       <%= link_to gene_validity_index_path, :class => "btn btn-default btn-sm btn-search-edit margin-bottom-md"  do %>
-        <i class="glyphicon glyphicon-search"></i> Gene Validity
+        <i class="glyphicon glyphicon-search"></i> Gene Validity Curations
       <% end %>
 
       <%= link_to gene_dosage_index_path, :class => "btn btn-default btn-sm btn-search-edit margin-bottom-md"  do %>
-        <i class="glyphicon glyphicon-search"></i> Gene Dosage
+        <i class="glyphicon glyphicon-search"></i> Gene Dosage Curations
       <% end %>
 
       <%= link_to actionability_index_path, :class => "btn btn-default btn-sm btn-search-edit margin-bottom-md"  do %>
-        <i class="glyphicon glyphicon-search"></i> Actionability
+        <i class="glyphicon glyphicon-search"></i> Actionability Curations
       <% end %>
     
     
   </div>
 </div>
-    <%= yield %>
-
-
 
 <div id="footer" class="container  background-trans padding-top-xl">
 
