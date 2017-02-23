@@ -1,5 +1,3 @@
-class Drug
-  include Neo4j::ActiveNode
-  
-  property :label
+class Drug < RDFClass
+
 end
