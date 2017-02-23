@@ -26,6 +26,9 @@ class GenesController < ApplicationController
     @term_id = truncate(@gene.hgnc_id)
     @diseases = @gene.assertions.diseases.distinct
     @actionability = @gene.actionability_scores
+    if @actionability.length > 0
+      @actionability_diseases = @actionability.map {|a| a[:disease]}.flatten
+    end
     @dosage = @gene.assertions(:a).with_associations(:interpretation, :diseases)
                 .where("a:GeneDosageAssertion")
     @validity = @gene.assertions(:n).with_associations(:interpretation, :diseases)

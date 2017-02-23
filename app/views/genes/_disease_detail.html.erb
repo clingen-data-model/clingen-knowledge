@@ -10,7 +10,7 @@
 
     <%#= render "gene_dosage/dosage_detail.html.erb"%>
 
-    <% if @actionability.length > 0 %>
+    <% if @actionability.length > 0 && @actionability_diseases.include?(disease.iri) %>
       <hr />
       <%= render "shared/actionability_detail", actionability: @actionability, disease: disease, gene: @gene, index: :disease, index_id: disease.iri %>
     <% end %>
