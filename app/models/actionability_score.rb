@@ -19,6 +19,25 @@ class ActionabilityScore < Assertion
      "http://datamodel.clinicalgenome.org/clingen.owl#CG_000087" => [:safety, 3]}
   end
 
+  def self.label_map
+    {"http://datamodel.clinicalgenome.org/clingen.owl#CG_000061" => [:efficacy, "Ineffective/No Intervention"],
+     "http://datamodel.clinicalgenome.org/clingen.owl#CG_000060" => [:efficacy, "Minimally Effective"],
+     "http://datamodel.clinicalgenome.org/clingen.owl#CG_000059" => [:efficacy, "Moderately Effective"],
+     "http://datamodel.clinicalgenome.org/clingen.owl#CG_000058" => [:efficacy, "Highly Effective"],
+     "http://datamodel.clinicalgenome.org/clingen.owl#CG_000051" => [:likelihood, "<1% chance or unknown"],
+     "http://datamodel.clinicalgenome.org/clingen.owl#CG_000050" => [:likelihood, "1-4% chance"],
+     "http://datamodel.clinicalgenome.org/clingen.owl#CG_000049" => [:likelihood, "5-39% Chance"],
+     "http://datamodel.clinicalgenome.org/clingen.owl#CG_000048" => [:likelihood, ">40% Chance"],
+     "http://datamodel.clinicalgenome.org/clingen.owl#CG_000046" => [:severity, "Minimal or no Morbidity"],
+     "http://datamodel.clinicalgenome.org/clingen.owl#CG_000045" => [:severity, "Modest Morbidity"],
+     "http://datamodel.clinicalgenome.org/clingen.owl#CG_000044" => [:severity, "Possible death or Major Morbidity"],
+     "http://datamodel.clinicalgenome.org/clingen.owl#CG_000043" => [:severity, "Sudden Death"],
+     "http://datamodel.clinicalgenome.org/clingen.owl#CG_000089" => [:safety, "Greater Risk"],
+     "http://datamodel.clinicalgenome.org/clingen.owl#CG_000088" => [:safety, "Moderate Risk"],
+     "http://datamodel.clinicalgenome.org/clingen.owl#CG_000090" => [:safety, "High Risk"],
+     "http://datamodel.clinicalgenome.org/clingen.owl#CG_000087" => [:safety, "Low Risk"]}
+  end
+
 
   def self.evidence_map
     {"http://datamodel.clinicalgenome.org/clingen.owl#CG_000057" => "E",
@@ -41,5 +60,13 @@ class ActionabilityScore < Assertion
       h.update(s.first => s.second.to_s + e)
     end
     result.update(total: total.to_s + total_evidence)
+  end
+  def self.labels_to_h(scores)
+    total = 0
+    result = scores.reduce({}) do |h, i|
+      s = ActionabilityScore.label_map[i[:score].first]
+      h.update(s.first => s.second.to_s)
+    end
+    result.update(total: total.to_s)
   end
 end 

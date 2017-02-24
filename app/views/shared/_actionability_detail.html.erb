@@ -1,8 +1,9 @@
 <% # args: [actionability] structure to render, [gene] [disease] [index] which (:gene/:disease) the index is based on %>
+
 <table class="table table-hover border-left table-condensed">
   <thead>
     <tr>
-      <th class="col-sm-10" colspan="5">Clinical Actionability of <%= gene.symbol %> and <%= disease.label %></th>
+      <th class="col-sm-10" colspan="2">Clinical Actionability of <%= gene.symbol %> and <%= disease.label %></th>
       <th class="col-sm-2 text-center"></th>
     </tr>
   </thead>
@@ -10,35 +11,24 @@
   <thead class="thead-labels ">
     <tr>
       <th class="col-sm-5">Outcome/Intervention Pair</th>
-      <th class="text-center">Severity</th>
-      <th class="text-center">Likelihood</th>
-      <th class="text-center">Effectiveness</th>
-      <th class="text-center">Intervention</th>
-      <th class="text-center">Score</th>
+      <th class="">Description</th>
+      <th class="text-center">Date</th>
     </tr>
   </thead>
   <tbody>
     <% if assertion = actionability.find { |a| a[index].include?(index_id) } %>
       <% assertion[:interventions].each do |i| %>
-        <% scores = ActionabilityScore.scores_to_h(i[:scores]) %>
+        <% scores = ActionabilityScore.labels_to_h(i[:scores]) %>
         <tr>
-          <td><%= i[:label] %></td>
-          <td class=" text-center">
-            <%= scores[:severity] %>
+          <td><a href="#"><strong><%= i[:label] %></strong></a></td>
+          <td class=" text-left">
+            Severity: <strong><%= scores[:severity] %></strong><br/>
+            Likelihood: <strong><%= scores[:likelihood] %></strong><br/>
+            Effectiveness: <strong><%= scores[:efficacy] %></strong><br/>
+            Intervention: <strong><%= scores[:safety] %></strong>
           </td>
           <td class=" text-center">
-            <%= scores[:likelihood] %>
-          </td>
-          <td class=" text-center">
-            <%= scores[:efficacy] %>
-          </td>
-          <td class=" text-center">
-            <%= scores[:safety] %>
-          </td>
-          <td class=" text-center">
-            <span class="label label-success" title="Aug 08, 2016">
-              <%= scores[:total] %>
-            </span>
+            <%= assertion[:date] %>
           </td>
         </tr>
       <% end %>
