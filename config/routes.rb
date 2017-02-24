@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :gene_validity, only: [:show, :index], path: "/gene-validity"
   resources :actionability, only: [:show, :index]
   resources :home, only: [:show, :index]
+
+  # Items that need to be secured
   authenticate :agent do
     resources :subscriptions
     resources :notes

@@ -1,6 +1,7 @@
 class ExternalResourcesController < ApplicationController
   include ActionView::Helpers::TextHelper
 
+
   def index
   	@gene = Gene.find_by(hgnc_id: params[:gene_id])
   	@term_label = truncate(@gene.symbol, :length => 20, :omission => '...')
