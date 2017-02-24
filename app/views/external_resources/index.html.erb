@@ -1,3 +1,48 @@
-<div id="external_resources_index" class="container">
-	<h1>External Resources</h1>
+<div id="genes_show" class="container">
+  
+</div>
+<div id="genes_show_summary" role="tabpanel" class="tab-pane active  container results_curation_summary">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2 class="padding-top-xs">
+        <%= render 'shared/agent_links_show_views' %>
+
+        <strong><%= @gene.symbol %></strong> Gene Summary
+        </h2>
+        <%= render 'genes/gene_facts' %>
+
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="">
+        <ul class="nav nav-tabs">        
+          <li>
+	            <%= link_to gene_path(@gene), :class => ""  do %>
+	        ClinGen's <%= @gene.symbol %> Curation Summaries
+	      <% end %>
+          </li> 
+          <!-- <li class="">
+            <a href="#variants">
+              ClinVar Variants <span class="badge">#####</span>
+            </a>
+          </li> -->
+          <li class="active">
+            <%= link_to "External Genomic Resources", gene_external_resources_path(@gene) %>
+          </li>
+        </ul>
+        <div class="panel panel-default">
+          <div class="panel-heading" id='results_curation_summary_heading'>
+            <div class="row">
+            	<div class="col-sm-12">
+	              External Resources
+	            </div>
+	          </div>
+          </div>
+          <div id='results_curation_summary_details' class="panel-body results_curation_summary_details">
+            dsdfsdfdsfdsf
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

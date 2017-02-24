@@ -43,7 +43,9 @@
         <!-- <a href='#condition1' class="label label-primary">Breast cancer</a> <a href='#condition2' class="label label-primary">Gastric cancer</a> -->
         </dd>
         <dt>Genomic Resources</dt>
-        <dd><a href='#infobutton' role="tab" data-toggle="tab">View external resources</a></dd>
+        
+        
+        <dd><%= link_to "View external resources", gene_external_resources_path(@gene) %></dd>
         <!-- <dt>GenomeConnect&reg;</dt>
         <dd><a href='#' role="tab" data-toggle="tab">12 <%= @gene.symbol %> cases</a></dd> -->
         <dt>GeneReviews&reg;</dt>
