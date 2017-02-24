@@ -13,9 +13,16 @@
         <dd>chr13: 32,889,617-32,973,809 (GRCh37)</dd>-->
 
         <dt>ClinGen Haploinsufficiency</dt>
-        <dd><a href="https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=<%= @gene.symbol %>&subject=" target="ncbi">Sufficient Evidence <i class="glyphicon glyphicon-new-window text-sm"></i></a></dd>
+        <dd><% if a = @gene.dosage_assertions.select {|i| i.haplo_assertion?}.first %>
+                          <a href="https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=<%= @gene.symbol %>&subject=" target="ncbi"><%= a.interpretation.first.label %> <!-- <i class="glyphicon glyphicon-new-window text-sm"></i> --></a>
+                        <% end %></dd>
+
+        
+
         <dt>ClinGen Triplosensitivity</dt>
-        <dd><a href="https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=<%= @gene.symbol %>&subject=" target="ncbi">No Evidence <i class="glyphicon glyphicon-new-window text-sm"></i></a></dd>
+        <dd><% if a = @gene.dosage_assertions.select {|i| i.triplo_assertion?}.first %>
+                          <a href="https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=<%= @gene.symbol %>&subject=" target="ncbi"><%= a.interpretation.first.label %> <!-- <i class="glyphicon glyphicon-new-window text-sm"></i> --></a>
+                        <% end %></dd>
 
          <!-- <dt>Gene Dosage</dt>
         <% @dosage.each do |d| %>
