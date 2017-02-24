@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(agent)
 	  dashboard_index_path
 	end
+	def after_update_path_for(agent)
+	  dashboard_index_path
+	end
+	
 	def after_sign_out_path_for(agent)
 	  agent_session_path
 	end
