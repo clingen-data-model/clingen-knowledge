@@ -1,52 +1,89 @@
 <div id="agents_register_edit" class="container">
-  <div class="col-sm-12 padding-top-md">
+  <div class="row padding-top-md">
 
     <%= render 'shared/dashboard_links' %>
-    <h2>Edit <%= resource_name.to_s.humanize %></h2>
-    <div class='col-sm-6'>
+    <h2 class='col-sm-12'>Edit Your Profile</h2>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= devise_error_messages! %>
     
+      <div class="col-sm-6">
+        <div class="form-group">
+          <%= f.label :first_name, :class => "control-label"  %>
+          <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "First Name", required: "required" %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <%= f.label :last_name, :class => "control-label"  %>
+          <%= f.text_field :last_name, autofocus: true, class: "form-control", placeholder: "Last Name", required: "required" %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <%= f.label :institution, :class => "control-label"  %>
+        <%= f.text_field :institution, autofocus: true, class: "form-control", placeholder: "Institution", required: "required" %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <%= f.label :title, :class => "control-label"  %>
+        <%= f.text_field :title, autofocus: true, class: "form-control", placeholder: "Professional Title", required: "required" %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <%= f.label :email, :class => "control-label" %>
+          <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Password", required: "required" %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <%= f.label :degrees, :class => "control-label"  %>
+        <%= f.text_field :degrees, autofocus: true, class: "form-control", placeholder: "Professional Degrees", required: "required" %>
+        </div>
+      </div>
+      <div class="col-sm-6">
       <div class="form-group">
-        <%= f.label :email, :class => "control-label" %>
-        <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Password", required: "required" %>
+        <%= f.label :current_password, :class => "control-label" %>
+        <%= f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
+         <p class="help-block">(we need your current password to confirm your changes)</p>
+      </div>
       </div>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
-
+      <div class="col-sm-12"><h4>Update Password</h4>Leave blank if you don't want to change it</div>
+      <div class="col-sm-6 clear-left">
       <div class="form-group">
         <%= f.label :password, :class => "control-label" %> <i></i>
-        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password", required: "required" %>
-         <p class="help-block">(leave blank if you don't want to change it)</p>
+        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
         <% if @minimum_password_length %>
            <p class="help-block"><%= @minimum_password_length %> characters minimum</p>
         <% end %>
       </div>
-
+      </div>
+      <div class="col-sm-6">
       <div class="form-group">
         <%= f.label :password_confirmation, :class => "control-label" %>
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Password", required: "required" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Password" %>
+      </div>
       </div>
 
+      
+      <div class="col-sm-6 clear-left">
       <div class="form-group">
-        <%= f.label :current_password, :class => "control-label" %>
-        <%= f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: "Password", required: "required" %>
-         <p class="help-block">(we need your current password to confirm your changes)</p>
+        <%= f.submit "Update Profile",  class: "btn btn-primary" %>
       </div>
-
-      <div class="form-group">
-        <%= f.submit "Update",  class: "btn btn-primary" %>
       </div>
     <% end %>
 
-    <h3>Cancel my account</h3>
+      <div class="col-sm-6">
       <div class="form-group">
-      <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,  class: "btn btn-primary" %>
+      <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,  class: "btn btn-danger pull-right" %>
 
-      <%= link_to "Back", :back,  class: "btn btn-link" %>
+      <%= link_to "Back", :back,  class: "btn btn-link pull-right" %>
       </div>
-    </div>
-    </div>
+    </div></div>
+
 </div>

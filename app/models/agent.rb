@@ -19,6 +19,16 @@ class Agent
      property :email
      #index :email
 
+     ## Added Fields
+     property :first_name
+     property :last_name
+     property :institution
+     property :title
+     property :degrees
+     property :opt_out
+     property :subscriptions_all_curations
+     #index :email
+
      property :encrypted_password
 
      ## If you include devise modules, uncomment the properties below.
