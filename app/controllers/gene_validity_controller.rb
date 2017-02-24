@@ -4,4 +4,8 @@ class GeneValidityController < ApplicationController
     @assertions = GeneDiseaseAssertion.all.limit(200)
   end
   
+  def show
+    @assertion = GeneDiseaseAssertion.find(params[:id])
+  end
+  
 end
