@@ -3,23 +3,24 @@ class GenesController < ApplicationController
 
 
   def index
-  	@genes = Gene.all.limit(11)
-        if params[:curated]
-          @genes = Gene.all(:g).where("(g)<-[:has_subject]-(:Assertion)").limit(20)
-        end
-  	# @genes = Gene.order(:name).page params[:page]
-  	# @genes = Gene.paginate(:page => params[:page], :per_page => 30)
+    @genes = Gene.all.limit(11)
+    if params[:curated]
+      @genes = Gene.all(:g).where("(g)<-[:has_subject]-(:Assertion)").limit(20)
+    end
+    # @genes = Gene.order(:name).page params[:page]
+    # @genes = Gene.paginate(:page => params[:page], :per_page => 30)
 
-        respond_to do |format|
-          format.json do 
-            @genes = Gene.all(:g).where("g.symbol starts with {symbol}")
-                       .params(symbol: params[:term]).limit(10)
-            render json: @genes, root: false
-          end
-          format.html
-        end
+    respond_to do |format|
+      format.json do 
+        @genes = Gene.all(:g).where("g.symbol starts with {symbol}")
+                   .params(symbol: params[:term]).limit(10)
+        render json: @genes, root: false
+      end
+      format.html
+    end
   end
 
+  # Be sure to add here anything needed for the gene_facts partial
   def show
     @gene = Gene.find_by(hgnc_id: params[:id])
     @term_label = truncate(@gene.symbol, :length => 20, :omission => '...')

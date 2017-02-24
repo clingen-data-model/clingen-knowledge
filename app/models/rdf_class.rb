@@ -18,6 +18,8 @@ class RDFClass
   #   }
   # end
 
+  
+
   # Render json sutiable for rendering experimental evidence options for vue
   # Offer array of category name, with array of id, label assoc
   def self.experimental_evidence_json
