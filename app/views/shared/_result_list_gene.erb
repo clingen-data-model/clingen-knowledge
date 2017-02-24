@@ -1,7 +1,7 @@
 <% if(@genes) %>
   <div class='row margin-bottom-sm ADDCLASSIFCURATED' id='result_ADDIDHERE'>
   <div class='col-sm-8'>
-    <h4 class='margin-top-none'><%= link_to gene.symbol, genes_path+"/"+gene.hgnc_id %></a></h4>
+    <h4 class='margin-top-none'><%= link_to gene.symbol, gene %></a></h4>
     <div>
       <%= link_to genes_path+"/"+gene.hgnc_id, genes_path+"/"+gene.hgnc_id %> <span class='badge text-xs'>Gene</span>
     </div>
