@@ -41,7 +41,6 @@
             </div>
           </div>
           <div id='results_curation_summary_details' class="panel-body results_curation_summary_details">
-            <!-- TODO pick up here rewriting actionability query -->
             <% @diseases.each do |d| %>
             <%= render 'disease_detail', disease: d %>
             <hr class="results_curation_summary_details_spacer" />

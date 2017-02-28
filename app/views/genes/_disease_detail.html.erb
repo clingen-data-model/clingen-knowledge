@@ -10,8 +10,10 @@
       
     <% end %>
 
-    <%#= render "gene_dosage/dosage_detail.html.erb"%>
-
+    <% if @dosage_detail[disease.iri] %>
+      <%= render "gene_dosage/dosage_detail.html.erb", dosage: @dosage_detail[disease.iri] %>
+    <% end %>
+      
     <% if @actionability.length > 0 && @actionability_diseases.include?(disease.iri) %>
       <% if @diseases_detail[disease.iri] %>
         <hr />

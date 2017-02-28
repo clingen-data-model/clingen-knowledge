@@ -37,6 +37,9 @@ class GenesController < ApplicationController
     @diseases_detail = @validity.reduce({}) do |h, i|
       h.update(i.diseases.reduce({}) { |h1, i1| h1.update({i1.iri => i}) })
     end
+    @dosage_detail = @dosage.reduce({}) do |h, i|
+      h.update(i.diseases.reduce({}) { |h1, i1| h1.update({i1.iri => i}) })
+    end
   end
 
 end
