@@ -3,30 +3,29 @@
 <div class='col-sm-8'>
   <h4 class='margin-top-none'><%= link_to d.label, d %></a></h4>
   <div>
-    <%= link_to d.iri, d.iri %> <span class='badge text-xs'>Drug</span>
+    CURIE <span class='badge text-xs'>Drug</span>
   </div>
   
   <!-- <div class='text-sm text-muted'>
        Synonyms go here
        </div> -->
   
-</div>
+</div> 
 <div class='col-sm-2'>
 	<div class='col-sm-3 padding-right-none'>
-      <%= link_to image_tag("clinicalActionability-off.png", class: "img-responsive"), genes_path, class: "menu_icon" %>
+      <%= link_to image_tag("clinicalActionability-off.png", class: "img-responsive"), d, class: "menu_icon" %>
     </div>
 	<div class='col-sm-3 padding-right-none'>
-      <%= link_to image_tag("clinicalValidity-off.png", class: "img-responsive"), genes_path, class: "menu_icon" %>
+      <%= link_to image_tag("clinicalValidity-off.png", class: "img-responsive"), d, class: "menu_icon" %>
     </div>
 	<div class='col-sm-3 padding-right-none'>
-      <%= link_to image_tag("dosageSensitivity-off.png", class: "img-responsive"), genes_path, class: "menu_icon" %>
+      <%= link_to image_tag("dosageSensitivity-off.png", class: "img-responsive"), d, class: "menu_icon" %>
     </div>
 	<div class='col-sm-3 padding-right-none'>
-      <%= link_to image_tag("genomeResource-on.png", class: "img-responsive"), genes_path, class: "menu_icon" %>
+      <%= link_to image_tag("genomeResource-on.png", class: "img-responsive"), d, class: "menu_icon" %>
     </div>
 </div>
 <div class='col-sm-2 text-right text-tight text-sm text-muted'>
-  <!--MOST RECENT CURATED DATE -->MM/DD/YYYY
 </div>
 
 <hr class='col-sm-12' />

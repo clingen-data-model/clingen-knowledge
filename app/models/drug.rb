@@ -1,5 +1,9 @@
 class Drug < RDFClass
 
+  # def to_param
+  #   uuid
+  # end
+
   def self.find_by_term(t)
     split_term = t.split(' ')
     Drug.all(:c)
