@@ -17,6 +17,12 @@ class Gene
     symbol
   end
 
+  def self.find_by_term(t)
+    Gene.all(:g)
+      .where("g.symbol =~ ('(?i)' + {term} + '.*')")
+      .params(term: t)
+  end
+
   # Grand query matching all actionability scores (given a gene)
   # Restricting returns in this query to actionability, but 
   # is feasible to do more

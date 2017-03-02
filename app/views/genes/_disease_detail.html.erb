@@ -1,7 +1,10 @@
 <div id='condition1' name='condition1' class="row">
   <div class="col-sm-2">
-    <h4><%= link_to disease.label, disease %></h4>
-
+    <h4>
+    <%= link_to disease, :class => "text-black"  do %>
+      <%= disease.label %> <i class="glyphicon glyphicon-search text-10px text-muted"></i>
+    <% end %>
+    </h4>
     <% disease.inspect %>
   </div>
   <div class="col-sm-10">

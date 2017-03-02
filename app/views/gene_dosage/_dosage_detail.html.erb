@@ -1,20 +1,20 @@
 <table class="table table-hover  border-left table-condensed">
   <thead>
     <tr>
-      <th class="col-sm-10" colspan="2">Dosage Sensitivity of <%= dosage.genes.first.symbol %> and <%= dosage.diseases.first.label %></th>
-      <th class="col-sm-2 text-center"><a class="btn btn-link btn-xs"><i class="glyphicon glyphicon-file"></i> View Details</a></th>
+      <th class="col-sm-12" colspan="2">Dosage Sensitivity of <%= dosage.genes.first.symbol %> and <%= dosage.diseases.first.label %></th>
     </tr>
   </thead>
   <thead class="thead-labels">
     <tr>
-      <th class="col-sm-5">Sensitivity Classification</th>
-      <th class="col-sm-7">Description</th>
+      <th class="col-sm-10">Description</th>
+      <th class="col-sm-2 text-center">Date</th>
     </tr>
   </thead>
   <tbody>
     <% dosage.interpretation.each do |i| %>
       <tr>
-        <td><%= i.label %></td>
+        <td><%= i.label %> <%= i.inspect %></td>
+        <td class="text-center">DATE</td>
       </tr>
     <% end %>
   </tbody>

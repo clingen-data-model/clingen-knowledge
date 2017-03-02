@@ -11,45 +11,44 @@
         <!--<dt>Genomic Coordinates</dt>
         <dd>chr13: 32,889,617-32,973,809 (GRCh38)</dd>
         <dd>chr13: 32,889,617-32,973,809 (GRCh37)</dd>-->
-
-        <dt>ClinGen Haploinsufficiency</dt>
+        <% if @gene.dosage_assertions.present? %>
+        <dt>Haploinsufficiency</dt>
         <dd><% if a = @gene.dosage_assertions.select {|i| i.haplo_assertion?}.first %>
-                          <a href="https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=<%= @gene.symbol %>&subject=" target="ncbi"><%= a.interpretation.first.label %> <!-- <i class="glyphicon glyphicon-new-window text-sm"></i> --></a>
+                          <a href="https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=<%= @gene.symbol %>&subject=" target="ncbi" class="text-black"> <%= a.interpretation.first.label %>  <i class="glyphicon glyphicon-new-window text-sm text-muted"></i></a>
                         <% end %></dd>
 
         
 
-        <dt>ClinGen Triplosensitivity</dt>
+        <dt>Triplosensitivity</dt>
         <dd><% if a = @gene.dosage_assertions.select {|i| i.triplo_assertion?}.first %>
-                          <a href="https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=<%= @gene.symbol %>&subject=" target="ncbi"><%= a.interpretation.first.label %> <!-- <i class="glyphicon glyphicon-new-window text-sm"></i> --></a>
+                          <a href="https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=<%= @gene.symbol %>&subject=" target="ncbi" class="text-black"><%= a.interpretation.first.label %> <i class="glyphicon glyphicon-new-window text-sm text-muted"></i> </a>
                         <% end %></dd>
-
-         <!-- <dt>Gene Dosage</dt>
-        <% @dosage.each do |d| %>
-          <dd> <%= d.interpretation.first.label %> </dd>
-        <% end %> -->
+        <% end %>
       </dl>
     </div>
     <div class='col-sm-7'>
       <dl class='dl-horizontal'>
+         <% if @diseases.present? %>
         <dt>Curated Conditions</dt>
         <dd>
           <% @diseases.each do |d| %>
-            <%= link_to d.label, d, {class: "label label-primary"} %>
+            <%= link_to d.label, d, {class: "btn btn-xs btn-default"} %>
           <% end %>
         </dd>
+        <% end %>
+        <dt>External Resources</dt>
+        <dd>
+            <%= link_to gene_external_resources_path(@gene), :class => "text-black"  do %>
+              View external resources
+            <% end %>
+        </dd>
+
         <dt>ClinVar Variants</dt>
-        <dd><a href="#variants" role="tab" data-toggle="tab" class="">View ClinVar Variants  <i class="glyphicon glyphicon-new-window text-sm"></i></a></dd>
+        <dd><a href="#variants" class="text-black">View ClinVar Variants  <i class="glyphicon glyphicon-new-window text-sm text-muted"></i></a></dd>
         <!-- <a href='#condition1' class="label label-primary">Breast cancer</a> <a href='#condition2' class="label label-primary">Gastric cancer</a> -->
         </dd>
-        <dt>Genomic Resources</dt>
-        
-        
-        <dd><%= link_to "View external resources", gene_external_resources_path(@gene) %></dd>
-        <!-- <dt>GenomeConnect&reg;</dt>
-        <dd><a href='#' role="tab" data-toggle="tab">12 <%= @gene.symbol %> cases</a></dd> -->
         <dt>GeneReviews&reg;</dt>
-        <dd><a href="#">Learn more  <i class="glyphicon glyphicon-new-window text-sm"></i></a></dd>
+        <dd><a href="#" class="text-black">Learn more  <i class="glyphicon glyphicon-new-window text-sm text-muted"></i></a></dd>
       </dl>
     </div>
   </div>

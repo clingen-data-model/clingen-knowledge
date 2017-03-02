@@ -88,6 +88,22 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (2.0.3)
+    kaminari (1.0.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.0.1)
+      kaminari-activerecord (= 1.0.1)
+      kaminari-core (= 1.0.1)
+    kaminari-actionview (1.0.1)
+      actionview
+      kaminari-core (= 1.0.1)
+    kaminari-activerecord (1.0.1)
+      activerecord
+      kaminari-core (= 1.0.1)
+    kaminari-core (1.0.1)
+    kaminari-neo4j (0.0.4)
+      activesupport (>= 3.0)
+      kaminari (>= 0.16.3)
+      neo4j (>= 4.0)
     less (2.6.0)
       commonjs (~> 0.2.7)
     less-rails (2.8.0)
@@ -228,6 +244,7 @@ DEPENDENCIES
   devise-neo4j
   jbuilder (~> 2.5)
   jquery-rails
+  kaminari-neo4j
   listen (~> 3.0.5)
   neo4j (~> 8.0.6)
   passenger

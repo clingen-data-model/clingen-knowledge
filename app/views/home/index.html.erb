@@ -2,9 +2,65 @@
 
 <% if(params.has_key?(:term)) %>
 	
-  <%= render "gene_results" %>
-  <%= render "condition_results" %>
-  <%= render "drug_results" %>
+  
+  
+  <h2 class="margin-bottom-md">[TERM HERE] Results</h2>
+  
+
+  <%
+    # Just some notes...
+    # The "active" class set in the tabs and tab-content is what activates
+    # the tabs that you want.  SO, just start with genes and go through the list.
+    # My thought is to always keep the tabs (even if not matches) but always 
+    # activate the first tab with results when reading from left to right.
+  %>
+
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+    	<a href="#gene_results" aria-controls="gene_results" role="tab" data-toggle="tab">Genes <span class="badge">### Matches</span></a>
+    </li>
+    <li role="presentation">
+    	<a href="#condition_results" aria-controls="condition_results" role="tab" data-toggle="tab">Conditions <span class="badge">### Matches</span></a>
+    </li>
+    <li role="presentation">
+    	<a href="#drug_results" aria-controls="drug_results" role="tab" data-toggle="tab">Drugs <span class="badge">### Matches</span></a>
+    </li>
+  </ul>
+
+
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="gene_results">
+    	<%= render "gene_results" %>
+
+      <% if @genes.empty? %>
+      <%= render "no_results" %>
+      <% end %>
+
+    	<!-- START IF - only show this if more then X are needed -->
+    	<div class="col-sm-4 col-sm-offset-4">
+    		<a href="#" class="btn btn-primary btn-block"> Additional Gene Matches </a>
+    	</div>
+    	<!-- END IF -->
+
+    </div>
+    <div role="tabpanel" class="tab-pane" id="condition_results">
+    	<%= render "condition_results" %>
+
+      <% if @conditions.empty? %>
+      <%= render "no_results" %>
+      <% end %>
+    		
+    </div>
+    <div role="tabpanel" class="tab-pane" id="drug_results">
+    	<%= render "drug_results" %>
+      
+      <% if @drugs.empty? %>
+      <%= render "no_results" %>
+      <% end %>
+    		
+    </div>
+  </div>
+
     
 <% else %>
     <%= render "shared/splash_curated_facts" %>

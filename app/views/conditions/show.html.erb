@@ -6,7 +6,7 @@
       <h2 class="padding-top-xs">
         <%= render 'shared/agent_links_show_views', term_id: @condition.label %>
 
-        <strong><%= @condition.label %></strong>
+        <strong><%= @term_label %></strong>
         </h2>
         <%= render 'condition_facts' %>
 
@@ -17,7 +17,7 @@
         <ul class="nav nav-tabs">        
           <li class="active">
             <a href="#summary">
-              ClinGen's <%= @condition.label %> Curation Summaries
+              ClinGen's Curation Summaries
             </a>
           </li> 
           <li class="">

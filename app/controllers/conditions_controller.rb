@@ -2,11 +2,11 @@ class ConditionsController < ApplicationController
   include ActionView::Helpers::TextHelper
 
   def index
+    @page = params[:page] || 1
     if params[:term]
-      @conditions = Condition.all(:c).where("c.label contains {term}")
-                      .params(term: params[:term]).limit(10)
+      @conditions = Condition.find_by_term(params[:term]).page(@page).per(20)
     else
-      @conditions = Condition.all.limit(10)
+      @conditions = Condition.page(@page).per(20)
     end
     respond_to do |format|
       format.json { render json: @conditions, root: false }
@@ -16,7 +16,7 @@ class ConditionsController < ApplicationController
 
   def show
     @condition = Condition.find_by(curie: params[:id])
-    @term_label = truncate(@condition.label, :length => 20, :omission => '...')
+    @term_label = truncate(@condition.label, :length => 50, :omission => '...')
     @term_id = @condition.curie
     @term_curie = @condition.curie.gsub! '_', ':'
 

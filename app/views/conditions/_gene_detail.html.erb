@@ -1,6 +1,10 @@
 <div id='condition1' name='condition1' class="row">
   <div class="col-sm-2">
-    <h4><%= link_to gene.symbol, gene %></h4>
+    <h4>
+    <%= link_to gene, :class => "text-black"  do %>
+      <%= gene.label %> <i class="glyphicon glyphicon-search text-10px text-muted"></i>
+    <% end %>
+    </h4>
   </div>
   <div class="col-sm-10">
     <% if @validity_detail[gene.uuid] %>
