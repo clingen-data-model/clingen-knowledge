@@ -4,5 +4,5 @@
   <%= @genes.each do |n|  %>
     <%= render "shared/result_list_gene", gene: n %>
   <% end %>
-
+  <%= paginate @genes %>
 </div>

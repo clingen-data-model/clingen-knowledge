@@ -3,13 +3,14 @@ class GenesController < ApplicationController
 
 
   def index
-    @genes = Gene.all.limit(11)
-    if params[:curated]
-      @genes = Gene.all(:g).where("(g)<-[:has_subject]-(:Assertion)").limit(20)
-    end
-    # @genes = Gene.order(:name).page params[:page]
-    # @genes = Gene.paginate(:page => params[:page], :per_page => 30)
+    @page = params[:page] || 1
 
+    if params[:curated]
+      @genes = Gene.all(:g).where("(g)<-[:has_subject]-(:Assertion)").page(@page).per(20)
+    else
+      @genes = Gene.page(@page).per(20)
+    end
+      
     respond_to do |format|
       format.json do 
         @genes = Gene.all(:g).where("g.symbol starts with {symbol}")

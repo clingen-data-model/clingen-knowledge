@@ -4,22 +4,14 @@ class HomeController < ApplicationController
     t = params[:term]
 
     if t
-      @genes = Gene.all(:g)
-                 .where("g.symbol =~ ('(?i)' + {term} + '.*')")
-                 .params(term: t)
-                 .limit(10)
+      @genes = Gene.find_by_term(t)
+                 .limit(20)
 
-      split_term = t.split(' ') if t
-      
-      @conditions = Condition.all(:c)
-                      .where("all(t in {terms} where c.label =~ ('(?i).*' + t + '.*'))")
-                      .params(terms: split_term)
-                      .limit(10)
+      @conditions = Condition.find_by_term(t)
+                      .limit(20)
 
-      @drugs = Drug.all(:c)
-                 .where("all(t in {terms} where c.label =~ ('(?i).*' + t + '.*'))")
-                 .params(terms: split_term)
-                 .limit(10)
+      @drugs = Drug.find_by_term(t)
+                 .limit(20)
     end
 
 

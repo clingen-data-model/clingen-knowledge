@@ -4,5 +4,5 @@
   <%= @conditions.each do |n|  %>
     <%= render "shared/result_list_condition", condition: n %>
   <% end %>
-
+  <%= paginate @conditions %>
 </div>
