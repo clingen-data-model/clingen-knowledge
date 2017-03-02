@@ -32,7 +32,7 @@
     <div role="tabpanel" class="tab-pane active" id="gene_results">
     	<%= render "gene_results" %>
 
-      <% if @genes.empty? %>
+      <% if @genes.size == 0 %>
       <%= render "no_results" %>
       <% end %>
 
@@ -46,7 +46,7 @@
     <div role="tabpanel" class="tab-pane" id="condition_results">
     	<%= render "condition_results" %>
 
-      <% if @conditions.empty? %>
+      <% if @conditions.size == 0 %>
       <%= render "no_results" %>
       <% end %>
     		
@@ -54,7 +54,7 @@
     <div role="tabpanel" class="tab-pane" id="drug_results">
     	<%= render "drug_results" %>
       
-      <% if @drugs.empty? %>
+      <% if @drugs.size == 0 %>
       <%= render "no_results" %>
       <% end %>
     		
