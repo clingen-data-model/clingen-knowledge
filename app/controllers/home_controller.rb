@@ -5,7 +5,7 @@ class HomeController < ApplicationController
 
     if t
       @genes = Gene.all(:g)
-                 .where("g.symbol starts with {term}")
+                 .where("g.symbol =~ ('(?i)' + {term} + '.*')")
                  .params(term: t)
                  .limit(10)
 
