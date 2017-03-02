@@ -1,7 +1,7 @@
 <div id="genes_index" class="container">
 
   <h1>Genes</h1>
-  <%= @genes.each do |n|  %>
+  <% @genes.each do |n|  %>
     <%= render "shared/result_list_gene", gene: n %>
   <% end %>
   <%= paginate @genes %>
