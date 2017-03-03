@@ -21,9 +21,7 @@
             </a>
           </li> 
           <li class="">
-            <a href="#infobutton">
-              External Genomic Resources <span class="badge">#####</span>
-            </a>
+            <%= link_to "External Genomic Resources", condition_external_resources_conditions_path(@condition) %>
           </li>
         </ul>
         <div class="panel panel-default">
@@ -39,9 +37,15 @@
             </div>
           </div>
           <div id='results_curation_summary_details' class="panel-body results_curation_summary_details">
-            <% @genes.each do |g| %>
-            <%= render 'gene_detail', gene: g %>
-            <hr class="results_curation_summary_details_spacer" />
+            <% if @genes.present? %>
+              <% @genes.each do |g| %>
+              <%= render 'gene_detail', gene: g %>
+              <hr class="results_curation_summary_details_spacer" />
+              <% end %>
+            <% else %>
+              <div class="alert alert-info text-center" role="alert">
+                <strong><%= @condition.label %></strong> has not been curated.  <%= link_to "ClinGen compiled a list of external genomic resources", condition_external_resources_conditions_path(@condition) %> with direct links to information about <%= @condition.label %>.
+              </div>
             <% end %>
           </div>
         </div>

@@ -1,0 +1,50 @@
+<div id="genes_show" class="container">
+  
+</div>
+<div id="genes_show_summary" role="tabpanel" class="tab-pane active  container results_curation_summary">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2 class="padding-top-xs">
+        <%= render 'shared/agent_links_show_views' %>
+
+        <strong><%= @condition.label %></strong>
+        </h2>
+        <%= render 'conditions/condition_facts' %>
+
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="">
+        <ul class="nav nav-tabs">        
+          <li>
+            <%= link_to condition_path(@condition), :class => ""  do %>
+              ClinGen's Curation Summaries
+            <% end %>
+          </li> 
+          <li class="active">
+            <%= link_to "External Genomic Resources", condition_external_resources_conditions_path(@condition) %>
+          </li>
+        </ul>
+        <div class="panel panel-default">
+          <div class="panel-heading" id='results_curation_summary_heading'>
+            <div class="row">
+              <div class="col-sm-12">
+                External Resources
+              </div>
+            </div>
+          </div>
+          <div id='results_curation_summary_details' class="panel-body results_curation_summary_details">
+            <%= condition_gtr_disease_tests("link", @condition.label) %><br>
+            <%= condition_genetic_practice_guidelines("link", @condition.label) %><br>
+            <%= condition_omim("link", @condition.label) %><br>
+            <%= condition_pharmgkb("link", @condition.label) %><br>
+            <%= condition_medgen_genetic_summary("link", @condition.label) %><br>
+            <%= condition_genetics_home_reference("link", @condition.label) %><br>
+            <%= condition_clinvar_variants_related_to_genetic_disease("link", @condition.label) %><br>
+            <%= condition_1000_genomes("link", @condition.label) %><br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

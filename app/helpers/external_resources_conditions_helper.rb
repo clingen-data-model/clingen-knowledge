@@ -1,0 +1,2 @@
+module ExternalResourcesConditionsHelper
+end

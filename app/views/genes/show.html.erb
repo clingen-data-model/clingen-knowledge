@@ -7,7 +7,7 @@
       <h2 class="padding-top-xs">
         <%= render 'shared/agent_links_show_views' %>
 
-        <strong><%= @gene.symbol %></strong> Gene Summary
+        <strong><%= @gene.symbol %></strong>
         </h2>
         <%= render 'gene_facts' %>
 
@@ -27,7 +27,7 @@
             </a>
           </li> -->
           <li class="">
-            <%= link_to "External Genomic Resources", gene_external_resources_path(@gene) %>
+            <%= link_to "External Genomic Resources", gene_external_resources_genes_path(@gene) %>
           </li>
         </ul>
         <div class="panel panel-default">
@@ -41,9 +41,15 @@
             </div>
           </div>
           <div id='results_curation_summary_details' class="panel-body results_curation_summary_details">
-            <% @diseases.each do |d| %>
-            <%= render 'disease_detail', disease: d %>
-            <hr class="results_curation_summary_details_spacer" />
+            <% if @diseases.present? %>
+              <% @diseases.each do |d| %>
+              <%= render 'disease_detail', disease: d %>
+              <hr class="results_curation_summary_details_spacer" />
+              <% end %>
+            <% else %>
+              <div class="alert alert-info text-center" role="alert">
+                <strong><%= @gene.symbol %></strong> has not been curated.  <%= link_to "ClinGen compiled a list of external genomic resources", gene_external_resources_genes_path(@gene) %> with direct links to information about <%= @gene.symbol %>.
+              </div>
             <% end %>
           </div>
         </div>

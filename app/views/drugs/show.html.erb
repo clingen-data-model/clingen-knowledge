@@ -1,3 +1,47 @@
-<div id="condition_show" class="container">
-	<h1>Drugs SHOW</h1>
+<div id="drug_show" class="container">
+  
+</div>
+<div id="genes_show_summary" role="tabpanel" class="tab-pane active  container results_curation_summary">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2 class="padding-top-xs">
+        <%= render 'shared/agent_links_show_views' %>
+
+        <strong><%= @drug.label %></strong>
+        </h2>
+        <%= render 'drug_facts' %>
+
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="">
+        <ul class="nav nav-tabs">        
+          <li class="active">
+            <a href="#summary">
+              ClinGen's Curation Summaries
+            </a>
+          </li> 
+          <li class="">
+            <%= link_to "External Genomic Resources", drug_external_resources_drugs_path(@drug) %>
+          </li>
+        </ul>
+        <div class="panel panel-default">
+          <div class="panel-heading" id='results_curation_summary_heading'>
+            <div class="row"><div class="col-sm-2">
+              Condition
+            </div>
+            <div class="col-sm-10 ">
+              <span class="border-left">ClinGen Curation Results</span>
+            </div>
+            </div>
+          </div>
+          <div id='results_curation_summary_details' class="panel-body results_curation_summary_details">
+            <div class="alert alert-info text-center" role="alert">
+                <strong><%= @drug.label %></strong> has not been curated.  <%= link_to "ClinGen compiled a list of external genomic resources", drug_external_resources_drugs_path(@drug) %> with direct links to information about <%= @drug.label %>.
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

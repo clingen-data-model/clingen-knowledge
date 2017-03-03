@@ -3,28 +3,20 @@
     <div class='col-sm-5'>
       <dl class='dl-horizontal'>
         <dt>Official Name</dt>
-        <dd><%= @condition.label %></dd>
+        <dd><%= @drug.label %></dd>
         <dt>Ontological Reference</dt>
         <dd><%= @term_curie %></dd>
         <dt>Definition</dt>
-        <dd>@condition.definition</dd>
+        <dd>@drug.definition</dd>
         <dt>Synonyms</dt>
         <dd>[Synonyms]</dd>
       </dl>
     </div>
     <div class='col-sm-7'>
       <dl class='dl-horizontal'>
-        <% if @genes.present? %>
-        <dt>Curated Genes</dt>
-        <dd>
-          <% @genes.each do |g| %>
-            <%= link_to g.label, g, {class: "btn btn-xs btn-default"} %>
-          <% end %>
-        </dd>
-        <% end %>
         <dt>External Resources</dt>
         <dd>
-            <%= link_to condition_external_resources_conditions_path(@condition), :class => "text-black"  do %>
+            <%= link_to drug_external_resources_drugs_path(@condition), :class => "text-black"  do %>
               View external resources
             <% end %>
         </dd>

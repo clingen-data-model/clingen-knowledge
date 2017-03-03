@@ -40,6 +40,37 @@
           </div>
           <div id='results_curation_summary_details' class="panel-body results_curation_summary_details">
             dsdfsdfdsfdsf
+
+            <%= gene_medgen_genetics_summary("link", @gene.symbol) %><br>
+            <%= gene_genetic_practice_guidelines("link", @gene.symbol) %><br>
+            <%= gene_omim("link", @gene.symbol) %><br>
+            <%= gene_genetics_home_reference("link", @gene.symbol) %><br>
+            <%= gene_gene_reviews("link", @gene.symbol) %><br>
+            <%= gene_clinvar("link", @gene.symbol) %><br>
+            <%= gene_clinvar_acmg_variants("link", @gene.symbol) %><br>
+            <%= gene_1000_enomes("link", @gene.symbol) %><br>
+            <%= gene_ncbi_browser("link", @gene.symbol) %><br>
+            <hr />
+            <%= condition_gtr_disease_tests("link", @gene.symbol) %><br>
+            <%= condition_genetic_practice_guidelines("link", @gene.symbol) %><br>
+            <%= condition_omim("link", @gene.symbol) %><br>
+            <%= condition_pharmgkb("link", @gene.symbol) %><br>
+            <%= condition_medgen_genetic_summary("link", @gene.symbol) %><br>
+            <%= condition_genetics_home_reference("link", @gene.symbol) %><br>
+            <%= condition_clinvar_variants_related_to_genetic_disease("link", @gene.symbol) %><br>
+            <%= condition_1000_genomes("link", @gene.symbol) %><br>
+            <hr />
+            <%= drug_pharmgkb_dosing_guidelines("link", @gene.symbol) %><br>
+            <%= drug_gtr_clia("link", @gene.symbol) %><br>
+            <%= drug_cpic_pharmacogenomics_guidelines("link", @gene.symbol) %><br>
+            <%= drug_medgen_drug_gene_summary("link", @gene.symbol) %><br>
+            <%= drug_genetic_practice_guidelines("link", @gene.symbol) %><br>
+            <%= drug_omim("link", @gene.symbol) %><br>
+            <%= drug_clinvar_variants_with_drug_response("link", @gene.symbol) %><br>
+            <%= drug_clinvar_medication_ingredient("link", @gene.symbol) %><br>
+            <%= drug_1000_genomes_general_medication("link", @gene.symbol) %><br>
+            <%= gene_gtr_gene_tests("link", @gene.symbol) %><br>
+
           </div>
         </div>
       </div>

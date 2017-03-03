@@ -1,21 +1,9 @@
-class ConditionsController < ApplicationController
+class ExternalResourcesConditionsController < ApplicationController
   include ActionView::Helpers::TextHelper
 
+  # Be sure to add here anything needed for the gene_facts partial
   def index
-    @page = params[:page] || 1
-    if params[:term]
-      @conditions = Condition.find_by_term(params[:term]).page(@page).per(20)
-    else
-      @conditions = Condition.page(@page).per(20)
-    end
-    respond_to do |format|
-      format.json { render json: @conditions, root: false }
-      format.html
-    end
-  end
-
-  def show
-    @condition = Condition.find_by(curie: params[:id])
+    @condition = Condition.find_by(curie: params[:condition_id])
     @term_label = truncate(@condition.label, :length => 50, :omission => '...')
     @term_id = @condition.curie
     #@term_curie = @condition.curie.gsub! '_', ':'
@@ -28,7 +16,5 @@ class ConditionsController < ApplicationController
     @validity_detail = @validity.reduce({}) do |h, i|
       h.update(i.genes.reduce({}) { |h1, i1| h1.update({i1.uuid => i}) })
     end
-    
   end
-
 end

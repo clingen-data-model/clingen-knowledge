@@ -113,14 +113,20 @@
       </div>
   </div>
 <div id="header_highlight" class="container-fluid container-trans">  </div>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+  
+  <% if @notice.present? %>
+    <div class="alert alert-warning" role="alert"><%= notice %></div>
+  <% end %>
+  <% if @alert.present? %>
+    <div class="alert alert-danger" role="alert"><%= alert %></div>
+  <% end %>
+  
+  <%= yield %>
 
 <div class="container">
-  <hr />
-  <div class="">
+  <div class="row">
 
+  <hr class="col-sm-12" />
     <%= link_to root_path, :class => "btn btn-link btn-sm btn-search-edit margin-bottom-md text-muted"  do %>
         ClinGen Knowledge-base Quick Links:
       <% end %>
