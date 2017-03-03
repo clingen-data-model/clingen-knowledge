@@ -1,36 +1,36 @@
 <div id="gene_dosage_index" class="container">
-	<h1>Gene Dosage Curation</h1>
+  <h1>Gene Dosage Curation</h1>
 
-	<table class="table table-condensed">
-		<thead>
-			<th>Gene</th>
-			<th>Haploinsufficiency</th>
-			<th>Triplosensitivity</th>
+  <table class="table table-condensed">
+    <thead>
+      <th>Gene</th>
+      <th>Haploinsufficiency</th>
+      <th>Triplosensitivity</th>
       <th>Dosage Sensitivity Classification</th>
-		</thead>
-		<tbody>
-                  <% @genes.each do |g| %>
-		    <tr>
-		      <td>
-			<%= link_to g.label, g %>
-		      </td>
-                      <td>
-                        <% if a = g.dosage_assertions.select {|i| i.haplo_assertion?}.first %>
-                          <%= a.interpretation.first.label %>
-                        <% end %>
-                      </td>
-                      <td>
-                        <% if a = g.dosage_assertions.select {|i| i.triplo_assertion?}.first %>
-                          <%= a.interpretation.first.label %>
-                        <% end %>
-                      </td>
-                    <td>
-                    		
-                     <a href="https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=<%= g.label %>&subject=" target="ncbi" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-file"></i> <strong>View Details</strong> - <%= g.dosage_assertions.first.date %></a></td>
+    </thead>
+    <tbody>
+      <% @genes.each do |g| %>
+	<tr>
+	  <td>
+	    <%= link_to g.label, g %>
+	  </td>
+          <td>
+            <% if a = g.dosage_assertions.select {|i| i.haplo_assertion?}.first %>
+              <%= a.interpretation.first.label %>
+            <% end %>
+          </td>
+          <td>
+            <% if a = g.dosage_assertions.select {|i| i.triplo_assertion?}.first %>
+              <%= a.interpretation.first.label %>
+            <% end %>
+          </td>
+          <td>
+            
+            <a href="https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=<%= g.label %>&subject=" target="ncbi" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-file"></i> <strong>View Details</strong> - <%= g.dosage_assertions.first.date %></a></td>
 
-		    </tr>
-  	          <% end %>
-		</tbody>
-	</table>
-  <%= paginate @assertions %>
+	</tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @genes %>
 </div>
