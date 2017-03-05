@@ -3,23 +3,30 @@ class GenesController < ApplicationController
 
 
   def index
-    @page = params[:page] || 1
-
-    if params[:term]
-      @genes = Gene.find_by_term(params[:term]).page(@page).per(20)
-    elsif params[:curated]
-      @genes = Gene.all(:g).where("(g)<-[:has_subject]-(:Assertion)").page(@page).per(20)
-    else
-      @genes = Gene.page(@page).per(20)
-    end
-
     respond_to do |format|
       format.json do 
         @genes = Gene.all(:g).where("g.symbol starts with {symbol}")
                    .params(symbol: params[:term]).limit(10)
         render json: @genes, root: false
       end
-      format.html
+      format.html do 
+        @page = params[:page] || 1
+
+        if params[:term]
+          @genes = Gene.find_by_term(params[:term])
+                     .with_associations(:assertions)
+                     .page(@page)
+                     .per(20)
+        elsif params[:curated]
+          @genes = Gene.all(:g)
+                     .where("(g)<-[:has_subject]-(:Assertion)")
+                     .with_associations(:assertions)
+                     .page(@page)
+                     .per(20)
+        else
+          @genes = Gene.all.with_associations(:assertions).page(@page).per(20)
+        end
+      end
     end
   end
 
