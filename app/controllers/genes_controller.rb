@@ -5,12 +5,14 @@ class GenesController < ApplicationController
   def index
     @page = params[:page] || 1
 
-    if params[:curated]
+    if params[:term]
+      @genes = Gene.find_by_term(params[:term]).page(@page).per(20)
+    elsif params[:curated]
       @genes = Gene.all(:g).where("(g)<-[:has_subject]-(:Assertion)").page(@page).per(20)
     else
       @genes = Gene.page(@page).per(20)
     end
-      
+
     respond_to do |format|
       format.json do 
         @genes = Gene.all(:g).where("g.symbol starts with {symbol}")

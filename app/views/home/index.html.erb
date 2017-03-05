@@ -32,7 +32,7 @@
       <%= render "gene_results" %>
       <!-- START IF - only show this if more then X are needed -->
       <div class="col-sm-4 col-sm-offset-4">
-        <a href="#" class="btn btn-primary btn-block"> Additional Gene Matches </a>
+        <%= link_to "Additional Gene Matches", genes_path(page: 2, term: @term), class: 'btn btn-primary btn-block' %>
       </div>
       <!-- END IF -->
       <% end %>
@@ -47,7 +47,7 @@
       <%= render "condition_results" %>
       <!-- START IF - only show this if more then X are needed -->
       <div class="col-sm-4 col-sm-offset-4">
-        <a href="#" class="btn btn-primary btn-block"> Additional Condition Matches </a>
+        <%= link_to "Additional Condition Matches", conditions_path(page: 2, term: @term), class: 'btn btn-primary btn-block' %>
       </div>
       <!-- END IF -->
       <% end %>
@@ -61,7 +61,8 @@
       <%= render "drug_results" %>
       <!-- START IF - only show this if more then X are needed -->
       <div class="col-sm-4 col-sm-offset-4">
-        <a href="#" class="btn btn-primary btn-block"> Additional Drug Matches </a>
+        <%= link_to "Additional Drug Matches", drugs_path(page: 2, term: @term), class: 'btn btn-primary btn-block' %>
+        <a href="#" class="btn btn-primary btn-block">  </a>
       </div>
       <!-- END IF -->
       <% end %>	
