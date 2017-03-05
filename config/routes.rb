@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :curations, only: :index
   resources :gene_dosage, only: :index, path: "/gene-dosage"
   resources :gene_disease_assertions, only: [:show, :index], path: "/gene-validity"
-  resources :actionability, only: [:show, :index]
+  resources :actionability_assertions, only: [:show, :index], path: "/actionability"
   resources :home, only: [:show, :index]
 
   # Items that need to be secured
