@@ -6,6 +6,9 @@ class ActionabilityAssertion < Assertion
   has_one :out, :evidence_strength, model_class: :Interpretation, type: :has_evidence_strength
 
 
+  def to_param
+    perm_id
+  end
 
   def act_cat_map(category)
     {severity: "http://datamodel.clinicalgenome.org/clingen.owl#CG_000041",

@@ -1,5 +1,9 @@
 class GeneDosageAssertion < Assertion
 
+  def to_param
+    perm_id
+  end
+
   def haplo_assertion? 
     GeneDosageAssertion.haplo_iris.include?(interpretation.first.iri)
   end
