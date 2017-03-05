@@ -1,5 +1,7 @@
 class Condition < RDFClass
 
+  property :search_label
+
   has_many :in, :assertions, type: :has_object, model_class: :Assertion
 
   def self.find_by_term(t)

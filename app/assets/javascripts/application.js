@@ -17,3 +17,4 @@
 //= require typeahead.bundle
 //= require selectize
 //= require notes
+//= require search

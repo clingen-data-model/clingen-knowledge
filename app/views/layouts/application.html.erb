@@ -85,7 +85,7 @@
           </div>
             <%= form_tag(home_index_path, method: "get") do %>
               <div id='header_search' class="input-group">
-                <%= text_field_tag :term, "", class: 'form-control', placeholder: 'Search our knowledge-base for genes and diseases...' %>
+                <%= text_field_tag :term, "", class: 'form-control search-typeahead', placeholder: 'Search our knowledge-base for genes and diseases...' %>
                 <span class="input-group-btn">
                   <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
                 </span>

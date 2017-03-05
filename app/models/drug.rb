@@ -1,5 +1,7 @@
 class Drug < RDFClass
 
+  property :search_label
+
   # def to_param
   #   uuid
   # end
