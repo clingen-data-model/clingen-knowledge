@@ -1,7 +1,7 @@
 <div id="home_index" class="container">
 
-<% if(params.has_key?(:term)) %>
-  <h2 class="margin-bottom-md">[TERM HERE] Results</h2>
+<% if(@term) %>
+  <h2 class="margin-bottom-md"> <%= @term %> Results</h2>
   <%
     # Just some notes...
     # The "active" class set in the tabs and tab-content is what activates
@@ -11,20 +11,20 @@
   %>
 
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active">
+    <li role="presentation" class="<%= 'active' if @active_class == :genes %>">
     	<a href="#gene_results" aria-controls="gene_results" role="tab" data-toggle="tab">Genes <span class="badge"><%= @genes.size %> Matches</span></a>
     </li>
-    <li role="presentation">
+    <li role="presentation" class="<%= 'active' if @active_class == :conditions %>">
     	<a href="#condition_results" aria-controls="condition_results" role="tab" data-toggle="tab">Conditions <span class="badge"><%= @conditions.size %> Matches</span></a>
     </li>
-    <li role="presentation">
+    <li role="presentation" class="<%= 'active' if @active_class == :drugs %>">
     	<a href="#drug_results" aria-controls="drug_results" role="tab" data-toggle="tab">Drugs <span class="badge"><%= @drugs.size %> Matches</span></a>
     </li>
   </ul>
 
 
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="gene_results">
+    <div role="tabpanel" class="tab-pane <%= 'active' if @active_class == :genes %>" id="gene_results">
       <div class="padding-top-md">
       <% if @genes.size == 0 %>
       <%= render "no_results" %>
@@ -38,7 +38,7 @@
       <% end %>
       </div>
     </div>
-    <div role="tabpanel" class="tab-pane" id="condition_results">
+    <div role="tabpanel" class="tab-pane <%= 'active' if @active_class == :conditions %>" id="condition_results">
       <div class="padding-top-md">
       <% if @conditions.size == 0 %>
       <%= render "no_results" %>
@@ -53,7 +53,7 @@
       <% end %>
     	</div>
     </div>
-    <div role="tabpanel" class="tab-pane" id="drug_results">
+    <div role="tabpanel" class="tab-pane <%= 'active' if @active_class == :drugs %>" id="drug_results">
       <div class="padding-top-md">
       <% if @drugs.size == 0 %>
       <%= render "no_results" %>
