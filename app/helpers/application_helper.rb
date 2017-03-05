@@ -1,5 +1,33 @@
 module ApplicationHelper
 
+  # Return the key for the entity describing which assertions have been performed
+  def entity_assertion_key(entity)
+    types = [[ActionabilityAssertion, "clinicalActionability"],
+             [GeneDiseaseAssertion, "clinicalValidity"],
+             [GeneDosageAssertion, "dosageSensitivity"]]
+
+    contents = types.reduce("") do |acc, t|
+      acc + content_tag(:div, class: 'col-sm-3 padding-right-none') do 
+        if entity.assertions.any? { |a| a.is_a?(t.first) }
+          link_to(image_tag("#{t.second}-on.png", class: "img-responsive"),
+                  entity, class: "menu_icon")
+        else 
+          link_to(image_tag("#{t.second}-off.png", class: "img-responsive"),
+                  entity, class: "menu_icon")
+        end
+      end
+    end
+
+    contents += content_tag(:div, class: 'col-sm-3 padding-right-none') do 
+      link_to(image_tag("genomeResource-on.png", class: "img-responsive"),
+              entity, class: "menu_icon")
+    end
+
+    content_tag(:div, class: 'col-sm-2') do
+      raw(contents)
+    end
+  end
+
   # STRING.downcase.tr(' ', '+')
 
   def gene_medgen_genetics_summary(item, var)
