@@ -12,17 +12,19 @@ class HomeController < ApplicationController
 
       @drugs = Drug.find_by_term(@term)
                  .limit(20)
+
+      if @genes.size > 0
+        @active_class = :genes
+      elsif @conditions.size > 0
+        @active_class = :conditions
+      elsif @drugs.size > 0
+        @active_class = :drugs
+      else
+        @active_class = :none
+      end
     end
 
-    if @genes.size > 0
-      @active_class = :genes
-    elsif @conditions.size > 0
-      @active_class = :conditions
-    elsif @drugs.size > 0
-      @active_class = :drugs
-    else
-      @active_class = :none
-    end
+
 
     respond_to do |format|
       format.html do
