@@ -20,7 +20,8 @@ class ConditionsController < ApplicationController
     @term_id = @condition.curie
     #@term_curie = @condition.curie.gsub! '_', ':'
     @term_curie = @condition.curie
-
+    @dosage = @condition.assertions(:a).with_associations(:interpretation, :genes)
+                .where("a:GeneDosageAssertion")
     @genes = @condition.assertions.genes.distinct
     @actionability  = @condition.actionability_scores
     @validity = @condition.assertions(:n).with_associations(:interpretation, :genes)
@@ -28,7 +29,9 @@ class ConditionsController < ApplicationController
     @validity_detail = @validity.reduce({}) do |h, i|
       h.update(i.genes.reduce({}) { |h1, i1| h1.update({i1.uuid => i}) })
     end
-    
+    @dosage_detail = @dosage.reduce({}) do |h, i|
+      h.update(i.genes.reduce({}) { |h1, i1| h1.update({i1.uuid => i}) })
+    end
   end
 
 end
