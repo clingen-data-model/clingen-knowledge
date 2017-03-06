@@ -8,63 +8,65 @@ class Agent
     # uncomment the property definitions for those modules. Otherwise, the unused property definitions can be deleted.
     #
 
-     property :username
-     property :facebook_token
-     #index :facebook_token
+  has_many :in, :notes, type: :was_generated_by, model_class: :Note
 
-     property :created_at
-     property :updated_at
+  property :username
+  property :facebook_token
+  #index :facebook_token
 
-     ## Database authenticatable
-     property :email
-     #index :email
+  property :created_at
+  property :updated_at
 
-     ## Added Fields
-     property :first_name
-     property :last_name
-     property :institution
-     property :title
-     property :degrees
-     property :opt_out
-     property :subscriptions_all_curations
-     #index :email
+  ## Database authenticatable
+  property :email
+  #index :email
 
-     property :encrypted_password
+  ## Added Fields
+  property :first_name
+  property :last_name
+  property :institution
+  property :title
+  property :degrees
+  property :opt_out
+  property :subscriptions_all_curations
+  #index :email
 
-     ## If you include devise modules, uncomment the properties below.
+  property :encrypted_password
 
-     ## Rememberable
-     property :remember_created_at
-     property :remember_token
-     #index :remember_token
+  ## If you include devise modules, uncomment the properties below.
+
+  ## Rememberable
+  property :remember_created_at
+  property :remember_token
+  #index :remember_token
 
 
-     ## Recoverable
-     property :reset_password_token
-     #index :reset_password_token
-     property :reset_password_sent_at
+  ## Recoverable
+  property :reset_password_token
+  #index :reset_password_token
+  property :reset_password_sent_at
 
-     ## Trackable
-     property :sign_in_count
-     property :current_sign_in_at
-     property :last_sign_in_at
-     property :current_sign_in_ip
-     property :last_sign_in_ip
+  ## Trackable
+  property :sign_in_count
+  property :current_sign_in_at
+  property :last_sign_in_at
+  property :current_sign_in_ip
+  property :last_sign_in_ip
 
-     ## Confirmable
-     # property :confirmation_token
-     # index :confirmation_token
-     # property :confirmed_at, type: DateTime
-     # property :confirmation_sent_at, type: DateTime
+  ## Confirmable
+  # property :confirmation_token
+  # index :confirmation_token
+  # property :confirmed_at, type: DateTime
+  # property :confirmation_sent_at, type: DateTime
 
-     ## Lockable
-     #  property :failed_attempts, type: Integer, default: 0
-     # property :locked_at, type: DateTime
-     #  property :unlock_token, type: String,
-     # index :unlock_token
+  ## Lockable
+  #  property :failed_attempts, type: Integer, default: 0
+  # property :locked_at, type: DateTime
+  #  property :unlock_token, type: String,
+  # index :unlock_token
 
-      ## Token authenticatable
-      # property :authentication_token, type: String, null: true, index: :exact
+  ## Token authenticatable
+  # property :authentication_token, type: String, null: true, index: :exact
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

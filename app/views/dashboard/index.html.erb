@@ -1,12 +1,12 @@
-    <div id="curation_dashboard" class="container">       
-       
-       <div class="col-sm-12 padding-top-md">
-        <%= render 'shared/dashboard_links' %>
-         <h2>Hello <%= @agent.email %></h2>
-         
-         <div class="panel panel-default ">
-         <div class="panel-heading">
-         
+<div id="curation_dashboard" class="container">       
+  
+  <div class="col-sm-12 padding-top-md">
+    <%= render 'shared/dashboard_links' %>
+    <h2>Hello <%= @agent.email %></h2>
+    
+    <div class="panel panel-default ">
+      <div class="panel-heading">
+        
         <ul class="nav nav-tabs" id="dashboard" role="tablist">
           <%= link_to new_note_path, :method => :get, :class => "btn btn-success btn-sm pull-right margin-right-lg margin-bottom-md"  do %>
             <i class="glyphicon glyphicon-edit"></i>
@@ -23,58 +23,66 @@
             </a>
           </li>
         </ul> 
+      </div>
+      <div class="tab-content" id="dashboardContent"> 
+        
+        <div class="tab-pane fade in active" role="tabpanel" id="home" aria-labelledby="home-tab"> 
+          
+          <table class="table"><thead>
+            <tr>
+              <th class="col-sm-2">Gene</th>
+              <th class="col-sm-3">Condition</th>
+              <th class="col-sm-2">Created</th>
+              <th class="col-sm-2">Updated</th>
+              <th class="col-sm-2">Status</th>
+              <th class="col-sm-1">&nbsp;</th>
+            </tr> 
+          </thead> <tbody> 
+            <% @notes.each do |n| %>
+              <tr>
+                <td><%= n.gene %></td>
+                <td><%= n.condition %></td>
+                <td><%= n.created_at %></td>
+                <td><%= n.updated_at %></td>
+                <td><%= link_to "Revise", edit_note_path(n), class: "btn btn-info btn-xs btn-block" %></td>
+                <td>
+                  <%=  link_to note_path(n), {method: :delete},  {class: "btn btn-link btn-xs"} do %>
+                    <i class="glyphicon glyphicon-trash"></i> Remove
+                  <% end %>
+                </td>
+              </tr> 
+            <% end %>
+          </tbody> </table>
         </div>
-         <div class="tab-content" id="dashboardContent"> 
-         
-         <div class="tab-pane fade in active" role="tabpanel" id="home" aria-labelledby="home-tab"> 
-         
-         <table class="table"><thead>
-         <tr>
-           <th class="col-sm-2">Gene</th>
-           <th class="col-sm-3">Condition</th>
-           <th class="col-sm-2">Created</th>
-           <th class="col-sm-2">Updated</th>
-           <th class="col-sm-2">Status</th>
-           <th class="col-sm-1">&nbsp;</th>
-           </tr> 
-           </thead> <tbody> 
-           	<tr> <td>ZAQ1 [HCNX:1234]</td> <td>Cancer ABC [OMIM:1234]</td>
-               <td>12/12/16</td>
-               <td>1/12/17</td>
-               <td><a href="#" class="btn btn-info btn-xs btn-block">Revise</a></td>
-               <td><a href="#" class="btn btn-link btn-xs"><i class="glyphicon glyphicon-trash"></i> Remove</a></td>
-               </tr> 
-            </tbody> </table>
-           </div>
-         <div class="tab-pane fade" role="tabpanel" id="profile" aria-labelledby="profile-tab"> 
-         <table class="table">
-           <thead>
-             <tr>
-               <th class="col-sm-2">Ontology ID</th>
-               <th class="col-sm-3">Term</th>
-               <th class="col-sm-2">Type</th>
-               <th class="col-sm-2">Last Curated</th>
-               <th class="col-sm-2">&nbsp;</th>
-               <th class="col-sm-1">&nbsp;</th>
-             </tr>
-           </thead>
-           <tbody>
-             <tr>
-               <td>HCNX:1234</td>
-               <td>ZAQ1</td>
-               <td>Gene</td>
-               <td>1/12/17</td>
-               <td><a href="#" class="btn btn-info btn-xs btn-block">View <i class="glyphicon glyphicon-search"></i></a></td>
-               <td><a href="#" class="btn btn-link btn-xs"><i class="glyphicon glyphicon-trash"></i> Remove</a></td>
-             </tr>
-             
-           </tbody>
-         </table>
-         </div>  
-         </div>
-       </div></div>
-       
-      
-    </div>
+        <div class="tab-pane fade" role="tabpanel" id="profile" aria-labelledby="profile-tab"> 
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="col-sm-2">Ontology ID</th>
+                <th class="col-sm-3">Term</th>
+                <th class="col-sm-2">Type</th>
+                <th class="col-sm-2">Last Curated</th>
+                <th class="col-sm-2">&nbsp;</th>
+                <th class="col-sm-1">&nbsp;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>HCNX:1234</td>
+                <td>ZAQ1</td>
+                <td>Gene</td>
+                <td>1/12/17</td>
+                <td><a href="#" class="btn btn-info btn-xs btn-block">View <i class="glyphicon glyphicon-search"></i></a></td>
+                <td><a href="#" class="btn btn-link btn-xs"><i class="glyphicon glyphicon-trash"></i> Remove</a></td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>  
+      </div>
+    </div></div>
+    
+    
+</div>
 
 </div>
