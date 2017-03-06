@@ -47,7 +47,7 @@
             <% end %>
           <% else %>
             <div class="alert alert-info text-center" role="alert">
-              <strong><%= @gene.symbol %></strong> has not been curated.  <%= link_to "ClinGen compiled a list of external genomic resources", gene_external_resources_genes_path(@gene) %> with direct links to information about <%= @gene.symbol %>.
+              <strong><%= @gene.symbol %></strong> has not been curated with a condition.  <%= link_to "ClinGen compiled a list of external genomic resources", gene_external_resources_genes_path(@gene) %> with direct links to information about <%= @gene.symbol %>.
             </div>
           <% end %>
         </div>

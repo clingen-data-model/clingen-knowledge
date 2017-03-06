@@ -15,7 +15,13 @@
  *= require selectize.bootstrap3
  */
 
-
+.search-content-header h1 {
+	border-bottom: 1px solid #e1e1e1;
+	padding-bottom: 10px;
+}
+.search-content-header-buttons {
+	margin-top: 20px;
+}
 .pagination>li.current>span {
     font-weight: bold;
     background-color: #e1e1e1;

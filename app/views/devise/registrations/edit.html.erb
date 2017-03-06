@@ -1,7 +1,6 @@
 <div id="agents_register_edit" class="container">
   <div class="row padding-top-md">
 
-    <%= render 'shared/dashboard_links' %>
     <h2 class='col-sm-12'>Edit Your Profile</h2>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= devise_error_messages! %>

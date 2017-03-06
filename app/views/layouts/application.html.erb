@@ -120,7 +120,35 @@
   <% if @alert.present? %>
     <div class="alert alert-danger" role="alert"><%= alert %></div>
   <% end %>
-  
+<div class="container search-content-header">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="pull-right search-content-header-buttons">
+      <% if agent_signed_in? %>
+        <%= link_to dashboard_index_path, :class => "btn btn-default btn-sm btn-search-edit margin-bottom-md"  do %>
+          <i class="glyphicon glyphicon-th-list"></i> <%= @agent.email %>'s Dashboard
+        <% end %>
+        <%= link_to edit_agent_registration_path, :class => "btn btn-default btn-sm btn-search-edit margin-bottom-md"  do %>
+          <i class="glyphicon glyphicon-user"></i> Profile
+        <% end %>
+        <%= link_to destroy_agent_session_path, :method => :delete, :class => "btn btn-default btn-sm btn-search-signout margin-bottom-md"  do %>
+          <i class="glyphicon glyphicon-off text-danger"></i> Sign-out
+        <% end %>
+      <% else %>
+        <%= link_to new_agent_registration_path, :method => :get, :class => "btn btn-link btn-sm pull-right  margin-bottom-md"  do %>
+        <i class="glyphicon glyphicon-bookmark text-success"></i>
+          <span class="text-success">Sign-up</span>
+        <% end %>
+        <%= link_to agent_session_path, :method => :get, :class => "btn btn-link btn-sm pull-right  margin-bottom-md"  do %>
+        <i class="glyphicon glyphicon-th-list text-success"></i>
+          <span class="text-success">Knowledge-Base Sign-in</span>
+        <% end %>
+      <% end %>
+      </div>
+      <h1>Knowledge-Base</h1>
+    </div>
+  </div>
+</div>
   <%= yield %>
 
 <div class="container">

@@ -1,11 +1,7 @@
 <div id="drugs_index" class="container">
-
-<h1>Drugs</h1>
-
-<% @drugs.each do |d| %>
-  <%= render "shared/result_list_drug", d: d %>
-<% end %>
-
-<%= paginate @drugs%>
-
+	<h2>Drugs</h2>
+	<% @drugs.each do |d| %>
+	  <%= render "shared/result_list_drug", d: d %>
+	<% end %>
+	<%= paginate @drugs%>
 </div>
