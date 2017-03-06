@@ -13,8 +13,8 @@
   <tbody>
     <% dosage.interpretation.each do |i| %>
       <tr>
-        <td><%= i.label %> <%= i.inspect %></td>
-        <td class="text-center">DATE</td>
+        <td><%= i.label %></td>
+        <td class="text-center"><%= dosage.date %></td>
       </tr>
     <% end %>
   </tbody>

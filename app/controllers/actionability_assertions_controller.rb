@@ -1,4 +1,4 @@
-class ActionabilityController < ApplicationController
+class ActionabilityAssertionsController < ApplicationController
 
   def index
     @page = params[:page] || 1

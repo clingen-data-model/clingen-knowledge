@@ -85,7 +85,7 @@
           </div>
             <%= form_tag(home_index_path, method: "get") do %>
               <div id='header_search' class="input-group">
-                <%= text_field_tag :term, "", class: 'form-control', placeholder: 'Search our knowledge-base for genes and diseases...' %>
+                <%= text_field_tag :term, "", class: 'form-control search-typeahead', placeholder: 'Search our knowledge-base for genes and diseases...' %>
                 <span class="input-group-btn">
                   <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
                 </span>
@@ -131,7 +131,7 @@
         ClinGen Knowledge-base Quick Links:
       <% end %>
 
-      <%= link_to gene_validity_index_path, :class => "btn btn-default btn-sm btn-search-edit margin-bottom-md"  do %>
+      <%= link_to gene_disease_assertions_path, :class => "btn btn-default btn-sm btn-search-edit margin-bottom-md"  do %>
         <i class="glyphicon glyphicon-search"></i> Gene Validity Curations
       <% end %>
 
@@ -139,7 +139,7 @@
         <i class="glyphicon glyphicon-search"></i> Gene Dosage Curations
       <% end %>
 
-      <%= link_to actionability_index_path, :class => "btn btn-default btn-sm btn-search-edit margin-bottom-md"  do %>
+      <%= link_to actionability_assertions_path, :class => "btn btn-default btn-sm btn-search-edit margin-bottom-md"  do %>
         <i class="glyphicon glyphicon-search"></i> Actionability Curations
       <% end %>
     

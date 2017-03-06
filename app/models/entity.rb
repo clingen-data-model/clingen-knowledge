@@ -4,6 +4,7 @@ class Entity
   property :date
   property :label
   property :description
+  property :perm_id
 
   def self.type_class_map
     {
