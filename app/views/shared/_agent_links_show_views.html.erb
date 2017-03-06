@@ -1,22 +1,15 @@
 <% if agent_signed_in? %>
-  <%= link_to dashboard_index_path, :class => "btn btn-link btn-sm pull-right margin-bottom-md"  do %>
-    <i class="glyphicon glyphicon-th-list text-success"></i> <span class="text-success">Your Dashboard</span>
-  <% end %>
-  <%= link_to new_subscription_path(:subscribe => @term_id), :method => :get, :class => "btn btn-link btn-sm pull-right margin-bottom-md"  do %>
+  <%= link_to new_subscription_path(:subscribe => @term_id), :method => :get, :class => "btn btn-link pull-right margin-bottom-md"  do %>
   <i class="glyphicon glyphicon-bookmark text-success"></i>
     <span class="text-success">Request updates</span>
   <% end %>
-  <%= link_to new_note_path(:note => @term_id), :method => :get, :class => "btn btn-link btn-sm pull-right  margin-bottom-md"  do %>
+  <%= link_to new_note_path(:note => @term_id), :method => :get, :class => "btn btn-link pull-right  margin-bottom-md"  do %>
     <i class="glyphicon glyphicon-edit text-success"></i>
-    <span class="text-success"> Share information about <%= @term_label %></span>
+    <span class="text-success"> Share information</span>
   <% end %>
 <% else %>
-  <%= link_to new_agent_registration_path, :method => :get, :class => "btn btn-link btn-sm pull-right  margin-bottom-md"  do %>
+  <%= link_to new_agent_registration_path, :method => :get, :class => "btn btn-link pull-right  margin-bottom-md"  do %>
   <i class="glyphicon glyphicon-bookmark text-success"></i>
     <span class="text-success">Receive and share information</span>
-  <% end %>
-  <%= link_to agent_session_path, :method => :get, :class => "btn btn-link btn-sm pull-right  margin-bottom-md"  do %>
-  <i class="glyphicon glyphicon-th-list text-success"></i>
-    <span class="text-success">Sign-in</span>
   <% end %>
 <% end %>

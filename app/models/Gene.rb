@@ -17,6 +17,10 @@ class Gene
     symbol
   end
 
+  def curie
+    hgnc_id
+  end
+
   def self.find_by_term(t)
     Gene.all(:g)
       .where("g.symbol =~ ('(?i)' + {term} + '.*')")

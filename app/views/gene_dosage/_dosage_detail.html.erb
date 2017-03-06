@@ -1,7 +1,7 @@
 <table class="table table-hover  border-left table-condensed">
   <thead>
     <tr>
-      <th class="col-sm-12" colspan="2">Dosage Sensitivity of <%= dosage.genes.first.symbol %> and <%= dosage.diseases.first.label %></th>
+      <th class="col-sm-12" colspan="2">Dosage Sensitivity</th>
     </tr>
   </thead>
   <thead class="thead-labels">
@@ -13,7 +13,7 @@
   <tbody>
     <% dosage.interpretation.each do |i| %>
       <tr>
-        <td><%= i.label %></td>
+        <td><a id="external_gene_dosage_sensitivity" target="_blank" href="<%= gene_dosage_sensitivity("url", dosage.genes.first.symbol) %>"><strong><%= i.label %> <i class="glyphicon glyphicon-info-sign text-sm text-muted"></i></strong></a></td>
         <td class="text-center"><%= dosage.date %></td>
       </tr>
     <% end %>

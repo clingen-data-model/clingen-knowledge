@@ -3,10 +3,10 @@
 
   <table class="table table-condensed">
     <thead>
-      <th>Gene</th>
-      <th>Haploinsufficiency</th>
-      <th>Triplosensitivity</th>
-      <th>Dosage Sensitivity Classification</th>
+      <th class="col-sm-2">Gene</th>
+      <th class="col-sm-4">Haploinsufficiency</th>
+      <th class="col-sm-4">Triplosensitivity</th>
+      <th class="col-sm-2">Report</th>
     </thead>
     <tbody>
       <% @genes.each do |g| %>
@@ -26,7 +26,7 @@
           </td>
           <td>
             
-            <a href="https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=<%= g.label %>&subject=" target="ncbi" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-file"></i> <strong>View Details</strong> - <%= g.dosage_assertions.first.date %></a></td>
+            <a href="https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=<%= g.label %>&subject=" target="ncbi" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-new-window"></i> <strong>View Details</strong> - <%= g.dosage_assertions.first.date %></a></td>
 
 	</tr>
       <% end %>

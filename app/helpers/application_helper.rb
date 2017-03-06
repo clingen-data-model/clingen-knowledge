@@ -32,6 +32,8 @@ module ApplicationHelper
 
   def gene_medgen_genetics_summary(item, var)
 
+    var.downcase.tr(' ', '+')
+
     title = "MedGen: Genetics Summary"
     # MedGen - Genetics Summary
     # https://www.ncbi.nlm.nih.gov/medgen/?term="medgen+gtr+tests+clinical"[Filter]+BRCA2#Additional_description
@@ -50,6 +52,8 @@ module ApplicationHelper
 
   def gene_genetic_practice_guidelines(item, var)
 
+    var.downcase.tr(' ', '+')
+
     title = "Genetic Practice Guidelines: Gene"
     # Genetic Practice Guidelines
     # https://www.ncbi.nlm.nih.gov/medgen?term=("has guideline"%5BProperties%5D) AND BRCA2#Professional_guidelines
@@ -66,7 +70,30 @@ module ApplicationHelper
 
   end
 
+  def gene_dosage_sensitivity(item, var)
+
+    var.downcase.tr(' ', '+')
+
+    title = "ClinGen: Dosage Sensitivity"
+
+    if item == "logo"
+      "hello world logo" + var
+
+    elsif item == "link"
+      ("<a id=\"external_gene_dosage_sensitivity\" href='https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=" + var + "&subject' target=\"_blank\">" + title + "</a>").html_safe
+    
+    elsif item == "url"
+      ("https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=" + var + "&subject").html_safe
+
+    elsif item == "text"
+      "Summary text here"
+    end
+
+  end
+
   def gene_gtr_gene_tests(item, var)
+
+    var.downcase.tr(' ', '+')
 
     title = "GTR: Gene Tests"
     # GTR - Gene Tests
@@ -86,6 +113,8 @@ module ApplicationHelper
 
   def gene_pharmgkb_gene(item, var)
 
+    var.downcase.tr(' ', '+')
+
     title = "PharmGKB: Gene"
     # PharmGKB
     # https://www.pharmgkb.org/search/search.action?typeFilter=Gene&exactMatch=false&query=BRCA2
@@ -103,6 +132,8 @@ module ApplicationHelper
   end
 
   def gene_omim(item, var)
+
+    var.downcase.tr(' ', '+')
 
     title = "OMIM: Gene"
     # OMIM
@@ -122,6 +153,8 @@ module ApplicationHelper
 
   def gene_genetics_home_reference(item, var)
 
+    var.downcase.tr(' ', '+')
+
     title = "Genetics Home Reference"
     # Genetics Home Reference
     # https://ghr.nlm.nih.gov/search?query=BRCA2
@@ -140,6 +173,8 @@ module ApplicationHelper
 
   def gene_gene_reviews(item, var)
 
+    var.downcase.tr(' ', '+')
+
     title = "Gene Reviews"
     # Gene Reviews
     # https://www.ncbi.nlm.nih.gov/books/NBK1116/?term=BRCA2%5BGeneSymbol%5D
@@ -150,6 +185,9 @@ module ApplicationHelper
     elsif item == "link"
       ("<a id=\"external_gene_gene_reviews\" href='https://www.ncbi.nlm.nih.gov/books/NBK1116/?term=" + var + "%5BGeneSymbol%5D' target=\"_blank\">" + title + "</a>").html_safe
 
+    elsif item == "url"
+      ("https://www.ncbi.nlm.nih.gov/books/NBK1116/?term=" + var + "%5BGeneSymbol%5D").html_safe
+
     elsif item == "text"
       "Summary text here"
     end
@@ -157,6 +195,8 @@ module ApplicationHelper
   end
 
   def gene_clinvar(item, var)
+
+    var.downcase.tr(' ', '+')
 
     title = "ClinVar - Gene"
     # ClinVar - Gene
@@ -176,6 +216,8 @@ module ApplicationHelper
 
   def gene_clinvar_acmg_variants(item, var)
 
+    var.downcase.tr(' ', '+')
+
     title = "ClinVar - ACMG Incidental variants"
     # ClinVar - ACMG Incidental variants
     # http://www.ncbi.nlm.nih.gov/clinvar/?term=%22gene+acmg+incidental+2013%22%5BProperties%5D+%22BRCA2%22
@@ -193,6 +235,8 @@ module ApplicationHelper
   end
 
   def gene_1000_enomes(item, var)
+
+    var.downcase.tr(' ', '+')
 
     title = "1000 Genomes"
     # 1000 Genomes
@@ -212,6 +256,8 @@ module ApplicationHelper
 
   def gene_ncbi_browser(item, var)
 
+    var.downcase.tr(' ', '+')
+
     title = "NCBI Browser"
     # 1000 Genomes
     # https://www.ncbi.nlm.nih.gov/variation/tools/1000genomes/?q=BRCA2%5bgene%5d
@@ -229,6 +275,8 @@ module ApplicationHelper
   end
 
   def condition_gtr_disease_tests(item, var)
+
+    var.downcase.tr(' ', '+')
 
     title = "GTR - Disease Tests"
     # GTR - Disease Tests
@@ -248,6 +296,8 @@ module ApplicationHelper
 
   def condition_genetic_practice_guidelines(item, var)
 
+    var.downcase.tr(' ', '+')
+
     title = "Genetic Practice Guidelines - Genetic Disease Summary"
     # Genetic Practice Guidelines 0 Genetic Disease Summary
     # https://www.ncbi.nlm.nih.gov/medgen?term=(%22has%20guideline%22%5BProperties%5D)%20AND%20114480%5BMIM%20ID%5D#Professional_guidelines
@@ -265,6 +315,8 @@ module ApplicationHelper
   end  
 
   def condition_omim(item, var)
+
+    var.downcase.tr(' ', '+')
 
     title = "OMIM: Genetic Disease Summary"
     # OMIM
@@ -284,6 +336,8 @@ module ApplicationHelper
 
   def condition_pharmgkb(item, var)
 
+    var.downcase.tr(' ', '+')
+
     title = "PharmGKB - Disease"
     # PharmGKB - Disease
     # https://www.pharmgkb.org/search/search.action?typeFilter=Disease&exactMatch=false&query=BREAST+CANCER
@@ -301,6 +355,8 @@ module ApplicationHelper
   end
 
   def condition_medgen_genetic_summary(item, var)
+
+    var.downcase.tr(' ', '+')
 
     title = "MedGen - Genetics Summary"
     # MedGen - Genetics Summary
@@ -320,6 +376,8 @@ module ApplicationHelper
 
   def condition_genetics_home_reference(item, var)
 
+    var.downcase.tr(' ', '+')
+
     title = "Genetics Home Reference - Genetic conditions"
     # Genetics Home Reference - Genetic conditions
     # https://ghr.nlm.nih.gov/search?query=BREAST+CANCER
@@ -337,6 +395,8 @@ module ApplicationHelper
   end
 
   def condition_clinvar_variants_related_to_genetic_disease(item, var)
+
+    var.downcase.tr(' ', '+')
 
     title = "ClinVar - Variants related to Genetic Disease"
     # ClinVar - Variants related to Genetic Disease
@@ -356,6 +416,8 @@ module ApplicationHelper
 
   def condition_1000_genomes(item, var)
 
+    var.downcase.tr(' ', '+')
+
     title = "1000 Genomes - General Disease"
     # 1000 Genomes - General Disease
     # https://browser.1000genomes.org/Homo_sapiens/Search/Results?site=ensembl&q=%22BREAST+CANCER%22
@@ -373,6 +435,8 @@ module ApplicationHelper
   end
 
   def drug_pharmgkb_dosing_guidelines(item, var)
+
+    var.downcase.tr(' ', '+')
 
     title = "PharmGKB - Dosing guidelines"
     # PharmGKB - Dosing guidelines
@@ -392,6 +456,8 @@ module ApplicationHelper
 
   def drug_gtr_clia(item, var)
 
+    var.downcase.tr(' ', '+')
+
     title = "GTR - CLIA certified Genetic Tests"
     # GTR - CLIA certified Genetic Tests
     # https://www.ncbi.nlm.nih.gov/gtr/tests/?term=Bayer+Aspirin&test_type=Clinical&certificate=CLIA%20Certified
@@ -409,6 +475,8 @@ module ApplicationHelper
   end  
 
   def drug_cpic_pharmacogenomics_guidelines(item, var)
+
+    var.downcase.tr(' ', '+')
 
     title = "CPIC Pharmacogenomics Guidelines - Guidelines from NCBI"
     # CPIC Pharmacogenomics Guidelines - Guidelines from NCBI
@@ -428,6 +496,8 @@ module ApplicationHelper
 
   def drug_medgen_drug_gene_summary(item, var)
 
+    var.downcase.tr(' ', '+')
+
     title = "MedGen - Drug/Gene Summary"
     # MedGen - Drug/Gene Summary
     # https://www.ncbi.nlm.nih.gov/medgen/?term=%22medgen+gtr+tests+clinical%22[Filter]+Bayer+Aspirin#Additional_description
@@ -445,6 +515,8 @@ module ApplicationHelper
   end
 
   def drug_genetic_practice_guidelines(item, var)
+
+    var.downcase.tr(' ', '+')
 
     title = "Genetic Practice Guidelines - Drug/Gene Summary"
     # Genetic Practice Guidelines - Drug/Gene Summary
@@ -464,6 +536,8 @@ module ApplicationHelper
 
   def drug_omim(item, var)
 
+    var.downcase.tr(' ', '+')
+
     title = "OMIM - Drug/Gene Summary"
     # OMIM - Drug/Gene Summary
     # http://omim.org/search?index=entry&start=1&limit=10&search=Bayer+Aspirin&sort=score+desc%2C+prefix_sort+desc
@@ -481,6 +555,8 @@ module ApplicationHelper
   end
 
   def drug_clinvar_variants_with_drug_response(item, var)
+
+    var.downcase.tr(' ', '+')
 
     title = "ClinVar - Variants annotated with Drug Response"
     # ClinVar - Variants annotated with Drug Response
@@ -500,6 +576,8 @@ module ApplicationHelper
 
   def drug_clinvar_medication_ingredient(item, var)
 
+    var.downcase.tr(' ', '+')
+
     title = "ClinVar - Medication main ingredient Search"
     # ClinVar - Medication main ingredient Search
     # http://www.ncbi.nlm.nih.gov/clinvar/?term=%22clinsig+drug+response%22%5BProperties%5D+%22Bayer+Aspirin%22
@@ -517,6 +595,8 @@ module ApplicationHelper
   end
 
   def drug_1000_genomes_general_medication(item, var)
+
+    var.downcase.tr(' ', '+')
 
     title = "1000 Genomes - General Medication"
     # 1000 Genomes - General Medication

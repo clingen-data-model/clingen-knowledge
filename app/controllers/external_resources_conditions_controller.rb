@@ -6,7 +6,6 @@ class ExternalResourcesConditionsController < ApplicationController
     @condition = Condition.find_by(curie: params[:condition_id])
     @term_label = truncate(@condition.label, :length => 50, :omission => '...')
     @term_id = @condition.curie
-    #@term_curie = @condition.curie.gsub! '_', ':'
     @term_curie = @condition.curie
 
     @genes = @condition.assertions.genes.distinct

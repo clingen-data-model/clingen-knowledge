@@ -10,15 +10,24 @@
     <% if @dosage_detail[gene.uuid] %>
       <%= render "gene_dosage/dosage_detail.html.erb", dosage: @dosage_detail[gene.uuid] %>
     <% end %>
+
     <% if @validity_detail[gene.uuid] %>
-      <%= render "gene_validity/validity_detail.html.erb", assertions: @validity_detail[gene.uuid], disease: @condition, gene: gene %>
-      <hr />
+
+      <% if @dosage_detail[gene.uuid] %>
+        <hr />
+      <% end %>
+      
+      <%= render "gene_disease_assertions/validity_detail.html.erb", assertions: @validity_detail[gene.uuid], disease: @condition, gene: gene %>
     <% end %>
 
     <%#= render "gene_dosage/dosage_detail.html.erb"%>
 
     <% if @actionability.length > 0 %>
-      <hr />
+      
+      <% if @dosage_detail[gene.uuid] || @validity_detail[gene.uuid] %>
+        <hr />
+      <% end %>
+
       <%= render "shared/actionability_detail", actionability: @actionability, disease: @condition, gene: gene, index: :gene, index_id: gene.uuid %>
     <% end %>
   </div>
