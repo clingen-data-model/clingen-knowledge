@@ -5,11 +5,11 @@
         <dt>Official Name</dt>
         <dd><%= @condition.label %></dd>
         <dt>Ontological Reference</dt>
-        <dd><%= @term_curie %></dd>
-        <dt>Definition</dt>
-        <dd>@condition.definition</dd>
-        <dt>Synonyms</dt>
-        <dd>[Synonyms]</dd>
+        <dd><%= @term_curie.gsub! '_', ':' %></dd>
+        <!--<dt>Definition</dt>
+        <dd>@condition.definition</dd>-->
+        <!--<dt>Synonyms</dt>
+        <dd>[Synonyms]</dd>-->
       </dl>
     </div>
     <div class='col-sm-7'>
