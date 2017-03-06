@@ -9,7 +9,7 @@
 
         <strong><%= @drug.label %></strong>
         </h2>
-        <%= render 'drug/drug_facts' %>
+        <%= render 'drugs/drug_facts' %>
 
       </div>
     </div>
@@ -34,16 +34,16 @@
             </div>
           </div>
           <div id='results_curation_summary_details' class="panel-body results_curation_summary_details">
-            <%= drug_pharmgkb_dosing_guidelines("link", @gene.symbol) %><br>
-            <%= drug_gtr_clia("link", @gene.symbol) %><br>
-            <%= drug_cpic_pharmacogenomics_guidelines("link", @gene.symbol) %><br>
-            <%= drug_medgen_drug_gene_summary("link", @gene.symbol) %><br>
-            <%= drug_genetic_practice_guidelines("link", @gene.symbol) %><br>
-            <%= drug_omim("link", @gene.symbol) %><br>
-            <%= drug_clinvar_variants_with_drug_response("link", @gene.symbol) %><br>
-            <%= drug_clinvar_medication_ingredient("link", @gene.symbol) %><br>
-            <%= drug_1000_genomes_general_medication("link", @gene.symbol) %><br>
-            <%= gene_gtr_gene_tests("link", @gene.symbol) %><br>
+            <%= drug_pharmgkb_dosing_guidelines("link", @drug.label) %><br>
+            <%= drug_gtr_clia("link", @drug.label) %><br>
+            <%= drug_cpic_pharmacogenomics_guidelines("link", @drug.label) %><br>
+            <%= drug_medgen_drug_gene_summary("link", @drug.label) %><br>
+            <%= drug_genetic_practice_guidelines("link", @drug.label) %><br>
+            <%= drug_omim("link", @drug.label) %><br>
+            <%= drug_clinvar_variants_with_drug_response("link", @drug.label) %><br>
+            <%= drug_clinvar_medication_ingredient("link", @drug.label) %><br>
+            <%= drug_1000_genomes_general_medication("link", @drug.label) %><br>
+            <%= gene_gtr_gene_tests("link", @drug.label) %><br>
 
           </div>
         </div>

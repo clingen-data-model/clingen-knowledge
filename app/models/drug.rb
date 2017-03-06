@@ -1,7 +1,15 @@
 class Drug < RDFClass
 
-  # def to_param
-  #   uuid
+	# id_property :iri
+	property :curie
+	property :label
+
+  def to_param
+    curie
+  end
+
+  # def label
+  #   label
   # end
 
   def self.find_by_term(t)
