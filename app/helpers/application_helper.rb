@@ -150,6 +150,9 @@ module ApplicationHelper
     elsif item == "link"
       ("<a id=\"external_gene_gene_reviews\" href='https://www.ncbi.nlm.nih.gov/books/NBK1116/?term=" + var + "%5BGeneSymbol%5D' target=\"_blank\">" + title + "</a>").html_safe
 
+    elsif item == "url"
+      ("https://www.ncbi.nlm.nih.gov/books/NBK1116/?term=" + var + "%5BGeneSymbol%5D").html_safe
+
     elsif item == "text"
       "Summary text here"
     end
