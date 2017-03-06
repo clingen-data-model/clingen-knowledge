@@ -18,7 +18,6 @@ class ConditionsController < ApplicationController
     @condition = Condition.find_by(curie: params[:id])
     @term_label = truncate(@condition.label, :length => 50, :omission => '...')
     @term_id = @condition.curie
-    #@term_curie = @condition.curie.gsub! '_', ':'
     @term_curie = @condition.curie
     @dosage = @condition.assertions(:a).with_associations(:interpretation, :genes)
                 .where("a:GeneDosageAssertion")

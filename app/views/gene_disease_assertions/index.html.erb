@@ -1,10 +1,10 @@
 <div id="gene_validity_index" class="container">
-  <h2>Gene-Disease Validity Curation</h2>
+  <h1>Gene Validity Curation</h1>
   <table class="table table-condensed">
     <thead>
       <th class="col-sm-2">Gene</th>
-      <th class="col-sm-8">Disease curated</th>
-      <th class="col-sm-2">Score &amp; Report</th>
+      <th class="col-sm-7">Disease curated</th>
+      <th class="col-sm-3">Clinical Validity Classification</th>
     </thead>
     <tbody>
       <% @assertions.each do |a| %>
@@ -22,9 +22,7 @@
 	    <ul class="list-inline">
 	      <% a.diseases.each do |c| %>
 		<li>
-		  <%= link_to conditions_path+"/"+c.curie, :method => :get, :class => "text-muted text-sm"  do %>
-		    <%= c.curie.gsub! '_', ':' %>
-		  <% end %>
+		  <%= link_to c.curie.gsub('_', ':'), conditions_path+"/"+c.curie, :method => :get, :class => "text-muted text-sm" %>
 		</li>
 	      <% end %>
 	    </ul>
