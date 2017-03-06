@@ -37,7 +37,7 @@ class HomeController < ApplicationController
           @drugs = Drug.all(:d).where("d.search_label contains {term}")
                      .params(term: search_term).limit(10).to_a
           terms = @genes + @conditions + @drugs
-          @result = terms.map { |t| {label: t.label, url: url_for(t)} }
+          @result = terms.map { |t| {label: "#{t.label} (#{t.curie.tr '_', ':'})", url: url_for(t)} }
           render json: @result
         end
       end
