@@ -126,7 +126,7 @@
       <div class="pull-right search-content-header-buttons">
       <% if agent_signed_in? %>
         <%= link_to dashboard_index_path, :class => "btn btn-default btn-sm btn-search-edit margin-bottom-md"  do %>
-          <i class="glyphicon glyphicon-th-list"></i> <%= @agent.email %>'s Dashboard
+          <i class="glyphicon glyphicon-th-list"></i> <%= current_agent.email %>'s Dashboard
         <% end %>
         <%= link_to edit_agent_registration_path, :class => "btn btn-default btn-sm btn-search-edit margin-bottom-md"  do %>
           <i class="glyphicon glyphicon-user"></i> Profile

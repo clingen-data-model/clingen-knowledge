@@ -1,11 +1,18 @@
 class NotesController < ApplicationController
 
   def new
-    @note = Note.new;
-    render "notes/edit"
+    @note = Note.new
   end
 
   def edit
+    @note = Note.find(params[:id])
+    unless @note.creator == current_agent 
+      flash[:error] = "Unauthorized to edit note"
+      redirect_to dashboard_index_path
+    end
+  end
+
+  def update
     
   end
 
@@ -23,7 +30,9 @@ class NotesController < ApplicationController
   def destroy
     note = Note.find(params[:id])
     if note.creator == current_agent
+      puts "destroy successful"
       note.deleted = true
+      note.save!
     else 
       puts note.creator
       puts current_agent

@@ -45,7 +45,7 @@
                 <td><%= n.updated_at %></td>
                 <td><%= link_to "Revise", edit_note_path(n), class: "btn btn-info btn-xs btn-block" %></td>
                 <td>
-                  <%=  link_to note_path(n), {method: :delete},  {class: "btn btn-link btn-xs"} do %>
+                  <%=  link_to note_path(n), {method: :delete, data: { confirm: "Are you sure?" }},  {class: "btn btn-link btn-xs"} do %>
                     <i class="glyphicon glyphicon-trash"></i> Remove
                   <% end %>
                 </td>
