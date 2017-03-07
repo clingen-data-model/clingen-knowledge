@@ -33,6 +33,11 @@ class GenesController < ApplicationController
   # Be sure to add here anything needed for the gene_facts partial
   def show
     @gene = Gene.find_by(hgnc_id: params[:id])
+
+    unless @gene.assertions.exists?
+      redirect_to gene_external_resources_genes_path(@gene) 
+    end
+
     @term_label = truncate(@gene.symbol, :length => 20, :omission => '...')
     @term_id = truncate(@gene.hgnc_id)
     @diseases = @gene.assertions.diseases.distinct
@@ -50,6 +55,7 @@ class GenesController < ApplicationController
     @dosage_detail = @dosage.reduce({}) do |h, i|
       h.update(i.diseases.reduce({}) { |h1, i1| h1.update({i1.iri => i}) })
     end
+
   end
 
 end

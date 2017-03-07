@@ -16,6 +16,11 @@ class ConditionsController < ApplicationController
 
   def show
     @condition = Condition.find_by(curie: params[:id])
+
+    unless @condition.assertions.exists?
+      redirect_to condition_external_resources_conditions_path(@condition) 
+    end
+
     @term_label = truncate(@condition.label, :length => 50, :omission => '...')
     @term_id = @condition.curie
     @term_curie = @condition.curie
