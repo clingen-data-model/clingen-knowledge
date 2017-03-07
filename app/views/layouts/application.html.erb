@@ -83,7 +83,7 @@
             <a class='' href='https://www.clinicalgenome.org/curation-starts-here/' title='' >Learn about ClinGen curation activities</a>
           </li></ul>
           </div>
-            <%= form_tag(home_index_path, method: "get") do %>
+            <%= form_tag(home_index_path, method: "get", id:"remote") do %>
               <div id='header_search' class="input-group">
                 <%= text_field_tag :term, "", class: 'form-control search-typeahead', placeholder: 'Search our knowledge-base for genes and diseases...' %>
                 <span class="input-group-btn">
