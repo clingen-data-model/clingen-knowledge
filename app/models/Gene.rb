@@ -28,6 +28,16 @@ class Gene
       .params(term: t)
   end
 
+  # Grand query to construct summary page
+  def self.genes_summary
+    Gene.query_as(:g)
+      .where("(g)<-[:has_subject]-(:Assertion)")
+      .return("g {.symbol, .hgnc_id,
+          actionability: [(g)<-[:has_subject]-(a:ActionabilityAssertion) | a.uuid],
+          validity: [(g)<-[:has_subject]-(a:GeneDiseaseAssertion)-[:has_predicate]->(i:Interpretation) | i.label],
+          dosage: [(g)<-[:has_subject]-(a:GeneDosageAssertion)-[:has_predicate]->(i:Interpretation) | i {.iri, .short_label}]}").to_a.map(&:g)
+  end
+
   # Grand query matching all actionability scores (given a gene)
   # Restricting returns in this query to actionability, but 
   # is feasible to do more
