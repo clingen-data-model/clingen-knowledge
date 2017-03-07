@@ -4,6 +4,8 @@ class ExternalResourcesConditionsController < ApplicationController
   # Be sure to add here anything needed for the gene_facts partial
   def index
     @condition = Condition.find_by(curie: params[:condition_id])
+  # @gene =      Gene.find_by(hgnc_id: params[:gene_id])
+  # @condition = Condition.find_by(curie: params[:id])
     @term_label = truncate(@condition.label, :length => 50, :omission => '...')
     @term_id = @condition.curie
     @term_curie = @condition.curie
