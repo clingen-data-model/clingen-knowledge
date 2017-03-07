@@ -7,9 +7,22 @@ var entities = new Bloodhound({
     }
 });
 
+
 $('.search-typeahead').typeahead(null,
 {
     name: 'entities',
     display: 'label',
-    source: entities
+    source: entities,
+
+    //display: 'completion',
+	  //name: 'completion',
+	  //valueKey: 'completion',
+	  limit: 20,
+	  minLength: 0,
+	  highlight: true,
+	  hint: false,
+	  //source: data,
+	  autoselect:true,
+}).bind('typeahead:selected',function(evt,item){
+  window.location = item.url;
 });
