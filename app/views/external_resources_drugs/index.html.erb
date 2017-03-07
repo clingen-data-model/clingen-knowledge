@@ -34,16 +34,170 @@
             </div>
           </div>
           <div id='results_curation_summary_details' class="panel-body results_curation_summary_details">
-            <%= drug_pharmgkb_dosing_guidelines("link", @drug.label) %><br>
-            <%= drug_gtr_clia("link", @drug.label) %><br>
-            <%= drug_cpic_pharmacogenomics_guidelines("link", @drug.label) %><br>
-            <%= drug_medgen_drug_gene_summary("link", @drug.label) %><br>
-            <%= drug_genetic_practice_guidelines("link", @drug.label) %><br>
-            <%= drug_omim("link", @drug.label) %><br>
-            <%= drug_clinvar_variants_with_drug_response("link", @drug.label) %><br>
-            <%= drug_clinvar_medication_ingredient("link", @drug.label) %><br>
-            <%= drug_1000_genomes_general_medication("link", @drug.label) %><br>
-            <%= gene_gtr_gene_tests("link", @drug.label) %><br>
+
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(drug_pharmgkb_dosing_guidelines("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= drug_pharmgkb_dosing_guidelines("link", @drug.label) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= drug_pharmgkb_dosing_guidelines("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= drug_pharmgkb_dosing_guidelines("button", @drug.label) %>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(drug_gtr_clia("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= drug_gtr_clia("link", @drug.label) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= drug_gtr_clia("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= drug_gtr_clia("button", @drug.label) %>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(drug_cpic_pharmacogenomics_guidelines("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= drug_cpic_pharmacogenomics_guidelines("link", @drug.label) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= drug_cpic_pharmacogenomics_guidelines("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= drug_cpic_pharmacogenomics_guidelines("button", @drug.label) %>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(drug_medgen_drug_gene_summary("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= drug_medgen_drug_gene_summary("link", @drug.label) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= drug_medgen_drug_gene_summary("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= drug_medgen_drug_gene_summary("button", @drug.label) %>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(drug_genetic_practice_guidelines("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= drug_genetic_practice_guidelines("link", @drug.label) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= drug_genetic_practice_guidelines("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= drug_genetic_practice_guidelines("button", @drug.label) %>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(drug_omim("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= drug_omim("link", @drug.label) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= drug_omim("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= drug_omim("button", @drug.label) %>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(drug_clinvar_variants_with_drug_response("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= drug_clinvar_variants_with_drug_response("link", @drug.label) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= drug_clinvar_variants_with_drug_response("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= drug_clinvar_variants_with_drug_response("button", @drug.label) %>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(drug_clinvar_medication_ingredient("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= drug_clinvar_medication_ingredient("link", @drug.label) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= drug_clinvar_medication_ingredient("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= drug_clinvar_medication_ingredient("button", @drug.label) %>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(drug_1000_genomes_general_medication("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= drug_1000_genomes_general_medication("link", @drug.label) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= drug_1000_genomes_general_medication("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= drug_1000_genomes_general_medication("button", @drug.label) %>
+                </div>
+              </div>
+            </div>
+
+
 
           </div>
         </div>

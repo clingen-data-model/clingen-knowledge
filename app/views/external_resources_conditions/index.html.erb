@@ -34,14 +34,143 @@
             </div>
           </div>
           <div id='results_curation_summary_details' class="panel-body results_curation_summary_details">
-            <%= condition_gtr_disease_tests("link", @condition.label) %><br>
-            <%= condition_genetic_practice_guidelines("link", @condition.label) %><br>
-            <%= condition_omim("link", @condition.label) %><br>
-            <%= condition_pharmgkb("link", @condition.label) %><br>
-            <%= condition_medgen_genetic_summary("link", @condition.label) %><br>
-            <%= condition_genetics_home_reference("link", @condition.label) %><br>
-            <%= condition_clinvar_variants_related_to_genetic_disease("link", @condition.label) %><br>
-            <%= condition_1000_genomes("link", @condition.label) %><br>
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(gene_medgen_genetics_summary("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= gene_medgen_genetics_summary("link", @condition.label) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= gene_medgen_genetics_summary("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= gene_medgen_genetics_summary("button", @condition.label) %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(condition_gtr_disease_tests("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= condition_gtr_disease_tests("link", @condition.label) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= condition_gtr_disease_tests("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= condition_gtr_disease_tests("button", @condition.label) %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(condition_genetic_practice_guidelines("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= condition_genetic_practice_guidelines("link", ) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= condition_genetic_practice_guidelines("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= condition_genetic_practice_guidelines("button", @condition.label) %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(condition_omim("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= condition_omim("link", @condition.label) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= condition_omim("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= condition_omim("button", @condition.label) %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(condition_pharmgkb("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= condition_pharmgkb("link", @condition.label) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= condition_pharmgkb("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= condition_pharmgkb("button", @condition.label) %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(condition_genetics_home_reference("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= condition_genetics_home_reference("link", @condition.label) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= condition_genetics_home_reference("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= condition_genetics_home_reference("button", @condition.label) %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(condition_clinvar_variants_related_to_genetic_disease("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= condition_clinvar_variants_related_to_genetic_disease("link", @condition.label) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= condition_clinvar_variants_related_to_genetic_disease("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= condition_clinvar_variants_related_to_genetic_disease("button", @condition.label) %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(condition_1000_genomes("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= condition_1000_genomes("link", @condition.label) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= condition_1000_genomes("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= condition_1000_genomes("button", @condition.label) %>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>

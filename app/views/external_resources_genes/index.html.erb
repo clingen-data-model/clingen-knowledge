@@ -35,15 +35,163 @@
           </div>
           <div id='results_curation_summary_details' class="panel-body results_curation_summary_details">
 
-            <%= gene_medgen_genetics_summary("link", @gene.symbol) %><br>
-            <%= gene_genetic_practice_guidelines("link", @gene.symbol) %><br>
-            <%= gene_omim("link", @gene.symbol) %><br>
-            <%= gene_genetics_home_reference("link", @gene.symbol) %><br>
-            <%= gene_gene_reviews("link", @gene.symbol) %><br>
-            <%= gene_clinvar("link", @gene.symbol) %><br>
-            <%= gene_clinvar_acmg_variants("link", @gene.symbol) %><br>
-            <%= gene_1000_enomes("link", @gene.symbol) %><br>
-            <%= gene_ncbi_browser("link", @gene.symbol) %><br>
+
+
+
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(gene_medgen_genetics_summary("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= gene_medgen_genetics_summary("link", @gene.symbol) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= gene_medgen_genetics_summary("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= gene_medgen_genetics_summary("button", @gene.symbol) %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(gene_genetic_practice_guidelines("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= gene_genetic_practice_guidelines("link", @gene.symbol) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= gene_genetic_practice_guidelines("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= gene_genetic_practice_guidelines("button", @gene.symbol) %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(gene_omim("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= gene_omim("link", @gene.symbol) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= gene_omim("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= gene_omim("button", @gene.symbol) %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(gene_genetics_home_reference("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= gene_genetics_home_reference("link", @gene.symbol) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= gene_genetics_home_reference("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= gene_genetics_home_reference("button", @gene.symbol) %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(gene_gene_reviews("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= gene_gene_reviews("link", @gene.symbol) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= gene_gene_reviews("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= gene_gene_reviews("button", @gene.symbol) %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(gene_clinvar("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= gene_clinvar("link", @gene.symbol) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= gene_clinvar("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= gene_clinvar("button", @gene.symbol) %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(gene_clinvar_acmg_variants("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= gene_clinvar_acmg_variants("link", @gene.symbol) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= gene_clinvar_acmg_variants("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= gene_clinvar_acmg_variants("button", @gene.symbol) %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(gene_1000_genomes("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= gene_1000_genomes("link", @gene.symbol) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= gene_1000_genomes("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= gene_1000_genomes("button", @gene.symbol) %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(gene_ncbi_browser("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= gene_ncbi_browser("link", @gene.symbol) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= gene_ncbi_browser("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= gene_ncbi_browser("button", @gene.symbol) %>
+                </div>
+              </div>
+            </div>
+
 
           </div>
         </div>
