@@ -2,7 +2,8 @@ class DrugsController < ApplicationController
   include ActionView::Helpers::TextHelper
 
   def show
-    @drug = Drug.find_by(curie: params[:id])
+    curie = params[:id][6, 30]
+    @drug = Drug.find_by(curie: curie)
     @term_label = truncate(@drug.label, :length => 20, :omission => '...')
     @term_id = truncate(@drug.curie)
     @term_curie = truncate(@drug.curie)

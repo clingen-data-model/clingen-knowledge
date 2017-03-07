@@ -5,7 +5,7 @@ class Drug < RDFClass
 	property :label
 
   def to_param
-    curie
+    "RxCUI_" + curie
   end
 
   # def label
