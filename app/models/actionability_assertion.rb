@@ -1,4 +1,6 @@
 class ActionabilityAssertion < Assertion
+
+  property :file
   
   # has_one :out, :curation, model_class: :ActionabilityInterventionCuration, type: :was_generated_by
   has_many :in, :intervention_assertions, model_class: :ActionabilityInterventionAssertion, type: :was_generated_by
