@@ -147,12 +147,12 @@
               </li>
               <li role="separator" class="divider"></li>
               <li>
-                <%= link_to conditions_path, :class => ""  do %>
+                <%= link_to conditions_path(:curated => 'true'), :class => ""  do %>
                   Curated Conditions
                 <% end %>
               </li>
               <li>
-                <%= link_to genes_path, :class => ""  do %>
+                <%= link_to genes_path(:curated => 'true'), :class => ""  do %>
                   Curated Genes
                 <% end %>
               </li>
