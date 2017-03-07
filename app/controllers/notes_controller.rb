@@ -13,7 +13,12 @@ class NotesController < ApplicationController
   end
 
   def update
-    
+    @note = Note.find(params[:id])
+    if @note.update(note_params)
+      redirect_to dashboard_index_path
+    else
+      render 'edit'
+    end
   end
 
   def create
@@ -23,7 +28,7 @@ class NotesController < ApplicationController
       redirect_to dashboard_index_path
     else
       flash[:notice] = "Error creating note"
-      redirect_to new_note_path
+      render 'new'
     end
   end
 
@@ -49,7 +54,7 @@ class NotesController < ApplicationController
               :case_summary, :case_control_single_variant,
               :case_control_aggregate_variant, :case_control_summary,
               :experimental_function, :experimental_function_alteration,
-              :experimental_model, :experimental_summary)
+              :experimental_model, :experimental_summary, :comments)
   end
 
 end

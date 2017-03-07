@@ -44,7 +44,7 @@
     </div>
     <div class="col-sm-9 border-left">
 
-      <%= f.label :comments, "Evidence Types", class: "control-label" %>
+      <%= label_tag nil,  "Evidence Types", class: "control-label" %>
       <div class="row">
 	<div class="col-sm-6">
 	  <ul class="list-inline margin-bottom-none">
@@ -67,7 +67,7 @@
 	</div>
       </div>
 
-      <%= f.label :comments, "Case-Level Data Summary", class: "control-label" %>
+      <%= label_tag nil,  "Case-Level Data Summary", class: "control-label" %>
       <div class="row">
 	<div class="col-sm-6">
 	  <%= f.text_area :case_summary, autofocus: true, size: "100x4", class: "form-control", placeholder: "Summarize case-level data findings...", required: "required" %>
@@ -88,7 +88,7 @@
     </div>
     <div class="col-sm-9 border-left">
 
-      <%= f.label :comments, "Study Types", class: "control-label" %>
+      <%= label_tag nil,  "Study Types", class: "control-label" %>
       <div class="row">
 	<div class="col-sm-6">
 	  <ul class="list-inline margin-bottom-none">
@@ -111,7 +111,7 @@
 	</div>
       </div>
 
-      <%= f.label :comments, "Case-Control Data Summary", class: "control-label" %>
+      <%= label_tag nil,  "Case-Control Data Summary", class: "control-label" %>
       <div class="row">
 	<div class="col-sm-6">
 	  <%= f.text_area :case_control_summary, autofocus: true, size: "100x4", class: "form-control", placeholder: "Summarize case-level data findings...", required: "required" %>
@@ -131,7 +131,7 @@
     </div>
     <div class="col-sm-9 border-left">
 
-      <%= f.label :comments, "Evidence Categories", class: "control-label" %>
+      <%= label_tag nil,  "Evidence Categories", class: "control-label" %>
       <div class="row">
 	<div class="col-sm-6">
 	  <ul class="list-inline margin-bottom-none">
@@ -160,7 +160,7 @@
 	</div>
       </div>
 
-      <%= f.label :comments, "Experimental Data Summary", class: "control-label" %>
+      <%= label_tag nil,  "Experimental Data Summary", class: "control-label" %>
       <div class="row">
 	<div class="col-sm-6">
 	  <%= f.text_area :experimental_summary, autofocus: true, size: "100x4", class: "form-control", placeholder: "Summarize case-level data findings...", required: "required" %>
@@ -179,7 +179,7 @@
     	Many of our curation efforts rely on gene/condition associations so please provide a gene (HGNC) and a condition (OrphaNet and/or OMIM) for our team to review.</p>
     </div>
     <div class="col-sm-9 border-left">
-      <%= f.label :comments, "Additional comments", class: "control-label" %>
+      <%= label_tag nil,  "Additional comments", class: "control-label" %>
       <div class="row">
 	<div class="col-sm-6">
 	  <%= f.text_area :comments, autofocus: true, size: "100x4", class: "form-control", placeholder: "Additional comments...", required: "required" %>
