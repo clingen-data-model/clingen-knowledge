@@ -7,6 +7,7 @@ class RDFClass
   property :synonym
   property :curie
   property :short_label
+  property :last_curated
 
   has_many :out, :superclasses, type: :subClassOf, model_class: RDFClass
   has_many :in, :subclasses, type: :subClassOf, model_class: RDFClass
