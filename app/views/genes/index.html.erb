@@ -1,8 +1,16 @@
-<div id="genes_index" class="container">
+<% if params[:summary] %>
 
-  <h2>Genes</h2>
-  <% @genes.each do |n|  %>
-    <%= render "shared/result_list_gene", gene: n %>
-  <% end %>
-  <%= paginate @genes %>
-</div>
+  <%= render 'genes_curation_summaries' %>
+
+<%  else %>
+
+  <div id="genes_index" class="container">
+
+    <h2>Genes</h2>
+    <% @genes.each do |n|  %>
+      <%= render "shared/result_list_gene", gene: n %>
+    <% end %>
+    <%= paginate @genes %>
+  </div>
+
+<% end %>

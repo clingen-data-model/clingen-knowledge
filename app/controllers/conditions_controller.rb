@@ -5,6 +5,11 @@ class ConditionsController < ApplicationController
     @page = params[:page] || 1
     if params[:term]
       @conditions = Condition.find_by_term(params[:term]).page(@page).per(20)
+    elsif params[:curated]
+      @conditions = Condition.all(:c).where("(c)<-[:has_object]-(:Assertion)")
+                      .with_associations(:assertions)
+                      .page(@page)
+                      .per(20)
     else
       @conditions = Condition.page(@page).per(20)
     end
