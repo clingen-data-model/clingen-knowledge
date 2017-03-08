@@ -45,6 +45,22 @@ class ActionabilityAssertion < Assertion
               "http://datamodel.clinicalgenome.org/clingen.owl#CG_000087" => 3}}
   end
 
+  # Query to list actionability score
+  def self.index_list(page = 1, limit = 20)
+    ActionabilityAssertion.query_as(:a)
+      .return("a {genes: [(g:Gene)<-[:has_subject]-(a) | g {.symbol, .hgnc_id}],
+                  conditions: [(c:Condition)<-[:has_object]-(a) | c {.label, .curie}],
+                  interventions: [(a)<-[:was_generated_by]-(i:ActionabilityInterventionAssertion) | i { 
+                  intervention: head([(i)-[:has_object]->(int:Intervention) | int.label]),
+                  scores: [(i)<-[:was_generated_by]-(s:ActionabilityScore) | 
+                          head([(s)-[:has_predicate]->(p:Interpretation) | p {.iri, .label}])]}]} limit {limit}")
+      .params(limit: limit)
+      .to_a.map(&:a)
+
+                 
+      
+  end
+
 
   # TODO innefficient way of representing actionability scores
   # investigate ways for making query more efficient

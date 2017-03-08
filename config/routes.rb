@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :actionability_assertions, only: [:show, :index], path: "/actionability"
   resources :home, only: [:show, :index]
 
+
   # Items that need to be secured
   authenticate :agent do
     resources :subscriptions
