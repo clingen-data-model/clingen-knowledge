@@ -19,7 +19,7 @@ class Condition < RDFClass
   def actionability_scores
     assertions.query_as(:a)
       .where("(a:ActionabilityAssertion)")
-      .return(" a {.uuid, .date,
+      .return(" a {.uuid, .date, .file, 
 	gene: [(a)-[:has_subject]->(g:Gene) | g.uuid],
     interventions: [(a)                             <-[:was_generated_by]-(a2:ActionabilityInterventionAssertion)-[:has_object]->(i:Intervention) | a2 {label: i.label,
     scores: [(a2)<-[:was_generated_by]-(a3:ActionabilityScore) |
