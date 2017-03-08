@@ -4,8 +4,9 @@
   <table class="table table-condensed">
     <thead>
       <th class="col-sm-1">Gene</th>
-      <th class="col-sm-4">Condition</th>
-      <th class="col-sm-5">Outcome/ Intervention Pair</th>
+      <th class="col-sm-2">Condition</th>
+      <th class="col-sm-3">Outcome/ Intervention Pair</th>
+      <th class="col-sm-4">Scores</th>
       <th class="col-sm-2">Report</th>
     </thead>
     <tbody>
@@ -37,10 +38,22 @@
         </td>
         <td>
           <ul class='list-unstyled'>
-            <% a.intervention_assertions.interventions.each do |a| %>
-              <li><%= a.label %></li>
+            <% a.intervention_assertions.interventions.each do |l| %>
+              <li><%= l.label %></li>
             <% end  %>
           </ul>
+
+        </td>
+        <td>
+          <dl class='dl-horizontal'> 
+              <dt style='width:80px; font-weight:normal; margin-top:1px'>Outcome</dt>
+              <dd style='margin-left:90px'>Severity: <strong>severity</strong></dd>
+              <dd style='margin-left:90px'>Likelihood: <strong>likelihood</strong></dd>
+              <dt style='width:80px; font-weight:normal; margin-top:1px'>Intervention</dt>
+              <dd style='margin-left:90px'>Effectiveness: <strong>efficacy</strong></dd>
+              <dd style='margin-left:90px'>Intervention: <strong>safety</strong></dd>
+            </dl>
+
         </td>
         <td>
           <%= link_to a.file, {class: 'btn btn-default btn-xs', target: 'file'} do %>
