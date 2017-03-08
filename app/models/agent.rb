@@ -9,6 +9,8 @@ class Agent
     #
 
   has_many :in, :notes, type: :was_generated_by, model_class: :Note
+  has_many :out, :subscribed_genes, type: :subscribes_to, model_class: :Gene
+  has_many :out, :subscribed_conditions, type: :subscribes_to, model_class: :Condition
 
   property :username
   property :facebook_token
@@ -74,6 +76,12 @@ class Agent
          :recoverable, :rememberable, :trackable, :validatable
 
 
-
+  def subscribed_to?(entity)
+    if entity.instance_of?(Gene)
+      subscribed_genes.map(&:hgnc_id).include?(entity.hgnc_id)
+    else
+      subscribed_conditions.map(&:iri).include?(entity.iri)
+    end
+  end
 
 end
