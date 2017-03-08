@@ -131,6 +131,12 @@
             </button>
             <ul class="dropdown-menu">
               <li>
+                <%= link_to curations_path, :class => ""  do %>
+                  All ClinGen Curation Summaries
+                <% end %>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li>
                 <%= link_to gene_disease_assertions_path, :class => ""  do %>
                   Gene-Disease Validity Curations
                 <% end %>
