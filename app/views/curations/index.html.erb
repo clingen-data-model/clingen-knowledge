@@ -1,24 +1,47 @@
-<div class='btn btn-primary'>Curated Genes </div>
+<div id="conditions_index" class="container">
+  <div class="row">
+      <div class="col-sm-12">
+        <h2 class="padding-top-xs"><%= @genes.count %> ClinGen Curated Genes</h2>
+        <!--<div class="text-center padding-bottom-sm">
+          <span class='btn btn-primary btn-sm'>Curated Genes <%= @genes.count %> </span>
+        </div>-->
+        <table class="table text-center table-bordered table-hover table-striped">
+          <thead>
+            <tr>
+              <th style="width:10%">Gene</th>
+              <th style="width:22%" class="text-center">Gene-Disease Clinical<br />Validity Classifications</th>
+              <th style="width:22%" class="text-center">Actionability <br />Evidence-Based Summaries</th>
+              <th style="width:22%" class="text-center">Dosage Sensitivity Map<br /> Haploinsufficiency</th>
+              <th style="width:22%" class="text-center">Dosage Sensitivity Map<br />Triplosensitivity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @genes.each do |g| %>
+              <tr>
+                <th scope="row" class="text-left"><%= link_to g[:symbol], gene_path(id: g[:hgnc_id]) %></th>
+                <td>
+                  <% unless g[:validity].blank? %>
+                    <%= link_to gene_path(id: g[:hgnc_id]), class: "btn btn-success btn-xs"  do %>
+                      <i class="glyphicon glyphicon-info-sign text-white"></i>
+                      <%= g[:validity].first %>
+                    <% end %>
+                  <% end %>                  
+                </td>
+                <td>
+                  <% unless g[:actionability].blank? %>
+                    <%= link_to gene_path(id: g[:hgnc_id]), class: "btn btn-success btn-xs"  do %>
+                      <i class="glyphicon glyphicon-info-sign text-white"></i>
+                      Summary Available
+                    <% end %>
+                  <% end %>  
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Gene</th>
-      <th>Gene-Disease Clinical Validity Classifications</th>
-      <th>Actionability Evidence-Based Summaries</th>
-      <th>Dosage Sensitivity Map - Haploinsufficiency</th>
-      <th>Dosage Sensitivity Map - Triplosensitivity</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @genes.each do |g| %>
-      <tr>
-        <th scope="row"><%= link_to g[:symbol], gene_path(id: g[:hgnc_id]) %></th>
-        <td><%= link_to(g[:validity].first, gene_path(id: g[:hgnc_id])) unless g[:validity].blank? %></td>
-        <td><%= link_to("Summary Available", gene_path(id: g[:hgnc_id])) unless g[:actionability].blank? %></td>
-        <td><%= dosage_summary_link(:haplo, g) %></td>
-        <td><%= dosage_summary_link(:triplo, g) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+                </td>
+                <td><%= dosage_summary_link(:haplo, g) %></td>
+                <td><%= dosage_summary_link(:triplo, g) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>  

@@ -12,17 +12,25 @@
         <dd>chr13: 32,889,617-32,973,809 (GRCh38)</dd>
         <dd>chr13: 32,889,617-32,973,809 (GRCh37)</dd>-->
         <% if @gene.dosage_assertions.present? %>
+        <% if a = @gene.dosage_assertions.select {|i| i.haplo_assertion?}.first %>
         <dt>Haploinsufficiency</dt>
-        <dd><% if a = @gene.dosage_assertions.select {|i| i.haplo_assertion?}.first %>
-                          <a id="external_gene_dosage_sensitivity" target="_blank" class="text-black" href="<%= gene_dosage_sensitivity("url", @gene.symbol) %>"><%= a.interpretation.first.short_label %> <i class="glyphicon glyphicon-info-sign text-sm text-muted"></i>
-                          </a>
-                        <% end %></dd>
+        <dd>
+          <a id="external_gene_dosage_sensitivity" target="_blank" class="text-black" href="<%= gene_dosage_sensitivity("url", @gene.symbol) %>">
+            <%= a.interpretation.first.short_label %>
+            <i class="glyphicon glyphicon-info-sign text-sm text-muted"></i>
+          </a>
+        </dd>
+        <% end %>
 
+        <% if a = @gene.dosage_assertions.select {|i| i.triplo_assertion?}.first %>
         <dt>Triplosensitivity</dt>
-        <dd><% if a = @gene.dosage_assertions.select {|i| i.triplo_assertion?}.first %>
-                          <a id="external_gene_dosage_sensitivity" target="_blank" class="text-black" href="<%= gene_dosage_sensitivity("url", @gene.symbol) %>"><%= a.interpretation.first.short_label %>  <i class="glyphicon glyphicon-info-sign text-sm text-muted"></i>
-                          </a>
-                        <% end %></dd>
+        <dd>
+          <a id="external_gene_dosage_sensitivity" target="_blank" class="text-black" href="<%= gene_dosage_sensitivity("url", @gene.symbol) %>">
+            <%= a.interpretation.first.short_label %>
+            <i class="glyphicon glyphicon-info-sign text-sm text-muted"></i>
+          </a>
+        </dd>
+        <% end %>
         <% end %>
       </dl>
     </div>
