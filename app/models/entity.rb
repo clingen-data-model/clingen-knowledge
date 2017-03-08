@@ -6,6 +6,10 @@ class Entity
   property :description
   property :perm_id
 
+  def mdy_date
+    Date.parse(date).strftime('%m/%d/%Y')
+  end
+
   def self.type_class_map
     {
       "cg:publication" => Publication,
