@@ -9,6 +9,8 @@ class GeneDiseaseAssertionsController < ApplicationController
   
   def show
     @assertion = GeneDiseaseAssertion.find_by(perm_id: params[:id])
+    @assertionScoreJson = ActiveSupport::JSON.decode(@assertion.score_string)
+    #@assertionScoreArray = JSON.parse(assertionScoreJson)
   end
   
 end
