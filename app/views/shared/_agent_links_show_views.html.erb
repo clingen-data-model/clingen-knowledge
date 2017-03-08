@@ -1,15 +1,1 @@
-<% if agent_signed_in? %>
-  <%= link_to new_subscription_path(:subscribe => @term_id), :method => :get, :class => "btn btn-link pull-right margin-bottom-md"  do %>
-  <i class="glyphicon glyphicon-bookmark text-success"></i>
-    <span class="text-success">Request updates</span>
-  <% end %>
-  <%= link_to new_note_path(:note => @term_id), :method => :get, :class => "btn btn-link pull-right  margin-bottom-md"  do %>
-    <i class="glyphicon glyphicon-edit text-success"></i>
-    <span class="text-success"> Share information</span>
-  <% end %>
-<% else %>
-  <%= link_to new_agent_registration_path, :method => :get, :class => "btn btn-link pull-right  margin-bottom-md"  do %>
-  <i class="glyphicon glyphicon-bookmark text-success"></i>
-    <span class="text-success">Receive and share information</span>
-  <% end %>
-<% end %>
+<% # KEEP THIS FILE IN CASE WE NEED TO DISPLAY TEXT WHY FOLLOW/SHARE ISN"T AVAIABLE %>
