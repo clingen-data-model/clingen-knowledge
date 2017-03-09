@@ -3,8 +3,8 @@
   <table class="table table-condensed table-striped table-bordered">
     <thead>
       <th class="col-sm-2">Gene</th>
-      <th class="col-sm-7">Disease curated</th>
-      <th class="col-sm-3">Clinical Validity Classification</th>
+      <th class="col-sm-8">Disease curated</th>
+      <th class="col-sm-2">Classification</th>
     </thead>
     <tbody>
       <% @assertions.each do |a| %>
@@ -28,11 +28,10 @@
 	    </ul>
 
 	  </td>
-          <td>
+          <td class="text-center">
             <%= link_to a, {class: 'btn btn-default btn-xs'} do %>
-              <i class="glyphicon glyphicon-file"></i> <strong><%= a.interpretation.first.label %></strong> - <%= a.date %>
-            <% end %>
-          
+              <i class="glyphicon glyphicon-file"></i> <strong><%= a.interpretation.first.label %> </strong> <span class="text-sm text-muted"> | <%= mdy_date(a.date) %></span>
+            <% end %> 
 </td>
 	</tr>
       <% end %>
