@@ -14,7 +14,7 @@
     <% dosage.interpretation.each do |i| %>
       <tr>
         <td><a id="external_gene_dosage_sensitivity" target="_blank" href="<%= gene_dosage_sensitivity("url", dosage.genes.first.symbol) %>"><strong><%= i.label %> <i class="glyphicon glyphicon-info-sign text-sm text-muted"></i></strong></a></td>
-        <td class="text-center"><%= dosage.date %></td>
+        <td class="text-center"><%= dosage.mdy_date %></td>
       </tr>
     <% end %>
   </tbody>

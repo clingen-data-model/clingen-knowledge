@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def mdy_date(date)
+    Date.parse(date).strftime('%m/%d/%Y')
+  end
+
   # Return the key for the entity describing which assertions have been performed
   def entity_assertion_key(entity)
     types = [[ActionabilityAssertion, "clinicalActionability"],
