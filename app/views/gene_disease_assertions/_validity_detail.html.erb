@@ -15,7 +15,7 @@
   <tbody>
     <tr>
       <td>
-      <%= link_to gene_disease_assertions_path+"/"+assertions.first.perm_id, :method => :get, :class => ""  do %>
+      <%= link_to gene_disease_assertions_path+"/"+assertions.perm_id, :method => :get, :class => ""  do %>
         <strong><%= interp.label %></strong>  <i class="glyphicon glyphicon-info-sign text-sm text-muted"></i>
       <% end %>
       </td>
