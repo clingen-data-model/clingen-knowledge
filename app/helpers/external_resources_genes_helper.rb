@@ -9,15 +9,38 @@ module ExternalResourcesGenesHelper
   	varInner = ""
   	if !data.nil?
   	varStart = "<div class=\"GeneticEvidencePmidData\">"
+      #varInner = data.inspect
+      if data["publications"]
   			data["publications"].each do |pubs|
-  				varInner = pubs["author"] +" et al. "+ pubs["pubdate"] +" (PMID:"+ pubs["uid"] +"); "
+  			  varInner = pubs["author"] +" et al. "+ pubs["pubdate"] +" (PMID:"+ pubs["uid"] +"); "
+          #varInner = pubs.inspect
   			end
+      end
   	varEnd = "</div>"
 
   	varStart + varInner + varEnd
   	else
   		""
   	end
+  end
+    def PrintWrapperPmidArray(id = '', data = nil)
+
+      # "<div class=\"WrapperPmid\" >"
+      # "<div class=\"form-group\">"
+      # "<div class=\"WrapperPmidResults\">"
+    varInner = ""
+    if !data.nil?
+    varStart = "<div class=\"GeneticEvidencePmidData\">"
+        data["publications"].each do |pubs|
+          varInner = pubs[1]["author"] +" et al. "+ pubs[1]["pubdate"] +" (PMID:"+ pubs[1]["uid"] +"); "
+          #varInner = pubs[1].inspect
+        end
+    varEnd = "</div>"
+
+    varStart + varInner + varEnd
+    else
+      ""
+    end
   end
 # 	function PrintWrapperPmid($id, $data = "") {
 	
