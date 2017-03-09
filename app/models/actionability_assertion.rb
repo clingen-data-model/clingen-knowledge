@@ -23,9 +23,9 @@ class ActionabilityAssertion < Assertion
 
   def self.act_scores
     {efficacy: {"http://datamodel.clinicalgenome.org/clingen.owl#CG_000061" => 0,
-             "http://datamodel.clinicalgenome.org/clingen.owl#CG_000060" => 1,
-             "http://datamodel.clinicalgenome.org/clingen.owl#CG_000059" => 2,
-             "http://datamodel.clinicalgenome.org/clingen.owl#CG_000058" => 3},
+                "http://datamodel.clinicalgenome.org/clingen.owl#CG_000060" => 1,
+                "http://datamodel.clinicalgenome.org/clingen.owl#CG_000059" => 2,
+                "http://datamodel.clinicalgenome.org/clingen.owl#CG_000058" => 3},
      evidence: {"http://datamodel.clinicalgenome.org/clingen.owl#CG_000057" => "E",
                 "http://datamodel.clinicalgenome.org/clingen.owl#CG_000056" =>  "D",
                 "http://datamodel.clinicalgenome.org/clingen.owl#CG_000055" => "C",
@@ -43,22 +43,6 @@ class ActionabilityAssertion < Assertion
               "http://datamodel.clinicalgenome.org/clingen.owl#CG_000088" => 1,
               "http://datamodel.clinicalgenome.org/clingen.owl#CG_000090" => 0,
               "http://datamodel.clinicalgenome.org/clingen.owl#CG_000087" => 3}}
-  end
-
-  # Query to list actionability score
-  def self.index_list(page = 1, limit = 20)
-    ActionabilityAssertion.query_as(:a)
-      .return("a {genes: [(g:Gene)<-[:has_subject]-(a) | g {.symbol, .hgnc_id}],
-                  conditions: [(c:Condition)<-[:has_object]-(a) | c {.label, .curie}],
-                  interventions: [(a)<-[:was_generated_by]-(i:ActionabilityInterventionAssertion) | i { 
-                  intervention: head([(i)-[:has_object]->(int:Intervention) | int.label]),
-                  scores: [(i)<-[:was_generated_by]-(s:ActionabilityScore) | 
-                          head([(s)-[:has_predicate]->(p:Interpretation) | p {.iri, .label}])]}]} limit {limit}")
-      .params(limit: limit)
-      .to_a.map(&:a)
-
-                 
-      
   end
 
 

@@ -9,62 +9,75 @@
       <th class="col-sm-2">Report</th>
     </thead>
     <tbody>
-    <% @assertions.each do |a| %>
-      <tr>
-        <td>
-          <ul class="list-unstyled">
-          <% a.genes.each do |g| %>
-            <li>
-              <%= link_to genes_path+"/"+g.hgnc_id, :method => :get, :class => ""  do %>
-                <%= g.symbol %>
+      <% @assertions.each do |a| %>
+        <tr>
+          <td>
+            <ul class="list-unstyled">
+              <% a[:genes].each do |g| %>
+                <li>
+                  <%= link_to g[:symbol], gene_path(g[:hgnc_id]) %>
+                </li>
               <% end %>
-            </li>
-          <% end %>
-        </ul>
-        </td>
-        <td>
-          <ul class="list-unstyled">
-          <% a.diseases.each do |c| %>
-            <li>
-              
-            <%= link_to conditions_path+"/"+c.curie, :method => :get, :class => ""  do %>
-                <%= c.label %>
+            </ul>
+          </td>
+          <td>
+            <ul class="list-unstyled">
+              <% a[:conditions].each do |c| %>
+                <li>
+                  <%= link_to c[:label], condition_path(c[:curie]) %>
+                </li>
               <% end %>
-            </li>
-          <% end %>
-        </ul>
-
-
-        </td>
-        <td>
-          <!-- FOREACH THIS START -->
-          <% a.intervention_assertions.interventions.each do |l| %>
-            <div class="row">
-              <div class="col-sm-5">
-                <%= l.label %>
-              </div>
-              <div class="col-sm-7">
-                <dl class='dl-horizontal'> 
+            </ul>
+          </td>
+          <td>
+            <!-- FOREACH THIS START -->
+            <% a[:interventions].each do |l| %>
+              <div class="row">
+                <div class="col-sm-5">
+                  <%= l[:label] %>
+                </div>
+                <div class="col-sm-7">
+                  <dl class='dl-horizontal'> 
                     <dt style='width:80px; font-weight:normal; margin-top:1px'>Outcome</dt>
-                    <dd style='margin-left:90px'>Severity: <strong>severity</strong></dd>
-                    <dd style='margin-left:90px'>Likelihood: <strong>likelihood</strong></dd>
+                    <dd style='margin-left:90px'>
+                      Severity:
+                      <strong>
+                        <%= category_score :severity, l[:scores] %>
+                      </strong>
+                    </dd>
+                    <dd style='margin-left:90px'>
+                      Likelihood:
+                      <strong>
+                        <%= category_score :likelihood, l[:scores] %>
+                      </strong>
+                    </dd>
                     <dt style='width:80px; font-weight:normal; margin-top:1px'>Intervention</dt>
-                    <dd style='margin-left:90px'>Effectiveness: <strong>efficacy</strong></dd>
-                    <dd style='margin-left:90px'>Intervention: <strong>safety</strong></dd>
+                    <dd style='margin-left:90px'>
+                      Effectiveness:
+                      <strong>
+                        <%= category_score :efficacy, l[:scores] %>
+                      </strong>
+                    </dd>
+                    <dd style='margin-left:90px'>
+                      Intervention:
+                      <strong>
+                        <%= category_score :safety, l[:scores] %>
+                      </strong>
+                    </dd>
                   </dl>
+                </div>
               </div>
-            </div>
-
-          <% end  %>
-          <!-- FOREACH THIS END -->
-        </td>
-        <td>
-          <%= link_to a.file, {class: 'btn btn-default btn-xs', target: 'file'} do %>
-            <i class="glyphicon glyphicon-file"></i> <strong>View Details</strong> - <%= a.date %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
+            <% end  %>
+            <!-- FOREACH THIS END -->
+          </td>
+          <td>
+            <%= link_to a[:file], {class: 'btn btn-default btn-xs', target: 'file'} do %>
+              <i class="glyphicon glyphicon-file"></i> <strong>View Details</strong> - <%= a[:date] %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
+  
 </div>

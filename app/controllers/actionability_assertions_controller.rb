@@ -2,7 +2,8 @@ class ActionabilityAssertionsController < ApplicationController
 
   def index
     @page = params[:page] || 1
-    @assertions = ActionabilityAssertion.all.with_associations(:genes, :diseases, :intervention_assertions).page(@page).per(20)
+    # @assertions = ActionabilityAssertion.all.with_associations(:genes, :diseases, :intervention_assertions).page(@page).per(20)
+    @assertions = helpers.index_list(@page)
   end
 
   def show
