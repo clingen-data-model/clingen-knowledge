@@ -23,7 +23,7 @@
         <% if assertions.respond_to?(:date) %>
           <%= assertions.date %>
         <% else %>
-          <%= assertions.first.date %>
+          <%= assertions.first.mdy_date %>
         <% end %>
       </td>
     </tr>
