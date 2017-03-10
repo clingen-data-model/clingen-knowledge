@@ -15,8 +15,7 @@ module ActionabilityHelper
                   interventions: [(a)<-[:was_generated_by]-(i:ActionabilityInterventionAssertion) | i { 
                   label: head([(i)-[:has_object]->(int:Intervention) | int.label]),
                   scores: [(i)<-[:was_generated_by]-(s:ActionabilityScore) | 
-                          head([(s)-[:has_predicate]->(p:Interpretation) | p {.iri, .label}])]}]} skip {skip} limit {limit}")
-                   .params(limit: limit, skip: (page - 1) * limit)
+                          head([(s)-[:has_predicate]->(p:Interpretation) | p {.iri, .label}])]}]}") 
                    .to_a.map(&:a)
   end
 
