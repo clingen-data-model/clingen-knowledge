@@ -12,7 +12,7 @@
   </div>
   <%= entity_assertion_key condition %>
   <div class='col-sm-2 text-right text-tight text-sm text-muted'>
-    <!--MOST RECENT CURATED DATE -->  <%= condition.last_curated %>
+    <!--MOST RECENT CURATED DATE -->  <%= mdy_date(condition.last_curated) %>
   </div>
 
   <hr class='col-sm-12' />

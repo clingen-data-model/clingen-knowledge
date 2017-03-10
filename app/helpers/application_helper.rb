@@ -1,6 +1,8 @@
+# coding: utf-8
 module ApplicationHelper
 
   def mdy_date(date)
+    return "" unless date.instance_of?(String)
     Date.parse(date).strftime('%m/%d/%Y')
   end
 
