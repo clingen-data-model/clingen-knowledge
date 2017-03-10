@@ -1,5 +1,5 @@
 <div id="gene_validity_show" class="container">
-  <h2>Clinical Validity Classification Summary</h2>
+  <h2>Gene Validity Classification Summary</h2>
 
 
 
@@ -351,13 +351,11 @@
 					          <table>
 					            <tr>
 					              <td class="col-sm-2"><?=($ValidContradictoryEvidenceYN == 'YES') ? "YES" : "NO"; ?>
-					              <% if @assertionScoreJson.dig "ValidContradictoryEvidence","YesNo" == "YES" %>
-					              YES
-									      <% else %>
-									      NO
+					              <% if @assertionScoreJson.dig "ValidContradictoryEvidence","YesNo" %>
+					              	<%= @assertionScoreJson.dig "ValidContradictoryEvidence","YesNo" %>
 									      <% end %>
-					              <%= @assertionScoreJson.dig "ValidContradictoryEvidence","YesNo" %></td>
-					              <td class="col-sm-10"><?=PrintWrapperPmid("ValidContradictoryEvidence", $ValidContradictoryEvidencePmid) ?><%= PrintWrapperPmid('0', (@assertionScoreJson.dig "ValidContradictoryEvidence","pmid")).html_safe %></td>
+					              </td>
+					              <td class="col-sm-10"><?=PrintWrapperPmid("ValidContradictoryEvidence", $ValidContradictoryEvidencePmid) ?><%= PrintWrapperPmidArray('0', (@assertionScoreJson.dig "ValidContradictoryEvidence","pmid")).html_safe %></td>
 				              </tr>
 				            </table>
 				          </div>
@@ -422,13 +420,13 @@
 		  </table>
 	</div></div>
 </div>
-
+<!--
   <pre>
-  <%= @assertionScoreJsonPretty %>
+  <% #@assertionScoreJsonPretty %>
   </pre>
   <hr />
-  <%= @assertionScoreJson['data']['Hgnc'] %>
-
+  <% #@assertionScoreJson['data']['Hgnc'] %>
+-->
 </div>
 
 

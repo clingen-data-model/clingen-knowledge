@@ -1,5 +1,5 @@
 <div id="gene_dosage_index" class="container">
-  <h2>Gene Dosage Curation</h2>
+  <h2>Gene Dosage Curations</h2>
 
   <table class="table table-condensed table-striped table-bordered">
     <thead>
@@ -26,7 +26,7 @@
           </td>
           <td>
             
-            <a href="https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=<%= g.label %>&subject=" target="ncbi" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-new-window"></i> <strong>View Details</strong> - <%= g.dosage_assertions.first.date %></a></td>
+            <a href="https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=<%= g.label %>&subject=" target="ncbi" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-new-window"></i> <strong>View Details</strong>  <span class="text-sm text-muted"> | <%= mdy_date(g.dosage_assertions.first.date) %></span></a></td>
 
 	</tr>
       <% end %>

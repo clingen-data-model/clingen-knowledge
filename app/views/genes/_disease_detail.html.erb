@@ -9,7 +9,7 @@
   </div>
   <div class="col-sm-10">
     <% if @diseases_detail[disease.iri] %>
-      <%= render "gene_disease_assertions/validity_detail.html.erb", assertions: @validity, disease: disease, gene: @gene %>
+      <%= render "gene_disease_assertions/validity_detail.html.erb", assertions: @validity.first, disease: disease, gene: @gene %>
       
     <% end %>
 
