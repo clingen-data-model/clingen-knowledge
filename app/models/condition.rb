@@ -1,6 +1,7 @@
 class Condition < RDFClass
 
   property :search_label
+  property :num_curations
 
   has_many :in, :assertions, type: :has_object, model_class: :Assertion
 

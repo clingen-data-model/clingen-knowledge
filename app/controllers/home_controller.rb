@@ -6,9 +6,9 @@ class HomeController < ApplicationController
     respond_to do |format|
       format.html do
         if @term
-          @genes = Gene.find_by_term(@term)
+          @genes = Gene.find_by_term(@term).order(num_curations: :desc)
                      .limit(20)
-          @conditions = Condition.find_by_term(@term)
+          @conditions = Condition.find_by_term(@term).order(num_curations: :desc)
                           .limit(20)
           @drugs = Drug.find_by_term(@term)
                      .limit(20)

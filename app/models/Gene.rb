@@ -6,6 +6,7 @@ class Gene
   property :name
   property :location
   property :last_curated
+  property :num_curations
 
   has_many :in, :assertions, model_class: :Assertion, type: :has_subject
   has_many :in, :dosage_assertions, model_class: :GeneDosageAssertion, type: :has_subject
