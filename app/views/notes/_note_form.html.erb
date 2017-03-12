@@ -2,15 +2,15 @@
   
   <div class="row">
     <div class="col-sm-3">
-      <h3><strong>1.</strong> About the publication</h3>
+      <h3><strong>1.</strong> General Information</h3>
       <p class="help-block padding-left-md">
-    	Please provide a PubMed ID for the publication so our review team is able to utilize its information.</p>
+    	</p>
     </div>
     <div class="col-sm-9 border-left">
       <%= f.label :publication, "PubMed ID", class: "control-label" %>
       <div class="row">
 	<div class="col-sm-6">
-	  <%= f.text_field :pmid, autofocus: true, class: "form-control", placeholder: "PubMed ID", required: "required" %>
+	  <%= f.text_field :pmid, autofocus: true, class: "form-control", placeholder: "PubMed ID - E.g. 123456", required: "required" %>
 	</div>
 	<div class="col-sm-6"><p class="help-block">
     	  Simply start typing the PubMed ID</p></div>
@@ -18,7 +18,7 @@
       <%= f.label :gene, "Gene", class: "control-label clear-left margin-top-md" %>
       <div class="row">
 	<div class="col-sm-6">
-	  <%= f.text_field :gene, autofocus: true, class: "form-control gene-typeahead", placeholder: "Gene", required: "required" %>
+	  <%= f.text_field :gene, autofocus: true, class: "form-control gene-typeahead", placeholder: "Gene - E.g. SMAD3", required: "required" %>
           <%#= select_tag(:gene_id, options_for_select([['BDNF', 0],['TP53', 1]]), class: "gene-typeahead") %>
 	</div>
 	<div class="col-sm-6"><p class="help-block">
@@ -27,7 +27,7 @@
       <%= f.label :disease, "Condition", class: "control-label clear-left margin-top-md" %>
       <div class="row">
 	<div class="col-sm-6">
-	  <%= f.text_field :condition, autofocus: true, class: "form-control condition-typeahead", placeholder: "Condition", required: "required" %>
+	  <%= f.text_field :condition, autofocus: true, class: "form-control condition-typeahead", placeholder: "Condition - E.g. Loeys-Dietz Syndrome 2", required: "required" %>
 	</div>
 	<div class="col-sm-6"><p class="help-block">
     	  At least one OrphaNET or OMIM disease is required to continue.</p></div>
@@ -40,32 +40,9 @@
     <div class="col-sm-3">
       <h3><strong>2.</strong> Case-Level Data</h3>
       <p class="help-block padding-left-md">
-    	Many of our curation efforts rely on gene/condition associations so please provide a gene (HGNC) and a condition (OrphaNet and/or OMIM) for our team to review.</p>
+    	Does this publication describe individual probands or families?  If so, describe them here.</p>
     </div>
     <div class="col-sm-9 border-left">
-
-      <%= label_tag nil,  "Evidence Types", class: "control-label" %>
-      <div class="row">
-	<div class="col-sm-6">
-	  <ul class="list-inline margin-bottom-none">
-	    <li class="checkbox margin-top-none">
-	      <label>
-		<%= f.check_box :case_variant, class: "" %>
-		Variant Evidence
-	      </label>
-	    </li>
-	    <li class="checkbox margin-top-none">
-	      <label>
-		<%= f.check_box :case_segregation, class: "" %>
-		Segregation Evidence
-	      </label>
-	    </li>
-	  </ul>
-	</div>
-	<div class="col-sm-6">
-	  <p class="help-block">What evidence types were utilized in the research?</p>
-	</div>
-      </div>
 
       <%= label_tag nil,  "Case-Level Data Summary", class: "control-label" %>
       <div class="row">
@@ -73,7 +50,7 @@
 	  <%= f.text_area :case_summary, autofocus: true, size: "100x4", class: "form-control", placeholder: "Summarize case-level data findings...", required: "required" %>
 	</div>
 	<div class="col-sm-6">
-	  <p class="help-block">Tell our team about this publication and how we may be able to use it in our curation efforts.</p>
+	  <p class="help-block">Provide a brief description of the cases discussed in the publication. What are their phenotypes? How were they ascertained?  How were variants identified? Is there inheritance information? Include any information you feel is relevant for curation</p>
 	</div>
       </div>
     </div>
@@ -84,32 +61,9 @@
     <div class="col-sm-3">
       <h3><strong>3.</strong> Case-Control Data</h3>
       <p class="help-block padding-left-md">
-    	Many of our curation efforts rely on gene/condition associations so please provide a gene (HGNC) and a condition (OrphaNet and/or OMIM) for our team to review.</p>
+    	Is this publication a case-control study?  If so, describe the findings here.</p>
     </div>
     <div class="col-sm-9 border-left">
-
-      <%= label_tag nil,  "Study Types", class: "control-label" %>
-      <div class="row">
-	<div class="col-sm-6">
-	  <ul class="list-inline margin-bottom-none">
-	    <li class="checkbox margin-top-none">
-	      <label>
-		<%= f.check_box :case_control_single_variant, class: "" %>
-		Single Variant Analysis
-	      </label>
-	    </li>
-	    <li class="checkbox margin-top-none">
-	      <label>
-		<%= f.check_box :case_control_aggregate_variant, class: "" %>
-		Aggregate Variant Analysis
-	      </label>
-	    </li>
-	  </ul>
-	</div>
-	<div class="col-sm-6">
-	  <p class="help-block">What study types were utilized in the research?</p>
-	</div>
-      </div>
 
       <%= label_tag nil,  "Case-Control Data Summary", class: "control-label" %>
       <div class="row">
@@ -117,7 +71,7 @@
 	  <%= f.text_area :case_control_summary, autofocus: true, size: "100x4", class: "form-control", placeholder: "Summarize case-level data findings...", required: "required" %>
 	</div>
 	<div class="col-sm-6">
-	  <p class="help-block">Tell our team about this publication and how we may be able to use it in our curation efforts.</p>
+	  <p class="help-block">Provide a brief description of the case-control study.  What are the characteristics of the case and control groups?  How were they ascertained?  Are there any factors that may affect the quality of this study?  What were the relevant findings?</p>
 	</div>
       </div>
     </div>
@@ -127,38 +81,11 @@
     <div class="col-sm-3">
       <h3><strong>4.</strong> Experimental Evidence</h3>
       <p class="help-block padding-left-md">
-    	Many of our curation efforts rely on gene/condition associations so please provide a gene (HGNC) and a condition (OrphaNet and/or OMIM) for our team to review.</p>
+    	Does the publication provide experimental evidence to support either the gene’s role in the disease or the pathogenicity of a specific variant?  If so, describe it here.</p>
     </div>
     <div class="col-sm-9 border-left">
 
-      <%= label_tag nil,  "Evidence Categories", class: "control-label" %>
-      <div class="row">
-	<div class="col-sm-6">
-	  <ul class="list-inline margin-bottom-none">
-	    <li class="checkbox margin-top-none">
-	      <label>
-		<%= f.check_box :experimental_function, class: "" %>
-		Function
-	      </label>
-	    </li>
-	    <li class="checkbox margin-top-none">
-	      <label>
-		<%= f.check_box :experimental_function_alteration, class: "" %>
-		Functional Alteration
-	      </label>
-	    </li>
-	    <li class="checkbox margin-top-none">
-	      <label>
-		<%= f.check_box :experimental_model, class: "" %>
-		Models &amp; Rescue
-	      </label>
-	    </li>
-	  </ul>
-	</div>
-	<div class="col-sm-6">
-	  <p class="help-block">What evidence categories were utilized in the research?</p>
-	</div>
-      </div>
+      
 
       <%= label_tag nil,  "Experimental Data Summary", class: "control-label" %>
       <div class="row">
@@ -166,7 +93,7 @@
 	  <%= f.text_area :experimental_summary, autofocus: true, size: "100x4", class: "form-control", placeholder: "Summarize case-level data findings...", required: "required" %>
 	</div>
 	<div class="col-sm-6">
-	  <p class="help-block">Tell our team about this publication and how we may be able to use it in our curation efforts.</p>
+	  <p class="help-block">Describe the studies performed and the relevant findings; refer to specific figures if applicable.</p>
 	</div>
       </div>
     </div>
@@ -176,7 +103,7 @@
     <div class="col-sm-3">
       <h3><strong>5.</strong> Comments</h3>
       <p class="help-block padding-left-md">
-    	Many of our curation efforts rely on gene/condition associations so please provide a gene (HGNC) and a condition (OrphaNet and/or OMIM) for our team to review.</p>
+    	Is there any other relevant information about this publication?  If so, describe it here.</p>
     </div>
     <div class="col-sm-9 border-left">
       <%= label_tag nil,  "Additional comments", class: "control-label" %>
@@ -185,7 +112,7 @@
 	  <%= f.text_area :comments, autofocus: true, size: "100x4", class: "form-control", placeholder: "Additional comments...", required: "required" %>
 	</div>
 	<div class="col-sm-6">
-	  <p class="help-block">Tell our team about this publication and how we may be able to use it in our curation efforts.</p>
+	  <p class="help-block"></p>
 	</div>
       </div>
     </div>
