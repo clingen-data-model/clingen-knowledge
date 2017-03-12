@@ -24,10 +24,10 @@ module ApplicationHelper
       end
     end
 
-    contents += content_tag(:div, class: 'col-sm-3 padding-right-none') do 
-      link_to(image_tag("genomeResource-on.png", class: "img-responsive"),
-              entity, class: "menu_icon")
-    end
+    # contents += content_tag(:div, class: 'col-sm-3 padding-right-none') do 
+    #   link_to(image_tag("genomeResource-on.png", class: "img-responsive"),
+    #           entity, class: "menu_icon")
+    # end
 
     content_tag(:div, class: 'col-sm-2') do
       raw(contents)
