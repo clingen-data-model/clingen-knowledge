@@ -51,7 +51,7 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_gene_medgen_genetics_summary\" href=\"https://www.ncbi.nlm.nih.gov/medgen/?term='medgen+gtr+tests+clinical'[Filter]+" + var + "#Additional_description\" target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_gene_medgen_genetics_summary\" href=\"https://www.ncbi.nlm.nih.gov/medgen/?term=\"medgen+gtr+tests+clinical\"[Filter]+" + var + "#Additional_description\" target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
       ("<a id=\"external_gene_medgen_genetics_summary\" class='btn btn-default btn-xs' href=\"https://www.ncbi.nlm.nih.gov/medgen/?term='medgen+gtr+tests+clinical'[Filter]+" + var + "#Additional_description\" target=\"_blank\">" + title + "</a>").html_safe

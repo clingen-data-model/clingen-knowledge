@@ -28,6 +28,10 @@
         <li class="">
           <%= link_to "External Genomic Resources", gene_external_resources_genes_path(@gene) %>
         </li>
+        <li class="">
+          <a href="https://www.ncbi.nlm.nih.gov/clinvar/?term=<%= @gene.symbol %>%5Bgene%5D" class="" target="clinvar">ClinVar Variants  <i class="glyphicon glyphicon-new-window text-xs" id="external_clinvar_gene_variants"></i></a>
+        </li>
+
       </ul>
       <div class="panel panel-default">
         <div class="panel-heading" id='results_curation_summary_heading'>

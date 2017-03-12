@@ -24,6 +24,7 @@
           <li class="active">
             <%= link_to "External Genomic Resources", condition_external_resources_conditions_path(@condition) %>
           </li>
+          <a href="https://www.ncbi.nlm.nih.gov/clinvar/?term=<%= @term_label %>" class="" target="clinvar">ClinVar Variants  <i class="glyphicon glyphicon-new-window text-xs" id="external_clinvar_gene_variants"></i></a>
         </ul>
         <div class="panel panel-default">
           <div class="panel-heading" id='results_curation_summary_heading'>

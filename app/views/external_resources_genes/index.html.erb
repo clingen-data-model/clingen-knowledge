@@ -24,6 +24,9 @@
           <li class="active">
             <%= link_to "External Genomic Resources", gene_external_resources_genes_path(@gene) %>
           </li>
+        <li class="">
+          <a id="external_clinvar_condition_variants" href="https://www.ncbi.nlm.nih.gov/clinvar/?term=<%= @gene.symbol %>%5Bgene%5D" class="" target="clinvar">ClinVar Variants  <i class="glyphicon glyphicon-new-window text-xs"></i></a>
+        </li>
         </ul>
         <div class="panel panel-default">
           <div class="panel-heading" id='results_curation_summary_heading'>
@@ -45,7 +48,7 @@
               </div>
               <div class="col-sm-11 col-xs-12">
                   <h4 class="padding-none margin-top-none border-bottom">
-                    <%= gene_medgen_genetics_summary("link", @gene.symbol) %>
+                    <%= gene_medgen_genetics_summary("link", @gene.symbol).html_safe %>
                   </h4>
                 <div class="text-sm text-muted">
                   <%= gene_medgen_genetics_summary("text") %>
