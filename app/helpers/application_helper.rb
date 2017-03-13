@@ -24,10 +24,10 @@ module ApplicationHelper
       end
     end
 
-    contents += content_tag(:div, class: 'col-sm-3 padding-right-none') do 
-      link_to(image_tag("genomeResource-on.png", class: "img-responsive"),
-              entity, class: "menu_icon")
-    end
+    # contents += content_tag(:div, class: 'col-sm-3 padding-right-none') do 
+    #   link_to(image_tag("genomeResource-on.png", class: "img-responsive"),
+    #           entity, class: "menu_icon")
+    # end
 
     content_tag(:div, class: 'col-sm-2') do
       raw(contents)
@@ -51,7 +51,7 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_gene_medgen_genetics_summary\" href=\"https://www.ncbi.nlm.nih.gov/medgen/?term='medgen+gtr+tests+clinical'[Filter]+" + var + "#Additional_description\" target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_gene_medgen_genetics_summary\" href=\"https://www.ncbi.nlm.nih.gov/medgen/?term=\"medgen+gtr+tests+clinical\"[Filter]+" + var + "#Additional_description\" target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
       ("<a id=\"external_gene_medgen_genetics_summary\" class='btn btn-default btn-xs' href=\"https://www.ncbi.nlm.nih.gov/medgen/?term='medgen+gtr+tests+clinical'[Filter]+" + var + "#Additional_description\" target=\"_blank\">" + title + "</a>").html_safe

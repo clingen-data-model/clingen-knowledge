@@ -15,14 +15,13 @@
     <div class="col-sm-12">
       <div class="">
         <ul class="nav nav-tabs">        
-          <li class="active">
-            <a href="#summary">
-              ClinGen's Curation Summaries
-            </a>
-          </li> 
           <li class="">
             <%= link_to "External Genomic Resources", condition_external_resources_conditions_path(@condition) %>
           </li>
+
+        <li class="">
+          <a id="external_clinvar_condition_variants" href="https://www.ncbi.nlm.nih.gov/clinvar/?term=<%= @term_label %>" class="" target="clinvar">ClinVar Variants  <i class="glyphicon glyphicon-new-window text-xs"></i></a>
+        </li>
         </ul>
         <div class="panel panel-default">
           <div class="panel-heading" id='results_curation_summary_heading'>

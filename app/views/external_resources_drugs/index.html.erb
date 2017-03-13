@@ -15,12 +15,7 @@
     </div>
     <div class="col-sm-12">
       <div class="">
-        <ul class="nav nav-tabs">        
-          <li>
-            <%= link_to drug_path(@drug), :class => ""  do %>
-              ClinGen's Curation Summaries
-            <% end %>
-          </li> 
+        <ul class="nav nav-tabs">  
           <li class="active">
             <%= link_to "External Genomic Resources", drug_external_resources_drugs_path(@drug) %>
           </li>

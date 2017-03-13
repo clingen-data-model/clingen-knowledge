@@ -22,6 +22,9 @@
           <% end %>
         </dd>
         <% end %>
+        
+        <dt>ClinVar Variants</dt>
+        <dd><a id="external_clinvar_condition_variants" href="https://www.ncbi.nlm.nih.gov/clinvar/?term=<%= @term_label %>" class="text-black" target="clinvar">View ClinVar Variants  <i class="glyphicon glyphicon-new-window text-sm text-muted"></i></a></dd>
         <dt>External Resources</dt>
         <dd>
             <%= link_to condition_external_resources_conditions_path(@condition), :class => "text-black"  do %>

@@ -29,6 +29,7 @@ class Agent
   property :institution
   property :title
   property :degrees
+  property :clingen_newsletter
   property :opt_out
   property :subscriptions_all_curations
   #index :email

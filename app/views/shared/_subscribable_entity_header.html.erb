@@ -2,10 +2,6 @@
   <% if current_agent.subscribed_to?(entity) %>
     <%= link_to "unsubscribe", subscription_path(entity.curie), method: :delete, class: "btn btn-link pull-right margin-bottom-md" %>
   <% else %>
-    <%= link_to subscriptions_path(id: entity.curie), method: :post, class: "btn btn-link pull-right margin-bottom-md"  do %>
-      <i class="glyphicon glyphicon-bookmark text-success"></i>
-      <span class="text-success">Request updates</span>
-    <% end %>
   <% end %>
   <%= link_to new_note_path(id: entity.curie), :method => :get, :class => "btn btn-link pull-right  margin-bottom-md"  do %>
     <i class="glyphicon glyphicon-edit text-success"></i>

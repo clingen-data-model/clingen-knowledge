@@ -1,6 +1,11 @@
 <div id="agents_register_new" class="container">
   <div class='row'>
-    <h2 class='col-sm-12'>Sign up</h2>
+  <div class='col-sm-12'>
+    <h2 >Sign up</h2>
+    In order to contribute literature information to ClinGen curation activities or request a curation, you must create an account.  This allows us to contact you if we have questions about the information you provide, let you know the outcome of your request, etc. 
+    <hr />
+    </div>
+    <br clear="both" />
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
       <div class="col-sm-6">
@@ -58,6 +63,17 @@
       <div class="form-group">
         <%= f.label :password_confirmation, :class => "control-label"  %>
         <%= f.password_field :password_confirmation, autocomplete: "off",  class: "form-control", placeholder: "Confirm", required: "required" %>
+      </div>
+      </div>
+
+      <div class="col-sm-6 clear-left">
+      <div class="form-group">
+        <div class="checkbox">
+          <label>
+            <%= f.check_box :clingen_newsletter, autocomplete: "off", checked: "checked"  %>
+            YES, sign me up to receive periodic email updates from ClinGen 
+            </label>
+          </div>
       </div>
       </div>
 

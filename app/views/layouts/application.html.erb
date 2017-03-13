@@ -85,7 +85,7 @@
           </div>
             <%= form_tag(home_index_path, method: "get", id:"remote") do %>
               <div id='header_search' class="input-group">
-                <%= text_field_tag :term, "", class: 'form-control search-typeahead', placeholder: 'Search our knowledge-base for genes and diseases...' %>
+                <%= text_field_tag :term, "", class: 'form-control search-typeahead', placeholder: 'Search our Knowledge Base for genes and diseases...' %>
                 <span class="input-group-btn">
                   <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
                 </span>
@@ -143,12 +143,12 @@
               </li>
               <li>
                 <%= link_to gene_dosage_index_path, :class => ""  do %>
-                  Gene Dosage Curations
+                  Dosage Sensitivity Curations
                 <% end %>
               </li>
               <li>
                 <%= link_to actionability_assertions_path, :class => ""  do %>
-                  Actionability Curations
+                  Clinical Actionability Curations
                 <% end %>
               </li>
               <li role="separator" class="divider"></li>
@@ -195,7 +195,7 @@
           <% end %>
           <%= link_to new_agent_registration_path, :method => :get, :class => "btn btn-default"  do %>
           <i class="glyphicon glyphicon-bookmark"></i>
-            <span class="">Register</span>
+            <span class="">Sign-up</span>
           <% end %>
         <% end %>
       </div>

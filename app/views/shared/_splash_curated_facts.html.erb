@@ -1,5 +1,5 @@
 <div class="row text-center margin-bottom-lg margin-top-lg">
-  <div class="col-sm-12 margin-bottom-lg"><h3><i class="glyphicon glyphicon-arrow-up"></i><br>Search the Knowledge Base by using the search box at the top of all pages or choose an option below.</h3>
+  <div class="col-sm-12 margin-bottom-lg"><h2><i class="glyphicon glyphicon-arrow-up"></i><br>Search the Knowledge Base by using the search box at the top of all pages.</h2>
 </div>
 </div>
 
@@ -7,23 +7,23 @@
 
 <div class="row padding-top-xs">
           <div class="col-sm-3 col-xs-12 text-center"><div class="padding-left-sm padding-right-sm thumbnail shadow-glow ">
-            <div class="col-sm-12 text-center"><a class="" href="/curations"><%= image_tag("home_curated_list", class: "img-responsive img-rounded") %></a></div><br clear="all">
-              <a class="padding-none margin-none text-muted row" href="/curations"><h5 class="col-sm-10 col-sm-offset-1 headingtight padding-none margin-top-none margin-bottom-md text-center">All Curated Summaries</h5><small class="text-muted"></small></a>   
+            <div class="col-sm-12 text-center"><a class="" href="/curations"><%= image_tag("home_curated_list.png", class: "img-responsive img-rounded") %></a></div><br clear="all">
+              <a class="padding-none margin-none text-muted row" href="/curations"><h5 class="col-sm-10 col-sm-offset-1 headingtight padding-none margin-top-none margin-bottom-md text-center">All ClinGen Curation Summaries</h5><small class="text-muted"></small></a>   
 
             </div></div>
           <div class="col-sm-3 col-xs-12 text-center"><div class="padding-left-sm padding-right-sm thumbnail shadow-glow ">
             <div class="col-sm-12 text-center"><a class="" href="/gene-validity"><%= image_tag("home_clinicalValidity.png", class: "img-responsive img-rounded") %></a></div><br clear="all">
-              <a class="padding-none margin-none text-muted row" href="/gene-validity"><h5 class="col-sm-10 col-sm-offset-1 headingtight padding-none margin-top-none margin-bottom-md text-center">Gene Validity Curations</h5><small class="text-muted"></small></a>   
+              <a class="padding-none margin-none text-muted row" href="/gene-validity"><h5 class="col-sm-10 col-sm-offset-1 headingtight padding-none margin-top-none margin-bottom-md text-center">Gene-Disease Validity Curations</h5><small class="text-muted"></small></a>   
 
             </div></div>
           <div class="col-sm-3 col-xs-12 text-center"><div class="padding-left-sm padding-right-sm thumbnail shadow-glow ">
-            <div class="col-sm-12 text-center"><a class="" href="/gene-dosage"><%= image_tag("home_dosage_sensitivity", class: "img-responsive img-rounded") %></a></div><br clear="all">
-              <a class="padding-none margin-none text-muted row" href="/gene-dosage"><h5 class="col-sm-10 col-sm-offset-1 headingtight padding-none margin-top-none margin-bottom-md text-center">Gene Dosage Curations</h5><small class="text-muted"></small></a>   
+            <div class="col-sm-12 text-center"><a class="" href="/gene-dosage"><%= image_tag("home_dosage_sensitivity.png", class: "img-responsive img-rounded") %></a></div><br clear="all">
+              <a class="padding-none margin-none text-muted row" href="/gene-dosage"><h5 class="col-sm-10 col-sm-offset-1 headingtight padding-none margin-top-none margin-bottom-md text-center">Dosage Sensitivity Curations</h5><small class="text-muted"></small></a>   
 
             </div></div>
           <div class="col-sm-3 col-xs-12 text-center"><div class="padding-left-sm padding-right-sm thumbnail shadow-glow ">
-            <div class="col-sm-12 text-center"><a class="" href="/actionability"><%= image_tag("home_clinicalActionability", class: "img-responsive img-rounded") %></a></div><br clear="all">
-              <a class="padding-none margin-none text-muted row" href="/actionability"><h5 class="col-sm-10 col-sm-offset-1 headingtight padding-none margin-top-none margin-bottom-md text-center">Actionability Curations</h5><small class="text-muted"></small></a>   
+            <div class="col-sm-12 text-center"><a class="" href="/actionability"><%= image_tag("home_clinicalActionability.png", class: "img-responsive img-rounded") %></a></div><br clear="all">
+              <a class="padding-none margin-none text-muted row" href="/actionability"><h5 class="col-sm-10 col-sm-offset-1 headingtight padding-none margin-top-none margin-bottom-md text-center">Clinical Actionability Curations</h5><small class="text-muted"></small></a>   
 
             </div></div>
           </div>
@@ -33,9 +33,9 @@
 </div>
     <div class="col-sm-6">
       <div class="row padding-top-xs">
-        <div class="col-sm-3"><%= image_tag("home_share", class: "img-responsive img-rounded") %></div>
+        <div class="col-sm-3"><%= image_tag("home_share.png", class: "img-responsive img-rounded") %></div>
         <div class="col-sm-8">
-            <h4 class="">Share Information via Knowledge-Base</h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non interdum magna, et accumsan elit. Integer at imperdiet nisl. Donec suscipit felis eu erat efficitur, in ultrices nulla accumsan.
+            <h4 class="">Share Information via Knowledge-Base</h4>Provide information from the literature to supplement ClinGen curation activities.
             <br>
             <% if agent_signed_in? %>
               <%= link_to dashboard_index_path, :class => ""  do %>
@@ -47,7 +47,7 @@
               <% end %>
               |
               <%= link_to new_agent_registration_path, :method => :get, :class => ""  do %>
-                Register
+                Sign-up
               <% end %>
             <% end %>
         </div>
@@ -55,23 +55,10 @@
     </div>
     <div class="col-sm-6">
       <div class="row padding-top-xs">
-          <div class="col-sm-3"><%= image_tag("home_follow", class: "img-responsive img-rounded") %></div>
+          <div class="col-sm-3"><%= image_tag("home_follow.png", class: "img-responsive img-rounded") %></div>
           <div class="col-sm-8">
-              <h4 class="">Follow ClinGen Curation Updates</h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non interdum magna, et accumsan elit. Integer at imperdiet nisl. Donec suscipit felis eu erat efficitur, in ultrices nulla accumsan.
-            <br>
-            <% if agent_signed_in? %>
-              <%= link_to dashboard_index_path, :class => ""  do %>
-                Your Dashboard
-              <% end %>
-            <% else %>
-              <%= link_to agent_session_path, :method => :get, :class => ""  do %>
-                Sign-in
-              <% end %>
-              |
-              <%= link_to new_agent_registration_path, :method => :get, :class => ""  do %>
-                Register
-              <% end %>
-            <% end %>
+              <h4 class="">Follow ClinGen Curation Updates</h4><i>Coming Soon</i> - Receive email updates whenever genes/conditions of interest are curated by ClinGen.
+            
           </div>
       </div>
     </div>
