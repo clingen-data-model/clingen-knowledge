@@ -14,7 +14,13 @@
     </div>
     <div class="col-sm-12">
       <div class="">
-        <ul class="nav nav-tabs">        
+        <ul class="nav nav-tabs">     
+
+          <li class="active">
+            <%= link_to condition_path(@condition), :class => ""  do %>
+              ClinGen's Curation Summaries
+            <% end %>
+          </li>    
           <li class="">
             <%= link_to "External Genomic Resources", condition_external_resources_conditions_path(@condition) %>
           </li>
