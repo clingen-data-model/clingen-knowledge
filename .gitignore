@@ -13,5 +13,11 @@
 !/log/.keep
 !/tmp/.keep
 
+#ignore assets
+public/assets/*
+
+#ignore passenger lockfiles
+config/passenger.3000.pid.lock
+
 # Ignore Byebug command history file.
 .byebug_history
