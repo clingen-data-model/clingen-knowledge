@@ -21,7 +21,7 @@
       </td>
       <td class=" text-center">
         <% if assertions.respond_to?(:date) %>
-          <%= assertions.date %>
+          <%= mdy_date(assertions.date) %>
         <% else %>
           <%= assertions.first.mdy_date %>
         <% end %>
