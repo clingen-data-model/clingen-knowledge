@@ -32,7 +32,7 @@ module GeneValidityHelper
     if !data.nil?
     varStart = "<div class=\"GeneticEvidencePmidData\">"
         data["publications"].each do |pubs|
-          varInner = pubs[1]["author"] +" et al. "+ pubs[1]["pubdate"] +" (PMID:"+ pubs[1]["uid"] +"); "
+          varInner += pubs[1]["author"] +" et al. "+ pubs[1]["pubdate"] +" (PMID:"+ pubs[1]["uid"] +"); "
           #varInner = pubs[1].inspect
         end
     varEnd = "</div>"
