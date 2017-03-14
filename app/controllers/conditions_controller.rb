@@ -2,6 +2,7 @@ class ConditionsController < ApplicationController
   include ActionView::Helpers::TextHelper
 
   def index
+    @pageTitle = "Conditions";
     @page = params[:page] || 1
     if params[:term]
       @conditions = Condition.find_by_term(params[:term]).page(@page).per(20)
@@ -41,6 +42,8 @@ class ConditionsController < ApplicationController
     @dosage_detail = @dosage.reduce({}) do |h, i|
       h.update(i.genes.reduce({}) { |h1, i1| h1.update({i1.uuid => i}) })
     end
+
+    @pageTitle = @term_label;
   end
 
 end

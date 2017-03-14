@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+
+
   
   before_action :configure_permitted_parameters, if: :devise_controller?
   # before_action :authenticate_user!, except: [:home, :about, :contact]
@@ -21,4 +23,5 @@ class ApplicationController < ActionController::Base
 	def after_sign_out_path_for(agent)
 	  agent_session_path
 	end
+	
 end

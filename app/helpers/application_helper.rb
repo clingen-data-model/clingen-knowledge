@@ -1,6 +1,14 @@
 # coding: utf-8
 module ApplicationHelper
 
+  def pageTitle(title)
+    if(title)
+      title + " - ClinGen Knowledge Base | Clinical Genome Resource"
+    else
+      "ClinGen Knowledge Base | Clinical Genome Resource"
+    end
+  end
+
   def mdy_date(date)
     return "" unless date.instance_of?(String)
     Date.parse(date).strftime('%m/%d/%Y')

@@ -10,6 +10,8 @@ class GeneDosageController < ApplicationController
     # @assertions = GeneDosageAssertion.all.limit(100).page(page).per(20)
 
     @genes = Gene.all(:g).where("(g)<-[:has_subject]-(:GeneDosageAssertion)").order('g.symbol').page(page).per(50)
+  
+    @pageTitle = "Gene Dosage Curations"
   end
 
 end

@@ -2,8 +2,6 @@ class DrugsController < ApplicationController
   include ActionView::Helpers::TextHelper
 
   def show
-
-
     curie = params[:id][6, 30]
     @drug = Drug.find_by(curie: curie)
     # @term_label = truncate(@drug.label, :length => 20, :omission => '...')
@@ -22,6 +20,9 @@ class DrugsController < ApplicationController
     else
       @drugs = Drug.page(@page).per(20)
     end
+
+
+    @pageTitle = "Drugs"
   end
 
 end
