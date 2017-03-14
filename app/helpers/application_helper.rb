@@ -212,7 +212,7 @@ module ApplicationHelper
     elsif item == "link"
       ("<a id=\"external_gene_genetics_home_reference\" href='https://ghr.nlm.nih.gov/search?query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
 
-    elsif item == "link"
+    elsif item == "button"
       ("<a id=\"external_gene_genetics_home_reference\" class='btn btn-default btn-xs' href='https://ghr.nlm.nih.gov/search?query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
@@ -388,10 +388,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_condition_genetic_practice_guidelines\" href='https://www.ncbi.nlm.nih.gov/medgen?term=(%22has%20guideline%22%5BProperties%5D)%20AND%20" + var + "%5BMIM%20ID%5D#Professional_guidelines' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_condition_genetic_practice_guidelines\" href='https://www.ncbi.nlm.nih.gov/medgen?term=(%22has%20guideline%22%5BProperties%5D)%20AND%20137215%5BMIM%20ID%5D#Professional_guidelines' target=\"_blank\">" + title + "</a>").html_safe
 
-    elsif item == "button"
-      ("<a id=\"external_condition_genetic_practice_guidelines\" class='btn btn-default btn-xs' href='https://www.ncbi.nlm.nih.gov/medgen?term=(%22has%20guideline%22%5BProperties%5D)%20AND%20" + var + "%5BMIM%20ID%5D#Professional_guidelines' target=\"_blank\">" + title + "</a>").html_safe
+     elsif item == "button"
+      ("<a id=\"external_condition_genetic_practice_guidelines\" class='btn btn-default btn-xs' href='https://www.ncbi.nlm.nih.gov/medgen?term=(%22has%20guideline%22%5BProperties%5D)%20AND%20137215%5BMIM%20ID%5D#Professional_guidelines' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "As guidelines are identified that relate to a disorder, gene, or variation, staff at NCBI connect them to the appropriate records. This page provides an alphabetical list of the professional practice guidelines, position statements, and recommendations that have been identified."
@@ -413,10 +413,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_condition_omim\" href='http://www.omim.org/entry/" + var + "' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_condition_omim\" href='https://www.omim.org/search/?index=entry&search=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_condition_omim\" class='btn btn-default btn-xs' href='http://www.omim.org/entry/" + var + "' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_condition_omim\" class='btn btn-default btn-xs' href='https://www.omim.org/search/?index=entry&search=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "An Online Catalog of Human Genes and Genetic Disorders."
@@ -567,7 +567,7 @@ module ApplicationHelper
       ("<a id=\"external_drug_pharmgkb_dosing_guidelines\" href='https://www.pharmgkb.org/search/search.action?exactMatch=false&annoFilter=DOSING_GUIDELINES&query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_drug_pharmgkb_dosing_guidelines\" class='btn btn-default btn-xs' href='https://www.pharmgkb.org/search/search.action?exactMatch=false&annoFilter=DOSING_GUIDELINES&query=" + var + "' target=\"_blank\">" + title + "" + var + "</a>").html_safe
+      ("<a id=\"external_drug_pharmgkb_dosing_guidelines\" class='btn btn-default btn-xs' href='https://www.pharmgkb.org/search/search.action?exactMatch=false&annoFilter=DOSING_GUIDELINES&query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "PharmGKB is a comprehensive resource that curates knowledge about the impact of genetic variation on drug response for clinicians and researchers."
