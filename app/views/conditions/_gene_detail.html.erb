@@ -11,7 +11,7 @@
       <%= render "gene_disease_assertions/validity_detail.html.erb", assertions: @validity_detail[gene.uuid], disease: @condition, gene: gene %>
     <% end %>
 
-    <% if @validity_detail[gene.uuid] %>
+    <% if @dosage_detail[gene.uuid] %>
 
       <% if @validity_detail[gene.uuid] %>
         <hr />
