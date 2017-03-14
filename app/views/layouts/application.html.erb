@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ClingenKnowledge</title>
+    <title>Clingen Knowledge Base</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -191,7 +191,7 @@
         <% else %>
           <%= link_to agent_session_path, :method => :get, :class => "btn btn-default"  do %>
           <i class="glyphicon glyphicon-th-list"></i>
-            <span class="">Knowledge-Base Sign-in</span>
+            <span class="">Knowledge Base Sign-in</span>
           <% end %>
           <%= link_to new_agent_registration_path, :method => :get, :class => "btn btn-default"  do %>
           <i class="glyphicon glyphicon-bookmark"></i>
@@ -202,7 +202,7 @@
     </div>
     <h1>
     <%= link_to root_path, :method => :get, :class => "text-black"  do %>
-          Knowledge-Base
+          Knowledge Base
     <% end %>
     </h1>
   </div>
