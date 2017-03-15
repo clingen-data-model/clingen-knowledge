@@ -37,7 +37,7 @@ module ApplicationHelper
     #           entity, class: "menu_icon")
     # end
 
-    content_tag(:div, class: 'col-sm-2') do
+    content_tag(:div, class: 'col-sm-2  hidden-xs') do
       raw(contents)
     end
   end
