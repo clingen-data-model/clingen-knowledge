@@ -44,11 +44,17 @@
           </div>
         </div>
         <div id='results_curation_summary_details' class="panel-body results_curation_summary_details">
-          <% if @diseases.present? %>
-            <% @diseases.each do |d| %>
-              <%= render 'disease_detail', disease: d %>
-              <hr class="results_curation_summary_details_spacer" />
+          <% if @diseases.present? || @gene.dosage_assertions.present? %>
+            <% if @diseases.present? %>
+              <% @diseases.each do |d| %>
+                <%= render 'disease_detail', disease: d %>
+              <% end %>
             <% end %>
+            <hr class="results_curation_summary_details_spacer" />
+            <% if @gene.dosage_assertions.present? %>
+                <%= render 'gene_dosage_no_condition'%>
+            <% end %>
+            <hr class="results_curation_summary_details_spacer" />
           <% else %>
             <div class="alert alert-info text-center" role="alert">
               <strong><%= @gene.symbol %></strong> has not been curated with a condition.  <%= link_to "ClinGen compiled a list of external genomic resources", gene_external_resources_genes_path(@gene) %> with direct links to information about <%= @gene.symbol %>.

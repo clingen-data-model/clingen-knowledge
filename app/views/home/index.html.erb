@@ -12,19 +12,19 @@
 
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="<%= 'active' if @active_class == :genes %>">
-    	<a href="#gene_results" aria-controls="gene_results" role="tab" data-toggle="tab">Genes <span class="badge hidden-xs"><%= @genes.size %> Matches</span></a>
+    	<a href="#gene_results" aria-controls="gene_results" role="tab" data-toggle="tab">Genes <span class="badge hidden-xs"><%= @genesFound.size %> Matches</span></a>
     </li>
     <li role="presentation" class="<%= 'active' if @active_class == :conditions %>">
-    	<a href="#condition_results" aria-controls="condition_results" role="tab" data-toggle="tab">Conditions <span class="badge hidden-xs"><%= @conditions.size %> Matches</span></a>
+    	<a href="#condition_results" aria-controls="condition_results" role="tab" data-toggle="tab">Conditions <span class="badge hidden-xs"><%= @conditionsFound.size %> Matches</span></a>
     </li>
     <li role="presentation" class="<%= 'active' if @active_class == :drugs %>">
-    	<a href="#drug_results" aria-controls="drug_results" role="tab" data-toggle="tab">Drugs <span class="badge hidden-xs"><%= @drugs.size %> Matches</span></a>
+    	<a href="#drug_results" aria-controls="drug_results" role="tab" data-toggle="tab">Drugs <span class="badge hidden-xs"><%= @drugsFound.size %> Matches</span></a>
     </li>
   </ul>
 
 
   <div class="tab-content">
-    <% if @genes.size == 0 && @conditions.size == 0 && @drugs.size == 0 %>
+    <% if @genesFound.size == 0 && @conditionsFound.size == 0 && @drugsFound.size == 0 %>
     <div role="tabpanel" class="tab-pane active" id="no_results">
       <div class="padding-top-md">
         <%= render "no_results" %>
@@ -38,9 +38,11 @@
       <% else %>
       <%= render "gene_results" %>
       <!-- START IF - only show this if more then X are needed -->
+      <% if @genesFound.size > 20 %>
       <div class="col-sm-4 col-sm-offset-4">
         <%= link_to "Additional Gene Matches", genes_path(page: 2, term: @term), class: 'btn btn-primary btn-block' %>
       </div>
+      <% end %>
       <!-- END IF -->
 
       <% end %>
@@ -50,13 +52,14 @@
       <div class="padding-top-md">
       <% if @conditions.size == 0 %>
       <%= render "no_results" %>
-      
       <% else %>
       <%= render "condition_results" %>
       <!-- START IF - only show this if more then X are needed -->
+      <% if @conditionsFound.size > 20 %>
       <div class="col-sm-4 col-sm-offset-4">
         <%= link_to "Additional Condition Matches", conditions_path(page: 2, term: @term), class: 'btn btn-primary btn-block' %>
       </div>
+      <% end %>
       <!-- END IF -->
       <% end %>
     	</div>
@@ -68,10 +71,11 @@
       <% else %>
       <%= render "drug_results" %>
       <!-- START IF - only show this if more then X are needed -->
+      <% if @drugsFound.size > 20 %>
       <div class="col-sm-4 col-sm-offset-4">
         <%= link_to "Additional Drug Matches", drugs_path(page: 2, term: @term), class: 'btn btn-primary btn-block' %>
-        <a href="#" class="btn btn-primary btn-block">  </a>
       </div>
+      <% end %>
       <!-- END IF -->
       <% end %>	
       </div>
