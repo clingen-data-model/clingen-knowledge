@@ -2,7 +2,7 @@ var entities = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('label'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     remote: {
-      url: '<%= "#{ENV['RAILS_RELATIVE_URL_ROOT']}/home.json?term=%QUERY"  %>',
+      url: '<%= "#{'/kb' if Rails.env == 'production'}/home.json?term=%QUERY"  %>',
 //        url: '/home.json?term=%QUERY',
       wildcard: '%QUERY'
     }
