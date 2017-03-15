@@ -1,23 +1,43 @@
 ---
 
-- hosts: 127.0.0.1
-  connection: local
-  tasks:
-    - name: precompile assets
-      shell: RAILS_ENV=production bundle exec rake assets:precompile
-    - name: Create deployment package
-      shell: cd .. && tar cvzf tmp/deployment.tar.gz .
+# - hosts: 127.0.0.1
+#   connection: local
+#   tasks:
+#     - name: precompile assets
+#       shell: RAILS_ENV=production bundle exec rake assets:precompile
+#     - name: Create deployment package
+#       shell: cd .. && tar cvzf tmp/deployment.tar.gz .
 
 - hosts: webservers
-  become: true
   tasks:
-    - name: Create target directory
-      file:
-        path: /var/www/clingen-knowledge
-        state: directory
-        mode: 0755
-    - name: Copy files
-      unarchive:
-        src: ../tmp/deployment.tar.gz
+    - name: Checkout or update repository
+      git:
+        accept_hostkey: yes
         dest: /var/www/clingen-knowledge
+        repo: git@github.com:sgoehringer/clingen-knowledge.git
+    - name: Bundle gems
+      command: ${HOME}/.rbenv/shims/bundle install --deployment --without development test
+      args:
+        chdir: /var/www/clingen-knowledge
+    - name: Precompile assets
+      command: ${HOME}/.rbenv/shims/bundle exec rake assets:precompile
+      args:
+        chdir: /var/www/clingen-knowledge
+      environment: 
+        RAILS_ENV: production 
+    - name: Restart nginx
+      systemd:
+        name: nginx
+        state: restarted
+      become: true
+ 
+    # - name: Create target directory
+    #   file:
+    #     path: /var/www/clingen-knowledge
+    #     state: directory
+    #     mode: 0755
+    # - name: Copy files
+    #   unarchive:
+    #     src: ../tmp/deployment.tar.gz
+    #     dest: /var/www/clingen-knowledge
 

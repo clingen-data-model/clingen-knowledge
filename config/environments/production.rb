@@ -80,4 +80,8 @@ Rails.application.configure do
     logger.formatter = config.log_formatter
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
+
+  # ADDED THN 2017-03-15
+  # Deploy to /kb in production
+  config.relative_url_root = "/kb"
 end
