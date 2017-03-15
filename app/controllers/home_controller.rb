@@ -12,12 +12,12 @@ class HomeController < ApplicationController
     respond_to do |format|
       format.html do
         if @term
-          @genes = Gene.find_by_term(@term).order(num_curations: :desc)
-                     .limit(20)
-          @conditions = Condition.find_by_term(@term).order(num_curations: :desc)
-                          .limit(20)
-          @drugs = Drug.find_by_term(@term)
-                     .limit(20)
+          @genesFound = Gene.find_by_term(@term).order(num_curations: :desc)
+          @genes = @genesFound.limit(20)
+          @conditionsFound = Condition.find_by_term(@term).order(num_curations: :desc)
+          @conditions = @conditionsFound.limit(20)
+          @drugsFound = Drug.find_by_term(@term)
+          @drugs = @drugsFound.limit(20)
 
           if @genes.size > 0
             @active_class = :genes
