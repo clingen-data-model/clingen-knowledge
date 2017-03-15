@@ -8,7 +8,7 @@ var entities = new Bloodhound({
 });
 
 
-$('.search-typeahead').typeahead(null,
+$('#term.search-typeahead').typeahead(null,
 {
     name: 'entities',
     display: 'label',

@@ -28,6 +28,7 @@ class GenesController < ApplicationController
         end
       end
     end
+    @pageTitle = "Genes"
   end
 
   # Be sure to add here anything needed for the gene_facts partial
@@ -55,6 +56,8 @@ class GenesController < ApplicationController
     @dosage_detail = @dosage.reduce({}) do |h, i|
       h.update(i.diseases.reduce({}) { |h1, i1| h1.update({i1.iri => i}) })
     end
+    
+    @pageTitle = @term_label;
 
   end
 

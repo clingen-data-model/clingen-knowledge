@@ -12,18 +12,25 @@
 
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="<%= 'active' if @active_class == :genes %>">
-    	<a href="#gene_results" aria-controls="gene_results" role="tab" data-toggle="tab">Genes <span class="badge"><%= @genes.size %> Matches</span></a>
+    	<a href="#gene_results" aria-controls="gene_results" role="tab" data-toggle="tab">Genes <span class="badge hidden-xs"><%= @genes.size %> Matches</span></a>
     </li>
     <li role="presentation" class="<%= 'active' if @active_class == :conditions %>">
-    	<a href="#condition_results" aria-controls="condition_results" role="tab" data-toggle="tab">Conditions <span class="badge"><%= @conditions.size %> Matches</span></a>
+    	<a href="#condition_results" aria-controls="condition_results" role="tab" data-toggle="tab">Conditions <span class="badge hidden-xs"><%= @conditions.size %> Matches</span></a>
     </li>
     <li role="presentation" class="<%= 'active' if @active_class == :drugs %>">
-    	<a href="#drug_results" aria-controls="drug_results" role="tab" data-toggle="tab">Drugs <span class="badge"><%= @drugs.size %> Matches</span></a>
+    	<a href="#drug_results" aria-controls="drug_results" role="tab" data-toggle="tab">Drugs <span class="badge hidden-xs"><%= @drugs.size %> Matches</span></a>
     </li>
   </ul>
 
 
   <div class="tab-content">
+    <% if @genes.size == 0 && @conditions.size == 0 && @drugs.size == 0 %>
+    <div role="tabpanel" class="tab-pane active" id="no_results">
+      <div class="padding-top-md">
+        <%= render "no_results" %>
+      </div>
+    </div>
+    <% end %>
     <div role="tabpanel" class="tab-pane <%= 'active' if @active_class == :genes %>" id="gene_results">
       <div class="padding-top-md">
       <% if @genes.size == 0 %>
@@ -35,6 +42,7 @@
         <%= link_to "Additional Gene Matches", genes_path(page: 2, term: @term), class: 'btn btn-primary btn-block' %>
       </div>
       <!-- END IF -->
+
       <% end %>
       </div>
     </div>

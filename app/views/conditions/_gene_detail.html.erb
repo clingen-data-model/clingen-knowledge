@@ -7,17 +7,17 @@
     </h4>
   </div>
   <div class="col-sm-10">
-    <% if @dosage_detail[gene.uuid] %>
-      <%= render "gene_dosage/dosage_detail.html.erb", dosage: @dosage_detail[gene.uuid] %>
+    <% if @validity_detail[gene.uuid] %>
+      <%= render "gene_disease_assertions/validity_detail.html.erb", assertions: @validity_detail[gene.uuid], disease: @condition, gene: gene %>
     <% end %>
 
-    <% if @validity_detail[gene.uuid] %>
+    <% if @dosage_detail[gene.uuid] %>
 
-      <% if @dosage_detail[gene.uuid] %>
+      <% if @validity_detail[gene.uuid] %>
         <hr />
       <% end %>
       
-      <%= render "gene_disease_assertions/validity_detail.html.erb", assertions: @validity_detail[gene.uuid], disease: @condition, gene: gene %>
+      <%= render "gene_dosage/dosage_detail.html.erb", dosage: @dosage_detail[gene.uuid] %>
     <% end %>
 
     <%#= render "gene_dosage/dosage_detail.html.erb"%>

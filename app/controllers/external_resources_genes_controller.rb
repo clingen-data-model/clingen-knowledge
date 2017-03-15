@@ -9,6 +9,8 @@ class ExternalResourcesGenesController < ApplicationController
     @diseases = @gene.assertions.diseases.distinct
     @dosage = @gene.assertions(:a).with_associations(:interpretation, :diseases)
                 .where("a:GeneDosageAssertion")
+
+    @pageTitle = @term_label
   end
   
 end

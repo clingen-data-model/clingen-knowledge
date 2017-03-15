@@ -8,6 +8,8 @@ class ExternalResourcesDrugsController < ApplicationController
     #@drug = Drug.find_by(curie: curie)
     @term_label = truncate(@drug.label, :length => 30, :omission => '...')
     @term_curie = truncate(@drug.curie)
+
+    @pageTitle = @term_label
   end
   
 end

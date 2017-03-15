@@ -40,17 +40,17 @@
 
             <div class="row  padding-bottom-lg">
               <div class="col-sm-1 hidden-xs clear-left">
-              <%= image_tag(gene_medgen_genetics_summary("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              <%= image_tag(condition_medgen_genetic_summary("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
               </div>
               <div class="col-sm-11 col-xs-12">
                   <h4 class="padding-none margin-top-none border-bottom">
-                    <%= gene_medgen_genetics_summary("link", @condition.label) %>
+                    <%= condition_medgen_genetic_summary("link", @condition.label) %>
                   </h4>
                 <div class="text-sm text-muted">
-                  <%= gene_medgen_genetics_summary("text") %>
+                  <%= condition_medgen_genetic_summary("text") %>
                 </div>
                 <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
-                  <%= gene_medgen_genetics_summary("button", @condition.label) %>
+                  <%= condition_medgen_genetic_summary("button", @condition.label) %>
                 </div>
               </div>
             </div>
@@ -177,6 +177,8 @@
           </div>
         </div>
       </div>
+    
+      <%= render 'shared/external_resources_generic' %>
     </div>
   </div>
 </div>

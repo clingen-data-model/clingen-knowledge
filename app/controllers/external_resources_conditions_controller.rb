@@ -17,5 +17,7 @@ class ExternalResourcesConditionsController < ApplicationController
     @validity_detail = @validity.reduce({}) do |h, i|
       h.update(i.genes.reduce({}) { |h1, i1| h1.update({i1.uuid => i}) })
     end
+
+    @pageTitle = @term_label
   end
 end

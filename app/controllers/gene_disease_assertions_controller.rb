@@ -6,6 +6,7 @@ class GeneDiseaseAssertionsController < ApplicationController
     respond_to do |format|
       format.html
     end
+    @pageTitle = "Gene Validity Curations"
   end
   
   def show
@@ -13,6 +14,8 @@ class GeneDiseaseAssertionsController < ApplicationController
     @assertionScoreJson = ActiveSupport::JSON.decode(@assertion.score_string)
     @assertionScoreJsonPretty = JSON.pretty_generate(@assertionScoreJson)
     #@assertionScoreArray = JSON.parse(assertionScoreJson)
+
+    @pageTitle = "Gene Validity Curation"
   end
   
 end
