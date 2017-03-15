@@ -1,0 +1,23 @@
+---
+
+- hosts: 127.0.0.1
+  connection: local
+  tasks:
+    - name: precompile assets
+      shell: RAILS_ENV=production bundle exec rake assets:precompile
+    - name: Create deployment package
+      shell: cd .. && tar cvzf tmp/deployment.tar.gz .
+
+- hosts: webservers
+  become: true
+  tasks:
+    - name: Create target directory
+      file:
+        path: /var/www/clingen-knowledge
+        state: directory
+        mode: 0755
+    - name: Copy files
+      unarchive:
+        src: ../tmp/deployment.tar.gz
+        dest: /var/www/clingen-knowledge
+
