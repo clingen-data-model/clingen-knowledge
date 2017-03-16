@@ -48,10 +48,13 @@
             <% if @diseases.present? %>
               <% @diseases.each do |d| %>
                 <%= render 'disease_detail', disease: d %>
+                <hr class="results_curation_summary_details_spacer" />
               <% end %>
             <% end %>
-            <hr class="results_curation_summary_details_spacer" />
             <% if @gene.dosage_assertions.present? %>
+                <% if !@diseases.present? %>
+                <hr class="results_curation_summary_details_spacer" />
+                <% end %>
                 <%= render 'gene_dosage_no_condition'%>
             <% end %>
             <hr class="results_curation_summary_details_spacer" />
