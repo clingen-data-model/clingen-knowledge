@@ -27,10 +27,10 @@
       <%= f.label :disease, "Condition", class: "control-label clear-left margin-top-md" %>
       <div class="row">
 	<div class="col-sm-6">
-	  <%= f.text_field :condition, autofocus: true, class: "form-control condition-typeahead", placeholder: "Condition - E.g. Loeys-Dietz Syndrome 2", required: "required" %>
+	  <%= f.text_field :condition, autofocus: true, class: "form-control condition-typeahead", placeholder: "Condition - E.g. Loeys-Dietz Syndrome 2" %>
 	</div>
 	<div class="col-sm-6"><p class="help-block">
-    	  At least one OrphaNET or OMIM disease is required to continue.</p></div>
+    	  </p></div>
       </div>
     </div>
   </div>
@@ -112,7 +112,7 @@
 	  <%= f.text_area :comments, autofocus: true, size: "100x4", class: "form-control", placeholder: "Additional comments...", required: "required" %>
 	</div>
 	<div class="col-sm-6">
-	  <p class="help-block"></p>
+	  <p class="help-block">If you’d simply like to request that ClinGen review a gene, make that request here.</p>
 	</div>
       </div>
     </div>
