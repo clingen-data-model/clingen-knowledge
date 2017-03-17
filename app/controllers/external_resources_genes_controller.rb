@@ -11,6 +11,14 @@ class ExternalResourcesGenesController < ApplicationController
                 .where("a:GeneDosageAssertion")
 
     @pageTitle = @term_label
+
+
+    @analyticsDimension7  = "KB Genes - External Resources"
+    if @genes || @actionability || @validity 
+      @analyticsDimension1  = @gene.symbol
+    else
+      @analyticsDimension3  = @gene.symbol
+    end
   end
   
 end

@@ -9,6 +9,10 @@ class HomeController < ApplicationController
       @term = params[:'mainSearchCriteria.v.dn']
     end
 
+    ## Passes the term queries to analytics
+    @analyticsDimension5  = @term
+    @analyticsDimension7  = "KB Home - Index"
+
     respond_to do |format|
       format.html do
         if @term

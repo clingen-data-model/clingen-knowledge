@@ -23,6 +23,9 @@ class DrugsController < ApplicationController
 
 
     @pageTitle = "Drugs"
+
+
+    @analyticsDimension7  = "KB Drugs - Index"
   end
 
 end

@@ -12,12 +12,45 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+      <% if Rails.env == 'production' %>
+      ga('create', 'UA-49947422-1', 'auto');
+      <% else %>
       // NOTE please review the following notes
       // 8 = ClinGen Analytics Genetic TESTING Account - Education WG
       // The live site should be updated with the proper tracking codes.
       ga('create', 'UA-49947422-8', 'auto');
-      ga('send', 'pageview');
+      <% end %>
 
+      <% if @analyticsDimension1 %>
+        ga('set', 'dimension1', '<%=@analyticsDimension1 %>');  
+        //Curated Gene
+      <% end %>
+      <% if @analyticsDimension2 %>
+        ga('set', 'dimension2', '<%=@analyticsDimension2 %>');  
+        //Curated Condition
+      <% end %>
+      <% if @analyticsDimension3 %>
+        ga('set', 'dimension3', '<%=@analyticsDimension3 %>');  
+        //Non-curated Gene
+      <% end %>
+      <% if @analyticsDimension4 %>
+        ga('set', 'dimension4', '<%=@analyticsDimension4 %>');  
+        //Non-curated Condition
+      <% end %>
+      <% if @analyticsDimension5 %>
+        ga('set', 'dimension5', '<%=@analyticsDimension5 %>');  
+        //Queried Term
+      <% end %>
+      <% if @analyticsDimension6 %>
+        ga('set', 'dimension6', '<%=@analyticsDimension6 %>');  
+         //Non-curated Drug
+      <% end %>
+      <% if @analyticsDimension7 %>
+        ga('set', 'dimension7', '<%=@analyticsDimension7 %>');  
+         //Page type
+      <% end %>
+
+      ga('send', 'pageview');
     </script>
 
     <%= stylesheet_link_tag "https://www.clinicalgenome.org/site/templates/assets/css/rebrand.css" %>

@@ -7,6 +7,8 @@ class GeneDiseaseAssertionsController < ApplicationController
       format.html
     end
     @pageTitle = "Gene Validity Curations"
+
+    @analyticsDimension7  = "KB Gene Validity - Index"
   end
   
   def show
@@ -16,6 +18,8 @@ class GeneDiseaseAssertionsController < ApplicationController
     #@assertionScoreArray = JSON.parse(assertionScoreJson)
 
     @pageTitle = "Gene Validity Curation"
+
+    @analyticsDimension7  = "KB Gene Validity - Show"
   end
   
 end

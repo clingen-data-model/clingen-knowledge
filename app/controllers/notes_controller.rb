@@ -2,6 +2,8 @@ class NotesController < ApplicationController
 
   def new
     @note = Note.new
+
+    @analyticsDimension7  = "KB Notes - News"
   end
 
   def edit
@@ -10,6 +12,9 @@ class NotesController < ApplicationController
       flash[:error] = "Unauthorized to edit note"
       redirect_to dashboard_index_path
     end
+
+
+    @analyticsDimension7  = "KB Notes - Edit"
   end
 
   def update
@@ -19,6 +24,8 @@ class NotesController < ApplicationController
     else
       render 'edit'
     end
+
+    @analyticsDimension7  = "KB Notes - Update"
   end
 
   def create

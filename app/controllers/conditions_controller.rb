@@ -18,6 +18,9 @@ class ConditionsController < ApplicationController
       format.json { render json: @conditions, root: false }
       format.html
     end
+
+
+    @analyticsDimension7  = "KB Conditions - Index"
   end
 
   def show
@@ -44,6 +47,13 @@ class ConditionsController < ApplicationController
     end
 
     @pageTitle = @term_label;
+
+    @analyticsDimension7  = "KB Conditions - Show"
+    if @genes || @actionability || @validity 
+      @analyticsDimension2  = @condition.label
+    else
+      @analyticsDimension4  = @condition.label
+    end
   end
 
 end

@@ -19,5 +19,12 @@ class ExternalResourcesConditionsController < ApplicationController
     end
 
     @pageTitle = @term_label
+
+    @analyticsDimension7  = "KB Conditions - External Resources"
+    if @genes || @actionability || @validity 
+      @analyticsDimension2  = @condition.label
+    else
+      @analyticsDimension4  = @condition.label
+    end
   end
 end

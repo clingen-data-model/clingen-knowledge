@@ -6,6 +6,9 @@ class DashboardController < ApplicationController
 
 
     @pageTitle = "Dashboard"
+
+
+    @analyticsDimension7  = "KB Dashboard - Index"
   end
 
 end

@@ -29,6 +29,8 @@ class GenesController < ApplicationController
       end
     end
     @pageTitle = "Genes"
+
+    @analyticsDimension7  = "KB Genes - Index"
   end
 
   # Be sure to add here anything needed for the gene_facts partial
@@ -58,6 +60,13 @@ class GenesController < ApplicationController
     end
     
     @pageTitle = @term_label;
+
+    @analyticsDimension7  = "KB Genes - Show"
+    if @genes || @actionability || @validity 
+      @analyticsDimension1  = @gene.symbol
+    else
+      @analyticsDimension3  = @gene.symbol
+    end
 
   end
 

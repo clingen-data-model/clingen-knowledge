@@ -12,6 +12,8 @@ class GeneDosageController < ApplicationController
     @genes = Gene.all(:g).where("(g)<-[:has_subject]-(:GeneDosageAssertion)").order('g.symbol').page(page).per(50)
   
     @pageTitle = "Gene Dosage Curations"
+
+    @analyticsDimension7  = "KB Gene Dosage - Index"
   end
 
 end
