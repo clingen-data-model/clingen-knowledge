@@ -19,7 +19,7 @@
 				      </tr>
 					    <tr style="">
 					      <td style="width:15%; padding-right:1%;" nowrap class="text-right text-muted"></td>
-					      <td style="width:85%; padding-bottom:5px"><strong style="color:#000">HGNC:
+					      <td style="width:85%; padding-bottom:5px"><strong style="color:#000">
 					        HGNC:<%= @assertionScoreJson['data']['Hgnc'] %>
 					        <% if @assertionScoreJson['data']['OrphaNet'] %>
 					        | OrphaNet:
@@ -351,11 +351,12 @@
 					          <table>
 					            <tr>
 					              <td class="col-sm-2"><?=($ValidContradictoryEvidenceYN == 'YES') ? "YES" : "NO"; ?>
-					              <% if @assertionScoreJson.dig "ValidContradictoryEvidence","YesNo" %>
-					              	<%= @assertionScoreJson.dig "ValidContradictoryEvidence","YesNo" %>
-									      <% end %>
+					              		<% if @assertionScoreJson.dig "ValidContradictoryEvidence","YesNo" %>
+					              			<%= @assertionScoreJson.dig "ValidContradictoryEvidence","YesNo" %>
+									    <% end %>
 					              </td>
-					              <td class="col-sm-10"><?=PrintWrapperPmid("ValidContradictoryEvidence", $ValidContradictoryEvidencePmid) ?><%= PrintWrapperPmidArray('0', (@assertionScoreJson.dig "ValidContradictoryEvidence","pmid")).html_safe %></td>
+					              <td class="col-sm-10"><?=PrintWrapperPmid("ValidContradictoryEvidence", $ValidContradictoryEvidencePmid) ?><%= PrintWrapperPmidArray('0', (@assertionScoreJson.dig "ValidContradictoryEvidence","pmid")).html_safe %>
+					              </td>
 				              </tr>
 				            </table>
 				          </div>
@@ -420,13 +421,13 @@
 		  </table>
 	</div></div>
 </div>
-<!--
+
   <pre>
-  <% #@assertionScoreJsonPretty %>
+  <%= @assertionScoreJsonPretty %>
   </pre>
   <hr />
-  <% #@assertionScoreJson['data']['Hgnc'] %>
--->
+  <%= @assertionScoreJson['data']['Hgnc'] %>
+
 </div>
 
 

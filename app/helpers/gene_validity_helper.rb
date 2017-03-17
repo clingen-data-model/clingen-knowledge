@@ -9,21 +9,26 @@ module GeneValidityHelper
   	varInner = ""
   	if !data.nil?
   	varStart = "<div class=\"GeneticEvidencePmidData\">"
-      #varInner = data.inspect
+        if data["notes"]["note"]
+          note = "(" + data["notes"]["note"] +")"
+        else
+          note = ""
+        end
       if data["publications"]
   			data["publications"].each do |pubs|
-  			  varInner += pubs["author"] +" et al. "+ pubs["pubdate"] +" (PMID:"+ pubs["uid"] +"); "
-          #varInner = pubs.inspect
+  			  varInner += pubs["author"] +" et al. "+ pubs["pubdate"] +" (PMID:"+ pubs["uid"] +"); " 
+          ##varInner += pubs.inspect 
   			end
       end
-  	varEnd = "</div>"
+  	varEnd = note + "</div>"
 
   	varStart + varInner + varEnd
   	else
   		""
   	end
   end
-    def PrintWrapperPmidArray(id = '', data = nil)
+
+  def PrintWrapperPmidArray(id = '', data = nil)
 
       # "<div class=\"WrapperPmid\" >"
       # "<div class=\"form-group\">"
@@ -31,11 +36,16 @@ module GeneValidityHelper
     varInner = ""
     if !data.nil?
     varStart = "<div class=\"GeneticEvidencePmidData\">"
+        if data["notes"]["note"]
+          note = "(" + data["notes"]["note"] +")"
+        else
+          note = ""
+        end
         data["publications"].each do |pubs|
           varInner += pubs[1]["author"] +" et al. "+ pubs[1]["pubdate"] +" (PMID:"+ pubs[1]["uid"] +"); "
-          #varInner = pubs[1].inspect
+          ##varInner += pubs[1].inspect 
         end
-    varEnd = "</div>"
+    varEnd = note + "</div>"
 
     varStart + varInner + varEnd
     else
