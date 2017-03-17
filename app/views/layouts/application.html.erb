@@ -41,7 +41,7 @@
         <li class=''>
           <a class='' href='#' title='$' >News &amp; Announcements</a>
         </li></ul>          </nav>
-          <ol class='pull-left breadcrumb'><li class=''><a href='https://www.clinicalgenome.org/' class='' title=''>ClinGen</a></li></ol>      </div>
+          <ol class='pull-left breadcrumb'><a href='https://www.clinicalgenome.org' class='' title=''>ClinGen</a></li><a href='https://search.clinicalgenome.org/kb' class='' title=''>Knowledge Base</a></li></ol>      </div>
     </div>
   </div>
   <div id="header_nav_micro_tray" style="display:none">
@@ -66,23 +66,53 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="SiteNav">
               <ul class='nav nav-pills pull-right'>
-
-          <li class='' role='presentation' id='ref_1001' >
-            <a class='' href='https://www.clinicalgenome.org/about/' title='' >About</a>
-          </li> 
-          <li class='' role='presentation' id='ref_5297' >
-            <a class='' href='https://www.clinicalgenome.org/clingen-tools/' title='' >Resources &amp; Tools</a>
+          <li class='' id='ref_1001' >
+            <a class=' dropdown-toggle' data-hover='dropdown' href='https://www.clinicalgenome.org/about/' title='' >About ClinGen</a>
+            <ul class='dropdown-menu hidden-xs hidden-sm'>
+              <li><a href='https://www.clinicalgenome.org/about/about-clingen/'>About ClinGen</a></li>
+              <li><a href='https://www.clinicalgenome.org/about/about-the-clingen-and-clinvar-partnership/'>ClinGen and ClinVar Partnership</a></li>
+              <li><a href='https://www.clinicalgenome.org/about/clingen-curation-activities-overview/'>ClinGen Curation Activities Overview</a></li>
+              <li><a href='https://www.clinicalgenome.org/about/people/'>ClinGen Directory</a></li>
+              <li><a href='https://www.clinicalgenome.org/about/clingen-policies/'>ClinGen Policies</a></li>
+              <li><a href='https://www.clinicalgenome.org/about/clingen-system-map/'>ClinGen System Map</a></li>
+              <li><a href='https://www.clinicalgenome.org/about/events-news/'>Events &amp; News</a></li>
+              <li><a href='https://www.clinicalgenome.org/about/get-involved/'>Get Involved</a></li>
+              <li><a href='https://www.clinicalgenome.org/about/clingen-leadership/'>Leadership</a></li>
+              <li><a href='https://www.clinicalgenome.org/about/working-groups/'>Working Groups</a></li>
+            </ul>
           </li>
-          <li class='' role='presentation' id='ref_1119' >
-            <a class='' href='https://www.clinicalgenome.org/genomeconnect/' title='' >GenomeConnect</a>
+          <li class='' id='ref_5761' >
+            <a class=' dropdown-toggle' data-hover='dropdown' href='https://www.clinicalgenome.org/resources-tools/' title='' >Resources &amp; Tools</a>
+            <ul class='dropdown-menu hidden-xs hidden-sm'>
+              <li><a href='https://www.clinicalgenome.org/resources-tools/clingens-curation-interfaces/#anchor_Curation_Interfaces'>Curation Interfaces</a></li>
+              <li><a href='https://www.clinicalgenome.org/resources-tools/additional-curation-resources/#anchor_Curation_Resources'>Curation Resources</a></li>
+              <li><a href='https://www.clinicalgenome.org/resources-tools/resources-for-laboratories-clinicians/#anchor_Resources_for_Labs__amp__Clinicians'>Resources for Labs &amp; Clinicians</a></li>
+              <li><a href='https://www.clinicalgenome.org/resources-tools/genomeconnect/#anchor_GenomeConnect'>GenomeConnect</a></li>
+            </ul>
           </li>
-          <li class='' role='presentation' id='ref_5753' > 
-            <a class='' href='https://www.clinicalgenome.org/share-your-data/' title='' >How to share your data</a>
+          <li class='' id='ref_1119' >
+            <a class=' '  href='https://www.clinicalgenome.org/genomeconnect/' title='' >GenomeConnect</a>
           </li>
-          <li class='' role='presentation' id='ref_5770' >
-            <a class='' href='https://www.clinicalgenome.org/curation-starts-here/' title='' >Learn about ClinGen curation activities</a>
-          </li></ul>
+          <li class='' id='ref_5753' >
+            <a class=' dropdown-toggle' data-hover='dropdown' href='https://www.clinicalgenome.org/share-your-data/' title='' >How to share your data</a>
+            <ul class='dropdown-menu hidden-xs hidden-sm'>
+              <li><a href='https://www.clinicalgenome.org/share-your-data/laboratories/'>Laboratories</a></li>
+              <li><a href='https://www.clinicalgenome.org/share-your-data/clinicians/'>Clinicians</a></li>
+              <li><a href='https://www.clinicalgenome.org/share-your-data/patients/'>Patients</a></li>
+            </ul>
+          </li>
+          <li class='' id='ref_5770' >
+            <a class=' dropdown-toggle' data-hover='dropdown' href='/curation-activities/' title='' >Learn about ClinGen curation activities</a>
+              <ul class='dropdown-menu hidden-xs hidden-sm'>
+                <li><a href='https://www.clinicalgenome.org/curation-activities/gene-disease-validity/'>Gene-Disease Validity</a></li>
+                <li><a href='https://www.clinicalgenome.org/curation-activities/variant-pathogenicity-curation/'>Variant Pathogenicity Curation</a></li>
+                <li><a href='https://www.clinicalgenome.org/curation-activities/clinical-actionability/'>Clinical Actionability</a></li>
+                <li><a href='https://www.clinicalgenome.org/curation-activities/dosage-sensitivity/'>Dosage Sensitivity</a></li>
+              </ul>
+            </li>            
+          </ul>
           </div>
+
             <%= form_tag(home_index_path, method: "get", id:"remote") do %>
               <div id='header_search' class="input-group">
                 <%= text_field_tag :term, "", class: 'form-control search-typeahead', placeholder: 'Search our Knowledge Base for genes and diseases...' %>
@@ -93,21 +123,21 @@
             <% end %>
           <nav id='nav_primary' class=" hidden-sm hidden-xs">
               <ul class='nav nav-pills pull-right'>
-          <li class='' role='presentation' id='ref_1001' >
-            <a class='' href='https://www.clinicalgenome.org/about/' title='' >About</a>
+          <li class='' id='ref_1001' >
+            <a class=' dropdown-toggle' data-hover='dropdown' href='/about/' title='' >About ClinGen</a>
+          <ul class='dropdown-menu hidden-xs hidden-sm'><li><a href='/about/about-clingen/'>About ClinGen</a></li><li><a href='https://www.clinicalgenome.org/about/about-the-clingen-and-clinvar-partnership/'>ClinGen and ClinVar Partnership</a></li><li><a href='/about/clingen-curation-activities-overview/'>ClinGen Curation Activities Overview</a></li><li><a href='/about/people/'>ClinGen Directory</a></li><li><a href='/about/clingen-policies/'>ClinGen Policies</a></li><li><a href='/about/clingen-system-map/'>ClinGen System Map</a></li><li><a href='/about/events-news/'>Events &amp; News</a></li><li><a href='/about/get-involved/'>Get Involved</a></li><li><a href='/about/clingen-leadership/'>Leadership</a></li><li><a href='/about/working-groups/'>Working Groups</a></li></ul></li>
+          <li class='' id='ref_5761' >
+            <a class=' dropdown-toggle' data-hover='dropdown' href='/resources-tools/' title='' >Resources &amp; Tools</a>
+          <ul class='dropdown-menu hidden-xs hidden-sm'><li><a href='/resources-tools/clingens-curation-interfaces/#anchor_Curation_Interfaces'>Curation Interfaces</a></li><li><a href='/resources-tools/additional-curation-resources/#anchor_Curation_Resources'>Curation Resources</a></li><li><a href='/resources-tools/resources-for-laboratories-clinicians/#anchor_Resources_for_Labs__amp__Clinicians'>Resources for Labs &amp; Clinicians</a></li><li><a href='/resources-tools/genomeconnect/#anchor_GenomeConnect'>GenomeConnect</a></li></ul></li>
+          <li class='' id='ref_1119' >
+            <a class=' '  href='/genomeconnect/' title='' >GenomeConnect</a>
           </li>
-          <li class='' role='presentation' id='ref_5297' >
-            <a class='' href='https://www.clinicalgenome.org/clingen-tools/' title='' >Resources &amp; Tools</a>
-          </li>
-          <li class='' role='presentation' id='ref_1119' >
-            <a class='' href='https://www.clinicalgenome.org/genomeconnect/' title='' >GenomeConnect</a>
-          </li>
-          <li class='' role='presentation' id='ref_5753' >
-            <a class='' href='https://www.clinicalgenome.org/share-your-data/' title='' >How to share your data</a>
-          </li>
-          <li class='' role='presentation' id='ref_5770' >
-            <a class='' href='https://www.clinicalgenome.org/curation-starts-here/' title='' >Learn about ClinGen curation activities</a>
-          </li></nav>
+          <li class='' id='ref_5753' >
+            <a class=' dropdown-toggle' data-hover='dropdown' href='/share-your-data/' title='' >How to share your data</a>
+          <ul class='dropdown-menu hidden-xs hidden-sm'><li><a href='/share-your-data/laboratories/'>Laboratories</a></li><li><a href='/share-your-data/clinicians/'>Clinicians</a></li><li><a href='/share-your-data/patients/'>Patients</a></li></ul></li>
+          <li class='' id='ref_5770' >
+            <a class=' dropdown-toggle' data-hover='dropdown' href='/curation-activities/' title='' >Learn about ClinGen curation activities</a>
+          <ul class='dropdown-menu hidden-xs hidden-sm'><li><a href='/curation-activities/gene-disease-validity/'>Gene-Disease Validity</a></li><li><a href='/curation-activities/variant-pathogenicity-curation/'>Variant Pathogenicity Curation</a></li><li><a href='/curation-activities/clinical-actionability/'>Clinical Actionability</a></li><li><a href='/curation-activities/dosage-sensitivity/'>Dosage Sensitivity</a></li></ul></li>          </nav>
           
         </div>
       </div>
@@ -212,10 +242,23 @@
 
 
 <div id="footer" class="container  background-trans padding-top-xl">
-
-
-<div id="" class="text-center visible-xs visible-sm hidden-print"><br><a name="footnav" id="footnav"></a>
-          <div><a class="btn btn-default btn-lg  btn-block" href="https://www.clinicalgenome.org/clingen-tools/" title="">Resources &amp; Tools</a></div><div><a class="btn btn-default btn-lg  btn-block" href="https://www.clinicalgenome.org/genomeconnect/" title="">GenomeConnect</a></div><div><a class="btn btn-default btn-lg  btn-block" href="https://www.clinicalgenome.org/about/" title="">About</a></div><div><a class="btn btn-default btn-lg  btn-block" href="https://www.clinicalgenome.org/share-your-data/" title="">How to share your data</a></div><div><a class="btn btn-default btn-lg  btn-block" href="https://www.clinicalgenome.org/curation-starts-here/" title="">Learn about ClinGen curation activities</a></div><div><a class="btn btn-default btn-lg  btn-block" href="/consent-form-test/" title="">Consent Form Test</a></div>        </div>
+  <div id="" class="text-center visible-xs visible-sm hidden-print"><br  /><a name="footnav" id="footnav"></a>
+    <div>
+      <a  class='btn btn-default btn-lg  btn-block' href='https://www.clinicalgenome.org/about/' title='' >About ClinGen</a>
+    </div>
+    <div>
+      <a  class='btn btn-default btn-lg  btn-block' href='https://www.clinicalgenome.org/resources-tools/' title='' >Resources &amp; Tools</a>
+    </div>
+    <div>
+      <a  class='btn btn-default btn-lg  btn-block' href='https://www.clinicalgenome.org/genomeconnect/' title='' >GenomeConnect</a>
+    </div>
+    <div>
+      <a  class='btn btn-default btn-lg  btn-block' href='https://www.clinicalgenome.org/share-your-data/' title='' >How to share your data</a>
+    </div>
+    <div>
+      <a  class='btn btn-default btn-lg  btn-block' href='https://www.clinicalgenome.org/curation-activities/' title='' >Learn about ClinGen curation activities</a>
+    </div>
+  </div>
 
         <div class="row">
                 <div id="footer_disclaimer" class="col-md-12 text-sm text-muted">
@@ -231,8 +274,22 @@
         <div class="col-sm-8 padding-sm hidden-xs hidden-sm ">
         <ul class="list-inline margin-none pull-right ">
         
-            </li>                  <li><a class="text-sm" href="https://www.clinicalgenome.org//site-map/">Site Map</a></li>
-                  <li><a class="text-sm" href="https://www.clinicalgenome.org//contact/">Contact ClinGen</a></li>
+            <li class=''>
+              <a class='text-sm' href='https://www.clinicalgenome.org/about/' title='' >About ClinGen</a>
+            </li>
+            <li class=''>
+              <a class='text-sm' href='https://www.clinicalgenome.org/resources-tools/' title='' >Resources &amp; Tools</a>
+            </li>
+            <li class=''>
+              <a class='text-sm' href='https://www.clinicalgenome.org/genomeconnect/' title='' >GenomeConnect</a>
+            </li>
+            <li class=''>
+              <a class='text-sm' href='https://www.clinicalgenome.org/share-your-data/' title='' >How to share your data</a>
+            </li>
+            <li class=''>
+              <a class='text-sm' href='https://www.clinicalgenome.org/curation-activities/' title='' >Learn about ClinGen curation activities</a>
+            </li>                  <li><a  class="text-sm" href='https://www.clinicalgenome.org/site-map/'>Site Map</a></li>
+                  <li><a  class="text-sm" href='https://www.clinicalgenome.org/contact/'>Contact ClinGen</a></li>
         </ul>
         </div>
             </div>
