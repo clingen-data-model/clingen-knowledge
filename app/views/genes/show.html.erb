@@ -52,9 +52,6 @@
               <% end %>
             <% end %>
             <% if @gene.dosage_assertions.present? %>
-                <% if !@diseases.present? %>
-                <hr class="results_curation_summary_details_spacer" />
-                <% end %>
                 <%= render 'gene_dosage_no_condition'%>
             <% end %>
             <hr class="results_curation_summary_details_spacer" />
