@@ -18,3 +18,22 @@
 //= require selectize
 //= require notes
 //= require search
+
+
+
+
+
+// Tracking for google of the onclicks
+$( ".externallink" ).on( "click", function() {
+    var title = $(this).attr("title");
+    //console.log( "externallink" );
+    //console.log( title );
+    ga('send', 'event', 'external_link', 'click', title );
+});
+
+$( ".externalresource" ).on( "click", function() {
+    var title = $(this).attr("title");
+    //console.log( "externallink" );
+    //console.log( title );
+    ga('send', 'event', 'external_resource', 'click', title );
+});

@@ -59,10 +59,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_gene_medgen_genetics_summary\" href=\"https://www.ncbi.nlm.nih.gov/medgen/?term=\"medgen+gtr+tests+clinical\"[Filter]+" + var + "#Additional_description\" target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_gene_medgen_genetics_summary\" class='externalresource' title='" + title + "' href=\"https://www.ncbi.nlm.nih.gov/medgen/?term=\"medgen+gtr+tests+clinical\"[Filter]+" + var + "#Additional_description\" target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_gene_medgen_genetics_summary\" class='btn btn-default btn-xs' href=\"https://www.ncbi.nlm.nih.gov/medgen/?term='medgen+gtr+tests+clinical'[Filter]+" + var + "#Additional_description\" target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_gene_medgen_genetics_summary\" class='btn btn-default btn-xs externalresource' title='" + title + "' href=\"https://www.ncbi.nlm.nih.gov/medgen/?term='medgen+gtr+tests+clinical'[Filter]+" + var + "#Additional_description\" target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "Organizes information related to human medical genetics, such as attributes of conditions with a genetic contribution."
@@ -84,10 +84,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_gene_genetic_practice_guidelines\" href='https://www.ncbi.nlm.nih.gov/medgen?term=(\"has guideline\"%5BProperties%5D) AND " + var + "#Professional_guidelines' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_gene_genetic_practice_guidelines\" class='externalresource' title='" + title + "' href='https://www.ncbi.nlm.nih.gov/medgen?term=(\"has guideline\"%5BProperties%5D) AND " + var + "#Professional_guidelines' target=\"_blank\">" + title + "</a>").html_safe
 
      elsif item == "button"
-      ("<a id=\"external_gene_genetic_practice_guidelines\" class='btn btn-default btn-xs' href='https://www.ncbi.nlm.nih.gov/medgen?term=(\"has guideline\"%5BProperties%5D) AND " + var + "#Professional_guidelines' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_gene_genetic_practice_guidelines\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://www.ncbi.nlm.nih.gov/medgen?term=(\"has guideline\"%5BProperties%5D) AND " + var + "#Professional_guidelines' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "As guidelines are identified that relate to a disorder, gene, or variation, staff at NCBI connect them to the appropriate records. This page provides an alphabetical list of the professional practice guidelines, position statements, and recommendations that have been identified."
@@ -107,10 +107,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_gene_dosage_sensitivity\" href='https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=" + var + "&subject' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_gene_dosage_sensitivity\" href='https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=" + var + "&subject' target=\"_blank\">" + title + "</a>").html_safe
     
     elsif item == "button"
-      ("<a id=\"external_gene_dosage_sensitivity\" class='btn btn-default btn-xs' href='https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=" + var + "&subject' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_gene_dosage_sensitivity\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=" + var + "&subject' target=\"_blank\">" + title + "</a>").html_safe
     
     elsif item == "url"
       ("https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=" + var + "&subject").html_safe
@@ -135,10 +135,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_gene_gtr_gene_tests\" href='https://www.ncbi.nlm.nih.gov/gtr/tests/?term=" + var + "&test_type=Clinical&certificate=CLIA Certified' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_gene_gtr_gene_tests\" href='https://www.ncbi.nlm.nih.gov/gtr/tests/?term=" + var + "&test_type=Clinical&certificate=CLIA Certified' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_gene_gtr_gene_tests\" class='btn btn-default btn-xs' href='https://www.ncbi.nlm.nih.gov/gtr/tests/?term=" + var + "&test_type=Clinical&certificate=CLIA Certified' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_gene_gtr_gene_tests\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://www.ncbi.nlm.nih.gov/gtr/tests/?term=" + var + "&test_type=Clinical&certificate=CLIA Certified' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "A voluntary registry of genetic tests and laboratories, with detailed information about the tests such as what is measured and analytic and clinical validity.  GTR also is a nexus for information about genetic conditions and provides context-specific links to a variety of resources, including practice guidelines, published literature, and genetic data/information. The scope of GTR includes single gene tests for Mendelian disorders, somatic/cancer tests and pharmacogenetic tests including complex arrays, panels."
@@ -160,10 +160,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_gene_pharmgkb_gene\" href='https://www.pharmgkb.org/search/search.action?typeFilter=Gene&exactMatch=false&query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_gene_pharmgkb_gene\" href='https://www.pharmgkb.org/search/search.action?typeFilter=Gene&exactMatch=false&query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_gene_pharmgkb_gene\" class='btn btn-default btn-xs' href='https://www.pharmgkb.org/search/search.action?typeFilter=Gene&exactMatch=false&query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_gene_pharmgkb_gene\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://www.pharmgkb.org/search/search.action?typeFilter=Gene&exactMatch=false&query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "PharmGKB is a comprehensive resource that curates knowledge about the impact of genetic variation on drug response for clinicians and researchers."
@@ -185,10 +185,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_gene_omim\" href='http://omim.org/search?index=entry&start=1&limit=10&search=approved_gene_symbol%3A" + var + "+AND+gene_id_exists&sort=score+desc%2C+prefix_sort+desc' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_gene_omim\" href='http://omim.org/search?index=entry&start=1&limit=10&search=approved_gene_symbol%3A" + var + "+AND+gene_id_exists&sort=score+desc%2C+prefix_sort+desc' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_gene_omim\" class='btn btn-default btn-xs' href='http://omim.org/search?index=entry&start=1&limit=10&search=approved_gene_symbol%3A" + var + "+AND+gene_id_exists&sort=score+desc%2C+prefix_sort+desc' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_gene_omim\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='http://omim.org/search?index=entry&start=1&limit=10&search=approved_gene_symbol%3A" + var + "+AND+gene_id_exists&sort=score+desc%2C+prefix_sort+desc' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "An Online Catalog of Human Genes and Genetic Disorders."
@@ -210,10 +210,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_gene_genetics_home_reference\" href='https://ghr.nlm.nih.gov/search?query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_gene_genetics_home_reference\" href='https://ghr.nlm.nih.gov/search?query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_gene_genetics_home_reference\" class='btn btn-default btn-xs' href='https://ghr.nlm.nih.gov/search?query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_gene_genetics_home_reference\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://ghr.nlm.nih.gov/search?query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "Genetics Home Reference provides consumer-friendly information about the effects of genetic variation on human health."
@@ -235,10 +235,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_gene_gene_reviews\" href='https://www.ncbi.nlm.nih.gov/books/NBK1116/?term=" + var + "%5BGeneSymbol%5D' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_gene_gene_reviews\" href='https://www.ncbi.nlm.nih.gov/books/NBK1116/?term=" + var + "%5BGeneSymbol%5D' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_gene_gene_reviews\" class='btn btn-default btn-xs' href='https://www.ncbi.nlm.nih.gov/books/NBK1116/?term=" + var + "%5BGeneSymbol%5D' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_gene_gene_reviews\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://www.ncbi.nlm.nih.gov/books/NBK1116/?term=" + var + "%5BGeneSymbol%5D' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "url"
       ("https://www.ncbi.nlm.nih.gov/books/NBK1116/?term=" + var + "%5BGeneSymbol%5D").html_safe
@@ -263,10 +263,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_gene_clinvar\" href='http://www.ncbi.nlm.nih.gov/clinvar/?term=%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_gene_clinvar\" href='http://www.ncbi.nlm.nih.gov/clinvar/?term=%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_gene_clinvar\" class='btn btn-default btn-xs' href='http://www.ncbi.nlm.nih.gov/clinvar/?term=%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_gene_clinvar\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='http://www.ncbi.nlm.nih.gov/clinvar/?term=%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "ClinGen and ClinVar are close partners and have established a collaborative working relationship. ClinVar is a critical resource for ClinGen. ClinVar aggregates information about genomic variation and its relationship to human health."
@@ -288,10 +288,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_gene_clinvar_acmg_variants\" href='http://www.ncbi.nlm.nih.gov/clinvar/?term=%22gene+acmg+incidental+2013%22%5BProperties%5D+%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_gene_clinvar_acmg_variants\" href='http://www.ncbi.nlm.nih.gov/clinvar/?term=%22gene+acmg+incidental+2013%22%5BProperties%5D+%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_gene_clinvar_acmg_variants\" class='btn btn-default btn-xs' href='http://www.ncbi.nlm.nih.gov/clinvar/?term=%22gene+acmg+incidental+2013%22%5BProperties%5D+%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_gene_clinvar_acmg_variants\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='http://www.ncbi.nlm.nih.gov/clinvar/?term=%22gene+acmg+incidental+2013%22%5BProperties%5D+%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "ClinGen and ClinVar are close partners and have established a collaborative working relationship. ClinVar is a critical resource for ClinGen. ClinVar aggregates information about genomic variation and its relationship to human health."
@@ -313,10 +313,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_gene_1000_genomes\" href='http://browser.1000genomes.org/Homo_sapiens/Search/Results?site=ensembl&q=%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_gene_1000_genomes\" href='http://browser.1000genomes.org/Homo_sapiens/Search/Results?site=ensembl&q=%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_gene_1000_genomes\" class='btn btn-default btn-xs' href='http://browser.1000genomes.org/Homo_sapiens/Search/Results?site=ensembl&q=%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_gene_1000_genomes\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='http://browser.1000genomes.org/Homo_sapiens/Search/Results?site=ensembl&q=%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "An interactive graphical viewer that allows users to explore variant calls, genotype calls and supporting evidence (such as aligned sequence reads) that have been produced by the 1000 Genomes Project.
@@ -338,10 +338,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_gene_ncbi_browser\" href='https://www.ncbi.nlm.nih.gov/variation/tools/1000genomes/?q=" + var + "%5bgene%5d' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_gene_ncbi_browser\" href='https://www.ncbi.nlm.nih.gov/variation/tools/1000genomes/?q=" + var + "%5bgene%5d' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_gene_ncbi_browser\" class='btn btn-default btn-xs' href='https://www.ncbi.nlm.nih.gov/variation/tools/1000genomes/?q=" + var + "%5bgene%5d' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_gene_ncbi_browser\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://www.ncbi.nlm.nih.gov/variation/tools/1000genomes/?q=" + var + "%5bgene%5d' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "The 1000 Genomes Browser allows users to explore variant calls, genotype calls and supporting sequence read alignments that have been produced by the 1000 Genomes project."
@@ -363,10 +363,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_condition_gtr_disease_tests\" href='https://www.ncbi.nlm.nih.gov/gtr/tests/?term=" + var + "[DISNAME]%20AND%20(testtype_clinical[PROP])' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_condition_gtr_disease_tests\" href='https://www.ncbi.nlm.nih.gov/gtr/tests/?term=" + var + "[DISNAME]%20AND%20(testtype_clinical[PROP])' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_condition_gtr_disease_tests\" class='btn btn-default btn-xs' href='https://www.ncbi.nlm.nih.gov/gtr/tests/?term=" + var + "[DISNAME]%20AND%20(testtype_clinical[PROP])' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_condition_gtr_disease_tests\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://www.ncbi.nlm.nih.gov/gtr/tests/?term=" + var + "[DISNAME]%20AND%20(testtype_clinical[PROP])' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "The Genetic Testing Registry (GTR®) provides a central location for voluntary submission of genetic test information by providers. "
@@ -388,10 +388,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_condition_genetic_practice_guidelines\" href='https://www.ncbi.nlm.nih.gov/medgen?term=(%22has%20guideline%22%5BProperties%5D)%20AND%20137215%5BMIM%20ID%5D#Professional_guidelines' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_condition_genetic_practice_guidelines\" href='https://www.ncbi.nlm.nih.gov/medgen?term=(%22has%20guideline%22%5BProperties%5D)%20AND%20137215%5BMIM%20ID%5D#Professional_guidelines' target=\"_blank\">" + title + "</a>").html_safe
 
      elsif item == "button"
-      ("<a id=\"external_condition_genetic_practice_guidelines\" class='btn btn-default btn-xs' href='https://www.ncbi.nlm.nih.gov/medgen?term=(%22has%20guideline%22%5BProperties%5D)%20AND%20137215%5BMIM%20ID%5D#Professional_guidelines' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_condition_genetic_practice_guidelines\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://www.ncbi.nlm.nih.gov/medgen?term=(%22has%20guideline%22%5BProperties%5D)%20AND%20137215%5BMIM%20ID%5D#Professional_guidelines' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "As guidelines are identified that relate to a disorder, gene, or variation, staff at NCBI connect them to the appropriate records. This page provides an alphabetical list of the professional practice guidelines, position statements, and recommendations that have been identified."
@@ -413,10 +413,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_condition_omim\" href='https://www.omim.org/search/?index=entry&search=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_condition_omim\" href='https://www.omim.org/search/?index=entry&search=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_condition_omim\" class='btn btn-default btn-xs' href='https://www.omim.org/search/?index=entry&search=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_condition_omim\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://www.omim.org/search/?index=entry&search=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "An Online Catalog of Human Genes and Genetic Disorders."
@@ -438,10 +438,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_condition_pharmgkb\" href='https://www.pharmgkb.org/search/search.action?typeFilter=Disease&exactMatch=false&query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_condition_pharmgkb\" href='https://www.pharmgkb.org/search/search.action?typeFilter=Disease&exactMatch=false&query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_condition_pharmgkb\" class='btn btn-default btn-xs' href='https://www.pharmgkb.org/search/search.action?typeFilter=Disease&exactMatch=false&query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_condition_pharmgkb\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://www.pharmgkb.org/search/search.action?typeFilter=Disease&exactMatch=false&query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "PharmGKB is a comprehensive resource that curates knowledge about the impact of genetic variation on drug response for clinicians and researchers."
@@ -463,10 +463,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_condition_medgen_genetic_summary\" href='https://www.ncbi.nlm.nih.gov/medgen/?term=%22medgen+gtr+tests+clinical%22[Filter]+" + var + "#Additional_description' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_condition_medgen_genetic_summary\" href='https://www.ncbi.nlm.nih.gov/medgen/?term=%22medgen+gtr+tests+clinical%22[Filter]+" + var + "#Additional_description' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_condition_medgen_genetic_summary\" class='btn btn-default btn-xs' href='https://www.ncbi.nlm.nih.gov/medgen/?term=%22medgen+gtr+tests+clinical%22[Filter]+" + var + "#Additional_description' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_condition_medgen_genetic_summary\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://www.ncbi.nlm.nih.gov/medgen/?term=%22medgen+gtr+tests+clinical%22[Filter]+" + var + "#Additional_description' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "Organizes information related to human medical genetics, such as attributes of conditions with a genetic contribution."
@@ -488,10 +488,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_condition_genetics_home_reference\" href='https://ghr.nlm.nih.gov/search?query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_condition_genetics_home_reference\" href='https://ghr.nlm.nih.gov/search?query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_condition_genetics_home_reference\" class='btn btn-default btn-xs' href='https://ghr.nlm.nih.gov/search?query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_condition_genetics_home_reference\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://ghr.nlm.nih.gov/search?query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "Genetics Home Reference provides consumer-friendly information about the effects of genetic variations on human health."
@@ -513,10 +513,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_condition_clinvar_variants_related_to_genetic_disease\" href='http://www.ncbi.nlm.nih.gov/clinvar/?term=%22" + var + "%22%5BDisease/Phenotype%5D' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_condition_clinvar_variants_related_to_genetic_disease\" href='http://www.ncbi.nlm.nih.gov/clinvar/?term=%22" + var + "%22%5BDisease/Phenotype%5D' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_condition_clinvar_variants_related_to_genetic_disease\" class='btn btn-default btn-xs' href='http://www.ncbi.nlm.nih.gov/clinvar/?term=%22" + var + "%22%5BDisease/Phenotype%5D' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_condition_clinvar_variants_related_to_genetic_disease\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='http://www.ncbi.nlm.nih.gov/clinvar/?term=%22" + var + "%22%5BDisease/Phenotype%5D' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "ClinVar aggregates information about genomic variation and its relationship to human health."
@@ -538,10 +538,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_condition_1000_genomes\" href='https://browser.1000genomes.org/Homo_sapiens/Search/Results?site=ensembl&q=%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_condition_1000_genomes\" href='http://browser.1000genomes.org/Homo_sapiens/Search/Results?site=ensembl&q=%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_condition_1000_genomes\" class='btn btn-default btn-xs' href='https://browser.1000genomes.org/Homo_sapiens/Search/Results?site=ensembl&q=%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_condition_1000_genomes\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='http://browser.1000genomes.org/Homo_sapiens/Search/Results?site=ensembl&q=%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "An interactive graphical viewer that allows users to explore variant calls, genotype calls and supporting evidence (such as aligned sequence reads) that have been produced by the 1000 Genomes Project.
@@ -564,10 +564,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_drug_pharmgkb_dosing_guidelines\" href='https://www.pharmgkb.org/search/search.action?exactMatch=false&annoFilter=DOSING_GUIDELINES&query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_drug_pharmgkb_dosing_guidelines\" href='https://www.pharmgkb.org/search/search.action?exactMatch=false&annoFilter=DOSING_GUIDELINES&query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_drug_pharmgkb_dosing_guidelines\" class='btn btn-default btn-xs' href='https://www.pharmgkb.org/search/search.action?exactMatch=false&annoFilter=DOSING_GUIDELINES&query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_drug_pharmgkb_dosing_guidelines\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://www.pharmgkb.org/search/search.action?exactMatch=false&annoFilter=DOSING_GUIDELINES&query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "PharmGKB is a comprehensive resource that curates knowledge about the impact of genetic variation on drug response for clinicians and researchers."
@@ -589,10 +589,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_drug_gtr_clia\" href='https://www.ncbi.nlm.nih.gov/gtr/tests/?term=" + var + "&test_type=Clinical&certificate=CLIA%20Certified' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_drug_gtr_clia\" href='https://www.ncbi.nlm.nih.gov/gtr/tests/?term=" + var + "&test_type=Clinical&certificate=CLIA%20Certified' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_drug_gtr_clia\" class='btn btn-default btn-xs' href='https://www.ncbi.nlm.nih.gov/gtr/tests/?term=" + var + "&test_type=Clinical&certificate=CLIA%20Certified' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_drug_gtr_clia\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://www.ncbi.nlm.nih.gov/gtr/tests/?term=" + var + "&test_type=Clinical&certificate=CLIA%20Certified' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "The Genetic Testing Registry (GTR®) provides a central location for voluntary submission of genetic test information by providers. "
@@ -614,10 +614,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_drug_cpic_pharmacogenomics_guidelines\" href='https://www.ncbi.nlm.nih.gov/medgen/docs/guideline/#CPIC' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_drug_cpic_pharmacogenomics_guidelines\" href='https://www.ncbi.nlm.nih.gov/medgen/docs/guideline/#CPIC' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_drug_cpic_pharmacogenomics_guidelines\" class='btn btn-default btn-xs' href='https://www.ncbi.nlm.nih.gov/medgen/docs/guideline/#CPIC' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_drug_cpic_pharmacogenomics_guidelines\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://www.ncbi.nlm.nih.gov/medgen/docs/guideline/#CPIC' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "As guidelines are identified that relate to a disorder, gene, or variant, staff at NCBI connect them to the appropriate records. "
@@ -639,10 +639,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_drug_medgen_drug_gene_summary\" href='https://www.ncbi.nlm.nih.gov/medgen/?term=%22medgen+gtr+tests+clinical%22[Filter]+" + var + "#Additional_description' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_drug_medgen_drug_gene_summary\" href='https://www.ncbi.nlm.nih.gov/medgen/?term=%22medgen+gtr+tests+clinical%22[Filter]+" + var + "#Additional_description' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_drug_medgen_drug_gene_summary\" class='btn btn-default btn-xs' href='https://www.ncbi.nlm.nih.gov/medgen/?term=%22medgen+gtr+tests+clinical%22[Filter]+" + var + "#Additional_description' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_drug_medgen_drug_gene_summary\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://www.ncbi.nlm.nih.gov/medgen/?term=%22medgen+gtr+tests+clinical%22[Filter]+" + var + "#Additional_description' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "Organizes information related to human medical genetics, such as attributes of conditions with a genetic contribution."
@@ -664,10 +664,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_drug_genetic_practice_guidelines\" href='https://www.ncbi.nlm.nih.gov/medgen?term=(%22has%20guideline%22%5BProperties%5D)%20AND%20" + var + "#Professional_guidelines' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_drug_genetic_practice_guidelines\" href='https://www.ncbi.nlm.nih.gov/medgen?term=(%22has%20guideline%22%5BProperties%5D)%20AND%20" + var + "#Professional_guidelines' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_drug_genetic_practice_guidelines\" class='btn btn-default btn-xs' href='https://www.ncbi.nlm.nih.gov/medgen?term=(%22has%20guideline%22%5BProperties%5D)%20AND%20" + var + "#Professional_guidelines' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_drug_genetic_practice_guidelines\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://www.ncbi.nlm.nih.gov/medgen?term=(%22has%20guideline%22%5BProperties%5D)%20AND%20" + var + "#Professional_guidelines' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "As guidelines are identified that relate to a disorder, gene, or variation, staff at NCBI connect them to the appropriate records. This page provides an alphabetical list of the professional practice guidelines, position statements, and recommendations that have been identified."
@@ -689,10 +689,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_drug_omim\" href='http://omim.org/search?index=entry&start=1&limit=10&search=" + var + "&sort=score+desc%2C+prefix_sort+desc' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_drug_omim\" href='http://omim.org/search?index=entry&start=1&limit=10&search=" + var + "&sort=score+desc%2C+prefix_sort+desc' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_drug_omim\" class='btn btn-default btn-xs' href='http://omim.org/search?index=entry&start=1&limit=10&search=" + var + "&sort=score+desc%2C+prefix_sort+desc' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_drug_omim\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='http://omim.org/search?index=entry&start=1&limit=10&search=" + var + "&sort=score+desc%2C+prefix_sort+desc' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "An Online Catalog of Human Genes and Genetic Disorders."
@@ -714,10 +714,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_drug_clinvar_variants_with_drug_response\" href='http://www.ncbi.nlm.nih.gov/clinvar/?term=%22clinsig+drug+response%22%5BProperties%5D+%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_drug_clinvar_variants_with_drug_response\" href='http://www.ncbi.nlm.nih.gov/clinvar/?term=%22clinsig+drug+response%22%5BProperties%5D+%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_drug_clinvar_variants_with_drug_response\" class='btn btn-default btn-xs' href='http://www.ncbi.nlm.nih.gov/clinvar/?term=%22clinsig+drug+response%22%5BProperties%5D+%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_drug_clinvar_variants_with_drug_response\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='http://www.ncbi.nlm.nih.gov/clinvar/?term=%22clinsig+drug+response%22%5BProperties%5D+%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "ClinGen and ClinVar are close partners and have established a collaborative working relationship. ClinVar is a critical resource for ClinGen. ClinVar aggregates information about genomic variation and its relationship to human health."
@@ -739,10 +739,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_drug_clinvar_medication_ingredient\" href='http://www.ncbi.nlm.nih.gov/clinvar/?term=%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_drug_clinvar_medication_ingredient\" href='http://www.ncbi.nlm.nih.gov/clinvar/?term=%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_drug_clinvar_medication_ingredient\" class='btn btn-default btn-xs' href='http://www.ncbi.nlm.nih.gov/clinvar/?term=%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_drug_clinvar_medication_ingredient\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='http://www.ncbi.nlm.nih.gov/clinvar/?term=%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "ClinGen and ClinVar are close partners and have established a collaborative working relationship. ClinVar is a critical resource for ClinGen. ClinVar aggregates information about genomic variation and its relationship to human health."
@@ -764,10 +764,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_drug_1000_genomes_general_medication\" href='http://browser.1000genomes.org/Homo_sapiens/Search/Results?site=ensembl&q=%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_drug_1000_genomes_general_medication\" href='http://browser.1000genomes.org/Homo_sapiens/Search/Results?site=ensembl&q=%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_drug_1000_genomes_general_medication\" class='btn btn-default btn-xs' href='http://browser.1000genomes.org/Homo_sapiens/Search/Results?site=ensembl&q=%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_drug_1000_genomes_general_medication\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='http://browser.1000genomes.org/Homo_sapiens/Search/Results?site=ensembl&q=%22" + var + "%22' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "An interactive graphical viewer that allows users to explore variant calls, genotype calls and supporting evidence (such as aligned sequence reads) that have been produced by the 1000 Genomes Project.
