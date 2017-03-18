@@ -37,7 +37,7 @@ class GenesController < ApplicationController
 
   # Be sure to add here anything needed for the gene_facts partial
   def show
-    expires_in 4.hours public: true
+    expires_in 4.hours, public: true
 
     @gene = Gene.find_by(hgnc_id: params[:id])
 
