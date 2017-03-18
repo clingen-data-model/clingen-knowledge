@@ -2,7 +2,6 @@
 <html>
   <head>
     <title><%= pageTitle(@pageTitle) %></title>
-    <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
@@ -227,6 +226,7 @@
                   </li>
                 </ul>
               </div>
+              <% if false  %>
               <% if agent_signed_in? %>
                 <div class="btn-group" role="group">
                   <%= link_to dashboard_index_path, :class => "btn btn-default dropdown-toggle", :data => { :'hover' => 'dropdown' }  do %>
@@ -260,6 +260,7 @@
                   <i class="glyphicon glyphicon-bookmark"></i>
                   <span class="">Sign-up</span>
                 <% end %>
+              <% end %>
               <% end %>
             </div>
           </div>
