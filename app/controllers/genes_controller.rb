@@ -3,6 +3,8 @@ class GenesController < ApplicationController
 
 
   def index
+    expires_in 4.hours, public: true
+
     respond_to do |format|
       format.json do 
         @genes = Gene.all(:g).where("g.symbol starts with {symbol}")
@@ -35,6 +37,8 @@ class GenesController < ApplicationController
 
   # Be sure to add here anything needed for the gene_facts partial
   def show
+    expires_in 4.hours public: true
+
     @gene = Gene.find_by(hgnc_id: params[:id])
 
     unless @gene.assertions.exists?

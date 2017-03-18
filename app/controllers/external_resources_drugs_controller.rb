@@ -3,6 +3,8 @@ class ExternalResourcesDrugsController < ApplicationController
 
   # Be sure to add here anything needed for the gene_facts partial
   def index
+    expires_in 4.hours, public: true
+
     curie = params[:drug_id][6, 30]
     @drug = Drug.find_by(curie: curie)
     #@drug = Drug.find_by(curie: curie)

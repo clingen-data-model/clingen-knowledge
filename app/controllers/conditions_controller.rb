@@ -2,6 +2,8 @@ class ConditionsController < ApplicationController
   include ActionView::Helpers::TextHelper
 
   def index
+    expires_in 4.hours, public: true
+
     @pageTitle = "Conditions";
     @page = params[:page] || 1
     if params[:term]
@@ -24,6 +26,8 @@ class ConditionsController < ApplicationController
   end
 
   def show
+    expires_in 4.hours, public: true
+    
     @condition = Condition.find_by(curie: params[:id])
 
     unless @condition.assertions.exists?

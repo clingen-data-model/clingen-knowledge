@@ -1,9 +1,8 @@
 class HomeController < ApplicationController
 
-  
-
   def index
     @term = params[:term]
+    expires_in 4.hours, public: true
 
     if !@term
       @term = params[:'mainSearchCriteria.v.dn']
@@ -53,6 +52,7 @@ class HomeController < ApplicationController
       end
     end
   end
+
 end
 
 
