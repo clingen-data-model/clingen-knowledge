@@ -24,6 +24,8 @@ module ClingenKnowledge
       g.orm             :neo4j
     end
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+
+    config.action_dispatch.rack_cache = true
     # Configure where the embedded neo4j database should exist
     # Notice embedded db is only available for JRuby
     # config.neo4j.session_type = :embedded  # default :http
