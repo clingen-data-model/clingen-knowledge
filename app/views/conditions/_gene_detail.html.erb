@@ -2,8 +2,9 @@
   <div class="col-sm-2">
     <h4>
     <%= link_to gene, :class => "text-black"  do %>
-      <%= gene.label %> <i class="glyphicon glyphicon-search text-10px text-muted"></i>
-    <% end %>
+      <%= gene.label %>
+      <div class='text-xs text-muted padding-top-xs'><%= gene.curie.gsub '_', ':'  %> <i class="glyphicon glyphicon-search text-10px text-muted"></i></div>
+      <% end %>
     </h4>
   </div>
   <div class="col-sm-10">
