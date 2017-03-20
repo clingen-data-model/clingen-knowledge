@@ -200,7 +200,7 @@
           <div class="pull-right search-content-header-buttons ">
             <div class="btn-group" role="group" aria-label="...">
               <div class="btn-group" role="group">
-                <button type="button" class="btn btn-default dropdown-hover" data-hover="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   ClinGen Curated <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
@@ -241,7 +241,7 @@
               <% if false  %>
               <% if agent_signed_in? %>
                 <div class="btn-group" role="group">
-                  <%= link_to dashboard_index_path, :class => "btn btn-default dropdown-toggle", :data => { :'hover' => 'dropdown' }  do %>
+                  <%= link_to dashboard_index_path, :class => "btn btn-default dropdown-toggle", :data => { :'toggle' => 'dropdown' }  do %>
                     <i class="glyphicon glyphicon-th-list"></i> <%= current_agent.first_name %>'s Dashboard <span class="caret"></span>
                   <% end %>
                   <ul class="dropdown-menu dropdown-menu-right">
