@@ -39,7 +39,7 @@ class HomeController < ApplicationController
         # return formatted json for typeahead
         if @term
           search_term = @term.upcase
-          @genes = Gene.all(:g).where("g.symbol starts with {term}")
+          @genes = Gene.all(:g).where("g.search_label contains {term}")
                      .params(term: search_term).limit(10).to_a
           @conditions = Condition.all(:c).where("c.search_label contains {term}")
                           .params(term: search_term).limit(10).to_a

@@ -25,7 +25,7 @@ class Gene
 
   def self.find_by_term(t)
     Gene.all(:g)
-      .where("g.symbol =~ ('(?i)' + {term} + '.*')")
+      .where("g.search_label contains {term}")
       .params(term: t)
   end
 
