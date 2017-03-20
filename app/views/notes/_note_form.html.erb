@@ -10,7 +10,7 @@
       <%= f.label :publication, "PubMed ID", class: "control-label" %>
       <div class="row">
 	<div class="col-sm-6">
-	  <%= f.text_field :pmid, autofocus: true, class: "form-control", placeholder: "PubMed ID - E.g. 123456", required: "required" %>
+	  <%= f.text_field :pmid, autofocus: true, class: "form-control", placeholder: "PubMed ID - E.g. 123456" %>
 	</div>
 	<div class="col-sm-6"><p class="help-block">
     	  Simply start typing the PubMed ID</p></div>
@@ -47,7 +47,7 @@
       <%= label_tag nil,  "Case-Level Data Summary", class: "control-label" %>
       <div class="row">
 	<div class="col-sm-6">
-	  <%= f.text_area :case_summary, autofocus: true, size: "100x4", class: "form-control", placeholder: "Summarize case-level data findings...", required: "required" %>
+	  <%= f.text_area :case_summary, autofocus: true, size: "100x4", class: "form-control", placeholder: "Summarize case-level data findings..." %>
 	</div>
 	<div class="col-sm-6">
 	  <p class="help-block">Provide a brief description of the cases discussed in the publication. What are their phenotypes? How were they ascertained?  How were variants identified? Is there inheritance information? Include any information you feel is relevant for curation</p>
@@ -68,7 +68,7 @@
       <%= label_tag nil,  "Case-Control Data Summary", class: "control-label" %>
       <div class="row">
 	<div class="col-sm-6">
-	  <%= f.text_area :case_control_summary, autofocus: true, size: "100x4", class: "form-control", placeholder: "Summarize case-level data findings...", required: "required" %>
+	  <%= f.text_area :case_control_summary, autofocus: true, size: "100x4", class: "form-control", placeholder: "Summarize case-level data findings..." %>
 	</div>
 	<div class="col-sm-6">
 	  <p class="help-block">Provide a brief description of the case-control study.  What are the characteristics of the case and control groups?  How were they ascertained?  Are there any factors that may affect the quality of this study?  What were the relevant findings?</p>
@@ -90,7 +90,7 @@
       <%= label_tag nil,  "Experimental Data Summary", class: "control-label" %>
       <div class="row">
 	<div class="col-sm-6">
-	  <%= f.text_area :experimental_summary, autofocus: true, size: "100x4", class: "form-control", placeholder: "Summarize case-level data findings...", required: "required" %>
+	  <%= f.text_area :experimental_summary, autofocus: true, size: "100x4", class: "form-control", placeholder: "Summarize case-level data findings..." %>
 	</div>
 	<div class="col-sm-6">
 	  <p class="help-block">Describe the studies performed and the relevant findings; refer to specific figures if applicable.</p>
@@ -109,7 +109,7 @@
       <%= label_tag nil,  "Additional comments", class: "control-label" %>
       <div class="row">
 	<div class="col-sm-6">
-	  <%= f.text_area :comments, autofocus: true, size: "100x4", class: "form-control", placeholder: "Additional comments...", required: "required" %>
+	  <%= f.text_area :comments, autofocus: true, size: "100x4", class: "form-control", placeholder: "Additional comments..." %>
 	</div>
 	<div class="col-sm-6">
 	  <p class="help-block">If you’d simply like to request that ClinGen review a gene, make that request here.</p>
