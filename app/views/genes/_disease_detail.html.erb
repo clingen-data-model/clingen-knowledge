@@ -2,7 +2,8 @@
   <div class="col-sm-2">
     <h4>
     <%= link_to disease, :class => "text-black"  do %>
-      <%= disease.label %> <i class="glyphicon glyphicon-search text-10px text-muted"></i>
+      <%= disease.label %> 
+      <div class='text-xs text-muted padding-top-xs'><%= disease.curie.gsub '_', ':'  %> <i class="glyphicon glyphicon-search text-10px text-muted"></i></div>
     <% end %>
     </h4>
     <% disease.inspect %>
