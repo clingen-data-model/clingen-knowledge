@@ -2,7 +2,7 @@ class DrugsController < ApplicationController
   include ActionView::Helpers::TextHelper
 
   def show
-    expires_in 4.hours, public: true
+    expires_in 1.minute, public: true
 
     curie = params[:id][6, 30]
     @drug = Drug.find_by(curie: curie)
@@ -16,7 +16,7 @@ class DrugsController < ApplicationController
   end
 
   def index
-    expires_in 4.hours, public: true
+    expires_in 1.minute, public: true
 
     @page = params[:page] || 1
     if params[:term]

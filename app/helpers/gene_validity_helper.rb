@@ -9,7 +9,7 @@ module GeneValidityHelper
   	varInner = ""
   	if !data.nil?
   	varStart = "<div class=\"GeneticEvidencePmidData\">"
-        if data["notes"]["note"]
+        unless data.dig("notes","note").blank?
           note = "(" + data["notes"]["note"] +")"
         else
           note = ""
@@ -36,7 +36,7 @@ module GeneValidityHelper
     varInner = ""
     if !data.nil?
     varStart = "<div class=\"GeneticEvidencePmidData\">"
-        if data["notes"]["note"]
+        unless data.dig("notes","note").blank?
           note = "(" + data["notes"]["note"] +")"
         else
           note = ""
