@@ -26,7 +26,7 @@ class Gene
   def self.find_by_term(t)
     Gene.all(:g)
       .where("g.search_label contains {term}")
-      .params(term: t)
+      .params(term: t.upcase)
   end
 
   # Grand query to construct summary page
