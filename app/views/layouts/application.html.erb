@@ -49,8 +49,7 @@
      ga('send', 'pageview');
     </script>
 
-    <%= stylesheet_link_tag "https://www.clinicalgenome.org/site/templates/assets/css/rebrand.css" %>
-    <%= stylesheet_link_tag "https://www.clinicalgenome.org/site/templates/assets/css/helpers.css" %>
+
   </head>
 
   <body>
@@ -85,7 +84,7 @@
         <div class="header clearfix row">
           <div id='header_logo_div' class="text-muted pull-left">
             <a id='header_logo_href' href="https://www.clinicalgenome.org/">
-              <img  id='header_logo_img' src="https://www.clinicalgenome.org/site/templates/assets/rebrand/logo/logo.png" alt="" />
+              <%= image_tag("logo.png", id: "header_logo_img") %>
             </a>
           </div>
           <div id='nav_mobile' class="dropdown pull-right visible-sm visible-xs">
@@ -322,5 +321,4 @@
     </div>
   </body>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <script src="https://www.clinicalgenome.org/site/templates/assets/js/bootstrap-hover-dropdown.js"></script>
 </html>
