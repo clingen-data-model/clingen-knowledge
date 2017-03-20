@@ -238,31 +238,10 @@
                   </li>
                 </ul>
               </div>
+              <%= yield :agent_controls %>
               <% if false  %>
               <% if agent_signed_in? %>
-                <div class="btn-group" role="group">
-                  <%= link_to dashboard_index_path, :class => "btn btn-default dropdown-toggle", :data => { :'hover' => 'dropdown' }  do %>
-                    <i class="glyphicon glyphicon-th-list"></i> <%= current_agent.first_name %>'s Dashboard <span class="caret"></span>
-                  <% end %>
-                  <ul class="dropdown-menu dropdown-menu-right">
-                    <li>
-                      <%= link_to dashboard_index_path, :class => ""  do %>
-                        <i class="glyphicon glyphicon-th-list"></i> <%= current_agent.first_name %>'s Dashboard
-                      <% end %>
-                    </li>
-                    <li>
-                      <%= link_to edit_agent_registration_path, :class => ""  do %>
-                        <i class="glyphicon glyphicon-user"></i> Manage Profile
-                      <% end %>
-                    </li>
-                    <li role="separator" class="divider"></li>
-                    <li>
-                      <%= link_to destroy_agent_session_path, :method => :delete, :class => ""  do %>
-                        <i class="glyphicon glyphicon-off text-danger"></i> Sign-out
-                      <% end %>
-                    </li>
-                  </ul>
-                </div>
+
               <% else %>
                 <%= link_to agent_session_path, :method => :get, :class => "btn btn-default"  do %>
                   <i class="glyphicon glyphicon-th-list"></i>
