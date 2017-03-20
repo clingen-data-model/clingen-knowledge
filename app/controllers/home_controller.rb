@@ -1,8 +1,7 @@
 class HomeController < ApplicationController
-
   def index
     @term = params[:term]
-    expires_in 4.hours, public: true
+    expires_in 1.minute, public: true
 
     if !@term
       @term = params[:'mainSearchCriteria.v.dn']

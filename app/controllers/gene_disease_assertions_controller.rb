@@ -1,7 +1,7 @@
 class GeneDiseaseAssertionsController < ApplicationController
 
   def index
-    expires_in 4.hours, public: true
+    expires_in 1.minute, public: true
 
     # @assertions = GeneDiseaseAssertion.all.limit(200)
     @assertions = Gene.all(:g).assertions(:a).where('a :GeneDiseaseAssertion').order('g.symbol').pluck(:a)
@@ -14,7 +14,7 @@ class GeneDiseaseAssertionsController < ApplicationController
   end
   
   def show
-    expires_in 4.hours, public: true
+    expires_in 1.minute, public: true
 
     @assertion = GeneDiseaseAssertion.find_by(perm_id: params[:id])
     @assertionScoreJson = ActiveSupport::JSON.decode(@assertion.score_string)

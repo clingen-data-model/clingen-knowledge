@@ -3,7 +3,7 @@ class ExternalResourcesConditionsController < ApplicationController
 
   # Be sure to add here anything needed for the gene_facts partial
   def index
-    expires_in 4.hours, public: true
+    expires_in 1.minute, public: true
 
     @condition = Condition.find_by(curie: params[:condition_id])
   # @gene =      Gene.find_by(hgnc_id: params[:gene_id])
