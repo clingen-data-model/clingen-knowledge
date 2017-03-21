@@ -1,7 +1,7 @@
 class GeneDosageController < ApplicationController
 
   def index
-    expires_in 1.minute, public: true
+    expires_in 10.minutes, public: true
 
     page = params[:page] || 1
     # @assertions = Gene.all(:g).assertions(:a).where('a :GeneDiseaseAssertion').order('g.symbol').pluck(:a)

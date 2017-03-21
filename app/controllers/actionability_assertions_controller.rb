@@ -1,7 +1,7 @@
 class ActionabilityAssertionsController < ApplicationController
 
   def index
-    expires_in 1.minute, public: true 
+    expires_in 10.minutes, public: true 
     
   	@pageTitle = "Clinical Actionability Curations";
     @page = params[:page] || 1

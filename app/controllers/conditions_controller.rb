@@ -2,7 +2,7 @@ class ConditionsController < ApplicationController
   include ActionView::Helpers::TextHelper
 
   def index
-    expires_in 1.minute, public: true
+    expires_in 10.minutes, public: true
 
     @pageTitle = "Conditions";
     @page = params[:page] || 1
@@ -26,7 +26,7 @@ class ConditionsController < ApplicationController
   end
 
   def show
-    expires_in 1.minute, public: true
+    expires_in 10.minutes, public: true
     
     @condition = Condition.find_by(curie: params[:id])
 

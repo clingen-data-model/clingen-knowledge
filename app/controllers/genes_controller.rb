@@ -3,7 +3,7 @@ class GenesController < ApplicationController
 
 
   def index
-    expires_in 1.minute, public: true
+    expires_in 10.minutes, public: true
 
     respond_to do |format|
       format.json do 
@@ -37,7 +37,7 @@ class GenesController < ApplicationController
 
   # Be sure to add here anything needed for the gene_facts partial
   def show
-    expires_in 1.minute, public: true
+    expires_in 10.minutes, public: true
 
     @gene = Gene.find_by(hgnc_id: params[:id])
 

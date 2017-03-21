@@ -1,7 +1,7 @@
 class CurationsController < ApplicationController
 
   def index
-    expires_in 1.minute, public: true
+    expires_in 10.minutes, public: true
     @genes = Gene.genes_summary
 
     @pageTitle = "ClinGen Curated Genes Summaries"
