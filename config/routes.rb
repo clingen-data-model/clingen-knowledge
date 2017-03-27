@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :gene_disease_assertions, only: [:show, :index], path: "/gene-validity"
   resources :actionability_assertions, only: [:show, :index], path: "/actionability"
   resources :home, only: [:show, :index]
+  resources :phenotypes, only: [:index]
 
 
   # Items that need to be secured
