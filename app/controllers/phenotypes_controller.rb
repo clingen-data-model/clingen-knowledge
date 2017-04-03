@@ -8,7 +8,7 @@ class PhenotypesController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-        result = @phenotypes.map { |p| {value: p.iri, label: p.label} }
+        result = {options: @phenotypes.map { |p| {value: p.iri, label: p.label} }}
         render json: result
       end
     end
