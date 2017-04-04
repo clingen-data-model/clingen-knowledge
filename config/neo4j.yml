@@ -1,11 +1,9 @@
 development:
   type: bolt
   url: bolt://neo4j:clingen@localhost:7687
-  # type: http
-  # url: http://neo4j:clingen@localhost:7474
 test:
-  type: http
-  url: http://localhost:7575
+  type: bolt
+  url: bolt://neo4j:clingen@localhost:7687
 production:
   type: bolt
   url: bolt://neo4j:clingen@localhost:7687
