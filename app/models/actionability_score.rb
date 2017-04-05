@@ -1,5 +1,8 @@
 class ActionabilityScore < Assertion
 
+  # TODO, these should be pulled from the database, rather than
+  # hardcoded in the model
+
   def self.score_map
     {"http://datamodel.clinicalgenome.org/clingen.owl#CG_000061" => [:efficacy, 0],
      "http://datamodel.clinicalgenome.org/clingen.owl#CG_000060" => [:efficacy, 1],
