@@ -59,10 +59,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a id=\"external_gene_medgen_genetics_summary\" class='externalresource' title='" + title + "' href=\"https://www.ncbi.nlm.nih.gov/medgen/?term=\"medgen+gtr+tests+clinical\"[Filter]+" + var + "#Additional_description\" target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_gene_medgen_genetics_summary\" class='externalresource' title='" + title + "' href='https://www.ncbi.nlm.nih.gov/medgen/?term=\"medgen+gtr+tests+clinical\"[Filter]+" + var + "#Additional_description' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_gene_medgen_genetics_summary\" class='btn btn-default btn-xs externalresource' title='" + title + "' href=\"https://www.ncbi.nlm.nih.gov/medgen/?term='medgen+gtr+tests+clinical'[Filter]+" + var + "#Additional_description\" target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_gene_medgen_genetics_summary\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://www.ncbi.nlm.nih.gov/medgen/?term=\"medgen+gtr+tests+clinical\"[Filter]+" + var + "#Additional_description' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "Organizes information related to human medical genetics, such as attributes of conditions with a genetic contribution."
@@ -375,7 +375,9 @@ module ApplicationHelper
 
   def condition_genetic_practice_guidelines(item, var = '')
 
+    var = var.gsub '_', ':'
     var = var.parameterize('+')
+
 
     title = "Genetic Practice Guidelines - Genetic Disease Summary"
     # Genetic Practice Guidelines 0 Genetic Disease Summary
@@ -388,10 +390,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a class='externalresource' title='" + title + "' id=\"external_condition_genetic_practice_guidelines\" href='https://www.ncbi.nlm.nih.gov/medgen?term=(%22has%20guideline%22%5BProperties%5D)%20AND%20137215%5BMIM%20ID%5D#Professional_guidelines' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_condition_genetic_practice_guidelines\" href='https://www.ncbi.nlm.nih.gov/medgen?term=(%22has%20guideline%22%5BProperties%5D)%20AND%20" + var + "#Professional_guidelines' target=\"_blank\">" + title + "</a>").html_safe
 
      elsif item == "button"
-      ("<a id=\"external_condition_genetic_practice_guidelines\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://www.ncbi.nlm.nih.gov/medgen?term=(%22has%20guideline%22%5BProperties%5D)%20AND%20137215%5BMIM%20ID%5D#Professional_guidelines' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_condition_genetic_practice_guidelines\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://www.ncbi.nlm.nih.gov/medgen?term=(%22has%20guideline%22%5BProperties%5D)%20AND%20" + var + "#Professional_guidelines' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "As guidelines are identified that relate to a disorder, gene, or variation, staff at NCBI connect them to the appropriate records. This page provides an alphabetical list of the professional practice guidelines, position statements, and recommendations that have been identified."

@@ -38,19 +38,21 @@
           </div>
           <div id='results_curation_summary_details' class="panel-body results_curation_summary_details">
 
+
+
             <div class="row  padding-bottom-lg">
               <div class="col-sm-1 hidden-xs clear-left">
-              <%= image_tag(condition_medgen_genetic_summary("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              <%= image_tag(condition_genetic_practice_guidelines("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
               </div>
               <div class="col-sm-11 col-xs-12">
                   <h4 class="padding-none margin-top-none border-bottom">
-                    <%= condition_medgen_genetic_summary("link", @condition.label) %>
+                    <%= condition_genetic_practice_guidelines("link", @term_curie) %>
                   </h4>
                 <div class="text-sm text-muted">
-                  <%= condition_medgen_genetic_summary("text") %>
+                  <%= condition_genetic_practice_guidelines("text") %>
                 </div>
                 <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
-                  <%= condition_medgen_genetic_summary("button", @condition.label) %>
+                  <%= condition_genetic_practice_guidelines("button", @term_curie) %>
                 </div>
               </div>
             </div>
@@ -68,23 +70,6 @@
                 </div>
                 <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
                   <%= condition_gtr_disease_tests("button", @condition.label) %>
-                </div>
-              </div>
-            </div>
-
-            <div class="row  padding-bottom-lg">
-              <div class="col-sm-1 hidden-xs clear-left">
-              <%= image_tag(condition_genetic_practice_guidelines("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
-              </div>
-              <div class="col-sm-11 col-xs-12">
-                  <h4 class="padding-none margin-top-none border-bottom">
-                    <%= condition_genetic_practice_guidelines("link", ) %>
-                  </h4>
-                <div class="text-sm text-muted">
-                  <%= condition_genetic_practice_guidelines("text") %>
-                </div>
-                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
-                  <%= condition_genetic_practice_guidelines("button", @condition.label) %>
                 </div>
               </div>
             </div>
@@ -119,6 +104,23 @@
                 </div>
                 <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
                   <%= condition_pharmgkb("button", @condition.label) %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(condition_medgen_genetic_summary("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= condition_medgen_genetic_summary("link", @condition.label) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= condition_medgen_genetic_summary("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= condition_medgen_genetic_summary("button", @condition.label) %>
                 </div>
               </div>
             </div>

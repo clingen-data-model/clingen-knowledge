@@ -48,7 +48,7 @@
               </div>
               <div class="col-sm-11 col-xs-12">
                   <h4 class="padding-none margin-top-none border-bottom">
-                    <%= gene_medgen_genetics_summary("link", @gene.symbol).html_safe %>
+                    <%= gene_medgen_genetics_summary("link", @gene.symbol) %>
                   </h4>
                 <div class="text-sm text-muted">
                   <%= gene_medgen_genetics_summary("text") %>
@@ -75,6 +75,42 @@
                 </div>
               </div>
             </div>
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(gene_gtr_gene_tests("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= gene_gtr_gene_tests("link", @gene.symbol) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= gene_gtr_gene_tests("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= gene_gtr_gene_tests("button", @gene.symbol) %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(gene_pharmgkb_gene("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= gene_pharmgkb_gene("link", @gene.symbol) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= gene_pharmgkb_gene("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= gene_pharmgkb_gene("button", @gene.symbol) %>
+                </div>
+              </div>
+            </div>
+
+            
 
             <div class="row  padding-bottom-lg">
               <div class="col-sm-1 hidden-xs clear-left">
