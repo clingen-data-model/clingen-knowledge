@@ -160,10 +160,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a class='externalresource' title='" + title + "' id=\"external_gene_pharmgkb_gene\" href='https://www.pharmgkb.org/search/search.action?typeFilter=Gene&exactMatch=false&query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_gene_pharmgkb_gene\" href='https://www.pharmgkb.org/hgnc/" + var + "' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_gene_pharmgkb_gene\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://www.pharmgkb.org/search/search.action?typeFilter=Gene&exactMatch=false&query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_gene_pharmgkb_gene\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://www.pharmgkb.org/hgnc/" + var + "' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "PharmGKB is a comprehensive resource that curates knowledge about the impact of genetic variation on drug response for clinicians and researchers."
@@ -555,7 +555,7 @@ module ApplicationHelper
 
     var = var.parameterize('+')
 
-    title = "PharmGKB - Dosing guidelines"
+    title = "PharmGKB - PGx knowledge"
     # PharmGKB - Dosing guidelines
     # https://www.pharmgkb.org/search/search.action?exactMatch=false&annoFilter=DOSING_GUIDELINES&query=Bayer+Aspirin
 
@@ -566,10 +566,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a class='externalresource' title='" + title + "' id=\"external_drug_pharmgkb_dosing_guidelines\" href='https://www.pharmgkb.org/search/search.action?exactMatch=false&annoFilter=DOSING_GUIDELINES&query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_drug_pharmgkb_dosing_guidelines\" href='https://www.pharmgkb.org/rxnorm/" + var + "' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_drug_pharmgkb_dosing_guidelines\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://www.pharmgkb.org/search/search.action?exactMatch=false&annoFilter=DOSING_GUIDELINES&query=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_drug_pharmgkb_dosing_guidelines\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://www.pharmgkb.org/rxnorm/" + var + "' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
       "PharmGKB is a comprehensive resource that curates knowledge about the impact of genetic variation on drug response for clinicians and researchers."
@@ -601,11 +601,12 @@ module ApplicationHelper
     end
   end  
 
-  def drug_cpic_pharmacogenomics_guidelines(item, var = '')
+  def gene_cpic_pharmacogenomics_guidelines(item, var = '')
 
+    var = var.partition(" ").first
     var = var.parameterize('+')
 
-    title = "CPIC Pharmacogenomics Guidelines - Guidelines from NCBI"
+    title = "CPIC Pharmacogenomics Prescribing Guidelines"
     # CPIC Pharmacogenomics Guidelines - Guidelines from NCBI
     # https://www.ncbi.nlm.nih.gov/medgen/docs/guideline/#CPIC
 
@@ -616,13 +617,39 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a class='externalresource' title='" + title + "' id=\"external_drug_cpic_pharmacogenomics_guidelines\" href='https://www.ncbi.nlm.nih.gov/medgen/docs/guideline/#CPIC' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_gene_cpic_pharmacogenomics_guidelines\" href='https://cpicpgx.org/?s=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "button"
-      ("<a id=\"external_drug_cpic_pharmacogenomics_guidelines\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://www.ncbi.nlm.nih.gov/medgen/docs/guideline/#CPIC' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_gene_cpic_pharmacogenomics_guidelines\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://cpicpgx.org/?s=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
 
     elsif item == "text"
-      "As guidelines are identified that relate to a disorder, gene, or variant, staff at NCBI connect them to the appropriate records. "
+      "The Clinical Pharmacogenetics Implementation Consortium (CPIC) was formed as a shared project between PharmGKB and the Pharmacogenomics Research Network (PGRN)."
+    end
+  end
+
+  def drug_cpic_pharmacogenomics_guidelines(item, var = '')
+
+    var = var.partition(" ").first
+    var = var.parameterize('+')
+
+    title = "CPIC Pharmacogenomics Prescribing Guidelines"
+    # CPIC Pharmacogenomics Guidelines - Guidelines from NCBI
+    # https://www.ncbi.nlm.nih.gov/medgen/docs/guideline/#CPIC
+
+    if item == "logo"
+      "cpic.png"
+
+    elsif item == "title"
+      title
+
+    elsif item == "link"
+      ("<a class='externalresource' title='" + title + "' id=\"external_drug_cpic_pharmacogenomics_guidelines\" href='https://cpicpgx.org/?s=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
+
+    elsif item == "button"
+      ("<a id=\"external_drug_cpic_pharmacogenomics_guidelines\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://cpicpgx.org/?s=" + var + "' target=\"_blank\">" + title + "</a>").html_safe
+
+    elsif item == "text"
+      "The Clinical Pharmacogenetics Implementation Consortium (CPIC) was formed as a shared project between PharmGKB and the Pharmacogenomics Research Network (PGRN)."
     end
   end
 

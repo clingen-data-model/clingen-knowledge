@@ -37,31 +37,13 @@
               </div>
               <div class="col-sm-11 col-xs-12">
                   <h4 class="padding-none margin-top-none border-bottom">
-                    <%= drug_pharmgkb_dosing_guidelines("link", @drug.label) %>
+                    <%= drug_pharmgkb_dosing_guidelines("link", @term_curie) %>
                   </h4>
                 <div class="text-sm text-muted">
                   <%= drug_pharmgkb_dosing_guidelines("text") %>
                 </div>
                 <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
-                  <%= drug_pharmgkb_dosing_guidelines("button", @drug.label) %>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="row  padding-bottom-lg">
-              <div class="col-sm-1 hidden-xs clear-left">
-              <%= image_tag(drug_gtr_clia("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
-              </div>
-              <div class="col-sm-11 col-xs-12">
-                  <h4 class="padding-none margin-top-none border-bottom">
-                    <%= drug_gtr_clia("link", @drug.label) %>
-                  </h4>
-                <div class="text-sm text-muted">
-                  <%= drug_gtr_clia("text") %>
-                </div>
-                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
-                  <%= drug_gtr_clia("button", @drug.label) %>
+                  <%= drug_pharmgkb_dosing_guidelines("button", @term_curie) %>
                 </div>
               </div>
             </div>
@@ -80,6 +62,24 @@
                 </div>
                 <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
                   <%= drug_cpic_pharmacogenomics_guidelines("button", @drug.label) %>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(drug_gtr_clia("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= drug_gtr_clia("link", @drug.label) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= drug_gtr_clia("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= drug_gtr_clia("button", @drug.label) %>
                 </div>
               </div>
             </div>

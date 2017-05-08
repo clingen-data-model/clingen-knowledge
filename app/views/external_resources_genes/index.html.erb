@@ -93,6 +93,24 @@
               </div>
             </div>
 
+
+            <div class="row  padding-bottom-lg">
+              <div class="col-sm-1 hidden-xs clear-left">
+              <%= image_tag(gene_cpic_pharmacogenomics_guidelines("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
+              </div>
+              <div class="col-sm-11 col-xs-12">
+                  <h4 class="padding-none margin-top-none border-bottom">
+                    <%= gene_cpic_pharmacogenomics_guidelines("link", @gene.symbol) %>
+                  </h4>
+                <div class="text-sm text-muted">
+                  <%= gene_cpic_pharmacogenomics_guidelines("text") %>
+                </div>
+                <div class="text-sm text-muted margin-top-sm margin-bottom-sm">
+                  <%= gene_cpic_pharmacogenomics_guidelines("button", @gene.symbol) %>
+                </div>
+              </div>
+            </div>
+
             <div class="row  padding-bottom-lg">
               <div class="col-sm-1 hidden-xs clear-left">
               <%= image_tag(gene_pharmgkb_gene("logo"), class: "margin-left-lg img img-responsive img-rounded") %>
