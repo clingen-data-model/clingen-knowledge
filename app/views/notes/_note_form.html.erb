@@ -1,3 +1,30 @@
+<% content_for :agent_controls do %>
+  <div class="btn-group" role="group">
+    <%= link_to dashboard_index_path, :class => "btn btn-default dropdown-toggle", :data => { :'hover' => 'dropdown' }  do %>
+      <i class="glyphicon glyphicon-th-list"></i> <%= current_agent.first_name %>'s Dashboard <span class="caret"></span>
+    <% end %>
+    <ul class="dropdown-menu dropdown-menu-right">
+      <li>
+        <%= link_to dashboard_index_path, :class => ""  do %>
+          <i class="glyphicon glyphicon-th-list"></i> <%= current_agent.first_name %>'s Dashboard
+        <% end %>
+      </li>
+      <li>
+        <%= link_to edit_agent_registration_path, :class => ""  do %>
+          <i class="glyphicon glyphicon-user"></i> Manage Profile
+        <% end %>
+      </li>
+      <li role="separator" class="divider"></li>
+      <li>
+        <%= link_to destroy_agent_session_path, :method => :delete, :class => ""  do %>
+          <i class="glyphicon glyphicon-off text-danger"></i> Sign-out
+        <% end %>
+      </li>
+    </ul>
+  </div>
+<% end %>
+
+
 <%= form_for @note, url: {action: action}, html: {class: ""} do |f| %>
   
   <div class="row">
@@ -22,7 +49,7 @@
           <%#= select_tag(:gene_id, options_for_select([['BDNF', 0],['TP53', 1]]), class: "gene-typeahead") %>
 	</div>
 	<div class="col-sm-6"><p class="help-block">
-    	  A gene is required to continue.</p></div>
+    	  A gene is <span class='text-danger'>required</span> to continue.</p></div>
       </div>
       <%= f.label :disease, "Condition", class: "control-label clear-left margin-top-md" %>
       <div class="row">
