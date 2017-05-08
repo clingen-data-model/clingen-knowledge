@@ -18,7 +18,7 @@
       <%= f.label :gene, "Gene", class: "control-label clear-left margin-top-md" %>
       <div class="row">
 	<div class="col-sm-6">
-	  <%= f.text_field :gene, autofocus: true, class: "form-control gene-typeahead", placeholder: "Gene - E.g. SMAD3", required: "required" %>
+	  <%= f.text_field :gene, autofocus: true, class: "form-control gene-typeahead-removed", placeholder: "Gene - E.g. SMAD3", required: "required" %>
           <%#= select_tag(:gene_id, options_for_select([['BDNF', 0],['TP53', 1]]), class: "gene-typeahead") %>
 	</div>
 	<div class="col-sm-6"><p class="help-block">
@@ -27,7 +27,7 @@
       <%= f.label :disease, "Condition", class: "control-label clear-left margin-top-md" %>
       <div class="row">
 	<div class="col-sm-6">
-	  <%= f.text_field :condition, autofocus: true, class: "form-control condition-typeahead", placeholder: "Condition - E.g. Loeys-Dietz Syndrome 2" %>
+	  <%= f.text_field :condition, autofocus: true, class: "form-control condition-typeahead-removed", placeholder: "Condition - E.g. Loeys-Dietz Syndrome 2" %>
 	</div>
 	<div class="col-sm-6"><p class="help-block">OMIM or Orphanet term preferred
     	  </p></div>
