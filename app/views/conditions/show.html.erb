@@ -49,7 +49,7 @@
               <% end %>
             <% else %>
               <div class="alert alert-info text-center" role="alert">
-                <strong><%= @condition.label %></strong> has not been curated.  <%= link_to "ClinGen compiled a list of external genomic resources", condition_external_resources_conditions_path(@condition) %> with direct links to information about <%= @condition.label %>.
+                ClinGen has not yet curated <strong><%= @condition.label %></strong> for Gene-Disease Validity, Dosage Sensitivity or Clinical Actionability. <br />Please see the <%= link_to "External Genomic Resources tab", condition_external_resources_conditions_path(@condition) %>  to find links to information from other sources about  <strong><%= @condition.label %></strong>.
               </div>
             <% end %>
           </div>

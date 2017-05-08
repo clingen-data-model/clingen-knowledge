@@ -57,7 +57,7 @@
             <hr class="results_curation_summary_details_spacer" />
           <% else %>
             <div class="alert alert-info text-center" role="alert">
-              <strong><%= @gene.symbol %></strong> has not been curated with a condition.  <%= link_to "ClinGen compiled a list of external genomic resources", gene_external_resources_genes_path(@gene) %> with direct links to information about <%= @gene.symbol %>.
+              ClinGen has not yet curated <strong><%= @gene.symbol %></strong> for Gene-Disease Validity, Dosage Sensitivity or Clinical Actionability. <br />Please see the <%= link_to "External Genomic Resources tab", gene_external_resources_genes_path(@gene) %>  to find links to information from other sources about  <strong><%= @gene.symbol %></strong>.
             </div>
           <% end %>
         </div>
