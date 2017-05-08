@@ -41,9 +41,9 @@ class GenesController < ApplicationController
 
     @gene = Gene.find_by(hgnc_id: params[:id])
 
-    unless @gene.assertions.exists?
-      redirect_to gene_external_resources_genes_path(@gene) 
-    end
+    # unless @gene.assertions.exists?
+    #   redirect_to gene_external_resources_genes_path(@gene) 
+    # end
 
     @term_label = truncate(@gene.symbol, :length => 20, :omission => '...')
     @term_id = truncate(@gene.hgnc_id)
