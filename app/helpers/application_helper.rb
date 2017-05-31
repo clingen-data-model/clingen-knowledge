@@ -44,6 +44,33 @@ module ApplicationHelper
 
   # STRING.downcase.tr(' ', '+')
 
+  def info_popover(type, item)
+
+    # Check which type and set the info
+    if type == "gene-curation"
+      text = "Can variation in this gene cause disease? Click here to learn more."
+      img = "clinicalValidity-off.png";
+      title = "Gene-Disease Validity"
+    elsif type == "actionability"
+      text = "Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+      img = "clinicalActionability-off.png";
+      title = "Clinical Actionability"
+    elsif type == "gene-dosage"
+      text = "Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+      img = "dosageSensitivity-off.png";
+      title = "Gene Dosage Sensitivity"
+    end
+
+    # Check what is needed and build it
+    if item == "heading"
+      ("<span class=\"info-popover\" data-container=\"body\" data-toggle=\"popover\" data-placement=\"top\" data-content=\"" + text + "\"> " + image_tag(img, style: "width:40px") + "<br /> " + title + " <i class=\"glyphicon glyphicon-question-sign\"></i></span>").html_safe
+
+    elsif item == "help"
+      ("<span class=\"info-popover\" data-container=\"body\" data-toggle=\"popover\" data-placement=\"top\" data-content=\"" + text + "\"> " + title + " <i class=\"glyphicon glyphicon-question-sign\"></i></span>").html_safe
+    end
+
+  end
+
   def gene_medgen_genetics_summary(item, var = '')
 
     var = var.parameterize('+')

@@ -1,18 +1,32 @@
-<div id="conditions_index" class="container">
+<div id="curations_index" class="container">
   <div class="row">
       <div class="col-sm-12">
-        <h2 class="padding-top-xs text-center"><strong><%= @genes.count %></strong> ClinGen Curated Genes Summaries</h2>
-        <!--<div class="text-center padding-bottom-sm">
-          <span class='btn btn-primary btn-sm'>Curated Genes <%= @genes.count %> </span>
-        </div>-->
-        <table class="table text-center table-bordered table-hover table-striped">
+        <h2 class="padding-top-xs text-center"><span  style="font-size: 40px !important;"><strong><%= @genes.count %></strong> Curated Genes</span></h2>
+
+        <div class="form-horizontal row padding-top-xs padding-bottom-xs" id="interactive_curations_form">
+          <div class="col-sm-4 col-sm-offset-4">
+          <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-search"></i></span>
+              <input type="text" class="form-control input-block" id="interactive_curations_search" placeholder="Search within this table">
+          </div>
+          </div>
+        </div>
+
+        <table id='interactive_curations_table' class="table-interactive table text-center table-bordered table-hover table-striped">
           <thead>
             <tr>
-              <th style="width:10%">Gene</th>
-              <th style="width:22%" class="text-center">Gene-Disease Clinical<br />Validity Classifications</th>
-              <th style="width:22%" class="text-center">Actionability <br />Evidence-Based Summaries</th>
-              <th style="width:22%" class="text-center">Dosage Sensitivity Map<br /> Haploinsufficiency</th>
-              <th style="width:22%" class="text-center">Dosage Sensitivity Map<br />Triplosensitivity</th>
+              <th style="width:10%" class="heading-border">
+              </th>
+              <th style="width:22%" class="text-center heading-border"><%= info_popover("gene-curation", "heading") %></th>
+              <th style="width:22%" class="text-center heading-border"><%= info_popover("actionability", "heading") %></th>
+              <th style="width:44%" colspan="2" class="text-center heading-border"><%= info_popover("gene-dosage", "heading") %></th>
+            </tr>
+            <tr>
+              <th style="width:10%" class="">Gene</th>
+              <th style="width:22%" class="text-center">Clinical Validity Classifications</th>
+              <th style="width:22%" class="text-center">Evidence-Based Summary</th>
+              <th style="width:22%" class="text-center">Haploinsufficiency Score</th>
+              <th style="width:22%" class="text-center">Triplosensitivity Score</th>
             </tr>
           </thead>
           <tbody>

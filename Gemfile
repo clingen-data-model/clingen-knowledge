@@ -41,6 +41,9 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'rack-cache', require: 'rack/cache'
 
+# Support for datatables sorting/filter/search
+gem 'jquery-datatables-rails', '~> 3.4.0'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -12,14 +12,20 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+//= require dataTables/jquery.dataTables
 //= require twitter/bootstrap
 //= require typeahead.bundle
 //= require selectize
 //= require notes
+//= require curations
 //= require search
 
 
-
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
 
 
 // Tracking for google of the onclicks
