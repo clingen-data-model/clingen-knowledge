@@ -36,7 +36,6 @@
                 <td>
                   <% unless g[:validity].blank? %>
                     <%= link_to gene_path(id: g[:hgnc_id]), class: "btn btn-success btn-xs"  do %>
-                      <i class="glyphicon glyphicon-info-sign text-white"></i>
                       <%= g[:validity].first %>
                     <% end %>
                   <% end %>                  
@@ -44,7 +43,6 @@
                 <td>
                   <% unless g[:actionability].blank? %>
                     <%= link_to gene_path(id: g[:hgnc_id]), class: "btn btn-success btn-xs"  do %>
-                      <i class="glyphicon glyphicon-info-sign text-white"></i>
                       Summary Available
                     <% end %>
                   <% end %>  

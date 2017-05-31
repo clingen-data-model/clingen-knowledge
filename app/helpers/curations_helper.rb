@@ -10,7 +10,7 @@ module CurationsHelper
     assertion = gene_record[:dosage].select { |a| iris.include?(a[:iri])}.first
     return "" unless assertion
     link_to gene_path(id: gene_record[:hgnc_id]), :class => "btn btn-success btn-xs"  do
-      "<i class=\"glyphicon glyphicon-info-sign text-white\"></i> ".html_safe + assertion[:short_label]
+      "".html_safe + assertion[:short_label]
     end
     #link_to(assertion[:short_label], gene_path(id: gene_record[:hgnc_id]), class: "btn btn-success btn-xs")
   end
