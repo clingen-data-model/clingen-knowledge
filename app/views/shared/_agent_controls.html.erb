@@ -1,0 +1,25 @@
+<% content_for :agent_controls do %>
+  <div class="btn-group" role="group">
+    <%= link_to dashboard_index_path, :class => "btn btn-default dropdown-toggle", :data => { :'toggle' => 'dropdown' }  do %>
+      <i class="glyphicon glyphicon-th-list"></i> Your Dashboard <span class="caret"></span>
+    <% end %>
+    <ul class="dropdown-menu dropdown-menu-right">
+      <li>
+        <%= link_to dashboard_index_path, :class => ""  do %>
+          <i class="glyphicon glyphicon-th-list"></i> View Your Dashboard
+        <% end %>
+      </li>
+      <li>
+        <%= link_to edit_agent_registration_path, :class => ""  do %>
+          <i class="glyphicon glyphicon-user"></i> Manage Profile
+        <% end %>
+      </li>
+      <li role="separator" class="divider"></li>
+      <li>
+        <%= link_to destroy_agent_session_path, :method => :delete, :class => ""  do %>
+          <i class="glyphicon glyphicon-off text-danger"></i> Sign-out
+        <% end %>
+      </li>
+    </ul>
+  </div>
+<% end %>
