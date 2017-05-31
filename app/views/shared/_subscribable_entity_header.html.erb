@@ -1,3 +1,4 @@
+<% if false %>
 <% if agent_signed_in? %>
   <% if current_agent.subscribed_to?(entity) %>
     <%= link_to "unsubscribe", subscription_path(entity.curie), method: :delete, class: "btn btn-link pull-right margin-bottom-md" %>
@@ -9,7 +10,8 @@
   <% end %>
 <% else %>
   <%= link_to new_agent_registration_path, :method => :get, :class => "btn btn-link pull-right  margin-bottom-md"  do %>
-    <i class="glyphicon glyphicon-bookmark text-success"></i>
+    <i class="glyphicon glyphicon-edit text-success"></i>
     <span class="text-success"><span class=' hidden-xs'>Sign-in to</span> share information</span>
   <% end %>
+<% end %>
 <% end %>
