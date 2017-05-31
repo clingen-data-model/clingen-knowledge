@@ -23,9 +23,19 @@
 //= require search
 
 
-$(function () {
-  $('[data-toggle="popover"]').popover()
-})
+$( '[data-toggle="popover"]' ).hover( function() {
+        $(this).popover({ 
+            selector: true,
+            template:'<div class="popover info-popover-template" role="tooltip"><div class="arrow"></div><div class="popover-content"></div><a href="' + $(this).data('href') + '" class="popover-title"></a></div>'
+        });
+});
+
+// $(function () {
+//   $('[data-toggle="popover"]').popover({
+//         selector: true,
+//         template:'<div class="popover info-popover-template" role="tooltip"><div class="arrow"></div><div class="popover-content"></div><a href="' + $(this).data('href') + '" class="popover-title"></a></div>'
+//     })
+// })
 
 
 // Tracking for google of the onclicks
