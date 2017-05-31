@@ -38,21 +38,13 @@
         <div class="col-sm-8">
             <h4 class="">Share Information via Knowledge Base</h4>Provide information from the literature to supplement ClinGen curation activities.
             <br>
-            <% if false %>
-            <% if agent_signed_in? %>
-              <%= link_to dashboard_index_path, :class => ""  do %>
-                Your Dashboard
-              <% end %>
-            <% else %>
-              <%= link_to agent_session_path, :method => :get, :class => ""  do %>
-                Sign-in
+              <%= link_to new_note_path, :method => :get, :class => ""  do %>
+                Share Information
               <% end %>
               |
               <%= link_to new_agent_registration_path, :method => :get, :class => ""  do %>
                 Sign-up
               <% end %>
-            <% end %>
-            <% end %>
         </div>
       </div>
     </div>
