@@ -67,7 +67,10 @@
                 <a class='' href='https://www.clinicalgenome.org/search/' title='Site Search' >Site Search</a>
               </li>
               <li class=''>
-                <a class='' href='https://www.clinicalgenome.org/events-news/' title='News &amp; Announcements' >News &amp; Announcements</a>
+                <a class='' href='https://www.clinicalgenome.org/about/working-groups/' title='Working Groups' >Working Groups</a>
+              </li>
+              <li class=''>
+                <a class='' href='https://www.clinicalgenome.org/events-news/' title='News &amp; Announcements' >Events &amp; Publications</a>
               </li></ul>          </nav>
           <ol class='pull-left breadcrumb'><a href='https://www.clinicalgenome.org' class='' title=''>ClinGen</a></li><a href='https://search.clinicalgenome.org/kb' class='' title=''> / Knowledge Base</a></li></ol>      </div>
       </div>
@@ -197,11 +200,13 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="pull-right search-content-header-buttons ">
+          
             <div class="btn-group" role="group" aria-label="...">
+              <%= yield :agent_controls %>
               <div class="btn-group" role="group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  ClinGen Curated <span class="caret"></span>
-                </button>
+                <%= link_to curations_path, :class => "btn btn-default dropdown-toggle", :data => { :'toggle' => 'dropdown' }  do %>
+                ClinGen Curated <span class="caret"></span>
+                <% end %>
                 <ul class="dropdown-menu">
                   <li>
                     <%= link_to curations_path, :class => ""  do %>
@@ -237,20 +242,9 @@
                   </li>
                 </ul>
               </div>
-              <%= yield :agent_controls %>
-              <% if false  %>
-              <% if agent_signed_in? %>
-
-              <% else %>
-                <%= link_to agent_session_path, :method => :get, :class => "btn btn-default"  do %>
-                  <i class="glyphicon glyphicon-th-list"></i>
-                  <span class=""><span class=' hidden-xs'>Knowledge Base </span>Sign-in</span>
-                <% end %>
-                <%= link_to new_agent_registration_path, :method => :get, :class => "btn btn-default"  do %>
-                  <i class="glyphicon glyphicon-bookmark"></i>
-                  <span class="">Sign-up</span>
-                <% end %>
-              <% end %>
+              <%= link_to new_note_path, :method => :get, :class => "btn btn-default"  do %>
+                <i class="glyphicon glyphicon-edit"></i>
+                <span class=""><span class=' hidden-xs'>Share Information</span>
               <% end %>
             </div>
           </div>
