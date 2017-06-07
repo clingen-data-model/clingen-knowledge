@@ -3,8 +3,9 @@
 <table class="table table-hover border-left table-condensed">
   <thead>
     <tr>
-      <th class="col-sm-10" colspan="2"><%= info_popover("actionability", "help") %></th>
+      <th class="col-sm-10 th-curation-group" colspan="2"><%= info_popover("actionability", "help") %></th>
       <th class="col-sm-2 text-center"></th>
+      <th class="col-sm-1 text-center"></th>
     </tr>
   </thead>
 
@@ -12,7 +13,8 @@
     <tr>
       <th class="col-sm-5">Outcome/Intervention Pair</th>
       <th class="">Description</th>
-      <th class="text-center">Date</th>
+      <th class="text-center col-sm-2">Date</th>
+      <th class="text-center col-sm-1"></th>
     </tr>
   </thead>
   <tbody>
@@ -20,22 +22,26 @@
       <% assertion[:interventions].each do |i| %>
         <% scores = ActionabilityScore.labels_to_h(i[:scores]) %>
         <tr>
-          <td><a href="<%= assertion[:file] %>" target='file'><strong><%= i[:label] %></strong>  <i class="glyphicon glyphicon-info-sign text-sm text-muted"></i></a>
-
+          <td>
+            <strong><%= i[:label] %></strong>
           </td>
           <td class=" text-left">
             <dl class='dl-horizontal'> 
-              <dt style='width:80px; font-weight:normal; margin-top:1px'>Outcome</dt>
-              <dd style='margin-left:90px'>Severity: <strong><%= scores[:severity] %></strong></dd>
-              <dd style='margin-left:90px'>Likelihood: <strong><%= scores[:likelihood] %></strong></dd>
-              <dt style='width:80px; font-weight:normal; margin-top:1px'>Intervention</dt>
-              <dd style='margin-left:90px'>Effectiveness: <strong><%= scores[:efficacy] %></strong></dd>
-              <dd style='margin-left:90px'>Intervention: <strong><%= scores[:safety] %></strong></dd>
+              <dt style='width:90px; font-weight:normal; margin-top:1px'><%= info_popover("actionability", "score", "Outcome") %></dt>
+              <dd style='margin-left:100px'>Severity: <strong><%= scores[:severity] %></strong></dd>
+              <dd style='margin-left:100px'>Likelihood: <strong><%= scores[:likelihood] %></strong></dd>
+              <dt style='width:90px; font-weight:normal; margin-top:1px'><%= info_popover("actionability", "score", "Intervention") %></dt>
+              <dd style='margin-left:100px'>Effectiveness: <strong><%= scores[:efficacy] %></strong></dd>
+              <dd style='margin-left:100px'>Intervention: <strong><%= scores[:safety] %></strong></dd>
             </dl>
             
           </td>
           <td class=" text-center">
             <%= mdy_date(assertion[:date]) %>
+          </td>
+          <td class=" text-center">
+            <a href="<%= assertion[:file] %>" target='file' class='btn btn-xs btn-success'>View report</a>
+            
           </td>
         </tr>
       <% end %>
