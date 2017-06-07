@@ -15,20 +15,14 @@
         <% if a = @gene.dosage_assertions.select {|i| i.haplo_assertion?}.first %>
         <dt>Haploinsufficiency</dt>
         <dd>
-          <a id="external_gene_dosage_sensitivity" target="_blank" class="text-black" href="<%= gene_dosage_sensitivity("url", @gene.symbol) %>">
-            <%= a.interpretation.first.short_label %>
-            <i class="glyphicon glyphicon-info-sign text-sm text-muted"></i>
-          </a>
+          <%= info_popover("gene-dosage", "score", a.interpretation.first.short_label) %>
         </dd>
         <% end %>
 
         <% if a = @gene.dosage_assertions.select {|i| i.triplo_assertion?}.first %>
         <dt>Triplosensitivity</dt>
         <dd>
-          <a id="external_gene_dosage_sensitivity" target="_blank" class="text-black" href="<%= gene_dosage_sensitivity("url", @gene.symbol) %>">
-            <%= a.interpretation.first.short_label %>
-            <i class="glyphicon glyphicon-info-sign text-sm text-muted"></i>
-          </a>
+          <%= info_popover("gene-dosage", "score", a.interpretation.first.short_label) %>
         </dd>
         <% end %>
         <% end %>
