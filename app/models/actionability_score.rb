@@ -50,6 +50,14 @@ class ActionabilityScore < Assertion
      "http://datamodel.clinicalgenome.org/clingen.owl#CG_000053" => "A"}
   end
 
+  def self.evidence_map_label
+    {"http://datamodel.clinicalgenome.org/clingen.owl#CG_000057" => " (expert contributed evidence)",
+     "http://datamodel.clinicalgenome.org/clingen.owl#CG_000056" => " (poor or conflicting evidence)",
+     "http://datamodel.clinicalgenome.org/clingen.owl#CG_000055" => " (minimal evidence)",
+     "http://datamodel.clinicalgenome.org/clingen.owl#CG_000054" => " (moderate evidence)",
+     "http://datamodel.clinicalgenome.org/clingen.owl#CG_000053" => " (substantial evidence)"}
+  end
+
   # Map the IRI based format of scores to a hash with text scores
   def self.scores_to_h(scores)
     total = 0
@@ -67,8 +75,9 @@ class ActionabilityScore < Assertion
   def self.labels_to_h(scores)
     total = 0
     result = scores.reduce({}) do |h, i|
-      s = ActionabilityScore.label_map[i[:score].first]
-      h.update(s.first => s.second.to_s)
+      s = ActionabilityScore.label_map[i[:score].first]      
+      e = i[:strength].length > 0 ? ActionabilityScore.evidence_map_label[i[:strength].first] : ""
+      h.update(s.first => s.second.to_s + e)
     end
     result.update(total: total.to_s)
   end
