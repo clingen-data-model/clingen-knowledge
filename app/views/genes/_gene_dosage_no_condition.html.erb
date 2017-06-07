@@ -1,33 +1,44 @@
-<div id='condition1' name='condition1' class="row">
-  <div class="col-sm-2">
-    <h4>
-   
-    </h4>
-  </div>
-  <div class="col-sm-10">
-      <table class="table table-hover  border-left table-condensed">
-          <thead>
-            <tr>
-              <th class="col-sm-12" colspan="2"><%= info_popover("gene-dosage", "help") %></th>
-            </tr>
-          </thead>
+  <div class="panel panel-primary">
+    <div class="panel-heading" role="tab" id="headingNone">
+      <h3 class="panel-title">
+          <i> <%= @gene.symbol %> </i>
+      </h3>
+    </div>
+    <div id="collapseNone" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingNone">
+        <table class="panel-body table table-hover">
           <thead class="thead-labels">
             <tr>
-              <th class="col-sm-10">Description</th>
+              <th class="col-sm-3 th-curation-group text-left">Curated by</th>
+              <th class="col-sm-6 text-left"> Classification</th>
               <th class="col-sm-2 text-center">Date</th>
+              <th class="col-sm-1 text-center">Report</th>
             </tr>
           </thead>
           <tbody>
             <% if a = @gene.dosage_assertions.select {|i| i.haplo_assertion?}.first %>
               <tr>
-                <td><a id="external_gene_dosage_sensitivity" target="_blank" href="<%= gene_dosage_sensitivity("url", @gene.symbol) %>"><strong><%= a.interpretation.first.label %> <i class="glyphicon glyphicon-info-sign text-sm text-muted"></i></strong></a></td>
+                <td><%= info_popover("gene-dosage", "help") %></td>
+                <td>
+                  <%= info_popover("gene-curation", "score", a.interpretation.first.label , "strong") %>
+                </td>
                 <td class="text-center"><%= mdy_date(a.date) %></td>
+                <td class=" text-center">
+                  <a id="external_gene_dosage_sensitivity" target="_blank" class="btn btn-xs btn-success" href="<%= gene_dosage_sensitivity("url", @gene.symbol) %>">View report</a>
+                </td>
               </tr>
             <% end %>
             <% if a = @gene.dosage_assertions.select {|i| i.triplo_assertion?}.first %>
               <tr>
-                <td><a id="external_gene_dosage_sensitivity" target="_blank" href="<%= gene_dosage_sensitivity("url", @gene.symbol) %>"><strong><%= a.interpretation.first.label %> <i class="glyphicon glyphicon-info-sign text-sm text-muted"></i></strong></a></td>
+                <td>
+                  <%= info_popover("gene-dosage", "help") %>   
+                </td>
+                <td>
+                  <%= info_popover("gene-curation", "score", a.interpretation.first.label , "strong") %>
+                </td>
                 <td class="text-center"><%= mdy_date(a.date) %></td>
+                <td class=" text-center">
+                  <a id="external_gene_dosage_sensitivity" target="_blank" class="btn btn-xs btn-success" href="<%= gene_dosage_sensitivity("url", @gene.symbol) %>">View report</a>
+                </td>
               </tr>
             <% end %>
           </tbody>
