@@ -1,20 +1,25 @@
 <table class="table table-hover  border-left table-condensed">
   <thead>
     <tr>
-      <th class="col-sm-12" colspan="2"><%= info_popover("gene-dosage", "help") %></th>
+      <th class="col-sm-12  th-curation-group" colspan="2"><%= info_popover("gene-dosage", "help") %></th>
     </tr>
   </thead>
   <thead class="thead-labels">
     <tr>
-      <th class="col-sm-10">Description</th>
+      <th class="col-sm-10">Curation classification</th>
       <th class="col-sm-2 text-center">Date</th>
+      <th class="col-sm-1 text-center"></th>
     </tr>
   </thead>
   <tbody>
     <% dosage.interpretation.each do |i| %>
       <tr>
-        <td><a id="external_gene_dosage_sensitivity" target="_blank" href="<%= gene_dosage_sensitivity("url", dosage.genes.first.symbol) %>"><strong><%= i.label %> <i class="glyphicon glyphicon-info-sign text-sm text-muted"></i></strong></a></td>
+        <td><%= info_popover("gene-curation", "score", i.label , "strong") %></td>
         <td class="text-center"><%= dosage.mdy_date %></td>
+      <td class=" text-center">
+        <a id="external_gene_dosage_sensitivity" target="_blank" class="btn btn-xs btn-success" href="<%= gene_dosage_sensitivity("url", dosage.genes.first.symbol) %>">View report</a>
+        
+      </td>
       </tr>
     <% end %>
   </tbody>

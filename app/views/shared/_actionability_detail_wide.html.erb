@@ -1,0 +1,39 @@
+<% # args: [actionability] structure to render, [gene] [disease] [index] which (:gene/:disease) the index is based on %>
+  <tbody>
+    <% if assertion = actionability.find { |a| a[index].include?(index_id) } %>
+      
+        <tr>
+          <td><%= info_popover("actionability", "help", "" ,"logo-inline") %>
+          <td>
+            <% assertion[:interventions].each do |i| %>
+            <% 
+              scores = ActionabilityScore.labels_to_h(i[:scores]) 
+              ilabel = i[:label].split('/')
+              @assertionDate = assertion[:date]
+              @assertionFile = assertion[:file]
+            %>
+            <div class='row padding-bottom-sm'>
+            <div class='col-sm-12'><%= info_popover("actionability", "score", "Outcome: " + ilabel[0], "strong") %><br />
+                <div class="padding-left-sm">
+                  Outcome severity: <%= scores[:severity] %><br />
+                  Outcome likelihood: <%= scores[:likelihood] %> <%= scores[:evidence] %>
+                </div>
+              </div>
+              <div class='col-sm-12'><%= info_popover("actionability", "score", "Intervention: " + ilabel[1], "strong") %><br />
+                <div class="padding-left-sm">
+                  Effectiveness of intervention: <%= scores[:efficacy] %><br />
+                  Nature of intervention: <%= scores[:safety] %>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </td>
+          <td class=" text-center">
+            <%= mdy_date(@assertionDate) %>
+          </td>
+          <td class=" text-center">
+            <a href="<%= @assertionFile %>" target='file' class='btn btn-xs btn-success'>View report</a>
+          </td>
+        </tr>
+    <% end  %>
+  </tbody>

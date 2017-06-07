@@ -1,33 +1,83 @@
+
+  <div class="panel panel-primary">
+    <div class="panel-heading" role="tab" id="heading<%= index %>">
+      <h3 class="panel-title">
+        <!--<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index %>" aria-expanded="true" aria-controls="collapse<%= index %>">
+            <i> <%= @gene.symbol %> </i> - <%= disease.label %>
+        </a>
+        -->
+          <i> <%= @gene.symbol %> </i> - <%= link_to disease, :class => "text-black"  do %>
+            <%= disease.label %> 
+            <span class='text-10px'>| <%= disease.curie.gsub '_', ':'  %></span>
+          <% end %>
+      </h3>
+    </div>
+    <div id="collapse<%= index %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading<%= index %>">
+        <table class="panel-body table table-hover">
+          <thead class="thead-labels">
+            <tr>
+              <th class="col-sm-3 th-curation-group text-left">Curated by</th>
+              <th class="col-sm-6 text-left"> Classification</th>
+              <th class="col-sm-2 text-center">Date</th>
+              <th class="col-sm-1 text-center">Report</th>
+            </tr>
+          </thead>
+        <% if @diseases_detail[disease.iri] %>
+          <%= render "gene_disease_assertions/validity_detail_wide", assertions: @validity.first, disease: disease, gene: @gene %>
+        <% end %>
+        <% if @dosage_detail[disease.iri] %>
+
+          <% if @diseases_detail[disease.iri] %>
+          <% end %>
+
+          <%= render "gene_dosage/dosage_detail_wide", dosage: @dosage_detail[disease.iri] %>
+        <% end %>
+        <% if @actionability.length > 0 && @actionability_diseases.include?(disease.iri) %>
+          <% if @diseases_detail[disease.iri] || @dosage_detail[disease.iri] %>
+          <% end %>
+          <%= render "shared/actionability_detail_wide", actionability: @actionability, disease: disease, gene: @gene, index: :disease, index_id: disease.iri %>
+        <% end %>
+        </table>
+    </div>
+  </div>
+
+
+
+
+<!--
 <div id='condition1' name='condition1' class="row">
-  <div class="col-sm-2">
-    <h4>
-    <%= link_to disease, :class => "text-black"  do %>
-      <%= disease.label %> 
-      <div class='text-xs text-muted padding-top-xs'><%= disease.curie.gsub '_', ':'  %> <i class="glyphicon glyphicon-search text-10px text-muted"></i></div>
-    <% end %>
-    </h4>
+  <div class="col-sm-12">
+    <h2>
+
+    </h2>
     <% disease.inspect %>
   </div>
-  <div class="col-sm-10">
+  <div class="col-sm-12">
+    <table class="table table-hover table-condensed">
+      <thead class="thead-labels">
+        <tr>
+          <th class="col-sm-3 th-curation-group text-left">Curated by</th>
+          <th class="col-sm-6 text-left"> Classification</th>
+          <th class="col-sm-2 text-center">Date</th>
+          <th class="col-sm-1 text-center">Report</th>
+        </tr>
+      </thead>
     <% if @diseases_detail[disease.iri] %>
-      <%= render "gene_disease_assertions/validity_detail.html.erb", assertions: @validity.first, disease: disease, gene: @gene %>
-      
+      <%= render "gene_disease_assertions/validity_detail_wide", assertions: @validity.first, disease: disease, gene: @gene %>
     <% end %>
-
     <% if @dosage_detail[disease.iri] %>
 
       <% if @diseases_detail[disease.iri] %>
-        <hr />
       <% end %>
 
-      <%= render "gene_dosage/dosage_detail.html.erb", dosage: @dosage_detail[disease.iri] %>
+      <%= render "gene_dosage/dosage_detail_wide", dosage: @dosage_detail[disease.iri] %>
     <% end %>
-      
     <% if @actionability.length > 0 && @actionability_diseases.include?(disease.iri) %>
       <% if @diseases_detail[disease.iri] || @dosage_detail[disease.iri] %>
-        <hr />
       <% end %>
-      <%= render "shared/actionability_detail", actionability: @actionability, disease: disease, gene: @gene, index: :disease, index_id: disease.iri %>
+      <%= render "shared/actionability_detail_wide", actionability: @actionability, disease: disease, gene: @gene, index: :disease, index_id: disease.iri %>
     <% end %>
+    </table>
   </div>
 </div>
+-->

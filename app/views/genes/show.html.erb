@@ -1,6 +1,6 @@
 <div id="genes_show" class="container">
 </div>
-<div id="genes_show_summary" role="tabpanel" class="tab-pane active  container results_curation_summary">
+<div id="genes_show_summary" role="tabpanel" class="tab-pane active container results_curation_summary">
   <div class="row">
     <div class="col-sm-12">
       <h2 class="padding-top-xs">
@@ -33,26 +33,17 @@
         </li>
 
       </ul>
-      <div class="panel panel-default">
-        <div class="panel-heading" id='results_curation_summary_heading'>
-          <div class="row"><div class="col-sm-2">
-            Condition
-          </div>
-          <div class="col-sm-10 ">
-            <span class="border-left">ClinGen Curation Results</span>
-          </div>
-          </div>
-        </div>
-        <div id='results_curation_summary_details' class="panel-body results_curation_summary_details">
           <% if @diseases.present? || @gene.dosage_assertions.present? %>
             <% if @diseases.present? %>
-              <% @diseases.each do |d| %>
-                <%= render 'disease_detail', disease: d %>
-                <hr class="results_curation_summary_details_spacer" />
-              <% end %>
-            <% end %>
-            <% if @gene.dosage_assertions.present? %>
+              <div class="panel-group panel-group-curated" id="accordion" role="tablist" aria-multiselectable="true">
+                <% @diseases.each_with_index do |d, index| %>
+                  <%= render 'disease_detail', disease: d, index: index %>
+                <% end %>
+              </div>
+            <% elsif @gene.dosage_assertions.present? %>
+              <div class="panel-group panel-group-curated" id="accordion" role="tablist" aria-multiselectable="true">
                 <%= render 'gene_dosage_no_condition'%>
+              </div>
             <% end %>
             <hr class="results_curation_summary_details_spacer" />
           <% else %>
@@ -62,9 +53,13 @@
     <span class="">sign-in to share information</span><% end %>.
             </div>
           <% end %>
-        </div>
-      </div>
     </div>
   </div>
 </div>
 </div>
+
+
+
+
+  <%= @curated_match.inspect %>
+
