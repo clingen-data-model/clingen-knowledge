@@ -44,29 +44,54 @@ module ApplicationHelper
 
   # STRING.downcase.tr(' ', '+')
 
-  def info_popover(type, item)
+  def info_popover(type, item, message = '', option = '')
+
+    if option == "strong"
+      message = "<strong>" + message + "</strong> "
+    end
 
     # Check which type and set the info
     if type == "gene-curation"
-      text = "Can variation in this gene cause disease? Click here to learn more."
-      img = "clinicalValidity-off.png";
+      text = "Can variation in this gene cause disease?"
+      img = "clinicalValidity-off.png"
+      img_color = "clinicalValidity-on.png"
       title = "Gene-Disease Validity"
+      href = "https://www.clinicalgenome.org/curation-activities/gene-disease-validity/"
+      href_score = "https://www.clinicalgenome.org/site/assets/files/5967/gene-validity_classification.pdf"
+      text_score = "Gene-Disease Validity classification and scoring information"
     elsif type == "actionability"
-      text = "Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-      img = "clinicalActionability-off.png";
+      text = "How does this genetic diagnosis impact medical management?"
+      img = "clinicalActionability-off.png"
+      img_color = "clinicalActionability-on.png"
       title = "Clinical Actionability"
+      href = "https://www.clinicalgenome.org/curation-activities/clinical-actionability/"
+      href_score = "https://www.clinicalgenome.org/curation-activities/clinical-actionability/the-process/"
+      text_score = "Clinical Actionability scoring information"
     elsif type == "gene-dosage"
-      text = "Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-      img = "dosageSensitivity-off.png";
+      text = "Is haploinsufficiency or triplosensitivity an established disease mechanism for this gene?"
+      img = "dosageSensitivity-off.png"
+      img_color = "dosageSensitivity-on.png"
       title = "Gene Dosage Sensitivity"
+      href = "https://www.clinicalgenome.org/curation-activities/dosage-sensitivity/"
+      href_score = "https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/help.shtml#review"
+      text_score = "Gene Dosage Sensitivity rating system"
+    end
+
+    if option == "logo-inline"
+      logo = image_tag(img_color, style: "width:20px")
+    else
+      logo = ""
     end
 
     # Check what is needed and build it
     if item == "heading"
-      ("<span class=\"info-popover\" data-container=\"body\" data-toggle=\"popover\" data-placement=\"top\" data-content=\"" + text + "\"> " + image_tag(img, style: "width:40px") + "<br /> " + title + " <i class=\"glyphicon glyphicon-question-sign\"></i></span>").html_safe
+      ("<a tabindex=\"0\" class=\"info-popover\" data-container=\"body\" data-toggle=\"popover\" data-placement=\"top\" data-trigger=\"focus\" role=\"button\" data-title=\"Learn more\" data-href=\"" + href + "\" data-content=\"" + text + "\"> " + image_tag(img, style: "width:40px") + "<br /> " + title + " <i class=\"glyphicon glyphicon-question-sign text-muted\"></i></a>").html_safe
 
     elsif item == "help"
-      ("<span class=\"info-popover\" data-container=\"body\" data-toggle=\"popover\" data-placement=\"top\" data-content=\"" + text + "\"> " + title + " <i class=\"glyphicon glyphicon-question-sign\"></i></span>").html_safe
+      ("<a tabindex=\"0\" class=\"info-popover\" data-container=\"body\" data-toggle=\"popover\" data-placement=\"top\" data-trigger=\"focus\" role=\"button\" data-title=\"Learn more\" data-href=\"" + href + "\" data-content=\"" + text + "\"> " + logo + " " + title + " <i class=\"glyphicon glyphicon-question-sign text-muted\"></i></a>").html_safe
+    
+    elsif item == "score"
+      ("<a tabindex=\"0\" class=\"info-popover\" data-container=\"body\" data-toggle=\"popover\" data-placement=\"top\" data-trigger=\"focus\" role=\"button\" data-title=\"Learn more about classifications \" data-href=\"" + href_score + "\" data-content=\"" + text_score + "\">" + message + " <i class=\"glyphicon glyphicon-question-sign text-muted\"></i></a>").html_safe
     end
 
   end
