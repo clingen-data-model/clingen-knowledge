@@ -35,7 +35,9 @@ class Gene
       .where("(g)<-[:has_subject]-(:Assertion)")
       .return("g {.symbol, .hgnc_id,
           actionability: [(g)<-[:has_subject]-(a:ActionabilityAssertion) | a.uuid],
+          actionability_link: [(g)<-[:has_subject]-(a:ActionabilityAssertion) | a.file],
           validity: [(g)<-[:has_subject]-(a:GeneDiseaseAssertion)-[:has_predicate]->(i:Interpretation) | i.label],
+          validity_link: [(g)<-[:has_subject]-(a:GeneDiseaseAssertion) | a.perm_id],
           dosage: [(g)<-[:has_subject]-(a:GeneDosageAssertion)-[:has_predicate]->(i:Interpretation) | i {.iri, .short_label}]}").to_a.map(&:g)
   end
 
@@ -55,5 +57,21 @@ class Gene
                 	strength: [(a3)-[:has_evidence_strength]->(s) | s.iri] } ]      }]}")
       .to_a.map(&:a)
   end
+
+
+  # curations for a given gene
+  # MATCH (g:Gene)
+  # WHERE (g.symbol contains "SMAD3")
+  # MATCH (g)<-[r:has_subject]-(c)-[rr:has_object]->(x)
+  # OPTIONAL MATCH (x)-[rrr:equivalentTo]->(a)
+  # RETURN c, collect(x), a
+
+  # def gene_curations
+  #   Gene.query_as(:g)
+  #     .where("g.symbol contains 'SMAD3'")
+  #     .match("(g)<-[r:has_subject]-(c)-[rr:has_object]->(x)")
+  #     .optional_match("(x)-[rrr:equivalentTo]->(a)")
+  #     .return("x").to_a.map()
+  # end
 
 end
