@@ -1,4 +1,3 @@
-
   <div class="panel panel-primary">
     <div class="panel-heading" role="tab" id="heading<%= index %>">
       <h3 class="panel-title">
@@ -26,15 +25,9 @@
           <%= render "gene_disease_assertions/validity_detail_wide", assertions: @validity.first, disease: disease, gene: @gene %>
         <% end %>
         <% if @dosage_detail[disease.iri] %>
-
-          <% if @diseases_detail[disease.iri] %>
-          <% end %>
-
           <%= render "gene_dosage/dosage_detail_wide", dosage: @dosage_detail[disease.iri] %>
         <% end %>
         <% if @actionability.length > 0 && @actionability_diseases.include?(disease.iri) %>
-          <% if @diseases_detail[disease.iri] || @dosage_detail[disease.iri] %>
-          <% end %>
           <%= render "shared/actionability_detail_wide", actionability: @actionability, disease: disease, gene: @gene, index: :disease, index_id: disease.iri %>
         <% end %>
         </table>
