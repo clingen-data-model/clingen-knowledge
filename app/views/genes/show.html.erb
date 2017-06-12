@@ -31,7 +31,6 @@
         <li class="">
           <a href="https://www.ncbi.nlm.nih.gov/clinvar/?term=<%= @gene.symbol %>%5Bgene%5D" class="" target="clinvar">ClinVar Variants  <i class="glyphicon glyphicon-new-window text-xs" id="external_clinvar_gene_variants"></i></a>
         </li>
-
       </ul>
           <% if @diseases.present? || @gene.dosage_assertions.present? %>
             <% if @diseases.present? %>
@@ -57,9 +56,3 @@
   </div>
 </div>
 </div>
-
-
-
-
-  <%= @curated_match.inspect %>
-
