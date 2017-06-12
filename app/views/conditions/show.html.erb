@@ -5,17 +5,14 @@
     <div class="col-sm-12">
       <h2 class="padding-top-xs">
         <%= render 'shared/subscribable_entity_header', entity: @condition, term_id: @condition.label %>
-
         <strong><%= @term_label %></strong>
         </h2>
         <%= render 'condition_facts' %>
-
       </div>
     </div>
     <div class="col-sm-12">
       <div class="">
         <ul class="nav nav-tabs">     
-
           <li class="active">
             <%= link_to condition_path(@condition), :class => ""  do %>
               ClinGen's Curation Summaries
@@ -29,33 +26,17 @@
           <a id="external_clinvar_condition_variants" href="https://www.ncbi.nlm.nih.gov/clinvar/?term=<%= @term_label %>" class="" target="clinvar">ClinVar Variants  <i class="glyphicon glyphicon-new-window text-xs"></i></a>
         </li>
         </ul>
-        <div class="panel panel-default">
-          <div class="panel-heading" id='results_curation_summary_heading'>
-            
-            
-            <div class="row"><div class="col-sm-2">
-              Gene
-            </div>
-            <div class="col-sm-10 ">
-              <span class="border-left">ClinGen Curation Results</span>
-            </div>
-            </div>
+        <% if @genes.present? %>
+          <% @genes.each do |g, index| %>
+          <%= render 'gene_detail', gene: g, index: index %>
+          <% end %>
+        <% else %>
+          <div class="alert alert-info text-center" role="alert">
+            ClinGen has not yet curated <strong><%= @condition.label %></strong>. Please see the <%= link_to "External Genomic Resources tab", condition_external_resources_conditions_path(@condition) %>  to find links to information from other sources about  <strong><%= @condition.label %></strong>.
+          <hr> If you would like to share information on this condition or request that this condition be considered for curation, please <%= link_to new_note_path, :method => :get  do %>
+<span class="">sign-in to share information</span><% end %>.
           </div>
-          <div id='results_curation_summary_details' class="panel-body results_curation_summary_details">
-            <% if @genes.present? %>
-              <% @genes.each do |g| %>
-              <%= render 'gene_detail', gene: g %>
-              <hr class="results_curation_summary_details_spacer" />
-              <% end %>
-            <% else %>
-              <div class="alert alert-info text-center" role="alert">
-                ClinGen has not yet curated <strong><%= @condition.label %></strong>. Please see the <%= link_to "External Genomic Resources tab", condition_external_resources_conditions_path(@condition) %>  to find links to information from other sources about  <strong><%= @condition.label %></strong>.
-              <hr> If you would like to share information on this condition or request that this condition be considered for curation, please <%= link_to new_note_path, :method => :get  do %>
-    <span class="">sign-in to share information</span><% end %>.
-              </div>
-            <% end %>
-          </div>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>

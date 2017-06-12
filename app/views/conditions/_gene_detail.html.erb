@@ -1,35 +1,35 @@
-<div id='condition1' name='condition1' class="row">
-  <div class="col-sm-2">
-    <h4>
-    <%= link_to gene, :class => "text-black"  do %>
-      <%= gene.label %>
-      <div class='text-xs text-muted padding-top-xs'><%= gene.curie.gsub '_', ':'  %> <i class="glyphicon glyphicon-search text-10px text-muted"></i></div>
-      <% end %>
-    </h4>
+
+<div class="panel panel-primary">
+  <div class="panel-heading" role="tab" id="heading<%= index %>">
+    <h3 class="panel-title">
+        <%= link_to gene, :class => "text-black"  do %><i>
+          <%= gene.label %></i>
+        <% end %> - 
+          <%= @condition.label %> 
+          <span class='text-10px'>| <%= @condition.curie.gsub '_', ':'  %></span>
+        
+    </h3>
   </div>
-  <div class="col-sm-10">
-    <% if @validity_detail[gene.uuid] %>
-      <%= render "gene_disease_assertions/validity_detail.html.erb", assertions: @validity_detail[gene.uuid], disease: @condition, gene: gene %>
-    <% end %>
-
-    <% if @dosage_detail[gene.uuid] %>
-
-      <% if @validity_detail[gene.uuid] %>
-        <hr />
-      <% end %>
-      
-      <%= render "gene_dosage/dosage_detail.html.erb", dosage: @dosage_detail[gene.uuid] %>
-    <% end %>
-
-    <%#= render "gene_dosage/dosage_detail.html.erb"%>
-
-    <% if @actionability.length > 0 %>
-      
-      <% if @dosage_detail[gene.uuid] || @validity_detail[gene.uuid] %>
-        <hr />
-      <% end %>
-
-      <%= render "shared/actionability_detail", actionability: @actionability, disease: @condition, gene: gene, index: :gene, index_id: gene.uuid %>
-    <% end %>
+  <div id="collapse<%= index %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading<%= index %>">
+      <table class="panel-body table table-hover">
+        <thead class="thead-labels">
+          <tr>
+            <th class="col-sm-3 th-curation-group text-left">Curated by</th>
+            <th class="col-sm-6 text-left"> Classification</th>
+            <th class="col-sm-2 text-center">Date</th>
+            <th class="col-sm-1 text-center">Report</th>
+          </tr>
+        </thead>
+        <% if @validity_detail[gene.uuid] %>
+          <%= render "gene_disease_assertions/validity_detail_wide", assertions: @validity_detail[gene.uuid], disease: @condition, gene: gene %>
+        <% end %>
+        <% if @dosage_detail[gene.uuid] %>
+          <%= render "gene_dosage/dosage_detail_wide", dosage: @dosage_detail[gene.uuid] %>
+        <% end %>
+        <%#= render "gene_dosage/dosage_detail.html.erb"%>
+        <% if @actionability.length > 0 %>
+          <%= render "shared/actionability_detail_wide", actionability: @actionability, disease: @condition, gene: gene, index: :gene, index_id: gene.uuid %>
+        <% end %>
+      </table>
   </div>
 </div>
