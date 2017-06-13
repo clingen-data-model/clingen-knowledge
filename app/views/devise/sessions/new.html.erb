@@ -1,6 +1,9 @@
 <div id="agents_register_new" class="container">
   <div class='col-sm-6 col-sm-offset-3'>
     <h2>Log in</h2>
+    ClinGen would like your help in our curation activities! Information you provide will be reviewed by ClinGen biocurators, and may be used in future curations.  Once you have logged in, click the "<i class='glyphicon glyphicon-edit text-sm'></i> Share information" button. <br>
+  <%= link_to "Do you need an account? Click here to sign up", new_registration_path(resource_name), class: "" %>
+  <hr />
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-group">
         <%= f.label :email %>
