@@ -8,9 +8,6 @@
         <dd><%= @gene.hgnc_id %></dd>
         <dt>Cytogenetic Location</dt>
         <dd><%= @gene.location %></dd>
-        <!--<dt>Genomic Coordinates</dt>
-        <dd>chr13: 32,889,617-32,973,809 (GRCh38)</dd>
-        <dd>chr13: 32,889,617-32,973,809 (GRCh37)</dd>-->
         <% if @gene.dosage_assertions.present? %>
         <% if a = @gene.dosage_assertions.select {|i| i.haplo_assertion?}.first %>
         <dt>Haploinsufficiency</dt>
@@ -36,6 +33,7 @@
           <% @diseases.each do |d| %>
             <%= link_to d.label, d, {class: "btn btn-xs btn-default"} %>
           <% end %>
+          %%% ONLY SHOW UNIQUE MATCHES %%%
         </dd>
         <% end %>
         <dt>External Resources</dt>

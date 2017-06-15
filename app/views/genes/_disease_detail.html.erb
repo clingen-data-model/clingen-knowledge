@@ -7,7 +7,7 @@
         -->
           <i> <%= @gene.symbol %> </i> - <%= link_to disease, :class => "text-black"  do %>
             <%= disease.label %> 
-            <span class='text-10px'>| <%= disease.curie.gsub '_', ':'  %></span>
+            <span class='text-10px'>| <%= disease.curie.gsub '_', ':'  %> %%% SHOW ALL DISEASE CURIES %%%</span>
           <% end %>
       </h3>
     </div>

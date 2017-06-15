@@ -49,6 +49,46 @@ class GenesController < ApplicationController
     @term_id = truncate(@gene.hgnc_id)
     @diseases = @gene.assertions.diseases.distinct
     @actionability = @gene.actionability_scores
+
+
+    # MATCH (Gene:Gene)
+    # WHERE (Gene.symbol contains "SMAD3")
+    # MATCH (Gene)<-[r:has_subject]-(Curation)-[rr:has_object]->(Disease)
+    # OPTIONAL MATCH (Disease)-[rrr:equivalentTo]-(EquivTo)
+    # RETURN Gene.hgnc_id, Disease.curie, EquivTo.curie, Curation, Gene, Disease, EquivTo
+
+    # @curated_match = Gene.query_as(:Gene)
+    #   .where("Gene.symbol = {gene_symbol}")
+    #   .match("(Gene)<-[r:has_subject]-(c)-[rr:has_object]->(x)")
+    #   .with("Gene")
+    #   .optional_match("(Gene)<-[r:has_subject]-(c)-[rr:has_object]->(x)-[rrr:equivalentTo]->(a)")
+    #   .return("a, Gene")
+    #   .params(gene_symbol: @gene.symbol)
+    #   .to_a.map(&:Gene)
+
+    # @curated_match = Gene.query_as(:Gene)
+    #   .where("Gene.symbol = {gene_symbol}")
+    #   .match("(Gene)<-[r:has_subject]-(curation)-[rr:has_object]->(disease)")
+    #   .with("Gene")
+    #   .optional_match("(Gene)<-[r:has_subject]-(curation)-[rr:has_object]->(disease)-[rrr:equivalentTo]->(EquivTo)")
+    #   .return("Gene { curations: [curation.perm_id], diseases: [disease.curie], EquivTos: [EquivTo.curie]}")
+    #   .params(gene_symbol: @gene.symbol)
+    #   .pluck(:Gene)
+
+    @curated_match = Gene.query_as(:Gene)
+      .where("Gene.symbol = {gene_symbol}")
+      .match("(Gene)<-[r:has_subject]-(assertion)-[rr:has_object]->(condition)")
+      .return("Gene {.symbol,
+                  conditionGroups: collect(distinct {
+                    conditionGroup: [(condition)-[:equivalentTo]-(equivTo) | equivTo.curie ] + condition.curie
+                  })
+                } as rows")
+      .params(gene_symbol: @gene.symbol)
+      .to_a.map()
+
+
+    # @curated_match_x = @curated_match[0]
+
     if @actionability.length > 0
       @actionability_diseases = @actionability.map {|a| a[:disease]}.flatten
     end
@@ -63,9 +103,11 @@ class GenesController < ApplicationController
       h.update(i.diseases.reduce({}) { |h1, i1| h1.update({i1.iri => i}) })
     end
     
+
     @pageTitle = @term_label;
 
     @analyticsDimension7  = "KB Genes - Show"
+
     if @genes || @actionability || @validity 
       @analyticsDimension1  = @gene.symbol
     else
