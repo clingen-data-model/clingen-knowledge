@@ -13,13 +13,16 @@
               @assertionFile = assertion[:file]
             %>
             <div class='row padding-bottom-sm'>
-            <div class='col-sm-12'><%= info_popover("actionability", "score", "Outcome: " + ilabel[0], "strong") %><br />
+            <div class='col-sm-12'><strong><%= ilabel[0] =%> / <%= ilabel[1] =%></strong>
+              <div class="text-xs text-muted">Outcome/Intervention Pair</div>
+            </div>
+            <div class='col-sm-12 padding-left-lg padding-top-xs'><%= info_popover("actionability", "score", "Outcome: " + ilabel[0], "") %><br />
                 <div class="padding-left-sm">
-                  Outcome severity: <%= scores[:severity] %><br />
-                  Outcome likelihood: <%= scores[:likelihood] %> <%= scores[:evidence] %>
+                  Severity: <%= scores[:severity] %><br />
+                  Likelihood: <%= scores[:likelihood] %> <%= scores[:evidence] %>
                 </div>
               </div>
-              <div class='col-sm-12'><%= info_popover("actionability", "score", "Intervention: " + ilabel[1], "strong") %><br />
+              <div class='col-sm-12 padding-left-lg border-bottom padding-bottom-sm'><%= info_popover("actionability", "score", "Intervention: " + ilabel[1], "") %><br />
                 <div class="padding-left-sm">
                   Effectiveness of intervention: <%= scores[:efficacy] %><br />
                   Nature of intervention: <%= scores[:safety] %>
