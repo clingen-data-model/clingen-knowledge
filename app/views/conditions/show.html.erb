@@ -27,7 +27,9 @@
         </ul>
         <% if @genes.present? %>
           <% @genes.each do |g, index| %>
-          <%= render 'gene_detail', gene: g, index: index %>
+            <div class="panel-group panel-group-curated" id="accordion" role="tablist" aria-multiselectable="true">
+              <%= render 'gene_detail', gene: g, index: index %>
+            </div>
           <% end %>
         <% else %>
           <div class="alert alert-info text-center" role="alert">
