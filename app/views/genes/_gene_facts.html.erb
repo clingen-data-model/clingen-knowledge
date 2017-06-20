@@ -1,3 +1,5 @@
+
+
 <div class="panel panel-default">
   <div class="panel-body">
     <div class='col-sm-5'>
@@ -27,15 +29,15 @@
     </div>
     <div class='col-sm-7'>
       <dl class='dl-horizontal'>
-         <% if @diseases.present? %>
+        <!-- <% if @diseases.present? %>
         <dt>Curated Conditions</dt>
         <dd>
           <% @diseases.each do |d| %>
-            <%= link_to d.label, d, {class: "btn btn-xs btn-default"} %>
+              <%= link_to d.label, d, {class: "btn btn-xs btn-default"} %>
           <% end %>
-          %%% ONLY SHOW UNIQUE MATCHES %%%
         </dd>
         <% end %>
+        -->
         <dt>External Resources</dt>
         <dd>
             <%= link_to gene_external_resources_genes_path(@gene), :class => "text-black"  do %>

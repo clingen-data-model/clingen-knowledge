@@ -3,7 +3,7 @@
     <% if assertion = actionability.find { |a| a[index].include?(index_id) } %>
       
         <tr>
-          <td><%= info_popover("actionability", "help", "" ,"logo-inline") %>
+          <td><%= info_popover("actionability", "help", "" ,"logo-inline") %></td>
           <td>
             <% assertion[:interventions].each do |i| %>
             <% 
@@ -16,16 +16,16 @@
             <div class='col-sm-12'><strong><%= ilabel[0] =%> / <%= ilabel[1] =%></strong>
               <div class="text-xs text-muted">Outcome/Intervention Pair</div>
             </div>
-            <div class='col-sm-12 padding-left-lg padding-top-xs'><%= info_popover("actionability", "score", "Outcome: " + ilabel[0], "") %><br />
+            <div class='col-sm-12 padding-left-lg padding-top-xs'>Outcome: <%= ilabel[0] %><br />
                 <div class="padding-left-sm">
-                  Severity: <%= scores[:severity] %><br />
-                  Likelihood: <%= scores[:likelihood] %> <%= scores[:evidence] %>
+                  <%= info_popover("actionability", "score", "Severity: " + scores[:severity], "") %><br />
+                  <%= info_popover("actionability", "score", "Likelihood: " + scores[:likelihood] , "") %>
                 </div>
               </div>
-              <div class='col-sm-12 padding-left-lg border-bottom padding-bottom-sm'><%= info_popover("actionability", "score", "Intervention: " + ilabel[1], "") %><br />
+              <div class='col-sm-12 padding-left-lg border-bottom padding-bottom-sm'>Intervention: <%= ilabel[1] %><br />
                 <div class="padding-left-sm">
-                  Effectiveness of intervention: <%= scores[:efficacy] %><br />
-                  Nature of intervention: <%= scores[:safety] %>
+                  <%= info_popover("actionability", "score", "Effectiveness of intervention: " + scores[:efficacy], "") %><br />
+                  <%= info_popover("actionability", "score", "Nature of intervention: " + scores[:safety] , "") %>
                 </div>
               </div>
             </div>

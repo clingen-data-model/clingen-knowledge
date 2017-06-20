@@ -17,7 +17,7 @@
           <tbody>
             <% if a = @gene.dosage_assertions.select {|i| i.haplo_assertion?}.first %>
               <tr>
-                <td><%= info_popover("gene-dosage", "help") %></td>
+                <td><%= info_popover("gene-dosage", "help", "" ,"logo-inline") %></td>
                 <td>
                   <%= info_popover("gene-curation", "score", a.interpretation.first.label , "strong") %>
                 </td>
@@ -30,7 +30,7 @@
             <% if a = @gene.dosage_assertions.select {|i| i.triplo_assertion?}.first %>
               <tr>
                 <td>
-                  <%= info_popover("gene-dosage", "help") %>   
+                  <%= info_popover("gene-dosage", "help", "" ,"logo-inline") %>  
                 </td>
                 <td>
                   <%= info_popover("gene-curation", "score", a.interpretation.first.label , "strong") %>

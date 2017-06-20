@@ -2,7 +2,7 @@
   <tbody>
     <% dosage.interpretation.each do |i| %>
       <tr>
-        <td><%= info_popover("gene-dosage", "help", "" ,"logo-inline") %>
+        <td><%= info_popover("gene-dosage", "help", "" ,"logo-inline") %></td>
         <td><%= info_popover("gene-curation", "score", i.label , "strong") %></td>
         <td class="text-center"><%= dosage.mdy_date %></td>
         <td class=" text-center">

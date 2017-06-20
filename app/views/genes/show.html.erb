@@ -1,58 +1,64 @@
-<div id="genes_show" class="container">
-</div>
-<div id="genes_show_summary" role="tabpanel" class="tab-pane active container results_curation_summary">
-  <div class="row">
-    <div class="col-sm-12">
-      <h2 class="padding-top-xs">
-        <%= render 'shared/subscribable_entity_header', entity: @gene %>
+<div id="genes_show" class="">
+  <div id="genes_show_summary" role="tabpanel" class="tab-pane active container results_curation_summary">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2 class="padding-top-xs">
+          <%= render 'shared/subscribable_entity_header', entity: @gene %>
 
-        <strong><%= @gene.symbol %></strong>
-      </h2>
-      <%= render 'gene_facts' %>
+          <strong><%= @gene.symbol %></strong>
+        </h2>
+        <%= render 'gene_facts' %>
 
+      </div>
     </div>
-  </div>
-  <div class="col-sm-12">
-    <div class="">
-      <ul class="nav nav-tabs">        
-        <li class="active">
-          <a href="#summary">
-            ClinGen's Curation Summaries
-          </a>
-        </li> 
-        <!-- <li class="">
-             <a href="#variants">
-             ClinVar Variants <span class="badge">#####</span>
-             </a>
-             </li> -->
-        <li class="">
-          <%= link_to "External Genomic Resources", gene_external_resources_genes_path(@gene) %>
-        </li>
-        <li class="">
-          <a href="https://www.ncbi.nlm.nih.gov/clinvar/?term=<%= @gene.symbol %>%5Bgene%5D" class="" target="clinvar">ClinVar Variants  <i class="glyphicon glyphicon-new-window text-xs" id="external_clinvar_gene_variants"></i></a>
-        </li>
-      </ul>
-          <% if @diseases.present? || @gene.dosage_assertions.present? %>
-            <% if @diseases.present? %>
-              <div class="panel-group panel-group-curated" id="accordion" role="tablist" aria-multiselectable="true">
-                <% @diseases.each_with_index do |d, index| %>
-                  <%= render 'disease_detail', disease: d, index: index %>
-                <% end %>
-              </div>
-            <% elsif @gene.dosage_assertions.present? %>
-              <div class="panel-group panel-group-curated" id="accordion" role="tablist" aria-multiselectable="true">
-                <%= render 'gene_dosage_no_condition'%>
+    <div class="col-sm-12">
+      <div class="">
+        <ul class="nav nav-tabs">        
+          <li class="active">
+            <a href="#summary">
+              ClinGen's Curation Summaries
+            </a>
+          </li> 
+          <!-- <li class="">
+               <a href="#variants">
+               ClinVar Variants <span class="badge">#####</span>
+               </a>
+               </li> -->
+          <li class="">
+            <%= link_to "External Genomic Resources", gene_external_resources_genes_path(@gene) %>
+          </li>
+          <li class="">
+            <a href="https://www.ncbi.nlm.nih.gov/clinvar/?term=<%= @gene.symbol %>%5Bgene%5D" class="" target="clinvar">ClinVar Variants  <i class="glyphicon glyphicon-new-window text-xs" id="external_clinvar_gene_variants"></i></a>
+          </li>
+        </ul>
+            <% if @diseases.present? || @gene.dosage_assertions.present? %>
+              <% if @diseases.present? %>
+                <div class="panel-group panel-group-curated" id="accordion" role="tablist" aria-multiselectable="true">
+
+                  <% @diseases.each_with_index do |d, index| %>
+                    <%= render 'disease_detail', disease: d, index: index %>
+                  <%
+                  @validityTriggered = true
+                   end %>
+
+                  <% if @gene.dosage_assertions.present? %>
+                    <%= render 'gene_dosage_no_condition'%>
+                  <% end %> 
+                </div>
+              <% elsif @gene.dosage_assertions.present? %>
+                <div class="panel-group panel-group-curated" id="accordion" role="tablist" aria-multiselectable="true">
+                  <%= render 'gene_dosage_no_condition'%>
+                </div>
+              <% end %>
+              <hr class="results_curation_summary_details_spacer" />
+            <% else %>
+              <div class="alert alert-info text-center" role="alert">
+                ClinGen has not yet curated <strong><%= @gene.symbol %></strong>. Please see the <%= link_to "External Genomic Resources tab", gene_external_resources_genes_path(@gene) %>  to find links to information from other sources about  <strong><%= @gene.symbol %></strong>.
+                <hr> If you would like to share information on this gene or request that this gene be considered for curation, please <%= link_to new_note_path, :method => :get  do %>
+      <span class="">sign-in to share information</span><% end %>.
               </div>
             <% end %>
-            <hr class="results_curation_summary_details_spacer" />
-          <% else %>
-            <div class="alert alert-info text-center" role="alert">
-              ClinGen has not yet curated <strong><%= @gene.symbol %></strong>. Please see the <%= link_to "External Genomic Resources tab", gene_external_resources_genes_path(@gene) %>  to find links to information from other sources about  <strong><%= @gene.symbol %></strong>.
-              <hr> If you would like to share information on this gene or request that this gene be considered for curation, please <%= link_to new_note_path, :method => :get  do %>
-    <span class="">sign-in to share information</span><% end %>.
-            </div>
-          <% end %>
+      </div>
     </div>
   </div>
-</div>
 </div>

@@ -65,7 +65,7 @@ module ApplicationHelper
       img_color = "clinicalActionability-on.png"
       title = "Clinical Actionability"
       href = "https://www.clinicalgenome.org/curation-activities/clinical-actionability/"
-      href_score = "https://www.clinicalgenome.org/curation-activities/clinical-actionability/the-process/"
+      href_score = "https://www.clinicalgenome.org/site/assets/files/6026/actionability_sq_metric.jpg"
       text_score = "Clinical Actionability scoring information"
     elsif type == "gene-dosage"
       text = "Is haploinsufficiency or triplosensitivity an established disease mechanism for this gene?"

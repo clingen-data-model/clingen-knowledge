@@ -1,11 +1,10 @@
-<div id="conditions_show" class="container">
-</div>
-<div id="conditions_show_summary" role="tabpanel" class="tab-pane active  container results_curation_summary">
-  <div class="row">
-    <div class="col-sm-12">
-      <h2 class="padding-top-xs">
-        <%= render 'shared/subscribable_entity_header', entity: @condition, term_id: @condition.label %>
-        <strong><%= @term_label %></strong>
+<div id="conditions_show" class="">
+  <div id="conditions_show_summary" role="tabpanel" class="tab-pane active  container results_curation_summary">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2 class="padding-top-xs">
+          <%= render 'shared/subscribable_entity_header', entity: @condition, term_id: @condition.label %>
+          <strong><%= @term_label %></strong>
         </h2>
         <%= render 'condition_facts' %>
       </div>
