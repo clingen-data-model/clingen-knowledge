@@ -26,7 +26,7 @@
 $( '[data-toggle="popover"]' ).hover( function() {
         $(this).popover({ 
             selector: true,
-            template:'<div class="popover info-popover-template" role="tooltip"><div class="arrow"></div><div class="popover-content"></div><a href="' + $(this).data('href') + '" target="_blank" class="popover-title"></a></div>'
+            template:'<div class="popover info-popover-template" role="tooltip"><div class="arrow"></div><div class="popover-content"></div><a href="' + $(this).data('href') + '" target="blank" class="popover-title"></a></div>'
         });
 });
 
