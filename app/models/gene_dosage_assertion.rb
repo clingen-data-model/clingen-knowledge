@@ -13,13 +13,13 @@ class GeneDosageAssertion < Assertion
   end
 
   def self.haplo_iris
-    # http://datamodel.clinicalgenome.org/clingen.owl#CG_000102
-    @@haplo_iris ||= Interpretation.all(:i).where("(i)-[:subClassOf]->(:Interpretation {iri: 'http://datamodel.clinicalgenome.org/clingen.owl#CG_000102'})").map { |i| i.iri}
+    # http://datamodel.clinicalgenome.org/terms/CG_000102
+    @@haplo_iris ||= Interpretation.all(:i).where("(i)-[:subClassOf]->(:Interpretation {iri: 'http://datamodel.clinicalgenome.org/terms/CG_000102'})").map { |i| i.iri}
   end
 
   def self.triplo_iris
-    # http://datamodel.clinicalgenome.org/clingen.owl#CG_000101
-    @@triplo_iris ||= Interpretation.all(:i).where("(i)-[:subClassOf]->(:Interpretation {iri: 'http://datamodel.clinicalgenome.org/clingen.owl#CG_000101'})").map { |i| i.iri}
+    # http://datamodel.clinicalgenome.org/terms/CG_000101
+    @@triplo_iris ||= Interpretation.all(:i).where("(i)-[:subClassOf]->(:Interpretation {iri: 'http://datamodel.clinicalgenome.org/terms/CG_000101'})").map { |i| i.iri}
   end
 
 end
