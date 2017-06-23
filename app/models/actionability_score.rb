@@ -77,7 +77,12 @@ class ActionabilityScore < Assertion
     result = scores.reduce({}) do |h, i|
       s = ActionabilityScore.label_map[i[:score].first]      
       e = i[:strength].length > 0 ? ActionabilityScore.evidence_map_label[i[:strength].first] : ""
-      h.update(s.first => s.second.to_s + e)
+      if !s.nil?
+        h.update(s.first => s.second.to_s + e)
+      else
+        s = ["", ""]
+        h.update(s.first => s.second.to_s + e)
+      end
     end
     result.update(total: total.to_s)
   end

@@ -24,8 +24,12 @@
               </div>
               <div class='col-sm-12 padding-left-lg border-bottom padding-bottom-sm'>Intervention: <%= ilabel[1] %><br />
                 <div class="padding-left-sm">
-                  <%= info_popover("actionability", "score", "Effectiveness of intervention: " + scores[:efficacy], "") %><br />
+                  <% if scores[:efficacy].present? %>
+                    <%= info_popover("actionability", "score", "Effectiveness of intervention: " + scores[:efficacy], "") %>
+                  <% end %><br />
+                  <% if scores[:efficacy].present? %>
                   <%= info_popover("actionability", "score", "Nature of intervention: " + scores[:safety] , "") %>
+                  <% end %>
                 </div>
               </div>
             </div>
