@@ -84,4 +84,10 @@ Rails.application.configure do
   # ADDED THN 2017-03-15
   # Deploy to /kb in production
   config.relative_url_root = "/kb"
+
+  # ADDED THN 2017-07-12
+  # Allow remote framing of app
+  config.action_dispatch.default_headers = {
+    'X-Frame-Options' => 'ALLOWALL'
+  }
 end

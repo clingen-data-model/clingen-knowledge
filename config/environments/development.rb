@@ -51,4 +51,8 @@ Rails.application.configure do
 
   # Added THN configure default url:
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  config.action_dispatch.default_headers = {
+    'X-Frame-Options' => 'ALLOWALL'
+  }
 end
