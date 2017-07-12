@@ -2,7 +2,7 @@
 <%
   ## Checking if these are set to display info.
   ## This was added for the GeneDiseaseDup
-  if !@validityTriggered.present?
+  if !@validityTriggeredFirst.present?
     @validityTriggeredFirst = @diseases_detail[disease.iri]
   else 
     @validityTriggeredFirst = false
