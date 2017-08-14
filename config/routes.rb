@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   end
 
 
-  # TODO refine routes later, for now want routes for 
+  # TODO refine routes later, for now want routes for
   # disease, conditions, and phenotypes
   # resources :diseases
   resources :conditions

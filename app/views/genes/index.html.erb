@@ -2,12 +2,12 @@
 
   <%= render 'genes_curation_summaries' %>
 
-<%  else %>
+<% else %>
 
   <div id="genes_index" class="container">
 
     <h2>Genes</h2>
-    <% @genes.each do |n|  %>
+    <% @genes.each do |n| %>
       <%= render "shared/result_list_gene", gene: n %>
     <% end %>
     <%= paginate @genes %>

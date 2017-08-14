@@ -7,7 +7,7 @@ class GeneTest < ActiveSupport::TestCase
     assert_not_empty genes
   end
 
-  test "should generate complete list for curation summary page" do 
+  test "should generate complete list for curation summary page" do
     summary = Gene.genes_summary
     assert_not_empty summary
     smad3 = summary.select { |i| i[:hgnc_id] == "HGNC:6769" }.first

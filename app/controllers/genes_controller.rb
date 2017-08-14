@@ -6,12 +6,12 @@ class GenesController < ApplicationController
     expires_in 10.minutes, public: true
 
     respond_to do |format|
-      format.json do 
+      format.json do
         @genes = Gene.all(:g).where("g.symbol starts with {symbol}")
                    .params(symbol: params[:term]).limit(10)
         render json: @genes, root: false
       end
-      format.html do 
+      format.html do
         @page = params[:page] || 1
 
         if params[:term]
@@ -42,7 +42,7 @@ class GenesController < ApplicationController
     @gene = Gene.find_by(hgnc_id: params[:id])
 
     # unless @gene.assertions.exists?
-    #   redirect_to gene_external_resources_genes_path(@gene) 
+    #   redirect_to gene_external_resources_genes_path(@gene)
     # end
 
     @term_label = truncate(@gene.symbol, :length => 20, :omission => '...')
@@ -102,13 +102,13 @@ class GenesController < ApplicationController
     @dosage_detail = @dosage.reduce({}) do |h, i|
       h.update(i.diseases.reduce({}) { |h1, i1| h1.update({i1.iri => i}) })
     end
-    
+
 
     @pageTitle = @term_label;
 
     @analyticsDimension7  = "KB Genes - Show"
 
-    if @genes || @actionability || @validity 
+    if @genes || @actionability || @validity
       @analyticsDimension1  = @gene.symbol
     else
       @analyticsDimension3  = @gene.symbol
