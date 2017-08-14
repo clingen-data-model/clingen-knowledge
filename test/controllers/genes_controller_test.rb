@@ -7,7 +7,6 @@ class GenesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_equal 'text/html', @response.content_type
     assert_select "title", "Genes - ClinGen Knowledge Base | Clinical Genome Resource"
-    assert_select "h2", "Genes"
   end
 
   test "should get gene page" do
