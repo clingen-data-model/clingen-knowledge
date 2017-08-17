@@ -8,7 +8,6 @@ class ActionabilityAssertionsController < ApplicationController
     # @assertions = ActionabilityAssertion.all.with_associations(:genes, :diseases, :intervention_assertions).page(@page).per(20)
     @assertions = helpers.index_list(@page)
 
-
     @analyticsDimension7  = "KB Actionability Curations - Listing"
   end
 
