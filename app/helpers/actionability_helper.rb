@@ -8,6 +8,7 @@ module ActionabilityHelper
   end
 
   # Sort alphabetically by first gene symbol. If more than one gene per assertion, sort the gene array for that assertion first.
+  # NOTE: modifies the original object slightly
   def sort_by_first_gene_symbol(data)
     (0...data.length).each do |i|
       if data[i][:genes].length > 1
