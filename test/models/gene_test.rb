@@ -36,12 +36,12 @@ class GeneTest < ActiveSupport::TestCase
   test "should generate complete list for curation summary page" do
     summary = Gene.genes_summary
     assert_not_empty summary
-    smad3 = summary.first { |i| i[:hgnc_id] == "HGNC:6769" }
+    smad3 = summary.select { |i| i[:hgnc_id] == "HGNC:6769" && i[:validity] != [] && i[:dosage] != []}.first
     assert_not_empty smad3
     assert_not_empty smad3[:validity]
     assert_not_empty smad3[:dosage]
-    assert_not smad3[:dosage][:iri].blank?
-    assert_not smad3[:dosage][:short_label].blank?
+    assert_not smad3[:dosage].first[:iri].blank?
+    assert_not smad3[:dosage].first[:short_label].blank?
     assert_not_empty smad3[:actionability]
   end
 
@@ -52,7 +52,7 @@ class GeneTest < ActiveSupport::TestCase
     sample = summary.first
     assert_not_empty sample[:interventions].first[:scores]
     assert_not_empty sample[:disease]
-    assert_not_blank sample[:interventions].first[:label].blank?
+    assert_not sample[:interventions].first[:label].blank?
     assert_not sample[:file].blank?
     assert_not sample[:date].blank?
 

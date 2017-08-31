@@ -35,7 +35,7 @@
           <div class="alert alert-info text-center" role="alert">
             ClinGen has not yet curated <strong><%= @condition.label %></strong>. Please see the <%= link_to "External Genomic Resources tab", condition_external_resources_conditions_path(@condition) %>  to find links to information from other sources about  <strong><%= @condition.label %></strong>.
           <hr> If you would like to share information on this condition or request that this condition be considered for curation, please <%= link_to new_note_path, :method => :get  do %>
-<span class="">sign-in to share information</span><% end %>.
+          <span class="">sign-in to share information</span><% end %>.
           </div>
         <% end %>
       </div>
