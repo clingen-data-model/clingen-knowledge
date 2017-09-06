@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class GeneTest < ActiveSupport::TestCase
+class ActionabilityAssertionTest < ActiveSupport::TestCase
   include ActionabilityHelper
 
   test "should get assertions list" do
@@ -19,6 +19,18 @@ class GeneTest < ActiveSupport::TestCase
     assert_not assertion[:interventions].first[:scores].blank?
     assert_not assertion[:file].blank?
     assert_not assertion[:date].blank?
+  end
+
+  test "should get actionability scores hash" do
+    act_assert_keys = [:efficacy, :evidence, :likelihood, :safety, :severity]
+    act_assert = ActionabilityAssertion.act_scores
+    assert_equal act_assert.keys.sort, act_assert_keys
+    act_assert_keys.each { |k| assert_not act_assert[k].blank? }
+    assert_not ActionabilityAssertion.act_cat_map(:severity).blank?
+    assert_not ActionabilityAssertion.act_cat_map(:likelihood).blank?
+    assert_not ActionabilityAssertion.act_cat_map(:effectiveness).blank?
+    assert_not ActionabilityAssertion.act_cat_map(:intervention).blank?
+    assert_not ActionabilityAssertion.act_cat_map(:evidence).blank?
   end
 
 end

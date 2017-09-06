@@ -1,7 +1,7 @@
 class ActionabilityAssertion < Assertion
 
   property :file
-  
+
   # has_one :out, :curation, model_class: :ActionabilityInterventionCuration, type: :was_generated_by
   has_many :in, :intervention_assertions, model_class: :ActionabilityInterventionAssertion, type: :was_generated_by
   # inherits interpretation from Assertion
@@ -12,7 +12,7 @@ class ActionabilityAssertion < Assertion
     perm_id
   end
 
-  def act_cat_map(category)
+  def self.act_cat_map(category)
     {severity: "http://datamodel.clinicalgenome.org/terms/CG_000041",
      likelihood: "http://datamodel.clinicalgenome.org/terms/CG_000047",
      effectiveness: "http://datamodel.clinicalgenome.org/terms/CG_000052",

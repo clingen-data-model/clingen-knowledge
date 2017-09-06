@@ -15,6 +15,11 @@ class DrugTest < ActiveSupport::TestCase
     assert_not drug.blank?
     assert_not drug.label.blank?
     assert_not drug.curie.blank?
+
+    drug = Drug.find_by_term("Lactate / Urea Topical Cream")
+    assert_not_empty drug
+    assert_not drug.first.label.blank?
+    assert_not drug.first.curie.blank?
   end
 
 end

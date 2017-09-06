@@ -3,6 +3,9 @@ require 'test_helper'
 class GeneTest < ActiveSupport::TestCase
 
   test "should find by term" do
+    puts '|' * 50
+    puts @request.params[:term].inspect
+    puts '|' * 50
     genes = Gene.find_by_term("SMAD3")
     assert_not_empty genes
     gene = genes.first

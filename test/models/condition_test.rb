@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class GeneTest < ActiveSupport::TestCase
+class ConditionTest < ActiveSupport::TestCase
 
   test "should get paginated list of conditions" do
     conditions = Condition.page(@page).per(20)
@@ -12,7 +12,6 @@ class GeneTest < ActiveSupport::TestCase
   test "should generate actionability summary for condition" do
     condition = Condition.find_by_term("Aneurysm-osteoarthritis syndrome")
     assert_not_empty condition
-    # condition = Condition.find_by_term("thymic dysplasia")
     assert_not_empty condition.assertions
 
     assertions = [GeneDosageAssertion, GeneDiseaseAssertion, ActionabilityAssertion]
