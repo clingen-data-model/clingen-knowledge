@@ -1,13 +1,12 @@
 <% # args: [actionability] structure to render, [gene] [disease] [index] which (:gene/:disease) the index is based on %>
   <tbody>
     <% if assertion = actionability.find { |a| a[index].include?(index_id) } %>
-      
         <tr>
           <td><%= info_popover("actionability", "help", "" ,"logo-inline") %></td>
           <td>
             <% assertion[:interventions].each do |i| %>
-            <% 
-              scores = ActionabilityScore.labels_to_h(i[:scores]) 
+            <%
+              scores = ActionabilityScore.labels_to_h(i[:scores])
               ilabel = i[:label].split('/')
               @assertionDate = assertion[:date]
               @assertionFile = assertion[:file]

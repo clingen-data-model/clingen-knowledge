@@ -8,32 +8,30 @@
     </thead>
     <tbody>
       <% @assertions.each do |a| %>
-	<tr>
-	  <td>
-	    <%= link_to genes_path+"/"+a.genes.first.hgnc_id, :method => :get, :class => ""  do %>
-	      <%= a.genes.first.label %>
-	    <% end %>
-
-	  </td>
-	  <td>
-	    <%= link_to conditions_path+"/"+a.diseases.first.curie, :method => :get, :class => ""  do %>
-	      <%= a.diseases.first.label %>
-	    <% end %>
-	    <ul class="list-inline">
-	      <% a.diseases.each do |c| %>
-		<li>
-		  <%= link_to c.curie.gsub('_', ':'), conditions_path+"/"+c.curie, :method => :get, :class => "text-muted text-sm" %>
-		</li>
-	      <% end %>
-	    </ul>
-
-	  </td>
-          <td class="text-center">
-            <%= link_to a, {class: 'btn btn-default btn-xs'} do %>
-              <i class="glyphicon glyphicon-file"></i> <strong><%= a.interpretation.first.label %> </strong> <span class="text-sm text-muted"> | <%= mdy_date(a.date) %></span>
-            <% end %> 
-</td>
-	</tr>
+      <tr>
+        <td>
+          <%= link_to genes_path+"/"+a[:genes].first[:hgnc_id], :method => :get, :class => ""  do %>
+            <%= a[:genes].first[:symbol] %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to conditions_path+"/"+a[:diseases].first[:curie], :method => :get, :class => ""  do %>
+            <%= a[:diseases].first[:label] %>
+          <% end %>
+          <ul class="list-inline">
+            <% a[:diseases].each do |c| %>
+            <li>
+              <%= link_to c[:curie].gsub('_', ':'), conditions_path+"/"+c[:curie], :method => :get, :class => "text-muted text-sm" %>
+            </li>
+            <% end %>
+          </ul>
+        </td>
+        <td class="text-center">
+          <%= link_to "/gene-validity/#{a[:perm_id]}", {class: 'btn btn-default btn-xs'} do %>
+            <i class="glyphicon glyphicon-file"></i> <strong><%= a[:interpretation].first[:label] %> </strong> <span class="text-sm text-muted"> | <%= mdy_date(a[:date]) %></span>
+          <% end %>
+        </td>
+      </tr>
       <% end %>
     </tbody>
   </table>

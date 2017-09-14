@@ -13,12 +13,12 @@
     </div>
     <div class="col-sm-12">
       <div class="">
-        <ul class="nav nav-tabs">        
+        <ul class="nav nav-tabs">
           <li class="active">
             <a href="#summary">
               ClinGen's Curation Summaries
             </a>
-          </li> 
+          </li>
           <!-- <li class="">
                <a href="#variants">
                ClinVar Variants <span class="badge">#####</span>
@@ -43,7 +43,7 @@
 
                   <% if @gene.dosage_assertions.present? %>
                     <%= render 'gene_dosage_no_condition'%>
-                  <% end %> 
+                  <% end %>
                 </div>
               <% elsif @gene.dosage_assertions.present? %>
                 <div class="panel-group panel-group-curated" id="accordion" role="tablist" aria-multiselectable="true">

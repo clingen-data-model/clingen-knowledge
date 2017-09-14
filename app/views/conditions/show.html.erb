@@ -6,21 +6,21 @@
           <%= render 'shared/subscribable_entity_header', entity: @condition, term_id: @condition.label %>
           <strong><%= @term_label %></strong>
         </h2>
+        <h2><%= @term_label %></h2>
         <%= render 'condition_facts' %>
       </div>
     </div>
     <div class="col-sm-12">
       <div class="">
-        <ul class="nav nav-tabs">     
+        <ul class="nav nav-tabs">
           <li class="active">
-            <%= link_to condition_path(@condition), :class => ""  do %>
+            <%= link_to condition_path(@condition), :class => "" do %>
               ClinGen's Curation Summaries
             <% end %>
-          </li>    
+          </li>
           <li class="">
             <%= link_to "External Genomic Resources", condition_external_resources_conditions_path(@condition) %>
           </li>
-
         <li class="">
           <a id="external_clinvar_condition_variants" href="https://www.ncbi.nlm.nih.gov/clinvar/?term=<%= @term_label %>" class="" target="clinvar">ClinVar Variants  <i class="glyphicon glyphicon-new-window text-xs"></i></a>
         </li>
@@ -35,7 +35,7 @@
           <div class="alert alert-info text-center" role="alert">
             ClinGen has not yet curated <strong><%= @condition.label %></strong>. Please see the <%= link_to "External Genomic Resources tab", condition_external_resources_conditions_path(@condition) %>  to find links to information from other sources about  <strong><%= @condition.label %></strong>.
           <hr> If you would like to share information on this condition or request that this condition be considered for curation, please <%= link_to new_note_path, :method => :get  do %>
-<span class="">sign-in to share information</span><% end %>.
+          <span class="">sign-in to share information</span><% end %>.
           </div>
         <% end %>
       </div>

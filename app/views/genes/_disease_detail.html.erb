@@ -4,11 +4,11 @@
   ## This was added for the GeneDiseaseDup
   if !@validityTriggeredFirst.present?
     @validityTriggeredFirst = @diseases_detail[disease.iri]
-  else 
+  else
     @validityTriggeredFirst = false
   end
 
-  if @dosage_detail[disease.iri] || (@actionability.length > 0 && @actionability_diseases.include?(disease.iri)) || (@diseases_detail[disease.iri] && @validityTriggeredFirst == @diseases_detail[disease.iri]) 
+  if @dosage_detail[disease.iri] || (@actionability.length > 0 && @actionability_diseases.include?(disease.iri)) || (@diseases_detail[disease.iri] && @validityTriggeredFirst == @diseases_detail[disease.iri])
 %>
 
   <div class="panel panel-primary">
@@ -19,7 +19,7 @@
         </a>
         -->
           <i> <%= @gene.symbol %> </i> - <%= link_to disease, :class => "text-black"  do %>
-            <%= disease.label %> 
+            <%= disease.label %>
             <span class='text-10px'>| <%= disease.curie.gsub '_', ':'  %></span>
           <% end %>
       </h3>
