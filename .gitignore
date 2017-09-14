@@ -21,3 +21,5 @@ config/passenger.3000.pid.lock
 
 # Ignore Byebug command history file.
 .byebug_history
+
+deploy/deploy.retry
