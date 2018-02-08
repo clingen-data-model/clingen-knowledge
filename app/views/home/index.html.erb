@@ -6,85 +6,157 @@
     # Just some notes...
     # The "active" class set in the tabs and tab-content is what activates
     # the tabs that you want.  SO, just start with genes and go through the list.
-    # My thought is to always keep the tabs (even if not matches) but always 
+    # My thought is to always keep the tabs (even if no matches) but always
     # activate the first tab with results when reading from left to right.
   %>
-
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="<%= 'active' if @active_class == :genes %>">
-    	<a href="#gene_results" aria-controls="gene_results" role="tab" data-toggle="tab">Genes <span class="badge hidden-xs"><%= @genesFound.size %> Matches</span></a>
-    </li>
-    <li role="presentation" class="<%= 'active' if @active_class == :conditions %>">
-    	<a href="#condition_results" aria-controls="condition_results" role="tab" data-toggle="tab">Conditions <span class="badge hidden-xs"><%= @conditionsFound.size %> Matches</span></a>
-    </li>
-    <li role="presentation" class="<%= 'active' if @active_class == :drugs %>">
-    	<a href="#drug_results" aria-controls="drug_results" role="tab" data-toggle="tab">Drugs <span class="badge hidden-xs"><%= @drugsFound.size %> Matches</span></a>
-    </li>
-  </ul>
-
-
-  <div class="tab-content">
-    <% if @genesFound.size == 0 && @conditionsFound.size == 0 && @drugsFound.size == 0 %>
-    <div role="tabpanel" class="tab-pane active" id="no_results">
-      <div class="padding-top-md">
-        <%= render "no_results" %>
-      </div>
-    </div>
+  <h3>coord: <%= @coord.to_s %></h3>
+  <% if @coord %>
+    <h3>chr: <%= @chr %></h3>
+    <h3>start: <%= @start %></h3>
+    <h3>stop: <%= @stop %></h3>
+    <h3>genes returned: <%= @geneRegionsFound.length %></h3>
+    <% if @geneRegionsFound.length > 0 %>
+      <h3>first gene symbol: <%= @geneRegionsFound.first.symbol %>, name: <%= @geneRegionsFound.first.name %>, num_curations: <%= @geneRegionsFound.first.num_curations %></h3>
     <% end %>
-    <div role="tabpanel" class="tab-pane <%= 'active' if @active_class == :genes %>" id="gene_results">
-      <div class="padding-top-md">
-      <% if @genes.size == 0 %>
-      <%= render "no_results" %>
-      <% else %>
-      <%= render "gene_results" %>
-      <!-- START IF - only show this if more then X are needed -->
-      <% if @genesFound.size > 20 %>
-      <div class="col-sm-4 col-sm-offset-4">
-        <%= link_to "Additional Gene Matches", genes_path(page: 2, term: @term), class: 'btn btn-primary btn-block' %>
-      </div>
-      <% end %>
-      <!-- END IF -->
+    <h3>variants returned: <%= @variantsFound.length %></h3>
+    <% if @variantsFound.length > 0 %>
+      <h3>first variant nssv: <%= @variantsFound.first.dbvar_id %>, iri: <%= @variantsFound.first.iri %></h3>
+    <% end %>
+  <% end %>
 
+  <% if @coord %>
+
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="<%= 'active' if @active_class == :genes %>">
+      	<a href="#gene_results" aria-controls="gene_results" role="tab" data-toggle="tab">Genes <span class="badge hidden-xs"><%= @geneRegionsFound.size %> Matches</span></a>
+      </li>
+      <li role="presentation" class="<%= 'active' if @active_class == :variants %>">
+      	<a href="#condition_results" aria-controls="condition_results" role="tab" data-toggle="tab">Variants <span class="badge hidden-xs"><%= @variantsFound.size %> Matches</span></a>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      <% if @geneRegionsFound.size == 0 && @variantsFound.size == 0 %>
+      <div role="tabpanel" class="tab-pane active" id="no_results">
+        <div class="padding-top-md">
+          <%= render "no_results" %>
+        </div>
+      </div>
       <% end %>
+      <div role="tabpanel" class="tab-pane <%= 'active' if @active_class == :genes %>" id="gene_results">
+        <div class="padding-top-md">
+        <% if @genes.size == 0 %>
+        <%= render "no_results" %>
+        <% else %>
+        <%= render "gene_results" %>
+        <!-- START IF - only show this if more then X are needed -->
+        <% if @geneRegionsFound.size > 20 %>
+        <div class="col-sm-4 col-sm-offset-4">
+          <%= link_to "Additional Gene Matches", genes_path(page: 2, term: @term), class: 'btn btn-primary btn-block' %>
+        </div>
+        <% end %>
+        <!-- END IF -->
+
+        <% end %>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane <%= 'active' if @active_class == :variants %>" id="condition_results">
+        <div class="padding-top-md">
+        <% if @variants.size == 0 %>
+        <%= render "no_results" %>
+        <% else %>
+        <%= render "variant_results" %>
+        <!-- START IF - only show this if more then X are needed -->
+        <% if @variantsFound.size > 20 %>
+        <div class="col-sm-4 col-sm-offset-4">
+          <%= link_to "Additional Variant Matches", variants_path(page: 2, term: @term), class: 'btn btn-primary btn-block' %>
+        </div>
+        <% end %>
+        <!-- END IF -->
+        <% end %>
+      	</div>
       </div>
     </div>
-    <div role="tabpanel" class="tab-pane <%= 'active' if @active_class == :conditions %>" id="condition_results">
-      <div class="padding-top-md">
-      <% if @conditions.size == 0 %>
-      <%= render "no_results" %>
-      <% else %>
-      <%= render "condition_results" %>
-      <!-- START IF - only show this if more then X are needed -->
-      <% if @conditionsFound.size > 20 %>
-      <div class="col-sm-4 col-sm-offset-4">
-        <%= link_to "Additional Condition Matches", conditions_path(page: 2, term: @term), class: 'btn btn-primary btn-block' %>
+
+  <% else %>
+
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="<%= 'active' if @active_class == :genes %>">
+        <a href="#gene_results" aria-controls="gene_results" role="tab" data-toggle="tab">Genes <span class="badge hidden-xs"><%= @genesFound.size %> Matches</span></a>
+      </li>
+      <li role="presentation" class="<%= 'active' if @active_class == :conditions %>">
+        <a href="#condition_results" aria-controls="condition_results" role="tab" data-toggle="tab">Conditions <span class="badge hidden-xs"><%= @conditionsFound.size %> Matches</span></a>
+      </li>
+      <li role="presentation" class="<%= 'active' if @active_class == :drugs %>">
+        <a href="#drug_results" aria-controls="drug_results" role="tab" data-toggle="tab">Drugs <span class="badge hidden-xs"><%= @drugsFound.size %> Matches</span></a>
+      </li>
+    </ul>
+
+
+    <div class="tab-content">
+      <% if @genesFound.size == 0 && @conditionsFound.size == 0 && @drugsFound.size == 0 %>
+      <div role="tabpanel" class="tab-pane active" id="no_results">
+        <div class="padding-top-md">
+          <%= render "no_results" %>
+        </div>
       </div>
       <% end %>
-      <!-- END IF -->
-      <% end %>
-    	</div>
+      <div role="tabpanel" class="tab-pane <%= 'active' if @active_class == :genes %>" id="gene_results">
+        <div class="padding-top-md">
+        <% if @genes.size == 0 %>
+        <%= render "no_results" %>
+        <% else %>
+        <%= render "gene_results" %>
+        <!-- START IF - only show this if more then X are needed -->
+        <% if @genesFound.size > 20 %>
+        <div class="col-sm-4 col-sm-offset-4">
+          <%= link_to "Additional Gene Matches", genes_path(page: 2, term: @term), class: 'btn btn-primary btn-block' %>
+        </div>
+        <% end %>
+        <!-- END IF -->
+
+        <% end %>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane <%= 'active' if @active_class == :conditions %>" id="condition_results">
+        <div class="padding-top-md">
+        <% if @conditions.size == 0 %>
+        <%= render "no_results" %>
+        <% else %>
+        <%= render "condition_results" %>
+        <!-- START IF - only show this if more then X are needed -->
+        <% if @conditionsFound.size > 20 %>
+        <div class="col-sm-4 col-sm-offset-4">
+          <%= link_to "Additional Condition Matches", conditions_path(page: 2, term: @term), class: 'btn btn-primary btn-block' %>
+        </div>
+        <% end %>
+        <!-- END IF -->
+        <% end %>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane <%= 'active' if @active_class == :drugs %>" id="drug_results">
+        <div class="padding-top-md">
+        <% if @drugs.size == 0 %>
+        <%= render "no_results" %>
+        <% else %>
+        <%= render "drug_results" %>
+        <!-- START IF - only show this if more then X are needed -->
+        <% if @drugsFound.size > 20 %>
+        <div class="col-sm-4 col-sm-offset-4">
+          <%= link_to "Additional Drug Matches", drugs_path(page: 2, term: @term), class: 'btn btn-primary btn-block' %>
+        </div>
+        <% end %>
+        <!-- END IF -->
+        <% end %>
+        </div>
+      </div>
     </div>
-    <div role="tabpanel" class="tab-pane <%= 'active' if @active_class == :drugs %>" id="drug_results">
-      <div class="padding-top-md">
-      <% if @drugs.size == 0 %>
-      <%= render "no_results" %>
-      <% else %>
-      <%= render "drug_results" %>
-      <!-- START IF - only show this if more then X are needed -->
-      <% if @drugsFound.size > 20 %>
-      <div class="col-sm-4 col-sm-offset-4">
-        <%= link_to "Additional Drug Matches", drugs_path(page: 2, term: @term), class: 'btn btn-primary btn-block' %>
-      </div>
-      <% end %>
-      <!-- END IF -->
-      <% end %>	
-      </div>
-    </div>
-  </div>
-    
+
+  <% end %>
+
 <% else %>
     <%= render "shared/splash_curated_facts" %>
-<% end %>    
-  
+<% end %>
+
 
 </div>
