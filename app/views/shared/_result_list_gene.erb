@@ -1,21 +1,15 @@
 <% if(@genes) %>
   <div class='row margin-bottom-sm ADDCLASSIFCURATED' id='result_ADDIDHERE'>
   <div class='col-sm-8'>
-    <h4 class='margin-top-none'><%= gene.symbol %><%#= link_to gene.symbol, gene %></a></h4>
-    <% if @coord %>
-      <div>
-        <%= "chr#{@loc_data[gene.symbol][:chr]}:#{@loc_data[gene.symbol][:start]}-#{@loc_data[gene.symbol][:stop]}" %>
-      </div>
-    <% end %>
-
+    <h4 class='margin-top-none'><%= link_to gene.symbol, gene %></a></h4>
     <div>
       <%= link_to genes_path+"/"+gene.hgnc_id, genes_path+"/"+gene.hgnc_id %> <span class='badge text-xs'>Gene</span>
     </div>
-
+    
     <div class='text-sm text-muted'>
       <%= gene.name ? gene.name : "NULL" %>
     </div>
-
+    
   </div>
   <%= entity_assertion_key gene %>
   <div class='col-sm-2 text-right text-tight text-sm text-muted'>
