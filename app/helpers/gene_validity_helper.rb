@@ -1,7 +1,34 @@
 module GeneValidityHelper
 
+  def PrintWrapperPmidSop5(data = nil)
 
-	  def PrintWrapperPmid(id = '', data = nil)
+      # "<div class=\"WrapperPmid\" >"
+      # "<div class=\"form-group\">"
+      # "<div class=\"WrapperPmidResults\">"
+    varInner = ""
+    if !data.nil?
+    varStart = "<div class=\"GeneticEvidencePmidData\">"
+        unless data.dig("notes","note").blank?
+          note = "(" + data["notes"]["note"] +")"
+        else
+          note = ""
+        end
+      if data["publications"]
+        data["publications"].each do |pubs|
+          ##varInner += pubs.last.inspect
+          varInner += pubs.last["author"] +" et al. "+ pubs.last["pubdate"] +" (PMID:"+ pubs.last["uid"] +"); " 
+          ##varInner += pubs.inspect 
+        end
+      end
+    varEnd = note + "</div>"
+
+    varStart + varInner + varEnd
+    else
+      ""
+    end
+  end
+	
+    def PrintWrapperPmid(id = '', data = nil)
 
   		# "<div class=\"WrapperPmid\" >"
   		# "<div class=\"form-group\">"

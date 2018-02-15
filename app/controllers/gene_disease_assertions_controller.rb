@@ -27,8 +27,14 @@ class GeneDiseaseAssertionsController < ApplicationController
     expires_in 10.minutes, public: true
 
     @assertion = GeneDiseaseAssertion.find_by(perm_id: params[:id])
-    @assertionScoreJson = ActiveSupport::JSON.decode(@assertion[:score_string])
-    @assertionScoreJsonPretty = JSON.pretty_generate(@assertionScoreJson)
+
+    if @assertion[:score_string_sop5].length > 0
+      @assertionScoreJsonSop5 = ActiveSupport::JSON.decode(@assertion[:score_string_sop5])
+      @assertionScoreJsonPretty = JSON.pretty_generate(@assertionScoreJsonSop5)
+    elsif @assertion[:score_string].length > 0
+      @assertionScoreJson = ActiveSupport::JSON.decode(@assertion[:score_string])
+      @assertionScoreJsonPretty = JSON.pretty_generate(@assertionScoreJson)
+    end
     #@assertionScoreArray = JSON.parse(assertionScoreJson)
 
     @pageTitle = "Gene Validity Curation"

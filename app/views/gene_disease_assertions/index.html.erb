@@ -27,7 +27,7 @@
           </ul>
         </td>
         <td class="text-center">
-          <%= link_to a, {class: 'btn btn-default btn-xs'} do %>
+          <%= link_to gene_disease_assertions_path+"/"+a[:perm_id], {class: 'btn btn-default btn-xs'} do %>
             <i class="glyphicon glyphicon-file"></i> <strong><%= a[:interpretation].first[:label] %> </strong> <span class="text-sm text-muted"> | <%= mdy_date(a[:date]) %></span>
           <% end %>
         </td>
