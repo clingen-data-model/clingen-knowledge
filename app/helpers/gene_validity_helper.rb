@@ -1,5 +1,12 @@
 module GeneValidityHelper
 
+  
+  def PrintDate(data = nil)
+    if !data.nil?
+      I18n.l data.to_time, format: "%m/%d/%Y"
+    end
+  end
+
   def PrintWrapperPmidSop5(data = nil)
 
       # "<div class=\"WrapperPmid\" >"
@@ -17,6 +24,34 @@ module GeneValidityHelper
         data["publications"].each do |pubs|
           ##varInner += pubs.last.inspect
           varInner += pubs.last["author"] +" et al. "+ pubs.last["pubdate"] +" (PMID:"+ pubs.last["uid"] +"); " 
+          ##varInner += pubs.inspect 
+        end
+      end
+    varEnd = note + "</div>"
+
+    varStart + varInner + varEnd
+    else
+      ""
+    end
+  end
+
+  def PrintWrapperPmidSop5Gci(data = nil)
+
+      # "<div class=\"WrapperPmid\" >"
+      # "<div class=\"form-group\">"
+      # "<div class=\"WrapperPmidResults\">"
+    varInner = ""
+    if !data.nil?
+    varStart = "<div class=\"GeneticEvidencePmidData\">"
+        unless data.dig("notes","note").blank?
+          note = "(" + data["notes"]["note"] +")"
+        else
+          note = ""
+        end
+      if data["Publications"]
+        data["Publications"].each do |pubs|
+          ##varInner += pubs.last.inspect
+          varInner += pubs["author"] +" et al. "+ pubs["pubdate"] +" (PMID:"+ pubs["pmid"] +"); " 
           ##varInner += pubs.inspect 
         end
       end

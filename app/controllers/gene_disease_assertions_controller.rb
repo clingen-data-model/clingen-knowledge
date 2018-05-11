@@ -28,10 +28,14 @@ class GeneDiseaseAssertionsController < ApplicationController
 
     @assertion = GeneDiseaseAssertion.find_by(perm_id: params[:id])
 
-    if @assertion[:score_string_sop5].length > 0
+    ##render json: @assertion
+    if @assertion[:score_string_gci].present?
+      @assertionScoreJsonGci = ActiveSupport::JSON.decode(@assertion[:score_string_gci])
+      @assertionScoreJsonPretty = JSON.pretty_generate(@assertionScoreJsonGci)
+    elsif @assertion[:score_string_sop5].present?
       @assertionScoreJsonSop5 = ActiveSupport::JSON.decode(@assertion[:score_string_sop5])
       @assertionScoreJsonPretty = JSON.pretty_generate(@assertionScoreJsonSop5)
-    elsif @assertion[:score_string].length > 0
+    elsif @assertion[:score_string].present?
       @assertionScoreJson = ActiveSupport::JSON.decode(@assertion[:score_string])
       @assertionScoreJsonPretty = JSON.pretty_generate(@assertionScoreJson)
     end
