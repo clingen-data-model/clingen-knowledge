@@ -15,16 +15,16 @@
           <% end %>
         </td>
         <td>
-          <%= link_to conditions_path+"/"+a[:diseases].first[:curie], :method => :get, :class => ""  do %>
-            <%= a[:diseases].first[:label] %>
-          <% end %>
-          <ul class="list-inline">
-            <% a[:diseases].each do |c| %>
-            <li>
-              <%= link_to c[:curie].gsub('_', ':'), conditions_path+"/"+c[:curie], :method => :get, :class => "text-muted text-sm" %>
-            </li>
+          <% if a[:diseases].first %>
+            <%= link_to conditions_path+"/"+a[:diseases].first[:curie], :method => :get, :class => ""  do %>
+              <%= a[:diseases].first[:label] %>
             <% end %>
-          </ul>
+            <ul class="list-inline">
+              <li>
+                <%= link_to a[:diseases].first[:curie].gsub('_', ':'), conditions_path+"/"+a[:diseases].first[:curie], :method => :get, :class => "text-muted text-sm" %>
+              </li>
+            </ul>
+          <% end %>
         </td>
         <td class="text-center">
           <%= link_to gene_disease_assertions_path+"/"+a[:perm_id], {class: 'btn btn-default btn-xs'} do %>
