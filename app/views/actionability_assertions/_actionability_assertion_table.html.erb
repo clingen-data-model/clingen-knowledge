@@ -1,0 +1,13 @@
+<table class="table table-condensed table-bordered table-striped">
+  <thead>
+    <th class="col-sm-1">Gene</th>
+    <th class="col-sm-2">Condition</th>
+    <th class="col-sm-7">Outcomes and Interventions</th>
+    <th class="col-sm-2">Report</th>
+  </thead>
+  <tbody>
+    <% assertions.each do |a| %>
+      <%= render "actionability_assertion_table_item", a: a%>
+    <% end %>
+  </tbody>
+</table>

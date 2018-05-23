@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-sm-12">
+    <strong><%= o[:label] %></strong> (<%= o[:scores].first[:label] %>)
+    <% o[:interventions].each do |i| %>
+      <div class="row">
+        <div class="col-sm-7">
+          <ul>
+            <li><%= i[:label] %></li>
+            <ul>
+              <% i[:scores].each do |s| %>
+                <li><%= s[:label] %></li>
+              <% end %>
+            </ul>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

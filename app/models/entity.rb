@@ -5,6 +5,8 @@ class Entity
   property :label
   property :description
   property :perm_id
+  property :iri
+  property :title
 
   def mdy_date
     Date.parse(date).strftime('%m/%d/%Y')

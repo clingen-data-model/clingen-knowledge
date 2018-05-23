@@ -1,0 +1,30 @@
+<tr>
+  <td>
+    <ul class="list-unstyled">
+      <% a[:genes].each do |g| %>
+        <li>
+          <%= link_to g[:symbol], gene_path(g[:hgnc_id]) %>
+        </li>
+      <% end %>
+    </ul>
+  </td>
+  <td>
+    <ul class="list-unstyled">
+      <% a[:conditions].each do |c| %>
+        <li>
+          <%= link_to c[:label], condition_path(c[:curie]) %>
+        </li>
+      <% end %>
+    </ul>
+  </td>
+  <td>
+    <% a[:outcomes].each do |o| %>
+      <%= render "actionability_outcome_item", o: o %>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to a[:file], {class: 'btn btn-default btn-xs', target: 'file'} do %>
+      <i class="glyphicon glyphicon-file"></i> <strong>View Details</strong> - <%= mdy_date(a[:date]) %>
+    <% end %>
+  </td>
+</tr>

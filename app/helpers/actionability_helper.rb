@@ -17,16 +17,16 @@ module ActionabilityHelper
     end
     data.sort_by { |r| r[:genes].first[:symbol] }
   end
-
+  # TODO change title to label
   # return structure to power index page
   def index_list(page = 1, limit = 20)
     assertions = ActionabilityAssertion.query_as(:a)
                    .return("a {.file, .date, genes: [(g:Gene)<-[:has_subject]-(a) | g {.symbol, .hgnc_id}],
-                  conditions: [(c:Condition)<-[:has_object]-(a) | c {.label, .curie}],
-                  interventions: [(a)<-[:was_generated_by]-(i:ActionabilityInterventionAssertion) | i {
-                  label: head([(i)-[:has_object]->(int:Intervention) | int.label]),
-                  scores: [(i)<-[:was_generated_by]-(s:ActionabilityScore) |
-                          head([(s)-[:has_predicate]->(p:Interpretation) | p {.iri, .label}])]}]}")
+                  conditions: [(c:DiseaseConcept)-[:has_object|:equivalentTo*1..2]-(a) | c {.label, .curie}],
+                  outcomes: [(a)<-[:has_subject]-(o:ActionabilityOutcomeAssertion) |
+                             o {.label, scores: [(o)<-[:has_subject]-(:ActionabilityScore)-[:has_predicate]->(so:Interpretation) | so {.label}],
+ interventions:                                [(o)<-[:has_subject]-(i:ActionabilityInterventionAssertion) | i {.label, scores:
+                                [(i)<-[:has_subject]-(:ActionabilityScore)-[:has_predicate]->(si:Interpretation) | si {.label}]}]}]}")
                    .to_a.map(&:a)
 
     sort_by_first_gene_symbol(assertions)
