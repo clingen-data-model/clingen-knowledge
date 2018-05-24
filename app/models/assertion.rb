@@ -1,5 +1,7 @@
 class Assertion < Entity
 
+  id_property :iri
+
   has_many :out, :subjects, model_class: :Entity, type: :has_subject
   has_many :out, :interpretation, model_class: :Interpretation, type: :has_predicate
   has_many :out, :objects, model_class: :Entity, type: :has_object

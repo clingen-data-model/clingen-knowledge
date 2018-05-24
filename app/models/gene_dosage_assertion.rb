@@ -1,7 +1,5 @@
 class GeneDosageAssertion < Assertion
 
-  id_property :iri
-
   def to_param
     perm_id
   end
