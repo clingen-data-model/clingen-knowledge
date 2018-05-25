@@ -1,4 +1,42 @@
 <div class="row">
+  <% o[:interventions].each do |i| %>
+  <div class="col-sm-5">
+    <%= o[:label] %>/<%= i[:label] %>
+  </div>
+  <div class="col-sm-7">
+    <dl class="dl-horizontal">
+      <dt style="width:80px; font-weight:normal; margin-top:1px">Outcome</dt>
+      <dd style="margin-left:90px">
+        Severity:
+        <strong>
+          ####
+        </strong>
+      </dd>
+      <dd style="margin-left:90px">
+        Likelihood:
+        <strong>
+          <%= o[:scores].first[:label] %>
+        </strong>
+      </dd>
+      <dt style="width:80px; font-weight:normal; margin-top:1px">Intervention</dt>
+      <dd style="margin-left:90px">
+        Effectiveness:
+        <strong>
+          ####
+        </strong>
+      </dd>
+      <dd style="margin-left:90px">
+        Intervention:
+        <strong>
+          ####
+        </strong>
+      </dd>
+    </dl>
+  </div>
+  <% end %>
+</div>
+
+<div class="row">
   <div class="col-sm-12">
     <strong><%= o[:label] %></strong> (<%= o[:scores].first[:label] %>)
     <% o[:interventions].each do |i| %>
