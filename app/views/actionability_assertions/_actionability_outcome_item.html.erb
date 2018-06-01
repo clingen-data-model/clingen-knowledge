@@ -1,45 +1,29 @@
 <div class="row">
+  <% o[:interventions].each do |i| %>
   <div class="col-sm-5">
-    <%= o[:label] %>/<%= i[:label] %><br />Severity: #### (Likelihood:<%= o[:scores].first[:label] %>)
+    <%= o[:label] %> / <%= i[:label] %>
   </div>
   <div class="col-sm-7">
     <dl class="dl-horizontal">
-       <% o[:interventions].each do |i| %>
+      <dt style="width:80px; font-weight:normal; margin-top:1px">Outcome</dt>
+      <% o[:scores].each.with_index(0) do |s, key| %>
+        <dd style="margin-left:90px">
+          <%= (key == 0) ? 'Severity:' : 'Likelihood:' %>
+          <strong>
+            <%= s[:label] %>
+          </strong>
+        </dd>
+      <% end %>
       <dt style="width:80px; font-weight:normal; margin-top:1px">Intervention</dt>
-      <dd style="margin-left:90px">
-        Effectiveness:
-        <strong>
-          ####
-        </strong>
-      </dd>
-      <dd style="margin-left:90px">
-        Intervention:
-        <strong>
-          ####
-        </strong>
-      </dd>
+      <% i[:scores].each.with_index(0) do |s, key| %>
+        <dd style="margin-left:90px">
+          <%= (key == 0) ? 'Effectiveness:' : 'Intervention:' %>
+          <strong>
+            <%= s[:label] %>
+          </strong>
+        </dd>
       <% end %>
     </dl>
   </div>
-</div>
-
-
-<div class="row">
-  <div class="col-sm-12">
-    <strong><%= o[:label] %></strong> (<%= o[:scores].first[:label] %>)
-    <% o[:interventions].each do |i| %>
-      <div class="row">
-        <div class="col-sm-7">
-          <ul>
-            <li><%= i[:label] %></li>
-            <ul>
-              <% i[:scores].each do |s| %>
-                <li><%= s[:label] %></li>
-              <% end %>
-            </ul>
-          </ul>
-        </div>
-      </div>
-    <% end %>
-  </div>
+  <% end %>
 </div>

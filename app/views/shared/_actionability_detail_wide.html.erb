@@ -4,41 +4,13 @@
         <tr>
           <td><%= info_popover("actionability", "help", "" ,"logo-inline") %></td>
           <td>
-            <% assertion[:interventions].each do |i| %>
-            <%
-              scores = ActionabilityScore.labels_to_h(i[:scores])
-              ilabel = i[:label].split('/')
-              @assertionDate = assertion[:date]
-              @assertionFile = assertion[:file]
-            %>
-            <div class='row padding-bottom-sm'>
-            <div class='col-sm-12'><strong><%= ilabel[0] =%> / <%= ilabel[1] =%></strong>
-              <div class="text-xs text-muted">Outcome/Intervention Pair</div>
-            </div>
-            <div class='col-sm-12 padding-left-lg padding-top-xs'>Outcome: <%= ilabel[0] %><br />
-                <div class="padding-left-sm">
-                  <%= info_popover("actionability", "score", "Severity: " + scores[:severity], "") %><br />
-                  <%= info_popover("actionability", "score", "Likelihood: " + scores[:likelihood] , "") %>
-                </div>
-              </div>
-              <div class='col-sm-12 padding-left-lg border-bottom padding-bottom-sm'>Intervention: <%= ilabel[1] %><br />
-                <div class="padding-left-sm">
-                  <% if scores[:efficacy].present? %>
-                    <%= info_popover("actionability", "score", "Effectiveness of intervention: " + scores[:efficacy], "") %>
-                  <% end %><br />
-                  <% if scores[:efficacy].present? %>
-                  <%= info_popover("actionability", "score", "Nature of intervention: " + scores[:safety] , "") %>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-            <% end %>
+            <strong>View report for scoring details</strong>
           </td>
           <td class=" text-center">
-            <%= mdy_date(@assertionDate) %>
+            <%= mdy_date(assertion[:date]) %>
           </td>
           <td class=" text-center">
-            <a href="<%= @assertionFile %>" target='file' class='btn btn-xs btn-success'>View report</a>
+            <a href="<%= assertion[:report] %>" target='file' class='btn btn-xs btn-success'>View report</a>
           </td>
         </tr>
     <% end  %>

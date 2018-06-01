@@ -21,7 +21,7 @@ module ActionabilityHelper
   # return structure to power index page
   def index_list(page = 1, limit = 20)
     assertions = ActionabilityAssertion.query_as(:a)
-                   .return("a {.file, .date, genes: [(g:Gene)<-[:has_subject]-(a) | g {.symbol, .hgnc_id}],
+                   .return("a {.report, .file, .date, genes: [(g:Gene)<-[:has_subject]-(a) | g {.symbol, .hgnc_id}],
                   conditions: [(c:DiseaseConcept)-[:has_object|:equivalentTo*1..2]-(a) | c {.label, .curie}],
                   outcomes: [(a)<-[:has_subject]-(o:ActionabilityOutcomeAssertion) |
                              o {.label, scores: [(o)<-[:has_subject]-(:ActionabilityScore)-[:has_predicate]->(so:Interpretation) | so {.label}],
