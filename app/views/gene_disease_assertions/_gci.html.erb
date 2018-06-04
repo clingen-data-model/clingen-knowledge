@@ -6,25 +6,26 @@
   <tr style="">
     <td style="width:15%; padding-bottom:5px; padding-right:1%;" valign="bottom"  nowrap class="text-right text-muted">Gene/Disease Pair:</td>
     <td style="width:85%; padding-bottom:5px"><h3 style="padding:0; margin:0"><strong style="color:#000"><i>
-      <%= @assertionScoreJsonGci['genes'][0]['symbol'] %>
+      <%= @geneSymbol %>
       </i>:
-      <%= @assertionScoreJsonGci['conditions'][0]['name'] %>
+      <%= @diseaseName %>
       </strong></h3></td>
   </tr>
   <tr style="">
     <td style="width:15%; padding-right:1%;" nowrap class="text-right text-muted"></td>
     <td style="width:85%; padding-bottom:5px"><strong style="color:#000">
-      <%= @assertionScoreJsonGci['genes'][0]['curie'] %> | 
-      <%= @assertionScoreJsonGci['conditions'][0]['curie'] %>
+      <%= @geneCurie %>
+| 
+      <%= @diseaseCurie %>
       <!-- TODO - Print out equivalents -->   
       
       </strong></td>
   </tr>
-      <% if @assertionScoreJsonGci.dig("scoreJson","ModeOfInheritance") %>
+      <% if @assertionScoreJsonGci.dig("ModeOfInheritance") %>
   <tr style="">
     <td style="width:15%; padding-right:1%; padding-bottom:5px" nowrap class="text-right text-muted">Mode of Inheritance</td>
     <td style="width:85%; padding-bottom:5px"><strong style="color:#000">
-      <%= @assertionScoreJsonGci['scoreJson']['ModeOfInheritance'] %>
+      <%= @assertionScoreJsonGci['ModeOfInheritance'] %>
       </strong></td>
   </tr>
   <% end %>
@@ -70,14 +71,14 @@
 			<td>12</td>
 			<td class="input-width-numbers points-given-bg">
 				<div class="form-group">
-						<%= @assertionScoreJsonGci.dig "scoreJson","GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalDominantOrXlinkedDisorder","VariantIsDeNovo","Value" %>
+						<%= @assertionScoreJsonGci.dig "GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalDominantOrXlinkedDisorder","VariantIsDeNovo","Value" %>
 				</div>
 			</td>
 			<td class="points-tally-bg">
-				<%= @assertionScoreJsonGci.dig "scoreJson","GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalDominantOrXlinkedDisorder","VariantIsDeNovo","Tally" %>
+				<%= @assertionScoreJsonGci.dig "GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalDominantOrXlinkedDisorder","VariantIsDeNovo","Tally" %>
 			</td>
 			<td class="input-width-pmid"><span class="input-width-pmid ">
-				<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "scoreJson","GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalDominantOrXlinkedDisorder","VariantIsDeNovo","Evidence")).html_safe %>
+				<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalDominantOrXlinkedDisorder","VariantIsDeNovo","Evidence")).html_safe %>
 			</span></td>
 		</tr>
 		<tr>
@@ -87,12 +88,12 @@
 			<td id="GeneticEvidence3Max">10</td>
 			<td class="input-width-numbers points-given-bg">
 				<span class="form-group">
-					<%= @assertionScoreJsonGci.dig "scoreJson","GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalDominantOrXlinkedDisorder","ProbandWithPredictedOrProvenNullVariant","Value" %>
+					<%= @assertionScoreJsonGci.dig "GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalDominantOrXlinkedDisorder","ProbandWithPredictedOrProvenNullVariant","Value" %>
 			</span>								</td>
 			<td class="points-tally-bg">
-				<%= @assertionScoreJsonGci.dig "scoreJson","GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalDominantOrXlinkedDisorder","ProbandWithPredictedOrProvenNullVariant","Tally" %>
+				<%= @assertionScoreJsonGci.dig "GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalDominantOrXlinkedDisorder","ProbandWithPredictedOrProvenNullVariant","Tally" %>
 			<td class="input-width-pmid ">
-				<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "scoreJson","GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalDominantOrXlinkedDisorder","ProbandWithPredictedOrProvenNullVariant","Evidence")).html_safe %>
+				<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalDominantOrXlinkedDisorder","ProbandWithPredictedOrProvenNullVariant","Evidence")).html_safe %>
 		  </td>
 		</tr>
 		<tr>
@@ -102,15 +103,15 @@
 			<td id="GeneticEvidence1Max" class='table-border-thin'>7</td>
 			<td class="input-width-numbers points-given-bg table-border-thin">
 				<div class="form-group">
-									<%= @assertionScoreJsonGci.dig "scoreJson","GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalDominantOrXlinkedDisorder","ProbandWithOtherVariantTypeWithSomeEvidenceOfGeneImpact","Value" %>
+									<%= @assertionScoreJsonGci.dig "GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalDominantOrXlinkedDisorder","ProbandWithOtherVariantTypeWithSomeEvidenceOfGeneImpact","Value" %>
 
 				</div>
 			</td>
 			<td class=" points-tally-bg table-border-thin">
-								<%= @assertionScoreJsonGci.dig "scoreJson","GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalDominantOrXlinkedDisorder","ProbandWithOtherVariantTypeWithSomeEvidenceOfGeneImpact","Tally" %>
+								<%= @assertionScoreJsonGci.dig "GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalDominantOrXlinkedDisorder","ProbandWithOtherVariantTypeWithSomeEvidenceOfGeneImpact","Tally" %>
 
 			<td class="input-width-pmid table-border-thin">
-								<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "scoreJson","GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalDominantOrXlinkedDisorder","ProbandWithOtherVariantTypeWithSomeEvidenceOfGeneImpact","Evidence")).html_safe %>
+								<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalDominantOrXlinkedDisorder","ProbandWithOtherVariantTypeWithSomeEvidenceOfGeneImpact","Evidence")).html_safe %>
 
 
 			  </td>
@@ -123,14 +124,14 @@
 			<td rowspan="2" id="GeneticEvidence4Max" class=' table-border-thin'>12</td>
 			<td class="input-width-numbers  points-given-bg">
 				<div class="form-group">
-					<%= @assertionScoreJsonGci.dig "scoreJson","GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalRecessiveDisease","TwoVariantsInTransAndAtLeastOneDeNovoOrAPredictedProvenNullVariant","Value" %>
+					<%= @assertionScoreJsonGci.dig "GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalRecessiveDisease","TwoVariantsInTransAndAtLeastOneDeNovoOrAPredictedProvenNullVariant","Value" %>
 				</div>
 			</td>
 			<td rowspan="2" class=" points-tally-bg table-border-thin">
-					<%= @assertionScoreJsonGci.dig "scoreJson","GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalRecessiveDisease","Tally" %>
+					<%= @assertionScoreJsonGci.dig "GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalRecessiveDisease","Tally" %>
 			</td>
 			<td class="input-width-pmid">
-								<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "scoreJson","GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalRecessiveDisease","TwoVariantsInTransAndAtLeastOneDeNovoOrAPredictedProvenNullVariant","Evidence")).html_safe %>
+								<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalRecessiveDisease","TwoVariantsInTransAndAtLeastOneDeNovoOrAPredictedProvenNullVariant","Evidence")).html_safe %>
 			</td>
 		</tr>
 		<tr>
@@ -138,10 +139,10 @@
 		  <td class='table-border-thin'>1</td>
 		  <td class='table-border-thin'>0-1.5</td>
 			<td class=' input-width-numbers  points-given-bg table-border-thin'><div class="form-group">
-				<%= @assertionScoreJsonGci.dig "scoreJson","GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalRecessiveDisease","TwoVariantsNotPredictedProvenNullWithSomeEvidenceOfGeneImpactInTrans","Value" %>
+				<%= @assertionScoreJsonGci.dig "GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalRecessiveDisease","TwoVariantsNotPredictedProvenNullWithSomeEvidenceOfGeneImpactInTrans","Value" %>
 			</div></td>
 			<td class="input-width-pmid  table-border-thin">
-				<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "scoreJson","GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalRecessiveDisease","TwoVariantsNotPredictedProvenNullWithSomeEvidenceOfGeneImpactInTrans","Evidence")).html_safe %>
+				<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "GeneticEvidence","CaseLevelData","VariantEvidence","AutosomalRecessiveDisease","TwoVariantsNotPredictedProvenNullWithSomeEvidenceOfGeneImpactInTrans","Evidence")).html_safe %>
 
 			</td>
 		</tr>
@@ -154,11 +155,11 @@
 		  <td rowspan="5" class="table-heading-line-normal" id="GeneticEvidence5Max2">3</td>
 		  <td rowspan="5" class="table-heading-line-normal input-width-numbers  points-given-bg">
 				<div class="form-group">
-									<%= @assertionScoreJsonGci.dig "scoreJson","GeneticEvidence","CaseLevelData","SegregationEvidence","EvidenceOfSegregationInOneOrMoreFamilies","Value" %>
+									<%= @assertionScoreJsonGci.dig "GeneticEvidence","CaseLevelData","SegregationEvidence","EvidenceOfSegregationInOneOrMoreFamilies","Value" %>
 
 				</div></td>
 		  <td rowspan="5" class="table-heading-line-normal points-tally-bg">
-									<%= @assertionScoreJsonGci.dig "scoreJson","GeneticEvidence","CaseLevelData","SegregationEvidence","EvidenceOfSegregationInOneOrMoreFamilies","Tally" %>
+									<%= @assertionScoreJsonGci.dig "GeneticEvidence","CaseLevelData","SegregationEvidence","EvidenceOfSegregationInOneOrMoreFamilies","Tally" %>
 
 		  </td>
 		  <td class="" style="border-style: none">&nbsp;</td>
@@ -174,7 +175,7 @@
 		  <td>0.5</td>
 		  <td>1</td>
 		  <td class="input-width-pmid">
-		  	<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "scoreJson","GeneticEvidence","CaseLevelData","SegregationEvidence","EvidenceOfSegregationInOneOrMoreFamilies","1","Evidence")).html_safe %>
+		  	<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "GeneticEvidence","CaseLevelData","SegregationEvidence","EvidenceOfSegregationInOneOrMoreFamilies","1","Evidence")).html_safe %>
 		  </td>
 	  </tr>
 		<tr>
@@ -182,7 +183,7 @@
 		  <td>1</td>
 		  <td>2</td>
 		  <td class="input-width-pmid">
-		  			  	<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "scoreJson","GeneticEvidence","CaseLevelData","SegregationEvidence","EvidenceOfSegregationInOneOrMoreFamilies","2","Evidence")).html_safe %>
+		  			  	<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "GeneticEvidence","CaseLevelData","SegregationEvidence","EvidenceOfSegregationInOneOrMoreFamilies","2","Evidence")).html_safe %>
 
 		  </td>
 	  </tr>
@@ -191,7 +192,7 @@
 		  <td class="table-heading-line-normal">1.5</td>
 		  <td class="table-heading-line-normal">3</td>
 		  <td class="input-width-pmid table-heading-line-normal ">
-		  			  	<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "scoreJson","GeneticEvidence","CaseLevelData","SegregationEvidence","EvidenceOfSegregationInOneOrMoreFamilies","3","Evidence")).html_safe %>
+		  			  	<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "GeneticEvidence","CaseLevelData","SegregationEvidence","EvidenceOfSegregationInOneOrMoreFamilies","3","Evidence")).html_safe %>
 
 		  </td>
 	  </tr>
@@ -223,16 +224,16 @@
 			<td rowspan="2" id="GeneticEvidence6Max">12</td>
 			<td class="input-width-numbers points-given-bg">
 				<div class="form-group">
-														<%= @assertionScoreJsonGci.dig "scoreJson","GeneticEvidence","CaseControlData","SingleVariantAnalysis","Value" %>
+														<%= @assertionScoreJsonGci.dig "GeneticEvidence","CaseControlData","SingleVariantAnalysis","Value" %>
 
 				</div>
 			</td>
 			<td rowspan="2" class=" points-tally-bg">
-														<%= @assertionScoreJsonGci.dig "scoreJson","GeneticEvidence","CaseControlData","Tally" %>
+														<%= @assertionScoreJsonGci.dig "GeneticEvidence","CaseControlData","Tally" %>
 
 			</td>
 			<td class="input-width-pmid">
-						  			  	<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "scoreJson","GeneticEvidence","CaseControlData","SingleVariantAnalysis","Evidence")).html_safe %>
+						  			  	<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "GeneticEvidence","CaseControlData","SingleVariantAnalysis","Evidence")).html_safe %>
 
 			</td>
 		</tr>
@@ -241,22 +242,22 @@
 			<td colspan="2">0-6</td>
 			<td class="input-width-numbers points-given-bg">
 				<div class="form-group">
-								<%= @assertionScoreJsonGci.dig "scoreJson","GeneticEvidence","CaseControlData","AggregateVariantAnalysis","Value" %>
+								<%= @assertionScoreJsonGci.dig "GeneticEvidence","CaseControlData","AggregateVariantAnalysis","Value" %>
 
 				</div>
 			</td>
 			<td class="input-width-pmid">
-						  			  	<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "scoreJson","GeneticEvidence","CaseControlData","AggregateVariantAnalysis","Evidence")).html_safe %>
+						  			  	<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "GeneticEvidence","CaseControlData","AggregateVariantAnalysis","Evidence")).html_safe %>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="10" class="table-heading-line-thick table-heading-bg table-heading table-total text-right">Total Genetic Evidence Points (Maximum <span id="GeneticEvidenceMax">12</span>)</td>
 			<td class="table-heading-line-thick table-heading-bg table-heading table-total points-tally-bg">
-												<%= @assertionScoreJsonGci.dig "scoreJson","GeneticEvidence","TotalGeneticEvidencePoints","Tally" %>
+												<%= @assertionScoreJsonGci.dig "GeneticEvidence","TotalGeneticEvidencePoints","Tally" %>
 			</td>
 			<td class="table-heading-line-thick table-heading-bg table-heading table-total">
 			<div class="form-group total-notes">
-									<%= @assertionScoreJsonGci.dig "scoreJson","GeneticEvidence","TotalGeneticEvidencePoints","notes" %>
+									<%= @assertionScoreJsonGci.dig "GeneticEvidence","TotalGeneticEvidencePoints","notes" %>
         </div>
 			</td>
 		</tr>
@@ -287,16 +288,16 @@
 			<td rowspan="3" class='table-border-thin' id="ExperimentalEvidence1Max">2</td>
 			<td class="input-width-numbers points-given-bg">
 				<div class="form-group">
-						<%= @assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","Function","BiochemicalFunction","Value" %>
+						<%= @assertionScoreJsonGci.dig "ExperimentalEvidence","Function","BiochemicalFunction","Value" %>
 
 				</div>
 			</td>
 			<td rowspan="3" class=" points-tally-bg table-border-thin">
-						<%= @assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","Function","Tally" %>
+						<%= @assertionScoreJsonGci.dig "ExperimentalEvidence","Function","Tally" %>
 			</td>
 			<td class="input-width-pmid">
-			  <?=PrintWrapperPmid($inputThisData["scoreJson"]["ExperimentalEvidence"]["Function"]["BiochemicalFunction"], "scoreJson[ExperimentalEvidence][Function][BiochemicalFunction]") ?>
-						  			  	<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","Function","BiochemicalFunction","Evidence")).html_safe %>
+			  <?=PrintWrapperPmid($inputThisData["ExperimentalEvidence"]["Function"]["BiochemicalFunction"], "scoreJson[ExperimentalEvidence][Function][BiochemicalFunction]") ?>
+						  			  	<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "ExperimentalEvidence","Function","BiochemicalFunction","Evidence")).html_safe %>
 
 			</td>
 		</tr>
@@ -305,10 +306,10 @@
 			<td>0.5</td>
 			<td>0 - 2</td>
 			<td class="input-width-numbers points-given-bg"><span class="form-group">
-				<%= @assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","Function","ProteinInteraction","Value" %>
+				<%= @assertionScoreJsonGci.dig "ExperimentalEvidence","Function","ProteinInteraction","Value" %>
 			</span></td>
 			<td class="input-width-pmid">
-				<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","Function","ProteinInteraction","Evidence")).html_safe %>
+				<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "ExperimentalEvidence","Function","ProteinInteraction","Evidence")).html_safe %>
 			</td>
 		</tr>
 		<tr>
@@ -316,10 +317,10 @@
 			<td class=' table-border-thin'>0.5</td>
 			<td class=' table-border-thin'>0 - 2</td>
 			<td class="input-width-numbers points-given-bg table-border-thin"><span class="form-group">
-						<%= @assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","Function","Expression","Value" %>
+						<%= @assertionScoreJsonGci.dig "ExperimentalEvidence","Function","Expression","Value" %>
 			</span></td>
 			<td class="input-width-pmid table-border-thin">
-				<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","Function","Expression","Evidence")).html_safe %>
+				<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "ExperimentalEvidence","Function","Expression","Evidence")).html_safe %>
 			</td>
 		</tr>
 		<tr>
@@ -330,14 +331,14 @@
 			<td rowspan="2" class=' table-border-thin' id="ExperimentalEvidence2Max">2</td>
 			<td class="input-width-numbers points-given-bg">
 				<div class="form-group">
-						<%= @assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","FunctionalAlteration","PatientCells","Value" %>
+						<%= @assertionScoreJsonGci.dig "ExperimentalEvidence","FunctionalAlteration","PatientCells","Value" %>
 				</div>
 			</td>
 			<td rowspan="2" class=" points-tally-bg table-border-thin">
-						<%= @assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","Tally" %>
+						<%= @assertionScoreJsonGci.dig "ExperimentalEvidence","Tally" %>
 			</td>
 			<td class="input-width-pmid">
-			  <%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","FunctionalAlteration","PatientCells","Evidence")).html_safe %>
+			  <%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "ExperimentalEvidence","FunctionalAlteration","PatientCells","Evidence")).html_safe %>
 			</td>
 		</tr>
 		<tr>
@@ -345,10 +346,10 @@
 			<td class='table-border-thin'>0.5</td>
 			<td class='table-border-thin'>0 - 1</td>
 			<td class="input-width-numbers points-given-bg table-border-thin"><span class="form-group">
-						<%= @assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","FunctionalAlteration","NonPatientCells","Value" %>
+						<%= @assertionScoreJsonGci.dig "ExperimentalEvidence","FunctionalAlteration","NonPatientCells","Value" %>
 			</span></td>
 			<td class="input-width-pmid table-border-thin">
-			  <%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","FunctionalAlteration","NonPatientCells","Evidence")).html_safe %>
+			  <%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "ExperimentalEvidence","FunctionalAlteration","NonPatientCells","Evidence")).html_safe %>
 			</td>
 		</tr>
 		<tr>
@@ -358,13 +359,13 @@
 		  <td class=''>0 - 4</td>
 		  <td rowspan="6" class='' id="">4</td>
 		  <td class="input-width-numbers points-given-bg"><span class="form-group">
-						<%= @assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","Models","NonHumanModelOrganism","Value" %>
+						<%= @assertionScoreJsonGci.dig "ExperimentalEvidence","Models","NonHumanModelOrganism","Value" %>
 		  </span></td>
 		  <td rowspan="6" class=" points-tally-bg">
-						<%= @assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","ModelsRescue","Tally" %>
+						<%= @assertionScoreJsonGci.dig "ExperimentalEvidence","ModelsRescue","Tally" %>
 		  </td>
 		  <td class="input-width-pmid">
-		  	<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","ModelsRescue","NonHumanModelOrganism","Evidence")).html_safe %>
+		  	<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "ExperimentalEvidence","ModelsRescue","NonHumanModelOrganism","Evidence")).html_safe %>
 			</td>
 	  </tr>
 		<tr>
@@ -372,10 +373,10 @@
 		  <td class='table-border-thin'>1</td>
 		  <td class='table-border-thin'>0 - 2</td>
 		  <td class="input-width-numbers points-given-bg table-border-thin"><span class="form-group">
-						<%= @assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","Models","CellCultureModel","Value" %>
+						<%= @assertionScoreJsonGci.dig "ExperimentalEvidence","Models","CellCultureModel","Value" %>
 		  </span></td>
 		  <td class="input-width-pmid  table-border-thin">
-						  	<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","Models","CellCultureModel","Evidence")).html_safe %>
+						  	<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "ExperimentalEvidence","Models","CellCultureModel","Evidence")).html_safe %>
 
 		  </td>
 	  </tr>
@@ -386,11 +387,11 @@
 			<td>0 - 4</td>
 			<td class="input-width-numbers points-given-bg">
 				<div class="form-group">
-						<%= @assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","Rescue","RescueInHuman","Value" %>
+						<%= @assertionScoreJsonGci.dig "ExperimentalEvidence","Rescue","RescueInHuman","Value" %>
 				</div>
 			</td>
 			<td class="input-width-pmid">
-						  	<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","Rescue","RescueInHuman","Evidence")).html_safe %>
+						  	<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "ExperimentalEvidence","Rescue","RescueInHuman","Evidence")).html_safe %>
 
 			</td>
 		</tr>
@@ -399,10 +400,10 @@
 			<td>2</td>
 			<td>0 - 4</td>
 			<td class="input-width-numbers points-given-bg"><div class="form-group">
-						<%= @assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","Rescue","RescueInNonHumanModelOrganism","Value" %>
+						<%= @assertionScoreJsonGci.dig "ExperimentalEvidence","Rescue","RescueInNonHumanModelOrganism","Value" %>
 				</div></td>
 			<td class="input-width-pmid">
-				<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","Rescue","RescueInNonHumanModelOrganism","Evidence")).html_safe %>
+				<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "ExperimentalEvidence","Rescue","RescueInNonHumanModelOrganism","Evidence")).html_safe %>
 			</td>
 		</tr>
 		<tr>
@@ -410,10 +411,10 @@
 			<td>1</td>
 			<td>0 - 2</td>
 			<td class="input-width-numbers points-given-bg"><span class="form-group">
-						<%= @assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","Rescue","RescueInCellCultureModel","Value" %>
+						<%= @assertionScoreJsonGci.dig "ExperimentalEvidence","Rescue","RescueInCellCultureModel","Value" %>
 			</span></td>
 			<td class="input-width-pmid">
-				<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","Rescue","RescueInCellCultureModel","Evidence")).html_safe %>
+				<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "ExperimentalEvidence","Rescue","RescueInCellCultureModel","Evidence")).html_safe %>
 			</td>
 		</tr>
 		<tr>
@@ -421,20 +422,20 @@
 			<td>1</td>
 			<td>0 - 2</td>
 			<td class="input-width-numbers points-given-bg"><span class="form-group">
-						<%= @assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","Rescue","RescueInPatientCell","Value" %>
+						<%= @assertionScoreJsonGci.dig "ExperimentalEvidence","Rescue","RescueInPatientCell","Value" %>
 			</span></td>
 			<td class="input-width-pmid">
-				<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","Rescue","RescueInPatientCell","Evidence")).html_safe %>
+				<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "ExperimentalEvidence","Rescue","RescueInPatientCell","Evidence")).html_safe %>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="10" class="table-heading-line-thick table-heading-bg table-heading table-total text-right">Total Experimental Evidence Points (Maximum <span id="ExperimentalEvidenceMax">6</span>)</td>
 			<td class="table-heading-line-thick table-heading-bg table-heading table-total points-tally-bg">
-						<%= @assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","TotalExperimentalEvidencePoints","Tally" %>
+						<%= @assertionScoreJsonGci.dig "ExperimentalEvidence","TotalExperimentalEvidencePoints","Tally" %>
 			</td>
 			<td class="table-heading-line-thick table-heading-bg table-heading table-total">
 			<div class="form-group total-notes">
-						<%= @assertionScoreJsonGci.dig "scoreJson","ExperimentalEvidence","TotalExperimentalEvidencePoints","notes" %>
+						<%= @assertionScoreJsonGci.dig "ExperimentalEvidence","TotalExperimentalEvidencePoints","notes" %>
         </div>
 			
 			</td>
@@ -469,19 +470,19 @@
 		<tr>
 			<td class="table-heading-line-thick table-heading-bg table-heading">Assigned Points</td>
 			<td class="table-heading-line-thick table-heading-bg table-total table-total-border">
-				<?=$inputThisData["scoreJson"]["summary"]["GeneticEvidenceTotal"]?>
-				<%= @assertionScoreJsonGci.dig "scoreJson","summary","GeneticEvidenceTotal" %>
+				<?=$inputThisData["summary"]["GeneticEvidenceTotal"]?>
+				<%= @assertionScoreJsonGci.dig "summary","GeneticEvidenceTotal" %>
 			</td>
 			<td class="table-heading-line-thick table-heading-bg table-total table-total-border">
-				<?=$inputThisData["scoreJson"]["summary"]["ExperimentalEvidenceTotal"]?>
-				<%= @assertionScoreJsonGci.dig "scoreJson","summary","ExperimentalEvidenceTotal" %>
+				<?=$inputThisData["summary"]["ExperimentalEvidenceTotal"]?>
+				<%= @assertionScoreJsonGci.dig "summary","ExperimentalEvidenceTotal" %>
 			</td>
 			<td class="table-heading-line-thick table-heading-bg table-total table-total-border">
-				<?=$inputThisData["scoreJson"]["summary"]["EvidencePointsTotal"]?>
-				<%= @assertionScoreJsonGci.dig "scoreJson","summary","EvidencePointsTotal" %>
+				<?=$inputThisData["summary"]["EvidencePointsTotal"]?>
+				<%= @assertionScoreJsonGci.dig "summary","EvidencePointsTotal" %>
 			</td>
 			<td class="table-heading-line-thick table-heading-bg table-total table-total-border">
-				<% if @assertionScoreJsonGci.dig("scoreJson","ReplicationOverTime") == "YES" %>
+				<% if @assertionScoreJsonGci.dig("ReplicationOverTime") == "YES" %>
 					YES
 				<% else %>
 					NO
@@ -516,14 +517,14 @@
 						<table>
 							<tr>
 								<td class="col-sm-2">
-				<% if @assertionScoreJsonGci.dig("scoreJson","ValidContradictoryEvidence","value") == "YES" %>
+				<% if @assertionScoreJsonGci.dig("ValidContradictoryEvidence","value") == "YES" %>
 					YES
 				<% else %>
 					NO
 				<% end %>
 								</td>
 								<td class="col-sm-10">
-				<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "scoreJson","ValidContradictoryEvidence","Evidence")).html_safe %>
+				<%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "ValidContradictoryEvidence","Evidence")).html_safe %>
 								</td>
 							</tr>
 						</table>
@@ -539,21 +540,21 @@
 			<td colspan="2" class="table-heading-bg table-heading text-right table-border-thin">CALCULATED CLASSIFICATION (DATE)</td>
 			<td colspan="3" class="table-heading-bg table-heading table-border-thin CalculatedClassificationsActive">
 				<div class='col-sm-8'>
-					<%= @assertionScoreJsonGci.dig "scoreJson","summary","CalculatedClassification" %>
+					<%= @assertionScoreJsonGci.dig "summary","CalculatedClassification" %>
 				</div>
 				<div class='col-sm-4'>
-					<%= PrintDate(@assertionScoreJsonGci.dig "scoreJson","summary","CalculatedClassificationDate") %>
+					<%= PrintDate(@assertionScoreJsonGci.dig "summary","CalculatedClassificationDate") %>
 				</div>
 					</td>
 		</tr>
-		<% if @assertionScoreJsonGci.dig("scoreJson","summary","CuratorModifyCalculation") == "YES" %>
+		<% if @assertionScoreJsonGci.dig("summary","CuratorModifyCalculation") == "YES" %>
 		<tr>
 			<td colspan="2" class="table-heading-bg table-heading text-right">
 				MODIFY CALCULATED CLASSIFICATION
 			</td>
 			<td colspan="3" class="table-heading-bg table-heading text-left CalculatedClassificationsActive">
 				<div class='col-sm-12'>
-          <% if @assertionScoreJsonGci.dig("scoreJson","summary","CuratorModifyCalculation") == "YES" %>
+          <% if @assertionScoreJsonGci.dig("summary","CuratorModifyCalculation") == "YES" %>
 					YES
 				<% else %>
 					NO
@@ -568,32 +569,32 @@
 			<td colspan="3" class="table-heading-bg table-heading table-border-thin CalculatedClassificationsActive">
 				<div class='col-sm-8'>
           
-          <%= @assertionScoreJsonGci.dig "scoreJson","summary","CuratorClassification" %>
+          <%= @assertionScoreJsonGci.dig "summary","CuratorClassification" %>
           
 				</div>
 				<div class='col-sm-4'>
 					
-					<%= PrintDate(@assertionScoreJsonGci.dig "scoreJson","summary","CuratorClassificationDate") %>
+					<%= PrintDate(@assertionScoreJsonGci.dig "summary","CuratorClassificationDate") %>
 				</div>
 				<div class='col-sm-12'>
-          <%= @assertionScoreJsonGci.dig "scoreJson","summary","CuratorClassificationNotes" %></div>
+          <%= @assertionScoreJsonGci.dig "summary","CuratorClassificationNotes" %></div>
 					</td>
 		</tr>
 		<% end %>
 
-		<% if @assertionScoreJsonGci.dig("scoreJson","summary","FinalClassification") %>
+		<% if @assertionScoreJsonGci.dig("summary","FinalClassification") %>
 		<tr>
 			<td colspan="2" class="table-heading-bg table-heading text-right">EXPERT CURATION (DATE)</td>
 			<td colspan="3" class="table-heading-bg table-heading CalculatedClassificationsActive-3 CalculatedClassificationsActive">
 				<div class='col-sm-8'><span style="font-size: 145%;">
-          <%= @assertionScoreJsonGci.dig "scoreJson","summary","FinalClassification" %></span>
+          <%= @assertionScoreJsonGci.dig "summary","FinalClassification" %></span>
 				</div>
 				<div class='col-sm-4'>
-          <%= PrintDate(@assertionScoreJsonGci.dig "scoreJson","summary","FinalClassificationDate") %>
+          <%= PrintDate(@assertionScoreJsonGci.dig "summary","FinalClassificationDate") %>
 
 				</div>
 				<div class='col-sm-12'>
-          <%= @assertionScoreJsonGci.dig "scoreJson","summary","FinalClassificationNotes" %></div>
+          <%= @assertionScoreJsonGci.dig "summary","FinalClassificationNotes" %></div>
 
 					</td>
 			

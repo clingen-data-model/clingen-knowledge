@@ -28,6 +28,11 @@ class GeneDiseaseAssertionsController < ApplicationController
     expires_in 10.minutes, public: true
 
     @assertion = GeneDiseaseAssertion.find_by(perm_id: params[:id])
+    @geneSymbol = @assertion.genes.first.symbol
+    @diseaseName = @assertion.diseases.first.label
+    @geneCurie = @assertion.genes.first.curie
+    @diseaseCurie = @assertion.diseases.first.curie
+    
 
     ##render json: @assertion
     if @assertion[:score_string_gci].present?
