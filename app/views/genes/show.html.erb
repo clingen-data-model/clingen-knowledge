@@ -19,11 +19,6 @@
               ClinGen's Curation Summaries
             </a>
           </li>
-          <!-- <li class="">
-               <a href="#variants">
-               ClinVar Variants <span class="badge">#####</span>
-               </a>
-               </li> -->
           <li class="">
             <%= link_to "External Genomic Resources", gene_external_resources_genes_path(@gene) %>
           </li>
@@ -52,11 +47,7 @@
               <% end %>
               <hr class="results_curation_summary_details_spacer" />
             <% else %>
-              <div class="alert alert-info text-center" role="alert">
-                ClinGen has not yet curated <strong><%= @gene.symbol %></strong>. Please see the <%= link_to "External Genomic Resources tab", gene_external_resources_genes_path(@gene) %>  to find links to information from other sources about  <strong><%= @gene.symbol %></strong>.
-                <hr> If you would like to share information on this gene or request that this gene be considered for curation, please <%= link_to new_note_path, :method => :get  do %>
-      <span class="">sign-in to share information</span><% end %>.
-              </div>
+              <%= render "gene_no_curation_alert", gene: @gene%>
             <% end %>
       </div>
     </div>

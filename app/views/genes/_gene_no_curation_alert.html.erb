@@ -1,0 +1,5 @@
+<div class="alert alert-info text-center" role="alert">
+  ClinGen has not yet curated <strong><%= gene.symbol %></strong>. Please see the <%= link_to "External Genomic Resources tab", gene_external_resources_genes_path(gene) %>  to find links to information from other sources about  <strong><%= gene.symbol %></strong>.
+  <hr> If you would like to share information on this gene or request that this gene be considered for curation, please <%= link_to new_note_path, :method => :get  do %>
+    <span class="">sign-in to share information</span><% end %>.
+</div>

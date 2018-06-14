@@ -1,6 +1,7 @@
 development:
   type: bolt
   url: bolt://neo4j:clingen@localhost:7687
+  #url: bolt://neo4j:clingen@192.168.0.200:7687
 test:
   type: bolt
   url: bolt://neo4j:clingen@localhost:7687

@@ -40,22 +40,27 @@ class GenesController < ApplicationController
     expires_in 10.minutes, public: true
 
     @gene = Gene.find_by(hgnc_id: params[:id])
-    @term_label = truncate(@gene.symbol, :length => 20, :omission => '...')
-    @term_id = truncate(@gene.hgnc_id)
+
+    # @term_label = truncate(@gene.symbol, :length => 20, :omission => '...')
+    # @term_id = truncate(@gene.hgnc_id)
     @diseases = @gene.assertions.diseases.distinct
+    @concepts = @diseases.equivalent_terms(:t).where("t :DiseaseConcept")
+    @curations = @gene.query_as(:g)
+                   .return("g {.symbol,
+	gene_validity_interps: [(g)<-[:has_subject]-(gv:GeneDiseaseAssertion) | gv {.date,
+    	condition: [(gv)-[:has_object|:equivalentTo*..2]->(c:DiseaseConcept) | c {.label, .iri}][0],
+    	significance: [(gv)-[:has_predicate]->(i:Interpretation) | i {.label, .iri}][0],
+        replaced_by: [(gv)<-[:wasInvalidatedBy]-(r) | r.iri ]}],
+    gene_dosage_interps: [(g)<-[:has_subject]-(gd:GeneDosageAssertion) | gd {.date,
+    	condition: [(gd)-[:has_object|:equivalentTo*..2]->(c:DiseaseConcept) | c {.label, .iri}][0],
+        significance: [(gd)-[:has_predicate]->(i:Interpretation) | i {.label, .iri}]}][0],
+    actionability_interps: [(g)<-[:has_subject]-(a:ActionabilityAssertion) | a {.date,
+    	condition: [(a)-[:has_object|:equivalentTo*..2]->(c:DiseaseConcept) | c {.label, .iri}][0]}]}")
+                   .to_a
+
+
     @actionability = @gene.actionability_scores
     
-    @curated_match = Gene.query_as(:Gene)
-                       .where("Gene.symbol = {gene_symbol}")
-                       .match("(Gene)<-[r:has_subject]-(assertion)-[rr:has_object]->(condition)")
-                       .return("Gene {.symbol,
-                                conditionGroups: collect(distinct {
-                    conditionGroup: [(condition)-[:equivalentTo]-(equivTo) | equivTo.curie ] + condition.curie
-                  })
-                } as rows")
-                       .params(gene_symbol: @gene.symbol)
-                       .to_a.map()
-
     if @actionability.length > 0
       @actionability_diseases = @actionability.map {|a| a[:disease]}.flatten
     end
