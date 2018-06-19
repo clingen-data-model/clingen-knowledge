@@ -571,42 +571,62 @@
 					</td>
 		</tr>
 		<tr>
-			<td colspan="2" class="table-heading-bg table-heading text-right table-border-thin">
-				CURATOR CLASSIFICATION (DATE)
+			<td colspan="2" valign="top" class="table-heading-bg table-heading text-right 
+			<% if !@assertionScoreJsonGci.dig("summary","CuratorClassificationNotes") %>
+				table-border-thin
+			<% end %>
+			">
+				MODIFIED CLASSIFICATION (DATE)
 			</td>
-			<td colspan="3" class="table-heading-bg table-heading table-border-thin CalculatedClassificationsActive">
+			<td colspan="3" class="table-heading-bg table-heading 
+			<% if !@assertionScoreJsonGci.dig("summary","CuratorClassificationNotes") %>
+				table-border-thin
+			<% end %>
+			 CalculatedClassificationsActive">
 				<div class='col-sm-8'>
           
           <%= @assertionScoreJsonGci.dig "summary","CuratorClassification" %>
-          
 				</div>
 				<div class='col-sm-4'>
-					
 					<%= PrintDate(@assertionScoreJsonGci.dig "summary","CuratorClassificationDate") %>
 				</div>
-				<div class='col-sm-12'>
-          <%= @assertionScoreJsonGci.dig "summary","CuratorClassificationNotes" %></div>
-					</td>
+				</td>
 		</tr>
+				<% if @assertionScoreJsonGci.dig("summary","CuratorClassificationNotes") %>
+				<tr>
+					<td colspan="2" valign="top" class="table-heading-bg table-heading text-right table-border-thin">
+						REASON(S) FOR CHANGE
+					</td>
+					<td colspan="3" class="table-heading-bg table-heading table-border-thin CalculatedClassificationsActive">
+						<div class='col-sm-12'>
+		          <%= @assertionScoreJsonGci.dig "summary","CuratorClassificationNotes" %>
+		        </div>
+					</td>
+				</tr>
+				<% end %>
 		<% end %>
 
 		<% if @assertionScoreJsonGci.dig("summary","FinalClassification") %>
 		<tr>
-			<td colspan="2" class="table-heading-bg table-heading text-right">EXPERT CURATION (DATE)</td>
+			<td colspan="2" valign="top" class="table-heading-bg table-heading text-right">EXPERT CURATION (DATE)</td>
 			<td colspan="3" class="table-heading-bg table-heading CalculatedClassificationsActive-3 CalculatedClassificationsActive">
 				<div class='col-sm-8'><span style="font-size: 145%;">
           <%= @assertionScoreJsonGci.dig "summary","FinalClassification" %></span>
 				</div>
 				<div class='col-sm-4'>
           <%= PrintDate(@assertionScoreJsonGci.dig "summary","FinalClassificationDate") %>
-
 				</div>
-				<div class='col-sm-12'>
-          <%= @assertionScoreJsonGci.dig "summary","FinalClassificationNotes" %></div>
-
-					</td>
-			
 		</tr>
+			<% if @assertionScoreJsonGci.dig("summary","FinalClassificationNotes") %>
+			<tr>
+					<td colspan="2" valign="top" class="table-heading-bg table-heading text-right">EVIDENCE SUMMARY</td>
+					<td colspan="3" class="table-heading-bg table-heading CalculatedClassificationsActive-3 CalculatedClassificationsActive">
+						<div class='col-sm-12'>
+		          <%= @assertionScoreJsonGci.dig "summary","FinalClassificationNotes" %></div>
+
+							</td>
+				</tr>
+				<% end %>
 		<% end %>
 	</tbody>
 </table>
