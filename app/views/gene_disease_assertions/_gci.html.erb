@@ -343,7 +343,7 @@
 				</div>
 			</td>
 			<td rowspan="2" class=" points-tally-bg table-border-thin">
-						<%= @assertionScoreJsonGci.dig "ExperimentalEvidence","Tally" %>
+						<%= @assertionScoreJsonGci.dig "ExperimentalEvidence","FunctionalAlteration","Tally" %>
 			</td>
 			<td class="input-width-pmid">
 			  <%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "ExperimentalEvidence","FunctionalAlteration","PatientCells","Evidence")).html_safe %>
