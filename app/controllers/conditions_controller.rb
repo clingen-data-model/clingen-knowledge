@@ -29,6 +29,10 @@ class ConditionsController < ApplicationController
     expires_in 10.minutes, public: true
     
     @condition = Condition.find_by(curie: params[:id])
+    unless @condition.labels.include?(:DiseaseConcept)
+      c = @condition.equivalent_terms(:c).where("c :DiseaseConcept").first
+      redirect_to c, status: 301
+    end
 
     # unless @condition.assertions.exists?
     #   redirect_to condition_external_resources_conditions_path(@condition) 
