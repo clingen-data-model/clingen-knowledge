@@ -7,6 +7,8 @@ class Entity
   property :perm_id
   property :title
 
+  has_many :out, :attributions, model_class: :Agent, type: :wasAttributedto
+
   def mdy_date
     Date.parse(date).strftime('%m/%d/%Y')
   end

@@ -33,7 +33,7 @@
   <tr style="">
     <td style="width:15%; padding-right:1%; padding-bottom:5px" nowrap class="text-right text-muted">Expert Panel:</td>
     <td style="width:85%; padding-bottom:5px"><strong style="color:#000">
-      Place Expert Panel Name Here
+      <%= @assertion.attributions.first.label if @assertion.attributions.first %>
       </strong></td>
   </tr>
   <% # end %>
