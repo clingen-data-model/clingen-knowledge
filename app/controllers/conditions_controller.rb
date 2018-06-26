@@ -28,40 +28,40 @@ class ConditionsController < ApplicationController
   def show
     expires_in 10.minutes, public: true
     
-    @condition = Condition.find_by(curie: params[:id])
+    @condition = RDFClass.find_by(curie: params[:id])
     unless @condition.labels.include?(:DiseaseConcept)
       c = @condition.equivalent_terms(:c).where("c :DiseaseConcept").first
       redirect_to c, status: 301
-    end
-
-    # unless @condition.assertions.exists?
-    #   redirect_to condition_external_resources_conditions_path(@condition) 
-    # end
-
-    @term_label = truncate(@condition.label, :length => 50, :omission => '...')
-    @term_id = @condition.curie
-    @term_curie = @condition.curie
-    @dosage = @condition.assertions(:a).with_associations(:interpretation, :genes)
-                .where("a:GeneDosageAssertion")
-    @genes = @condition.as(:c).assertions.genes(:g).where("((c)<-[:has_related_phenotype]-(g) or not (g)-[:has_related_phenotype]->(:DiseaseConcept))").distinct
-    @actionability  = @condition.actionability_scores
-    @validity = @condition.assertions(:n).with_associations(:interpretation, :genes)
-                  .where("n:GeneDiseaseAssertion")
-    @validity_detail = @validity.reduce({}) do |h, i|
-      h.update(i.genes.reduce({}) { |h1, i1| h1.update({i1.uuid => i}) })
-    end
-    @dosage_detail = @dosage.reduce({}) do |h, i|
-      h.update(i.genes.reduce({}) { |h1, i1| h1.update({i1.uuid => i}) })
-    end
-
-    @pageTitle = @term_label;
-
-    @analyticsDimension7  = "KB Conditions - Show"
-    if @genes || @actionability || @validity 
-      @analyticsDimension2  = @condition.label
     else
-      @analyticsDimension4  = @condition.label
+
+      # unless @condition.assertions.exists?
+      #   redirect_to condition_external_resources_conditions_path(@condition) 
+      # end
+
+      @term_label = truncate(@condition.label, :length => 50, :omission => '...')
+      @term_id = @condition.curie
+      @term_curie = @condition.curie
+      @dosage = @condition.assertions(:a).with_associations(:interpretation, :genes)
+                  .where("a:GeneDosageAssertion")
+      @genes = @condition.as(:c).assertions.genes(:g).where("((c)<-[:has_related_phenotype]-(g) or not (g)-[:has_related_phenotype]->(:DiseaseConcept))").distinct
+      @actionability  = @condition.actionability_scores
+      @validity = @condition.assertions(:n).with_associations(:interpretation, :genes)
+                    .where("n:GeneDiseaseAssertion")
+      @validity_detail = @validity.reduce({}) do |h, i|
+        h.update(i.genes.reduce({}) { |h1, i1| h1.update({i1.uuid => i}) })
+      end
+      @dosage_detail = @dosage.reduce({}) do |h, i|
+        h.update(i.genes.reduce({}) { |h1, i1| h1.update({i1.uuid => i}) })
+      end
+
+      @pageTitle = @term_label;
+
+      @analyticsDimension7  = "KB Conditions - Show"
+      if @genes || @actionability || @validity 
+        @analyticsDimension2  = @condition.label
+      else
+        @analyticsDimension4  = @condition.label
+      end
     end
   end
-
 end
