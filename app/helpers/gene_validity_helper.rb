@@ -23,7 +23,11 @@ module GeneValidityHelper
       if data["publications"]
         data["publications"].each do |pubs|
           ##varInner += pubs.last.inspect
-          varInner += pubs.last["author"] +" et al. "+ pubs.last["pubdate"] +" (PMID:"+ pubs.last["uid"] +"); " 
+          if pubs.is_a?(Hash)
+            varInner += pubs["author"] +" et al. "+ pubs["pubdate"] +" (PMID:"+ pubs["uid"] +"); " 
+          else
+            varInner += pubs.last["author"] +" et al. "+ pubs.last["pubdate"] +" (PMID:"+ pubs.last["uid"] +"); " 
+          end
           ##varInner += pubs.inspect 
         end
       end
