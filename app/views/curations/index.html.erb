@@ -35,19 +35,17 @@
                 <th scope="row" class="text-left"><%= link_to g[:symbol], gene_path(id: g[:hgnc_id]) %></th>
                 <td>
                   <% unless g[:validity].blank? %>
-                  <%= link_to gene_disease_assertions_path+"/"+g[:validity_link].first, :method => :get, :class => "btn btn-xs btn-success"  do %>
-                      <%= g[:validity].first %>
-
+                  <%= link_to gene_path(id: g[:hgnc_id]), :method => :get, :class => "btn btn-xs btn-success"  do %>
+                      <i class="glyphicon glyphicon-ok"></i> Curated
                     <% end %>
                   <% end %>                  
                 </td>
                 <td>
                   <% unless g[:actionability].blank? %>
-                    <a href="<%= g[:actionability_link].first %>" target='file' class='btn btn-success btn-xs'>
-                      Summary Available
-                    </a>
+                    <%= link_to gene_path(id: g[:hgnc_id]), :method => :get, :class => "btn btn-xs btn-success"  do %>
+                      <i class="glyphicon glyphicon-ok"></i> Curated
+                    <% end %>
                   <% end %>  
-
                 </td>
                 <td><%= dosage_summary_link(:haplo, g) %></td>
                 <td><%= dosage_summary_link(:triplo, g) %></td>
