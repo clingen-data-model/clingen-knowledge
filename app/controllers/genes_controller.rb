@@ -48,14 +48,14 @@ class GenesController < ApplicationController
     @curations = @gene.query_as(:g)
                    .return("g {.symbol,
 	gene_validity_interps: [(g)<-[:has_subject]-(gv:GeneDiseaseAssertion) | gv {.date,
-    	condition: [(gv)-[:has_object|:equivalentTo*..2]->(c:DiseaseConcept) | c {.label, .iri}][0],
+    	condition: [(gv)-[:has_object|:equivalentClass*..2]->(c:DiseaseConcept) | c {.label, .iri}][0],
     	significance: [(gv)-[:has_predicate]->(i:Interpretation) | i {.label, .iri}][0],
         replaced_by: [(gv)<-[:wasInvalidatedBy]-(r) | r.iri ]}],
     gene_dosage_interps: [(g)<-[:has_subject]-(gd:GeneDosageAssertion) | gd {.date,
-    	condition: [(gd)-[:has_object|:equivalentTo*..2]->(c:DiseaseConcept) | c {.label, .iri}][0],
+    	condition: [(gd)-[:has_object|:equivalentClass*..2]->(c:DiseaseConcept) | c {.label, .iri}][0],
         significance: [(gd)-[:has_predicate]->(i:Interpretation) | i {.label, .iri}]}][0],
     actionability_interps: [(g)<-[:has_subject]-(a:ActionabilityAssertion) | a {.date,
-    	condition: [(a)-[:has_object|:equivalentTo*..2]->(c:DiseaseConcept) | c {.label, .iri}][0]}]}")
+    	condition: [(a)-[:has_object|:equivalentClass*..2]->(c:DiseaseConcept) | c {.label, .iri}][0]}]}")
                    .to_a
 
 

@@ -10,7 +10,7 @@ class GeneDiseaseAssertionsController < ApplicationController
                     .where("NOT((a)-[:wasInvalidatedBy]->())")
                     .return("a {.date, .perm_id, .score_string,
                              genes: [(g:Gene)<-[:has_subject]-(a) | g {.symbol, .hgnc_id}],
-                             diseases: [(d:DiseaseConcept)-[:has_object|:equivalentTo*1..2]-(a) | d {.curie, .label}],
+                             diseases: [(d:DiseaseConcept)-[:has_object|:equivalentClass*1..2]-(a) | d {.curie, .label}],
                              interpretation: [(i:Interpretation)<-[:has_predicate]-(a) | i {.label}]}")
                     .to_a
                     .map(&:a)

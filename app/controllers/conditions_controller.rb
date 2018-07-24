@@ -43,7 +43,7 @@ class ConditionsController < ApplicationController
       @term_curie = @condition.curie
       @dosage = @condition.assertions(:a).with_associations(:interpretation, :genes)
                   .where("a:GeneDosageAssertion")
-      @genes = @condition.as(:c).assertions.genes(:g).where("((c)<-[:has_related_phenotype]-(g) or not (g)-[:has_related_phenotype]->(:DiseaseConcept))").distinct
+      @genes = @condition.as(:c).assertions.genes(:g).where("((c)<-[:has_related_phenotype]-(g) or (c)<-[:has_object]-(:GeneDiseaseAssertion) or not (g)-[:has_related_phenotype]->(:DiseaseConcept))").distinct
       @actionability  = @condition.actionability_scores
       @validity = @condition.assertions(:n).with_associations(:interpretation, :genes)
                     .where("n:GeneDiseaseAssertion")

@@ -11,7 +11,7 @@ class RDFClass
 
   has_many :out, :superclasses, type: :subClassOf, model_class: RDFClass
   has_many :in, :subclasses, type: :subClassOf, model_class: RDFClass
-  has_many :both, :equivalent_terms, type: :equivalentTo, model_class: RDFClass
+  has_many :both, :equivalent_terms, type: :equivalentClass, model_class: RDFClass
 
   # def as_json(options = {}) 
   #   {
