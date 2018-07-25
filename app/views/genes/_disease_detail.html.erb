@@ -8,7 +8,9 @@
     @validityTriggeredFirst = false
   end
 
-  if @dosage_detail[disease.iri] || (@actionability.length > 0 && @actionability_diseases.include?(disease.iri)) || (@diseases_detail[disease.iri] && @validityTriggeredFirst == @diseases_detail[disease.iri])
+  
+
+  if @dosage_detail[disease.iri] || (@actionability.length > 0 && @actionability_diseases.include?(disease.iri)) || (@diseases_detail[disease.iri])
 %>
 
   <div class="panel panel-primary">
