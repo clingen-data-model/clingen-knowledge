@@ -15,7 +15,7 @@
         accept_hostkey: yes
         dest: /var/www/clingen-knowledge
         repo: git@github.com:sgoehringer/clingen-knowledge.git
-        version: dx-phase-1 # Remove this before committing to production
+        version: "{{ git_branch }}"
     - name: Bundle gems
       command: ${HOME}/.rbenv/shims/bundle install --deployment --without development test
       args:
