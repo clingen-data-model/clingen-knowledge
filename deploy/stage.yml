@@ -1,4 +1,4 @@
-all:
+webservers:
   hosts:
     ec2-52-89-216-229.us-west-2.compute.amazonaws.com
   vars:
