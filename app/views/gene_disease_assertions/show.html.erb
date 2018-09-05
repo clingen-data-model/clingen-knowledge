@@ -9,7 +9,11 @@
 <div class="content-space content-border">
 
   <% if @assertionScoreJsonGci.present? %>
-    <%= render 'gci'%>
+    <% if @assertion[:jsonMessageVersion] == "GCI.5.1" %>
+      <%= render 'gci-5.1'%>
+    <% else %>
+      <%= render 'gci'%>
+    <% end %>
   <% elsif @assertionScoreJsonSop5.present? %>
     <%= render 'sop5'%>
   <% else %>
@@ -20,9 +24,7 @@
 </div>
 </div>
 
-
-  <% #@assertionScoreJsonPretty %>
-  <% #@assertionScoreJson['data']['Hgnc'] %>
+  <%#= @assertionScoreJsonPretty %>
 
 </div>
 

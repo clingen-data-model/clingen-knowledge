@@ -8,4 +8,5 @@ class GeneDiseaseAssertion < Assertion
   property :score_string
   property :score_string_sop5
   property :score_string_gci
+  property :jsonMessageVersion
 end
