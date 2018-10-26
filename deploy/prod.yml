@@ -1,4 +1,4 @@
-all:
+webservers:
   hosts:
     search.clinicalgenome.org
   vars:
