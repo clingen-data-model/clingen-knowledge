@@ -43,7 +43,7 @@ class GenesController < ApplicationController
 
     # @term_label = truncate(@gene.symbol, :length => 20, :omission => '...')
     # @term_id = truncate(@gene.hgnc_id)
-    @diseases = @gene.as(:g).assertions.diseases(:d).where("((d)<-[:has_related_phenotype]-(g) or (d)<-[:has_object]-(:GeneDiseaseAssertion) or not (d)<-[:has_related_phenotype]-(:Gene))").distinct
+    @diseases = @gene.as(:g).assertions.diseases(:d).where("((d)<-[:has_related_phenotype]-(g) or (d)<-[:has_object]-(:GeneDiseaseAssertion) or not (g)-[:has_related_phenotype]->())").distinct
     @concepts = @diseases.equivalent_terms(:t).where("t :DiseaseConcept")
     @curations = @gene.query_as(:g)
                    .return("g {.symbol,
