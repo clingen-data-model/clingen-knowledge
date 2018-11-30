@@ -2,7 +2,9 @@
 <html>
   <head>
     <title><%= pageTitle(@pageTitle) %></title>
-
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <script>
@@ -148,10 +150,12 @@
           <div class="pull-right search-content-header-buttons ">
           
             <div class="btn-group" role="group" aria-label="...">
+
+              <% if false %>
               <%= yield :agent_controls %>
               <div class="btn-group" role="group">
                 <%= link_to curations_path, :class => "btn btn-default dropdown-toggle", :data => { :'toggle' => 'dropdown' }  do %>
-                ClinGen Curated <span class="caret"></span>
+                View ClinGen Curated <span class="caret"></span>
                 <% end %>
                 <ul class="dropdown-menu">
                   <li>
@@ -188,13 +192,25 @@
                   </li>
                 </ul>
               </div>
-              <%= link_to new_note_path, :method => :get, :class => "btn btn-default"  do %>
-                <i class="glyphicon glyphicon-edit"></i>
-                <span class=""><span class=' hidden-xs'>Share Information</span>
               <% end %>
+              <a href="<%= curations_path %>" class="btn btn-sm btn-link text-black padding-left-xs padding-right-xs">
+                Curations:
+              </a>
+              <a href="<%= gene_disease_assertions_path %>" class="btn btn-sm btn-default padding-left-xs padding-right-xs">
+                Gene-Disease<span class=' hidden-xs'> Validity</span>
+              </a>
+              <a href="<%= gene_dosage_index_path %>" class="btn btn-sm btn-default padding-left-xs padding-right-xs">
+                Dosage<span class=' hidden-xs'> Sensitivity</span>
+              </a>
+              <a href="<%= actionability_assertions_path %>" class="btn btn-sm btn-default padding-left-xs padding-right-xs">
+                <span class=' hidden-xs'>Clinical </span>Actionability
+              </a>
+              <a href="https://www.clinicalgenome.org/contact/" class="btn btn-sm btn-default padding-left-xs padding-right-xs">
+                Contact <span class=' hidden-xs'>ClinGen</span>
+              </a>
             </div>
           </div>
-          <h1>
+          <h1 class="hidden-sm hidden-xs">
             <%= link_to root_path, :method => :get, :class => "text-black"  do %>
               Knowledge Base
             <% end %>

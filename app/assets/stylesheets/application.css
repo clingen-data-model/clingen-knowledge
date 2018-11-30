@@ -16,6 +16,10 @@
  *= require selectize.bootstrap3
  */
 
+
+.hideDataTableFilters .dataTables_filter {
+  display: none;
+}
  
 /* CSS Document */
 

@@ -20,6 +20,9 @@
 //= require selectize
 //= require notes
 //= require curations
+//= require gene_disease_validity
+//= require actionability
+//= require dosage
 //= require search
 
 
