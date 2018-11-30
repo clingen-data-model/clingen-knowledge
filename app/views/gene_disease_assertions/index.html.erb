@@ -1,10 +1,30 @@
-<div id="gene_validity_index" class="container">
-  <h2>Gene Validity Curations</h2>
-  <table class="table table-condensed table-striped table-bordered">
+<div id="gene_validity_index" class="container hideDataTableFilters">
+  <div class="row">
+    <div class="col-sm-6">
+      <h2>Gene Validity Curations</h2>
+    </div>
+    <div class="col-sm-6 padding-top-sm">
+      <div class="text-right"><span class="text-muted">Curation Count: </span><STRONG><%= @assertions.count  %></STRONG> | <a href="<%= gene_disease_assertions_path(format: "csv") %>"><i class="glyphicon glyphicon-download"></i> Download Summary</a></div>
+                      
+    </div>
+  </div>
+
+  <div class="form-horizontal row padding-top-xs padding-bottom-xs" id="">
+    <div class="col-sm-12">
+    <div class="input-group">
+      <span class="input-group-addon" id=""><i class="glyphicon glyphicon-search"></i></span>
+        <input type="text" class="form-control input-block" id="interactive_gene_disease_search" placeholder="Filter table...">
+    </div>
+    </div>
+  </div>
+
+  <table id='interactive_gene_disease_table' class="table table-condensed table-striped table-bordered ">
     <thead>
       <th class="col-sm-2">Gene</th>
       <th class="col-sm-8">Disease curated</th>
+      <th class="col-sm-2">SOP</th>
       <th class="col-sm-2">Classification</th>
+      <th class="col-sm-2">Released</th>
     </thead>
     <tbody>
       <% @assertions.each do |a| %>
@@ -26,10 +46,18 @@
             </ul>
           <% end %>
         </td>
-        <td class="text-center">
+        <td class="">
+          <%= gci_SOP(a[:jsonMessageVersion]) %>
+        </td>
+        <td class="">
           <%= link_to gene_disease_assertions_path+"/"+a[:perm_id], {class: 'btn btn-default btn-xs'} do %>
-            <i class="glyphicon glyphicon-file"></i> <strong><%= a[:interpretation].first[:label] %> </strong> <span class="text-sm text-muted"> | <%= mdy_date(a[:date]) %></span>
+            <i class="glyphicon glyphicon-file"></i> <strong><%= a[:interpretation].first[:label] %> </strong>
           <% end %>
+        </td>
+        <td class="text-center">
+          <%= mdy_date(a[:date]) %>
+          
+
         </td>
       </tr>
       <% end %>
