@@ -14,6 +14,26 @@ module ApplicationHelper
     Date.parse(date).strftime('%m/%d/%Y')
   end
 
+  def print_affilate(affilate)
+    if(affilate.first.nil?)
+      return "n/a"
+    else
+      return affilate.first[:label]
+    end 
+  end
+
+  def gci_SOP(sop)
+    if(sop == "GCI.5" )
+      return "SOP5"
+    elsif(sop == "GCI.6" )
+      return "SOP6"
+    else
+      return "SOP4"
+    end 
+  end
+
+  
+
   # Return the key for the entity describing which assertions have been performed
   def entity_assertion_key(entity)
     types = [[ActionabilityAssertion, "clinicalActionability"],
