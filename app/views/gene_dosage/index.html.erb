@@ -4,7 +4,7 @@
       <h2>Gene Dosage Curations</h2>
     </div>
     <div class="col-sm-6 padding-top-sm">
-      <div class="text-right"><span class="text-muted">Curation Count: </span><STRONG><%= @genes.each.count  %></STRONG> | <a href="<%= gene_dosage_index_path(format: "csv") %>"><i class="glyphicon glyphicon-download"></i> Download Summary</a></div>
+      <div class="text-right"><a href="<%= gene_dosage_index_path(format: "csv") %>"><i class="glyphicon glyphicon-download"></i> Download Summary</a></div>
                       
     </div>
   </div>
