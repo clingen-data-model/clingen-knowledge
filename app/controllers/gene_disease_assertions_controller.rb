@@ -5,6 +5,8 @@ class GeneDiseaseAssertionsController < ApplicationController
   def index
     expires_in 10.minutes, public: true
 
+    @feedback_tool = "gene-disease"
+
     # @assertions = GeneDiseaseAssertion.all.limit(200)
     # @assertions = Gene.all(:g).assertions(:a).where('a :GeneDiseaseAssertion').order('g.symbol').pluck(:a)
     # @assertions = GeneDiseaseAssertion.query_as(:a).return("a {.date, .perm_id, .score_string, genes: [(g:Gene)<-[:has_subject]-(a) | g {.symbol, .hgnc_id}], diseases: [(d:RDFClass)<-[:has_object]-(a) | d {.curie, .label}], interpretation: [(i:Interpretation)<-[:has_predicate]-(a) | i {.label}]}").to_a.map(&:a).sort_by { |r| r[:genes].first[:symbol] }
@@ -56,6 +58,7 @@ class GeneDiseaseAssertionsController < ApplicationController
 
   def show
     expires_in 10.minutes, public: true
+    @feedback_tool = "gene-disease"
 
     @assertion = GeneDiseaseAssertion.find_by(perm_id: params[:id])
     @geneSymbol = @assertion.genes.first.symbol

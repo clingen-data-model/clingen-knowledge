@@ -1,10 +1,16 @@
 class HomeController < ApplicationController
   def index
-    @term = params[:term]
+    @term         = params[:term]
+    @termGene     = params[:termGene]
+    @termDisease  = params[:termDisease]
     expires_in 10.minutes, public: true
 
     if !@term
       @term = params[:'mainSearchCriteria.v.dn']
+    end
+
+    if !@termGene
+      @termGene = params[:'mainSearchCriteria.v.dn']
     end
 
     ## Passes the term queries to analytics
@@ -12,7 +18,12 @@ class HomeController < ApplicationController
     @analyticsDimension7  = "KB Home - Index"
 
     respond_to do |format|
+
+
       format.html do
+
+      redirect_back fallback_location: "https://clingen2019v2.creationproject.net/curation-activities/"
+
         if @term
           @genesFound = Gene.find_by_term(@term).order(num_curations: :desc)
           @genes = @genesFound.limit(20)
@@ -37,6 +48,34 @@ class HomeController < ApplicationController
       format.json do 
         # return formatted json for typeahead
         if @term
+          search_term = @term.upcase
+          @genes = Gene.all(:g).where("g.search_label contains {term}")
+                     .params(term: search_term).limit(10).to_a
+          @conditions = Condition.all(:c).where("c.search_label contains {term}")
+                          .params(term: search_term).limit(10).to_a
+          @drugs = Drug.all(:d).where("d.search_label contains {term}")
+                     .params(term: search_term).limit(10).to_a
+          terms = @genes + @conditions + @drugs
+          @result = terms.map { |t| {label: "#{t.label} (#{t.curie.tr '_', ':'})", url: url_for(t)} }
+          render json: @result
+        end
+        if @termGene
+          search_term = @termGene.upcase
+          @genes = Gene.all(:g).where("g.search_label contains {term}")
+                     .params(term: search_term).limit(10).to_a
+          terms = @genes 
+          @result = terms.map { |t| {label: "#{t.label} (#{t.curie.tr '_', ':'})", url: url_for(t)} }
+          render json: @result
+        end
+        if @termDisease
+          search_term = @termDisease.upcase
+          @conditions = Condition.all(:c).where("c.search_label contains {term}")
+                          .params(term: search_term).limit(10).to_a
+          terms = @conditions 
+          @result = terms.map { |t| {label: "#{t.label} (#{t.curie.tr '_', ':'})", url: url_for(t)} }
+          render json: @result
+        end
+        if @termOrig
           search_term = @term.upcase
           @genes = Gene.all(:g).where("g.search_label contains {term}")
                      .params(term: search_term).limit(10).to_a

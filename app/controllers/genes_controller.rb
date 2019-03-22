@@ -40,7 +40,6 @@ class GenesController < ApplicationController
     expires_in 10.minutes, public: true
 
     @gene = Gene.find_by(hgnc_id: params[:id])
-
     # @term_label = truncate(@gene.symbol, :length => 20, :omission => '...')
     # @term_id = truncate(@gene.hgnc_id)
     @diseases = @gene.as(:g).assertions.diseases(:d).where("((d)<-[:has_related_phenotype]-(g) or (d)<-[:has_object]-(:GeneDiseaseAssertion)-[:has_subject]->(g) or not (g)-[:has_related_phenotype]->())").distinct
@@ -77,7 +76,7 @@ class GenesController < ApplicationController
       h.update(i.diseases.reduce({}) { |h1, i1| h1.update({i1.iri => i}) })
     end
 
-    @pageTitle = @term_label;
+    @pageTitle = @gene.symbol;
 
     @analyticsDimension7  = "KB Genes - Show"
 

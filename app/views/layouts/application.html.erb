@@ -1,280 +1,795 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= pageTitle(@pageTitle) %></title>
+
+<html lang="en"><head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <script>
-     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-     <% if Rails.env == 'production' %>
-     ga('create', 'UA-49947422-1', 'auto');
-     <% else %>
-     // NOTE please review the following notes
-     // 8 = ClinGen Analytics Genetic TESTING Account - Education WG
-     // The live site should be updated with the proper tracking codes.
-     ga('create', 'UA-49947422-8', 'auto');
-     <% end %>
-     <% if @analyticsDimension1 %>
-     ga('set', 'dimension1', '<%=@analyticsDimension1 %>');  
-     //Curated Gene
-     <% end %>
-     <% if @analyticsDimension2 %>
-     ga('set', 'dimension2', '<%=@analyticsDimension2 %>');  
-     //Curated Condition
-     <% end %>
-     <% if @analyticsDimension3 %>
-     ga('set', 'dimension3', '<%=@analyticsDimension3 %>');  
-     //Non-curated Gene
-     <% end %>
-     <% if @analyticsDimension4 %>
-     ga('set', 'dimension4', '<%=@analyticsDimension4 %>');  
-     //Non-curated Condition
-     <% end %>
-     <% if @analyticsDimension5 %>
-     ga('set', 'dimension5', '<%=@analyticsDimension5 %>');  
-     //Queried Term
-     <% end %>
-     <% if @analyticsDimension6 %>
-     ga('set', 'dimension6', '<%=@analyticsDimension6 %>');  
-     //Non-curated Drug
-     <% end %>
-     <% if @analyticsDimension7 %>
-     ga('set', 'dimension7', '<%=@analyticsDimension7 %>');  
-     //Page type
-     <% end %>
-     ga('send', 'pageview');
-    </script>
+    <title><%= pageTitle(@pageTitle) %></title>
 
+    <!-- Bootstrap core CSS -->
+    <link href="https://clingen2019v2.creationproject.net/site/templates/resources/packages/bootstrap-3-4-1/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://clingen2019v2.creationproject.net/site/templates/resources/css/master.css" rel="stylesheet">
+
+    <link href="https://clingen2019v2.creationproject.net/site/templates/resources/packages/fontawesome/css/all.min.css" rel="stylesheet">
 
   </head>
 
   <body>
 
-    <div id="header_nav_micro">
-      <div class="container container-trans">
-        <div class="clearfix row">
-          
-          <nav id='nav_micro' class=" hidden-sm hidden-xs">
-            <ul class='list-inline'>
-              <li class=''>
-                <a class='' href='https://www.clinicalgenome.org/contact/' title='Contact' >Contact</a>
-              </li>
-              <li class=''>
-                <a class='' href='https://www.clinicalgenome.org/search/' title='Site Search' >Site Search</a>
-              </li>
-              <li class=''>
-                <a class='' href='https://www.clinicalgenome.org/events-news/' title='News &amp; Announcements' >Events &amp; Publications</a>
-              </li></ul>          </nav>
-          <ol class='pull-left breadcrumb'><a href='https://www.clinicalgenome.org' class='' title=''>ClinGen</a></li><a href='https://search.clinicalgenome.org/kb' class='' title=''> / Knowledge Base</a></li></ol>      </div>
-      </div>
-    </div>
-    <div id="header_nav_main">
-      <div class="container navbar margin-bottom-none">
-        <div class="header clearfix row">
-          <div id='header_logo_div' class="text-muted pull-left">
-            <a id='header_logo_href' href="https://www.clinicalgenome.org/">
-              <%= image_tag("logo.png", id: "header_logo_img") %>
-            </a>
-          </div>
-        <button class="visible-xs pull-right navbar-toggle btn btn-default" type="button" data-toggle="collapse" data-target=".clingen-navbar-collapse">
-            Navigation
-                <span class="caret"></span>
-        </button>
-
-          <%= form_tag(home_index_path, method: "get", id:"remote") do %>
-            <div id='header_search' class="input-group">
-              <%= text_field_tag :term, "", class: 'form-control search-typeahead', placeholder: 'Search our Knowledge Base for genes and diseases...' %>
-              <span class="input-group-btn">
-                <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
-              </span>
-            </div>
-          <% end %>
-          
-
-          <nav id='nav_primary' class=" col-sm-12 col-md-10 pull-right margin-left-none margin-right-none padding-left-none padding-right-none">
-    <div class="collapse navbar-collapse clingen-navbar-collapse padding-left-none padding-right-none">
-      <ul class='nav nav-pills pull-right'>
-          <li class=' dropdown main-nav-xs' id='ref_1001' >
-            
-          <a class=' dropdown-toggle' data-hover='dropdown' href='https://www.clinicalgenome.org/about/' title='' >About ClinGen</a><ul class='dropdown-menu dropdown-menu-large row hidden-xs hidden-sm'><li class='col-sm-12'><ul class='list-unstyled'><li class='childnav'><a class='text-black' href='https://www.clinicalgenome.org/about/'><strong>About ClinGen</strong></a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/about/about-clingen/'>About ClinGen</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/about/about-the-clingen-and-clinvar-partnership/'>ClinGen and ClinVar Partnership</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/about/clingen-curation-activities-overview/'>ClinGen Curation Activities Overview</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/about/people/'>ClinGen Directory</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/about/clingen-policies/'>ClinGen Policies</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/about/clingen-system-map/'>ClinGen System Map</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/about/events-news/'>Events &amp; Publications</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/about/get-involved/'>Get Involved</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/about/clingen-leadership/'>Leadership</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/about/working-groups/'>Working Groups</a></li></ul></li></ul></li>
-          <li class=' dropdown dropdown-large main-nav-xs' id='ref_1035' >
-            
-          <a class=' dropdown-toggle' data-hover='dropdown' href='https://www.clinicalgenome.org/working-groups/' title='' ><span class='hidden-md hidden-sm'>Working Groups &amp; Expert Panels</span><span class='visible-md visible-sm'>Working Groups</span></a><ul class='dropdown-menu dropdown-menu-large row hidden-xs hidden-sm'>
-      
-       
-          <li class='col-sm-6'>
-            <ul class='list-unstyled'><li class='childnav'><a class='text-black' href='https://www.clinicalgenome.org/working-groups/'><strong>Working Groups &amp; Expert Panels</strong></a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/actionability/'>Actionability</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/'>Clinical Domain Working Groups</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/copy-number-variant-interpretation-guidelines/'>Copy Number Variant Interpretation Guidelines</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/data-model/'>Data Model</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/dosage-sensitivity-curation/'>Dosage Sensitivity Curation</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/education-engagement-and-counseling/'>Education, Engagement &amp; Counseling</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/ehr/'>EHR</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/elsi/'>CADRe (Consent &amp; Disclosure Recommendations)</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/external-scientific-panel/'>External Scientific Panel</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/gene-curation/'>Gene Curation</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/genomic-variant-workgroup/'>​Genomic Variant</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/informatics/'>Informatics &amp; Analysis</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/sequence-variant-inter-laboratory-discrepancy-resolution/'>Sequence Variant Inter-Laboratory Discrepancy Resolution</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/sequence-variant-interpretation/'>Sequence Variant Interpretation</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/software-alignment/'>Software Alignment</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/steering-committee/'>Steering Committee</a></li></ul>
-          <ul><li class='divider'></li></ul>
-            <ul class='list-unstyled'><li class='childnav'><a class='text-black' href='https://www.clinicalgenome.org/working-groups/clinical-domain/'><strong>Clinical Domain Working Groups</strong></a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/cardiovascular-clinical-domain-working-group/'>Cardiovascular CDWG</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/hereditary-hearing-loss-clinical-domain-working-group/'>Hearing Loss CDWG</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/hereditary-cancer-clinical-domain-working-group/'>Hereditary Cancer CDWG</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/inborn-errors-of-metabolism-clinical-domain-working-group/'>Inborn Errors of Metabolism CDWG</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/mature-onset-diabetes-of-the-young-mody-clinical-domain-working-group/'>Monogenic Diabetes CDWG</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/pediatric-neurology-clinical-domain-working-group/'>Neurodevelopmental Disorders CDWG</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/rasopathies-clinical-domain-working-group/'>RASopathy CDWG</a></li></ul>
+    
+<div class="section-heading section-heading-groups">
+  <div class="container text-right small text-muted">
+    <div class="container">
+                <ul class="list-inline pull-right m-0 p-1">
+          <li class="">
+            <a class=" text-white" href="https://clingen2019v2.creationproject.net/share-your-data/"><span class="visible-inline-md visible-inline-lg visible-inline-xl">Laboratory &amp; Clinician</span> Data Sharing Resources</a>
           </li>
-          <li class='col-sm-6'>
-            <ul class='list-unstyled'><li class='childnav'><a class='text-black' href='https://www.clinicalgenome.org/working-groups/clinical-domain/''><strong>Gene &amp; Variant Expert Panels</strong></a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/inborn-errors-of-metabolism-clinical-domain-working-group/mitochondrial-variant-curation-expert-panel/'>Aminoacidopathy Variant Curation Expert Panel (NICHD U24)</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/pediatric-neurology-clinical-domain-working-group/brain-malformations-gene-curation-committee/'>Brain Malformations Variant Curation Expert Panel (NICHD U24)</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/hereditary-cancer-clinical-domain-working-group/breast-and-ovarian-cancer-gene-ep/'>Breast and Ovarian Cancer Gene Curation Expert Panel</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/cardiovascular-clinical-domain-working-group/brugada-syndrome-gene-ep/'>Brugada Syndrome Gene Curation Expert Panel</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/hereditary-cancer-clinical-domain-working-group/cdh1-variant-curation-expert-panel/'>CDH1 Variant Curation Expert Panel</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/hereditary-cancer-clinical-domain-working-group/colon-cancer-and-polyposis-gene-ep/'>Colon Cancer and Polyposis Gene Curation Expert Panel</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/pediatric-neurology-clinical-domain-working-group/epilepsy-gene-ep/'>Epilepsy Gene Curation Expert Panel</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/cardiovascular-clinical-domain-working-group/familial-hypercholesterolemia-variant-curation-expert-panel/'>Familial Hypercholesterolemia Variant Curation Expert Panel</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/cardiovascular-clinical-domain-working-group/familial-thoracic-aortic-aneurysm-dissection-gene-ep/'>Familial Thoracic Aortic Aneurysm and Dissection Gene Curation Expert Panel</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/inborn-errors-of-metabolism-clinical-domain-working-group/fatty-acid-oxidation-variant-curation-expert-panel/'>Fatty Acid Oxidation Variant Curation Expert Panel</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/hereditary-hearing-loss-clinical-domain-working-group/hereditary-hearing-loss-gene-ep/'>Hereditary Hearing Loss Gene Curation Expert Panel</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/hereditary-hearing-loss-clinical-domain-working-group/hereditary-hearing-loss-variant-curation-expert-panel/'>Hereditary Hearing Loss Variant Curation Expert Panel</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/cardiovascular-clinical-domain-working-group/hypertrophic-cardiomyopathy-gene-ep/'>Hypertrophic Cardiomyopathy Gene Curation Expert Panel</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/pediatric-neurology-clinical-domain-working-group/intellectual-disability-autism-gene-ep/'>Intellectual Disability/Autism Gene Curation Expert Panel</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/cardiovascular-clinical-domain-working-group/kcnq1-variant-curation-expert-panel/'>KCNQ1 Variant Curation Expert Panel</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/mature-onset-diabetes-of-the-young-mody-clinical-domain-working-group/mdep/'>Monogenic Diabetes Gene Curation Expert Panel</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/mature-onset-diabetes-of-the-young-mody-clinical-domain-working-group/mature-onset-diabetes-of-the-young-mody-gene-curation-committee/'>Monogenic Diabetes Variant Curation Expert Panel</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/cardiovascular-clinical-domain-working-group/myh7-variant-curation-expert-panel/'>MYH7 Variant Curation Expert Panel</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/inborn-errors-of-metabolism-clinical-domain-working-group/pah-variant-curation-expert-panel/'>PAH Variant Curation Expert Panel</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/hereditary-cancer-clinical-domain-working-group/pten-variant-curation-expert-panel/'>PTEN Variant Curation Expert Panel</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/rasopathies-clinical-domain-working-group/rasopathy-gcc/'>RASopathy Gene Curation Committee</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/rasopathies-clinical-domain-working-group/rasopathies-variant-curation-expert-panel/'>RASopathy Variant Curation Expert Panel</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/hereditary-cancer-clinical-domain-working-group/somatic-germline-variant-curation-group/'>Somatic/Germline Variant Curation Group</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/inborn-errors-of-metabolism-clinical-domain-working-group/gaa-variant-curation-expert-panel/'>Storage Disease Expert Panel</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/working-groups/clinical-domain/hereditary-cancer-clinical-domain-working-group/tp53-variant-curation-expert-panel/'>TP53 Variant Curation Expert Panel</a></li></ul>
+          <li class="">
+            <a class=" text-white" href="https://clingen2019v2.creationproject.net/genomeconnect/">GenomeConnect</a>
           </li>
-          
-      
-      </ul></li>
-          <li class=' dropdown main-nav-xs' id='ref_5761' >
-            
-          <a class=' dropdown-toggle' data-hover='dropdown' href='https://www.clinicalgenome.org/resources-tools/' title='' ><span class='hidden-md hidden-sm'>Resources &amp; Tools</span><span class='visible-md visible-sm'>Resources</span></a><ul class='dropdown-menu dropdown-menu-large row hidden-xs hidden-sm'><li class='col-sm-12'><ul class='list-unstyled'><li class='childnav'><a class='text-black' href='https://www.clinicalgenome.org/resources-tools/'><strong>Resources &amp; Tools</strong></a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/resources-tools/clingens-curation-interfaces/'>Curation Interfaces</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/resources-tools/additional-curation-resources/'>Curation Resources</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/resources-tools/resources-for-laboratories-clinicians/'>Resources for Labs &amp; Clinicians</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/resources-tools/genomeconnect/'>GenomeConnect</a></li></ul></li></ul></li>
-          <li class=' dropdown main-nav-xs' id='ref_1119' >
-            
-          <a class=' dropdown-toggle' data-hover='dropdown' href='https://www.clinicalgenome.org/genomeconnect/' title='' >GenomeConnect</a><ul class='dropdown-menu dropdown-menu-large row hidden-xs hidden-sm'><li class='col-sm-12'><ul class='list-unstyled'><li class='childnav'><a class='text-black' href='https://www.clinicalgenome.org/genomeconnect/'><strong>GenomeConnect</strong></a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/genomeconnect/for-participants/'>GenomeConnect - ClinGen&#039;s Patient Portal</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/genomeconnect/about-clingen/'>About ClinGen</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/genomeconnect/your-data-your-privacy/'>Why Share Genomic Data?</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/genomeconnect/educational-resources/'>Educational Resources</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/genomeconnect/educational-resources-webinars/'>Webinars</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/genomeconnect/how-do-genes-affect-health/'>How Do Genes Affect Health?</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/genomeconnect/tools-and-resources/'>Tools and Resources</a></li></ul></li></ul></li>
-          <li class=' dropdown main-nav-xs' id='ref_5753' >
-            
-          <a class=' dropdown-toggle' data-hover='dropdown' href='https://www.clinicalgenome.org/share-your-data/' title='' >Share Your Data</a><ul class='dropdown-menu dropdown-menu-large row hidden-xs hidden-sm'><li class='col-sm-12'><ul class='list-unstyled'><li class='childnav'><a class='text-black' href='https://www.clinicalgenome.org/share-your-data/'><strong>Share Your Data</strong></a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/share-your-data/laboratories/'>Laboratories</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/share-your-data/clinicians/'>Clinicians</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/share-your-data/patients-sharing-data/'>Patients and Patient Groups</a></li></ul></li></ul></li>
-          <li class=' dropdown main-nav-xs' id='ref_5770' >
-            
-          <a class=' dropdown-toggle' data-hover='dropdown' href='https://www.clinicalgenome.org/curation-activities/' title='' ><span class='hidden-md hidden-sm'>Curation Activities</span><span class='visible-md visible-sm'>Curation Activities</span></a><ul class='dropdown-menu dropdown-menu-large row hidden-xs hidden-sm'><li class='col-sm-12'><ul class='list-unstyled'><li class='childnav'><a class='text-black' href='https://www.clinicalgenome.org/curation-activities/'><strong>Curation Activities</strong></a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/curation-activities/gene-disease-validity/'>Gene-Disease Validity</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/curation-activities/variant-pathogenicity-curation/'>Variant Pathogenicity</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/curation-activities/clinical-actionability/'>Clinical Actionability</a></li><li class='childnav text-sm'><a class='text-muted' href='https://www.clinicalgenome.org/curation-activities/dosage-sensitivity/'>Dosage Sensitivity</a></li></ul></li></ul></li>   </div>
-    </nav>
-          
-        </div>
+          <li class="visible-inline-md visible-inline-lg visible-inline-xl">
+            <a class=" text-white" href="https://clingen2019v2.creationproject.net/about/events/">Events</a>
+          </li>
+        </ul>
       </div>
   </div>
-    <div id="header_highlight" class="container-fluid container-trans">  </div>
+    </div>
+
+
+
     
-    <% if @notice.present? %>
-      <div class="alert alert-warning" role="alert"><%= notice %></div>
-    <% end %>
-    <% if @alert.present? %>
-      <div class="alert alert-danger" role="alert"><%= alert %></div>
-    <% end %>
-    <div class="container search-content-header">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="pull-right search-content-header-buttons ">
-          
-            <div class="btn-group" role="group" aria-label="...">
 
-              <% if false %>
-              <%= yield :agent_controls %>
-              <div class="btn-group" role="group">
-                <%= link_to curations_path, :class => "btn btn-default dropdown-toggle", :data => { :'toggle' => 'dropdown' }  do %>
-                View ClinGen Curated <span class="caret"></span>
-                <% end %>
-                <ul class="dropdown-menu">
-                  <li>
-                    <%= link_to curations_path, :class => ""  do %>
-                      All ClinGen Curated Genes
-                    <% end %>
-                  </li>
-                  <li role="separator" class="divider"></li>
-                  <li>
-                    <%= link_to gene_disease_assertions_path, :class => ""  do %>
-                      Gene-Disease Validity Curations
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to gene_dosage_index_path, :class => ""  do %>
-                      Dosage Sensitivity Curations
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to actionability_assertions_path, :class => ""  do %>
-                      Clinical Actionability Curations
-                    <% end %>
-                  </li>
-                  <li role="separator" class="divider"></li>
-                  <li>
-                    <%= link_to conditions_path(:curated => 'true'), :class => ""  do %>
-                      Curated Conditions
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to genes_path(:curated => 'true'), :class => ""  do %>
-                      Curated Genes
-                    <% end %>
-                  </li>
-                </ul>
-              </div>
-              <% end %>
-              <a href="<%= curations_path %>" class="btn btn-sm btn-link text-black padding-left-xs padding-right-xs">
-                Curations:
-              </a>
-              <a href="<%= gene_disease_assertions_path %>" class="btn btn-sm btn-default padding-left-xs padding-right-xs">
-                Gene-Disease<span class=' hidden-xs'> Validity</span>
-              </a>
-              <a href="<%= gene_dosage_index_path %>" class="btn btn-sm btn-default padding-left-xs padding-right-xs">
-                Dosage<span class=' hidden-xs'> Sensitivity</span>
-              </a>
-              <a href="<%= actionability_assertions_path %>" class="btn btn-sm btn-default padding-left-xs padding-right-xs">
-                <span class=' hidden-xs'>Clinical </span>Actionability
-              </a>
-              <a href="https://www.clinicalgenome.org/contact/" class="btn btn-sm btn-default padding-left-xs padding-right-xs">
-                Contact <span class=' hidden-xs'>ClinGen</span>
-              </a>
-            </div>
+    <header>
+
+      <nav class="navbar navbar-light">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="btn btn-lg mt-4 btn-outline-primary navbar-toggle pull-right collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              Navigation <i class="fas fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="/"><img style="height:80px" src="https://clingen2019v2.creationproject.net/site/templates/resources/img/logo/logo-clinical-genome-logo-vector.svg" class="img-fluid p-0" alt="Responsive image"></a>
           </div>
-          <h1 class="hidden-sm hidden-xs">
-            <%= link_to root_path, :method => :get, :class => "text-black"  do %>
-              Knowledge Base
-            <% end %>
-          </h1>
-        </div>
-      </div>
-    </div>
-    <%= yield %>
 
-
-    <div id="footer" class="container  background-trans padding-top-xl">
-      <div id="" class="text-center visible-xs visible-sm hidden-print"><br  /><a name="footnav" id="footnav"></a>
-        <div>
-          <a  class='btn btn-default btn-lg  btn-block' href='https://www.clinicalgenome.org/about/' title='' >About ClinGen</a>
-        </div>
-        <div>
-          <a  class='btn btn-default btn-lg  btn-block' href='https://www.clinicalgenome.org/resources-tools/' title='' >Resources &amp; Tools</a>
-        </div>
-        <div>
-          <a  class='btn btn-default btn-lg  btn-block' href='https://www.clinicalgenome.org/genomeconnect/' title='' >GenomeConnect</a>
-        </div>
-        <div>
-          <a  class='btn btn-default btn-lg  btn-block' href='https://www.clinicalgenome.org/share-your-data/' title='' >How to share your data</a>
-        </div>
-        <div>
-          <a  class='btn btn-default btn-lg  btn-block' href='https://www.clinicalgenome.org/curation-activities/' title='' >Learn about ClinGen curation activities</a>
-        </div>
-      </div>
-
-      <div class="row">
-        <div id="footer_disclaimer" class="col-md-12 text-sm text-muted">
-          <hr>
-          The information on this website is not intended for direct diagnostic use or medical decision-making without review by a genetics professional. Individuals should not change their health behavior solely on the basis of information contained on this website. If you have questions about the information contained on this website, please see a health care professional.
-          <hr>
-        </div>
-        <div class="col-md-4 col-sm-12 padding-sm"> 
-          <ul class="list-inline margin-none">
-            <li class="text-sm">© 2017 <a href="https://www.clinicalgenome.org/" title="ClinGen" class="">ClinGen</a> - All rights reserved</li>
-          </ul>
-        </div>
-        <div class="col-sm-8 padding-sm hidden-xs hidden-sm ">
-          <ul class="list-inline margin-none pull-right ">
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right mt-4">
+              
             
-            <li class=''>
-              <a class='text-sm' href='https://www.clinicalgenome.org/about/' title='' >About ClinGen</a>
-            </li>
-            <li class=''>
-              <a class='text-sm' href='https://www.clinicalgenome.org/resources-tools/' title='' >Resources &amp; Tools</a>
-            </li>
-            <li class=''>
-              <a class='text-sm' href='https://www.clinicalgenome.org/genomeconnect/' title='' >GenomeConnect</a>
-            </li>
-            <li class=''>
-              <a class='text-sm' href='https://www.clinicalgenome.org/share-your-data/' title='' >How to share your data</a>
-            </li>
-            <li class=''>
-              <a class='text-sm' href='https://www.clinicalgenome.org/curation-activities/' title='' >Learn about ClinGen curation activities</a>
-            </li>                  <li><a  class="text-sm" href='https://www.clinicalgenome.org/site-map/'>Site Map</a></li>
-            <li><a  class="text-sm" href='https://www.clinicalgenome.org/contact/'>Contact ClinGen</a></li>
-          </ul>
+    <li class="nav-item   ">
+      <a class="nav-link nav-link-header " href="https://clingen2019v2.creationproject.net/start/">Get Started </a>
+      
+    </li>
+  
+    <li class="nav-item   dropdown">
+      <a class="nav-link nav-link-header dropdown-toggle" href="https://clingen2019v2.creationproject.net/about/">About Us </a>
+      
+    
+    </li>
+  
+    <li class="nav-item  active dropdown">
+      <a class="nav-link nav-link-header dropdown-toggle" href="https://clingen2019v2.creationproject.net/curation-activities/">Curation Activities </a>
+      
+    <ul class=" row dropdown-menu dropdown-width-normal  dropdown-menu-right dropdown-menu-lg-left">
+        <li class="nav-item ">
+          <a class="nav-link nav-link-header" href="https://clingen2019v2.creationproject.net/curation-activities/gene-disease-validity/"><span class=" d-inline-block text-truncate"> Gene-Disease Validity</span></a>
+        </li>
+      
+          <li class="nav-item ">
+            <a class="nav-link nav-link-small pl-4" href="https://clingen2019v2.creationproject.net/curation-activities/gene-disease-validity/the-process/"><span class=" d-inline-block text-truncate"><i class="fas fa-angle-double-right text-muted-more"></i> The Process</span></a>
+          </li>
+        
+          <li class="nav-item ">
+            <a class="nav-link nav-link-small pl-4" href="https://clingen2019v2.creationproject.net/curation-activities/gene-disease-validity/curations/"><span class=" d-inline-block text-truncate"><i class="fas fa-angle-double-right text-muted-more"></i> Browse Curations</span></a>
+          </li>
+        
+        <li class="nav-item ">
+          <a class="nav-link nav-link-header" href="https://clingen2019v2.creationproject.net/curation-activities/variant-pathogenicity/"><span class=" d-inline-block text-truncate"> Variant Pathogenicity</span></a>
+        </li>
+      
+          <li class="nav-item ">
+            <a class="nav-link nav-link-small pl-4" href="https://clingen2019v2.creationproject.net/curation-activities/variant-pathogenicity/the-process/"><span class=" d-inline-block text-truncate"><i class="fas fa-angle-double-right text-muted-more"></i> The Process</span></a>
+          </li>
+        
+          <li class="nav-item ">
+            <a class="nav-link nav-link-small pl-4" href="https://clingen2019v2.creationproject.net/curation-activities/variant-pathogenicity/curations/"><span class=" d-inline-block text-truncate"><i class="fas fa-angle-double-right text-muted-more"></i> Browse Curations</span></a>
+          </li>
+        
+        <li class="nav-item ">
+          <a class="nav-link nav-link-header" href="https://clingen2019v2.creationproject.net/curation-activities/clinical-actionability/"><span class=" d-inline-block text-truncate"> Clinical Actionability</span></a>
+        </li>
+      
+          <li class="nav-item ">
+            <a class="nav-link nav-link-small pl-4" href="https://clingen2019v2.creationproject.net/curation-activities/clinical-actionability/the-process/"><span class=" d-inline-block text-truncate"><i class="fas fa-angle-double-right text-muted-more"></i> The Process</span></a>
+          </li>
+        
+          <li class="nav-item ">
+            <a class="nav-link nav-link-small pl-4" href="https://clingen2019v2.creationproject.net/curation-activities/clinical-actionability/curations/"><span class=" d-inline-block text-truncate"><i class="fas fa-angle-double-right text-muted-more"></i> Browse Curations</span></a>
+          </li>
+        
+        <li class="nav-item ">
+          <a class="nav-link nav-link-header" href="https://clingen2019v2.creationproject.net/curation-activities/dosage-sensitivity/"><span class=" d-inline-block text-truncate"> Dosage Sensitivity</span></a>
+        </li>
+      
+          <li class="nav-item ">
+            <a class="nav-link nav-link-small pl-4" href="https://clingen2019v2.creationproject.net/curation-activities/dosage-sensitivity/process/"><span class=" d-inline-block text-truncate"><i class="fas fa-angle-double-right text-muted-more"></i> The Process</span></a>
+          </li>
+        
+          <li class="nav-item ">
+            <a class="nav-link nav-link-small pl-4" href="https://clingen2019v2.creationproject.net/curation-activities/dosage-sensitivity/curations/"><span class=" d-inline-block text-truncate"><i class="fas fa-angle-double-right text-muted-more"></i> Browse Curations</span></a>
+          </li>
+        
+          <li class="divider"></li>
+        
+        <li class="nav-item ">
+          <a class="nav-link nav-link-header" href="https://clingen2019v2.creationproject.net/curation-activities/results/"><span class=" d-inline-block text-truncate"> Browse All ClinGen's Curated Genes</span></a>
+        </li>
+      </ul>
+    </li>
+  
+    <li class="nav-item   dropdown">
+      <a class="nav-link nav-link-header dropdown-toggle" href="https://clingen2019v2.creationproject.net/working-groups/">Working Groups </a>
+    </li>
+  
+    <li class="nav-item   dropdown">
+      <a class="nav-link nav-link-header dropdown-toggle" href="https://clingen2019v2.creationproject.net/affiliates/">Expert Panels </a>
+    
+    </li>
+  
+    <li class="nav-item   dropdown">
+      <a class="nav-link nav-link-header dropdown-toggle" href="https://clingen2019v2.creationproject.net/docs/">Documents <span class="visible-inline-lg hidden-md visible-inline-xl visible-inline-sm visible-inline-xs"> &amp; Annoucements</span> </a>
+      
+     
+    
+    </li>
+  
+    <li class="nav-item   ">
+      <a class="nav-link nav-link-header " href="https://clingen2019v2.creationproject.net/tools/">Tools </a>
+      
+    
+    </li>
+    <li class="navbar-text navbar-text-hover" id="navSearchToggle"><i class="fas fa-search text-muted"></i></li>
+              </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+        <div id="navSearchBar">
+          <div class="container">
+            
+            
+  <div class="row search_bar" id="">
+      <div class="col-md-9">
+        <table class="w-100">
+          <tr>
+            <td style="width:1%">
+        <div class="input-group">
+          <div class="input-group-btn p-0 m-0">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search: <span class="typeQueryLabel">Gene</span></button>
+            <ul class="dropdown-menu">
+              <li class="typeQueryGene"><span class="a-link">Gene</span></li>
+              <li class="typeQueryDisease"><span class="a-link">Disease</span></li>
+              <li><a class="" target="allele_reg" href="http://reg.clinicalgenome.org"><i class="fas fa-external-link-alt float-right mt-1 text-muted"></i> Variant</a></li>
+              <li role="separator" class="dropdown-divider"></li>
+              <li><a class="" href="/search/"><i class="fas fa-external-link-alt float-right mt-1 text-muted"></i>Website Search</a></li>
+            </ul>
+          </div>
+        </div>
+        </td>
+        <td>
+          <form id="" class="inputQueryGene pb-0 mb-0" action="https://search.clinicalgenome.org/kb/home" accept-charset="UTF-8" method="get">
+          <input name="utf8" type="hidden" value="✓">
+            <table>
+              <tr>
+                <td>
+                  <input type="text" class="form-control border-radius-none w-100 queryGene" aria-label="" name="term" id="" placeholder="Gene...">
+                </td>
+                <td style="width:1%">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">Go!</button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <form id="" class="inputQueryDisease pb-0 mb-0" action="https://search.clinicalgenome.org/kb/home" accept-charset="UTF-8" method="get" style="display:none">
+          <input name="utf8" type="hidden" value="✓">
+            <table>
+              <tr>
+                <td>
+                  <input type="text" class="form-control border-radius-none w-100 queryDisease" aria-label="" name="term" id="" placeholder="Disease..."
+                </td>
+                <td style="width:1%">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">Go!</button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </form>
+        </td>
+        </table>
+      </div> 
+      <div class="col-md-3">
+        <div class="dropdown">
+          <a class="btn btn-block btn-outline-light bg-primary text-white strong dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Browse Curations
+          </a>
+          <div class="dropdown-menu border-radius-sm  dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item" href="/curation-activities/">About ClinGen's Curation Activities</a></li>
+            <li class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="http://localhost:3000/curations/"><span class="text-muted">Browse</span> All Curated Genes</a></li>
+            <li><a class="dropdown-item" href="http://localhost:3000/gene-validity/"><span class="text-muted">Browse</span> Gene-Disease Validity</a></li>
+            <li><a class="dropdown-item" href="http://localhost:3000/gene-dosage/"><span class="text-muted">Browse</span> Dosage Sensitivity</a></li>
+            <li><a class="dropdown-item" href="http://localhost:3000/actionability/"><span class="text-muted">Browse</span> Clinical Actionability</a></li>
+            <li><a class="dropdown-item" href="https://erepo.clinicalgenome.org/evrepo/"><span class="text-muted">Browse</span> Variant Pathogenicity</a></li>
+            
+          </div>
         </div>
       </div>
-      
     </div>
+
+
+
+      </nav>
+  </header>
+
+    <main id="section_main" role="main">
+
+      <section id="section_heading" class="section-heading section-heading-groups text-light pb-2 pt-2">
+  <div class="container">
+    <div class="">
+      <div class="content ">
+        <div class="section-heading-content">
+<h1 class="h1 text-truncate"><%= @pageTitle %></h1>
+    </div>
+
+  </div>
+</section>
+      <section id="section_content" class="container">
+
+        <%= yield %>
+
+      </section>
+
+    </main>
+
+
+    
+    <div class="" id="clingen_contact">
+      <a href="https://clingen2019v2.creationproject.net/contact/share-feedback/?title=<%= url_encode(@pageTitle) %>&page=<%= url_encode(request.original_url) %>&ref=<%= defined?(@feedback_tool) ? @feedback_tool : "edwg" %>">
+        <i class="far fa-envelope clingen_contact_icon"></i>
+      <div class="">Send Feedback</div>
+      </a>
+    </div>
+
+    <footer class="text-muted">
+      <div id="section_footer" class="container">
+        <div class="row small">
+  
+  <div class="col-12">
+    <hr>
+  The information on this website is not intended for direct diagnostic use or medical decision-making without review by a genetics professional. Individuals should not change their health behavior solely on the basis of information contained on this website. If you have questions about the information contained on this website, please see a health care professional.
+    <hr>
+  </div>
+  
+  <div class="col-sm-3">
+   
+      <a class="" href="https://clingen2019v2.creationproject.net/start/"><h6>Get Started</h6></a>
+      
+      <hr>
+   
+      <a class="" href="https://clingen2019v2.creationproject.net/curation-activities/"><h6>Curation Activities</h6></a>
+      
+      <ul class="list-unstyled row">
+        <li class="col-md-12 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/curation-activities/gene-disease-validity/"><span class="d-inline-block text-truncate">Gene-Disease Validity</span></a>
+        </li>
+      
+        <li class="col-md-12 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/curation-activities/variant-pathogenicity/"><span class="d-inline-block text-truncate">Variant Pathogenicity</span></a>
+        </li>
+      
+        <li class="col-md-12 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/curation-activities/clinical-actionability/"><span class="d-inline-block text-truncate">Clinical Actionability</span></a>
+        </li>
+      
+        <li class="col-md-12 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/curation-activities/dosage-sensitivity/"><span class="d-inline-block text-truncate">Dosage Sensitivity</span></a>
+        </li>
+      
+        <li class="col-md-12 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/curation-activities/results/"><span class="d-inline-block text-truncate">ClinGen's Curation Results</span></a>
+        </li>
+      </ul>
+    
+      <hr>
+   
+      <a class="" href="https://clingen2019v2.creationproject.net/tools/"><h6>Tools</h6></a>
+      
+      <hr>
+   
+      <a class="" href="https://clingen2019v2.creationproject.net/about/"><h6>About Us</h6></a>
+      
+      <ul class="list-unstyled row">
+        <li class="col-md-12 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/about/clingen-clinvar-collaboration/"><span class="d-inline-block text-truncate">ClinGen &amp; ClinVar Collaboration</span></a>
+        </li>
+      
+        <li class="col-md-12 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/about/partnerships-collaborations/"><span class="d-inline-block text-truncate">Collaborations</span></a>
+        </li>
+      
+        <li class="col-md-12 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/about/members/"><span class="d-inline-block text-truncate">Member Directory</span></a>
+        </li>
+      
+        <li class="col-md-12 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/about/events/"><span class="d-inline-block text-truncate">Events &amp; Conferences</span></a>
+        </li>
+      
+        <li class="col-md-12 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/about/leadership/"><span class="d-inline-block text-truncate">Leadership</span></a>
+        </li>
+      </ul>
+    
+    </div>
+  <div class="col-sm-9">
+    <div class="row">
+      <div class="col-12">
+       
+      <a class="" href="https://clingen2019v2.creationproject.net/working-groups/"><h6>Working Groups</h6></a>
+      
+      <ul class="list-unstyled row">
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/working-groups/actionability/"><span class="d-inline-block text-truncate">Actionability</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/working-groups/ancestry-and-diversity/"><span class="d-inline-block text-truncate">Ancestry and Diversity</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/working-groups/biocurator-working-group/"><span class="d-inline-block text-truncate">Biocurator Working Group</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/working-groups/cadre-consent-disclosure-recommendations/"><span class="d-inline-block text-truncate">CADRe (Consent &amp; Disclosure Recommendations)</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/working-groups/cdwg/"><span class="d-inline-block text-truncate">Clinical Domain Working Groups</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/working-groups/community-curation-working-group/"><span class="d-inline-block text-truncate">Community Curation</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/working-groups/complex-disease/"><span class="d-inline-block text-truncate">Complex Disease</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/working-groups/copy-number-variant-interpretation-guidelines/"><span class="d-inline-block text-truncate">Copy Number Variant Interpretation Guidelines</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/working-groups/data-platform/"><span class="d-inline-block text-truncate">Data Platform</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/working-groups/dosage-sensitivity-curation/"><span class="d-inline-block text-truncate">Dosage Sensitivity Curation</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/working-groups/education/"><span class="d-inline-block text-truncate">Education, Coordination and Training</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/working-groups/ehr/"><span class="d-inline-block text-truncate">EHR</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/working-groups/external-scientific-panel/"><span class="d-inline-block text-truncate">External Scientific Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/working-groups/gene-curation/"><span class="d-inline-block text-truncate">Gene Curation</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/working-groups/genomic-variant/"><span class="d-inline-block text-truncate">Genomic Variant</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/working-groups/lumping-and-splitting/"><span class="d-inline-block text-truncate">Lumping and Splitting</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/working-groups/sequence-variant-inter-laboratory-discrepancy-resolution/"><span class="d-inline-block text-truncate">Sequence Variant Inter-Laboratory Discrepancy Resolution</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/working-groups/sequence-variant-interpretation/"><span class="d-inline-block text-truncate">Sequence Variant Interpretation</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/working-groups/somatic-cancer/"><span class="d-inline-block text-truncate">Somatic Cancer</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/working-groups/steering-committee/"><span class="d-inline-block text-truncate">Steering Committee</span></a>
+        </li>
+      </ul>
+    
+        <hr>
+      </div>
+      <div class="col-12">
+       
+      <a class="" href="https://clingen2019v2.creationproject.net/affiliates/"><h6>Expert Panels</h6></a>
+      
+      <ul class="list-unstyled row">
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/40011/"><span class=" d-inline-block ">Aminoacidopathy Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/50020/"><span class=" d-inline-block ">Brain Malformations Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/40045/"><span class=" d-inline-block ">Brugada Syndrome Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/50002/"><span class=" d-inline-block ">Cardiomyopathy Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/50014/"><span class=" d-inline-block ">CDH1 Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/50047/"><span class=" d-inline-block ">Cerebral Creatine Deficiency Syndromes Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/50041/"><span class=" d-inline-block ">Coagulation Factor Deficiencies Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/40043/"><span class=" d-inline-block ">Colon Cancer Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/40005/"><span class=" d-inline-block ">Epilepsy Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/50004/"><span class=" d-inline-block ">Familial Hypercholesterolemia Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/40044/"><span class=" d-inline-block ">Familial Thoracic Aortic Aneurysm and Dissection Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/40010/"><span class=" d-inline-block ">Fatty Acid Oxidation Disorders Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/40042/"><span class=" d-inline-block ">Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/40007/"><span class=" d-inline-block ">Hearing Loss Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/50007/"><span class=" d-inline-block ">Hearing Loss Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/40028/"><span class=" d-inline-block ">Hemostasis Thrombosis Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/40023/"><span class=" d-inline-block ">Hereditary Cancer Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/40008/"><span class=" d-inline-block ">Hypertrophic Cardiomyopathy Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/40006/"><span class=" d-inline-block ">Intellectual Disability and Autism Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/50001/"><span class=" d-inline-block ">KCNQ1 Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/40025/"><span class=" d-inline-block ">Long QT Syndrome Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/50027/"><span class=" d-inline-block ">Mitochondrial Disease Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/40027/"><span class=" d-inline-block ">Mitochondrial Diseases Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/50016/"><span class=" d-inline-block ">Monogenic Diabetes Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/10034/"><span class=" d-inline-block ">Myeloid Malignancy Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/50015/"><span class=" d-inline-block ">Phenylketonuria Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/50040/"><span class=" d-inline-block ">Platelet Disorder Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/50012/"><span class=" d-inline-block ">PTEN Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/40021/"><span class=" d-inline-block ">RASopathy Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/50021/"><span class=" d-inline-block ">RASopathy Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/50022/"><span class=" d-inline-block ">Rett and Angelman-like Disorders Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/somatic-germline-variant-curation-group/"><span class=" d-inline-block ">Somatic/Germline Variant Curation Group</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/50009/"><span class=" d-inline-block ">Storage Diseases Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/50013/"><span class=" d-inline-block ">TP53 Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/50039/"><span class=" d-inline-block ">Variant Curation Expert Panelel</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/affiliates/50036/"><span class=" d-inline-block ">VHL Variant Curation Expert Panel</span></a>
+        </li>
+      </ul>
+    
+        <hr>
+      </div>
+      <div class="col-12">
+       
+      <a class="" href="https://clingen2019v2.creationproject.net/docs/"><h6>Documents &amp; Announcements</h6></a>
+      
+      <ul class="list-unstyled row">
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/docs/?doc-type=actionability-curation-protocol#list_documentation_table"><span class=" d-inline-block text-truncate">Actionability Protocol</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/docs/?doc-type=announcement#list_documentation_table"><span class=" d-inline-block text-truncate">Announcement</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/docs/?doc-type=conflict-of-interest-coi#list_documentation_table"><span class=" d-inline-block text-truncate">Conflict Of Interest (COI)</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/docs/?doc-type=curation-guidelines#list_documentation_table"><span class=" d-inline-block text-truncate">Curation Guidelines</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/docs/?doc-type=training-materials#list_documentation_table"><span class=" d-inline-block text-truncate">Curator Trainings</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/docs/?doc-type=data-sharing-resources#list_documentation_table"><span class=" d-inline-block text-truncate">Data Sharing Resources</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/docs/?doc-type=data-sharing-resources-patients#list_documentation_table"><span class=" d-inline-block text-truncate">Data Sharing Resources (Patients)</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/docs/?doc-type=expert-panel-status-steps#list_documentation_table"><span class=" d-inline-block text-truncate">Expert Panel Applications</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/docs/?doc-type=gene-curation-sop#list_documentation_table"><span class=" d-inline-block text-truncate">Gene Curation SOP</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/docs/?doc-type=in-the-news#list_documentation_table"><span class=" d-inline-block text-truncate">In The News</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/docs/?doc-type=moc-cme-forms#list_documentation_table"><span class=" d-inline-block text-truncate">MOC/CME Forms</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/docs/?doc-type=patient-education-materials#list_documentation_table"><span class=" d-inline-block text-truncate">Patient Education Materials</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/docs/?doc-type=policies-t-cs#list_documentation_table"><span class=" d-inline-block text-truncate">Policies</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/docs/?doc-type=position-statement#list_documentation_table"><span class=" d-inline-block text-truncate">Position Statements</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/docs/?doc-type=poster-presentation#list_documentation_table"><span class=" d-inline-block text-truncate">Poster Presentations</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/docs/?doc-type=publication#list_documentation_table"><span class=" d-inline-block text-truncate">Publications</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/docs/?doc-type=publication-mention#list_documentation_table"><span class=" d-inline-block text-truncate">Publication Mentions</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/docs/?doc-type=supporting-documents#list_documentation_table"><span class=" d-inline-block text-truncate">Supporting Documents</span></a>
+        </li>
+      
+        <li class="col-md-6 text-truncate">
+          <a class="" href="https://clingen2019v2.creationproject.net/docs/?doc-type=acmg-amp-variant-interpretation-guidelines#list_documentation_table"><span class=" d-inline-block text-truncate">Variant Interpretation Specifications</span></a>
+        </li>
+      </ul>
+    
+        </div>
+    </div>
+  </div>
+</div>        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+        <p> © ClinGen</p>
+      </div>
+    </footer>
+
+
+
+
+    <div class="sr-only">
+
+</div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </body>
-</html>
+    <script src="https://clingen2019v2.creationproject.net/site/templates/resources/packages/popper/popper.min.js"></script>
+<!--    <script src="/site/templates/resources/packages/bootstrap/js/bootstrap.min.js"></script>-->
+<!--    <script src="/site/templates/resources/packages/bootstrap-4-3-1/js/bootstrap.js"></script>-->
+    <script src="https://clingen2019v2.creationproject.net/site/templates/resources/packages/list/list.js"></script>
+    <script src="https://clingen2019v2.creationproject.net/site/templates/resources/js/master.js"></script>
+    <script src="https://clingen2019v2.creationproject.net/site/templates/resources/js/tooltips.js"></script>
+    <script src="https://clingen2019v2.creationproject.net/site/templates/resources/js/list-filters.js"></script>
+        
+    <script>
+       
+      $( "#navSearchToggle" ).click(function() {
+        $( "#navSearchBar" ).toggle();
+      });
+    </script>
+    
+    <script src="https://clingen2019v2.creationproject.net/site/templates/resources/js/typeahead.js"></script>    
+     <script>
+       
+      $( "#typeQueryGene" ).click(function() {
+        $( "#inputQueryGene" ).show();
+        $( "#inputQueryDisease" ).hide();
+        $( "#typeQueryLabel").text("Genes");
+      });
+      $( "#typeQueryDisease" ).click(function() {
+        $( "#inputQueryGene" ).hide();
+        $( "#inputQueryDisease" ).show();
+        $( "#typeQueryLabel").text("Diseases");
+      });
+       
+       
+      var term = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('label'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+          //url: 'https://search.clinicalgenome.org/kb/home.json?term=%QUERY',
+          url: 'http://localhost:3000/home.json?term=%QUERY',
+          wildcard: '%QUERY'
+        }
+      });
+      
+      var termGene = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('label'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+          url: 'http://localhost:3000/home.json?termGene=%QUERY',
+          wildcard: '%QUERY'
+        }
+      });
+       
+      var termDisease = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('label'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+          url: 'http://localhost:3000/home.json?termDisease=%QUERY',
+          wildcard: '%QUERY'
+        }
+      });
+
+
+      $('#queryTerm').typeahead(null,
+      {
+          name: 'term',
+          display: 'label',
+          source: term,
+
+          limit: 20,
+          minLength: 3,
+          highlight: true,
+          hint: false,
+          autoselect:true,
+      }).bind('typeahead:selected',function(evt,item){
+          window.location = item.url;
+      });
+       
+      $('#queryDisease').typeahead(null,
+      {
+          name: 'termDisease',
+          display: 'label',
+          source: termDisease,
+
+          limit: 20,
+          minLength: 3,
+          highlight: true,
+          hint: false,
+          autoselect:true,
+      }).bind('typeahead:selected',function(evt,item){
+          window.location = item.url;
+      });
+       
+      $('#queryGene').typeahead(null,
+      {
+          name: 'termGene',
+          display: 'label',
+          source: termGene,
+
+          limit: 20,
+          minLength: 3,
+          highlight: true,
+          hint: false,
+          autoselect:true,
+      }).bind('typeahead:selected',function(evt,item){
+          window.location = item.url;
+      });
+
+  </script>
+  
+</body></html>
+
+
+
