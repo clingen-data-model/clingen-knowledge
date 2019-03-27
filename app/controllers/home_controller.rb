@@ -19,10 +19,7 @@ class HomeController < ApplicationController
 
     respond_to do |format|
 
-
       format.html do
-
-      redirect_back fallback_location: "https://clingen2019v2.creationproject.net/curation-activities/"
 
         if @term
           @genesFound = Gene.find_by_term(@term).order(num_curations: :desc)
@@ -41,9 +38,14 @@ class HomeController < ApplicationController
           else
             @active_class = :none
           end
+
+        else
+          redirect_back fallback_location: "https://mkg-stage.clinicalgenome.org/curation-activities/"
         end
-        redirect_to @genes.first if @genes && @genes.length == 1 && @conditions.length == 0
-        redirect_to @conditions.first if @conditions && @conditions.length == 1 && @genes.length == 0
+
+          redirect_to @genes.first if @genes && @genes.length == 1 && @conditions.length == 0
+          redirect_to @conditions.first if @conditions && @conditions.length == 1 && @genes.length == 0
+
       end
       format.json do 
         # return formatted json for typeahead
