@@ -1,10 +1,10 @@
 development:
   type: bolt
-  url: bolt://neo4j:clingen@localhost:11005
+  url: bolt://neo4j:clingen@localhost:7687
   #url: bolt://neo4j:clingen@search-staging.clinicalgenome.org:7687
 test:
   type: bolt
-  url: bolt://neo4j:clingen@localhost:11005
+  url: bolt://neo4j:clingen@localhost:7687
 production:
   type: bolt
-  url: bolt://neo4j:clingen@localhost:11005
+  url: bolt://neo4j:clingen@localhost:7687

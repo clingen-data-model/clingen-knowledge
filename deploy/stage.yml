@@ -1,7 +1,7 @@
 webservers:
   hosts:
-    ec2-52-89-216-229.us-west-2.compute.amazonaws.com
+    search-staging.clinicalgenome.org
   vars:
     ansible_user: ubuntu
-    ansible_ssh_private_key_file: cg-stage.pem
+    ansible_ssh_private_key_file: /Users/tristan/Dropbox/clingen/cg-stage.pem
     git_branch: stage
