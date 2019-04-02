@@ -26,5 +26,17 @@ class ApplicationController < ActionController::Base
 	def after_sign_out_path_for(agent)
 	  agent_session_path
 	end
+
+
+	before_filter :set_marketing_domain
+
+	def set_marketing_domain
+		if request.host == "search.clinicalgenome.org"
+			@marketing_domain = "https://www.clinicalgenome.org"
+		else
+			@marketing_domain = "https://mkg-stage.clinicalgenome.org"
+		end
+	end
+
 	
 end

@@ -26,6 +26,17 @@ header .dropdown-menu .nav-link.nav-link-small {
 header {
   border-bottom: 5px solid #2b5e8d;
 }
+
+@media (max-width: 991px) {
+  header .dropdown:hover ul.dropdown-menu {
+    position: inherit;
+    width: 100%;
+  }
+  header ul.dropdown-menu .nav-link.nav-link-header {
+    font-size: 1rem !important;
+  }
+}
+
 #navSearchBar{
   background-color: #2b5e8d;
   padding-top: 10px;
