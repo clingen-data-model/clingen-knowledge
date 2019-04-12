@@ -40,7 +40,7 @@ class HomeController < ApplicationController
           end
 
         else
-          redirect_back fallback_location: "https://mkg-stage.clinicalgenome.org/curation-activities/"
+          redirect_back fallback_location: "https://www.clinicalgenome.org/curation-activities/"
         end
 
           redirect_to @genes.first if @genes && @genes.length == 1 && @conditions.length == 0
