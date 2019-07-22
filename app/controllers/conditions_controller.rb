@@ -25,18 +25,43 @@ class ConditionsController < ApplicationController
     @analyticsDimension7  = "KB Conditions - Index"
   end
 
+  ConditionQuery = ClingenKnowledge::Client.parse <<-'GRAPHQL'
+  query($iri: String!) {
+    condition(iri: $iri) {
+      label
+      gene {
+        label
+        hgnc_id
+      }
+      actionability_curations {
+        report_date
+        source
+      }       
+      genetic_conditions {
+        gene {
+          label
+          hgnc_id
+        }
+        actionability_curations {
+          report_date
+          source
+        }       
+      }
+    }
+  }
+  GRAPHQL
+
   def show
     expires_in 10.minutes, public: true
     
     @condition = RDFClass.find_by(curie: params[:id])
+
     unless @condition.labels.include?(:DiseaseConcept)
       c = @condition.equivalent_terms(:c).where("c :DiseaseConcept").first
       redirect_to c, status: 301
     else
 
-      # unless @condition.assertions.exists?
-      #   redirect_to condition_external_resources_conditions_path(@condition) 
-      # end
+    @gql_result = ClingenKnowledge::Client.query(ConditionQuery, variables: {iri: @condition.iri})
 
       @term_label = truncate(@condition.label, :length => 50, :omission => '...')
       @term_id = @condition.curie

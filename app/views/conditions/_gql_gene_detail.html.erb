@@ -1,0 +1,28 @@
+<div class="panel panel-primary">
+    <div class="panel-heading" role="tab" id="heading<%= index %>">
+        <h3 class="panel-title">
+            <%= link_to gene_path(condition.gene.hgnc_id), :class => "text-black"  do %><i>
+                <%= condition.gene.label %></i>
+            <% end %> - 
+            <%= @condition.label %> 
+            <span class='text-10px'>| <%= @condition.curie.gsub '_', ':'  %></span>
+        </h3>
+    </div>
+    <div id="collapse<%= index %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading<%= index %>">
+        <table class="panel-body table table-hover">
+            <thead class="thead-labels">
+                <tr>
+                    <th class="col-sm-3 th-curation-group text-left">Curated by</th>
+                    <th class="col-sm-6 text-left"> Classification</th>
+                    <th class="col-sm-2 text-center">Date</th>
+                    <th class="col-sm-1 text-center">Report</th>
+                </tr>
+            </thead>
+            <% condition.actionability_curations.each do |a| %>
+                <tbody>
+                    <%= render 'actionability_assertions/actionability_row', assertion: a %>
+                </tbody>
+            <% end %>
+        </table>
+    </div>
+</div>

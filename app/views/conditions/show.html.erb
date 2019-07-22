@@ -20,12 +20,23 @@
           <a id="external_clinvar_condition_variants" href="https://www.ncbi.nlm.nih.gov/clinvar/?term=<%= @term_label %>" class="" target="clinvar">ClinVar Variants  <i class="glyphicon glyphicon-new-window text-xs"></i></a>
         </li>
         </ul>
-        <% if @genes.present? %>
+        <% if @genes.present? || @gql_result.data.condition.gene || @gql_result.data.condition.genetic_conditions.length > 0 %>
           <% @genes.each do |g, index| %>
-            <div class="panel-group panel-group-curated" id="accordion" role="tablist" aria-multiselectable="true">
-              <%= render 'gene_detail', gene: g, index: index %>
-            </div>
+              <div class="panel-group panel-group-curated" id="accordion" role="tablist" aria-multiselectable="true">
+                  <%= render 'gene_detail', gene: g, index: index %>
+              </div>
           <% end %>
+          <% if @gql_result.data.condition.gene %>
+              <div class="panel-group panel-group-curated" id="accordion" role="tablist" aria-multiselectable="true">
+                  <%= render( 'gql_gene_detail', {condition: @gql_result.data.condition, index: 9999}) %>
+              </div>
+          <% end %>
+          <% @gql_result.data.condition.genetic_conditions.each do |gc, index| %>
+              <div class="panel-group panel-group-curated" id="accordion" role="tablist" aria-multiselectable="true">
+                  <%= render( 'gql_gene_detail', {condition: gc, index: index}) %>
+              </div>
+          <% end %>
+          
         <% else %>
           <div class="alert alert-info text-center" role="alert">
             ClinGen has not yet curated <strong><%= @condition.label %></strong>. Please see the <%= link_to "External Genomic Resources tab", condition_external_resources_conditions_path(@condition) %>  to find links to information from other sources about  <strong><%= @condition.label %></strong>.
