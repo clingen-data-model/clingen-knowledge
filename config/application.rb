@@ -12,6 +12,8 @@ require "action_view/railtie"
 require "action_cable/engine"
 require "sprockets/railtie"
 require "rails/test_unit/railtie"
+require "graphql/client/railtie"
+require "graphql/client/http"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -37,6 +39,25 @@ module ClingenKnowledge
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
   end
+
+  HTTPAdapter = GraphQL::Client::HTTP.new(ENV["CLINGEN_DS_URI"] || "http://localhost:8888/graphql") do
+    def headers(context)
+      {
+        "User-Agent" => "ClinGen-Knowledge"
+      }
+    end
+  end
+
+  Schema = GraphQL::Client.load_schema(HTTPAdapter)
+
+  Client = GraphQL::Client.new(
+    schema: Schema,
+    execute: HTTPAdapter
+  )
+
+
+  Application.config.graphql.client = Client
+
 end
 
 

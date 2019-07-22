@@ -35,17 +35,34 @@ class GenesController < ApplicationController
     @analyticsDimension7  = "KB Genes - Index"
   end
 
+  GeneQuery = ClingenKnowledge::Client.parse <<-'GRAPHQL'
+  query($iri: String!) {
+    gene(iri: $iri) {
+      label
+      conditions {
+        iri
+        label
+        actionability_curations {
+          report_date
+          source
+        }
+      }     
+    }
+  }
+  GRAPHQL
+
   # Be sure to add here anything needed for the gene_facts partial
   def show
     expires_in 10.minutes, public: true
-
+    
+    @gql_result = ClingenKnowledge::Client.query(GeneQuery, variables: {iri: params[:id]})
     @gene = Gene.find_by(hgnc_id: params[:id])
+    
     # @term_label = truncate(@gene.symbol, :length => 20, :omission => '...')
     # @term_id = truncate(@gene.hgnc_id)
     @diseases = @gene.as(:g).assertions.diseases(:d).where("((d)<-[:has_related_phenotype]-(g) or (d)<-[:has_object]-(:GeneDiseaseAssertion)-[:has_subject]->(g) or not (g)-[:has_related_phenotype]->())").distinct
     @concepts = @diseases.equivalent_terms(:t).where("t :DiseaseConcept")
-    @curations = @gene.query_as(:g)
-                   .return("g {.symbol,
+    @curations = @gene.query_as(:g).return("g {.symbol,
 	gene_validity_interps: [(g)<-[:has_subject]-(gv:GeneDiseaseAssertion) | gv {.date,
     	condition: [(gv)-[:has_object|:equivalentClass*..2]->(c:DiseaseConcept) | c {.label, .iri}][0],
     	significance: [(gv)-[:has_predicate]->(i:Interpretation) | i {.label, .iri}][0],
@@ -54,8 +71,7 @@ class GenesController < ApplicationController
     	condition: [(gd)-[:has_object|:equivalentClass*..2]->(c:DiseaseConcept) | c {.label, .iri}][0],
         significance: [(gd)-[:has_predicate]->(i:Interpretation) | i {.label, .iri}]}][0],
     actionability_interps: [(g)<-[:has_subject]-(a:ActionabilityAssertion) | a {.date,
-    	condition: [(a)-[:has_object|:equivalentClass*..2]->(c:DiseaseConcept) | c {.label, .iri}][0]}]}")
-                   .to_a
+    	condition: [(a)-[:has_object|:equivalentClass*..2]->(c:DiseaseConcept) | c {.label, .iri}][0]}]}").to_a
 
 
     @actionability = @gene.actionability_scores

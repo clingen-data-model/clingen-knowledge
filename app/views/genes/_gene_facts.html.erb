@@ -5,7 +5,8 @@
     <div class='col-sm-5'>
       <dl class='dl-horizontal'>
         <dt>Name</dt>
-        <dd><%= @gene.symbol %></dd>
+        <!-- <dd><%= @gene.symbol %></dd> -->
+        <dd> <%=  @gql_result.data.gene.label %> </dd>
         <dt>HGNC ID</dt>
         <dd><%= @gene.hgnc_id %></dd>
         <dt>Cytogenetic Location</dt>

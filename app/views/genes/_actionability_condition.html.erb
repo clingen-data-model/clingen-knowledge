@@ -1,0 +1,27 @@
+<div class="panel panel-primary">
+    <div class="panel-heading" role="tab" id="heading-ac<%= index %>">
+        <h3 class="panel-title">
+            <i> <%= @gene.symbol %> </i> - <%= link_to Condition.find(condition.iri), :class => "text-black"  do %>
+                <%= condition.label %>
+                <span class='text-10px'>| <%= condition.iri  %></span>
+            <% end %>
+        </h3>
+    </div>
+    <div id="collapse-ac<%= index %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading-ac<%= index %>">
+        <table class="panel-body table table-hover">
+            <thead class="thead-labels">
+                <tr>
+                    <th class="col-sm-3 th-curation-group text-left">Curated by</th>
+                    <th class="col-sm-6 text-left"> Classification</th>
+                    <th class="col-sm-2 text-center">Date</th>
+                    <th class="col-sm-1 text-center">Report</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% condition.actionability_curations.each do |a| %>
+                    <%= render 'actionability_assertions/actionability_row', assertion: a%>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>

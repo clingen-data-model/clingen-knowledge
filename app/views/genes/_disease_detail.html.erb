@@ -10,7 +10,7 @@
 
   
 
-  if @dosage_detail[disease.iri] || (@actionability.length > 0 && @actionability_diseases.include?(disease.iri)) || (@diseases_detail[disease.iri])
+  if @dosage_detail[disease.iri] || (@diseases_detail[disease.iri])
 %>
 
   <div class="panel panel-primary">
@@ -41,9 +41,6 @@
         <% end %>
         <% if @dosage_detail[disease.iri] %>
           <%= render "gene_dosage/dosage_detail_wide", dosage: @dosage_detail[disease.iri] %>
-        <% end %>
-        <% if @actionability.length > 0 && @actionability_diseases.include?(disease.iri) %>
-          <%= render "shared/actionability_detail_wide", actionability: @actionability, disease: disease, gene: @gene, index: :disease, index_id: disease.iri %>
         <% end %>
         </table>
     </div>

@@ -67,3 +67,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'neo4j', '~> 8.0.6'
 gem 'devise-neo4j'
+
+gem "graphql", "1.2.2"
+gem "graphql-client", "0.2.3"

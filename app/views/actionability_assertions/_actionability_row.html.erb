@@ -1,0 +1,12 @@
+<tr>
+    <td><%= info_popover("actionability", "help", "" ,"logo-inline") %></td>
+    <td>
+        <strong>View report for scoring details</strong>
+    </td>
+    <td class=" text-center">
+        <%= mdy_date assertion.report_date %>
+    </td>
+    <td class=" text-center">
+        <%= link_to "View report", assertion.source, {target: 'file', class: 'btn btn-xs btn-success'} %>
+    </td>
+</tr>
