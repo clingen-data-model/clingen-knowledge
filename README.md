@@ -1,24 +1,3 @@
-# README
+# ClinGen Website Knowledge Base (Currently In Production - Search 3.X)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This project contains ClinGen's Website Knowledgebase and allows search and display capabilties of ClinGen gene curations. The search is built in Ruby On Rails and uses NEO4J.
