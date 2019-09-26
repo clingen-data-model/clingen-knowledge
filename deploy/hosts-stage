@@ -1,3 +1,4 @@
 [webservers]
 
 ec2-52-89-216-229.us-west-2.compute.amazonaws.com ansible_user=ubuntu ansible_ssh_private_key_file=~/Dropbox/clingen/cg-stage.pem
+search1.clingen.info ansible_user=ubuntu ansible_ssh_private_key_file=~/Dropbox/clingen/clinicalgenome.org.key
