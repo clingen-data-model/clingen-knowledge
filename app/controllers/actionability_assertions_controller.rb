@@ -2,7 +2,7 @@ class ActionabilityAssertionsController < ApplicationController
 
   def index
 
-    redirect_back fallback_location: "https://www.clinicalgenome.org/curation-activities/clinical-actionability/browse-curations/"
+    redirect_to "https://www.clinicalgenome.org/curation-activities/clinical-actionability/browse-curations/"
 
     # expires_in 10.minutes, public: true
 
