@@ -1,8 +1,7 @@
 webservers:
   hosts:
-    search-staging.clinicalgenome.org
     search1.clingen.info
   vars:
-    ansible_user: ubuntu
-    ansible_ssh_private_key_file: /Users/tristan/Dropbox/clingen/cg-stage.pem
+    # ansible_user: ubuntu
+    # ansible_ssh_private_key_file: /Users/tristan/Dropbox/clingen/cg-stage.pem
     git_branch: stage

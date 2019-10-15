@@ -1,8 +1,8 @@
 webservers:
   hosts:
-    search.clinicalgenome.org
-    search2.clinicalgenome.org
+    search.clinicalgenome.org:
+      ansible_user: ubuntu
+      ansible_ssh_private_key_file: "~/Dropbox/clingen/clinicalgenome.org.key"
+    search2.clinicalgenome.org:
   vars:
-    ansible_user: ubuntu
-    ansible_ssh_private_key_file: "~/Dropbox/clingen/clinicalgenome.org.key"
     git_branch: master
