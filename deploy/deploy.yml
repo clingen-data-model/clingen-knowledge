@@ -12,9 +12,8 @@
   tasks:
     - name: Checkout or update repository
       git:
-        accept_hostkey: yes
         dest: /var/www/clingen-knowledge
-        repo: git@github.com:sgoehringer/clingen-knowledge.git
+        repo: https://github.com/clingen-data-model/clingen-knowledge.git
         version: "{{ git_branch }}"
     - name: Bundle gems
       command: ${HOME}/.rbenv/shims/bundle install --deployment --without development test
