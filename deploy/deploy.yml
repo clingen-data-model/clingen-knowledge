@@ -30,6 +30,7 @@
         name: nginx
         state: restarted
       become: true
+      become_user: root
  
     # - name: Create target directory
     #   file:
