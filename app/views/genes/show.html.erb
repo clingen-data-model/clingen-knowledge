@@ -31,11 +31,11 @@
                   @validityTriggered = true
                    end %>
 
-                  <% @gql_result.data.gene.conditions.each_with_index do |c, index| %>
-                      <% if c.actionability_curations.length > 0 %>
-                          <%= render 'actionability_condition', condition: c, index: index %>
-                      <% end %>
-                  <% end %>
+                  <% # @gql_result.data.gene.conditions.each_with_index do |c, index| %>
+                      <% # if c.actionability_curations.length > 0 %>
+                          <% #= render 'actionability_condition', condition: c, index: index %>
+                      <% # end %>
+                  <% # end %>
 
                   <% if @gene.dosage_assertions.present? %>
                     <%= render 'gene_dosage_no_condition'%>
