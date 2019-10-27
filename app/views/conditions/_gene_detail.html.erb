@@ -27,9 +27,20 @@
           <%= render "gene_dosage/dosage_detail_wide", dosage: @dosage_detail[gene.uuid] %>
         <% end %>
         <%#= render "gene_dosage/dosage_detail.html.erb"%>
-        <% if @actionability.length > 0 %>
-          <%= render "shared/actionability_detail_wide", actionability: @actionability, disease: @condition, gene: gene, index: :gene, index_id: gene.uuid %>
+        
+        <!-- <% if @gql_result.data.condition.gene && @gql_result.data.condition.gene.label == gene.label%>
+			<%= render( 'gql_gene_detail', {condition: @gql_result.data.condition, index: 9999}) %>            
+		<% end %> -->
+		
+		<% if @gql_actionability[gene.label] %>
+			<% @gql_actionability[gene.label].each do |key, value| %>
+				<%= render 'actionability_assertions/expand_actionability_row', assertion: value%>
+			<% end %>
         <% end %>
+				  
+        <!-- <% if @actionability.length > 0 %>
+          <%= render "shared/actionability_detail_wide", actionability: @actionability, disease: @condition, gene: gene, index: :gene, index_id: gene.uuid %>
+        <% end %> -->
       </table>
   </div>
 </div>

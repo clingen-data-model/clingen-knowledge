@@ -7,7 +7,7 @@
 <div class="row geneValidityScoresWrapper">
 <div class="col-sm-12">
 <div class="content-space content-border">
-
+<%= @animalmode %>
   <% if @assertionScoreJsonGci.present? %>
     <% if @assertion[:jsonMessageVersion] == "GCI.6" %>
       <%= render 'gci-6'%>

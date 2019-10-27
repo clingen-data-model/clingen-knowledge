@@ -10,7 +10,7 @@
 
   
 
-  if @dosage_detail[disease.iri] || (@diseases_detail[disease.iri])
+  if @dosage_detail[disease.iri] || (@actionability.length > 0 && @actionability_diseases.include?(disease.iri)) || (@diseases_detail[disease.iri])
 %>
 
   <div class="panel panel-primary">
@@ -36,11 +36,19 @@
               <th class="col-sm-1 text-center">Report</th>
             </tr>
           </thead>
-        <% if @diseases_detail[disease.iri] %>
+        <!-- <% if @diseases_detail[disease.iri] %>
           <%= render "gene_disease_assertions/validity_detail_wide", assertions: @diseases_detail[disease.iri], disease: disease, gene: @gene %>
+        <% end %> -->
+        <% if @diseases_detail[disease.iri] %>
+          <%= render "gene_disease_assertions/validity_detail_wide", assertions: @validity, disease: disease, gene: @gene %>
         <% end %>
         <% if @dosage_detail[disease.iri] %>
           <%= render "gene_dosage/dosage_detail_wide", dosage: @dosage_detail[disease.iri] %>
+        <% end %>
+        <% if @gql_actionability[disease.iri] %>
+			<% @gql_actionability[disease.iri].each do |key, value| %>
+				<%= render 'actionability_assertions/expand_actionability_row', assertion: value%>
+			<% end %>
         <% end %>
         </table>
     </div>

@@ -43,8 +43,28 @@
               <li>
                 <%= link_to a[:diseases].first[:curie].gsub('_', ':'), conditions_path+"/"+a[:diseases].first[:curie], :method => :get, :class => "text-muted text-sm" %>
               </li>
+              <li>
+              </li>
             </ul>
           <% end %>
+          <div class='small'>
+                  <%= print_moi_score_gci(a[:score_string_gci]) %>
+                   <%= print_moi_score_sop5(a[:score_string_sop5]) %>
+                   <%= print_moi_score(a[:score_string]) %>
+              </div>
+         <div class='small'>
+              <% if a[:score_string_gci].present? %>
+				<% if a[:jsonMessageVersion] == "GCI.6" %>
+					<%= print_animal_mode(a[:jsonMessageVersion], a[:score_string_gci], false) %>
+				<% else %>
+					<%= print_animal_mode(a[:jsonMessageVersion], a[:score_string_gci], false) %>
+				<% end %>
+			<% elsif a[:score_string_sop5].present? %>
+				<%= print_animal_mode('SOP5', a[:score_string_sop5], false) %>
+			<% else %>
+				<%= print_animal_mode('SOP4', a[:score_string], false) %>
+			<% end %>
+		</div>
         </td>
         <td class="">
           <%= gci_SOP(a[:jsonMessageVersion]) %>

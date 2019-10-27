@@ -20,22 +20,21 @@
           <a id="external_clinvar_condition_variants" href="https://www.ncbi.nlm.nih.gov/clinvar/?term=<%= @term_label %>" class="" target="clinvar">ClinVar Variants  <i class="glyphicon glyphicon-new-window text-xs"></i></a>
         </li>
         </ul>
+        
         <% if @genes.present? || @gql_result.data.condition.gene || @gql_result.data.condition.genetic_conditions.length > 0 %>
           <% @genes.each do |g, index| %>
+            <% if @validity_detail[g.uuid] || @dosage_detail[g.uuid] || @gql_actionability[g.label] %>
               <div class="panel-group panel-group-curated" id="accordion" role="tablist" aria-multiselectable="true">
                   <%= render 'gene_detail', gene: g, index: index %>
               </div>
+            <% end %>
           <% end %>
-          <% if @gql_result.data.condition.gene %>
-              <div class="panel-group panel-group-curated" id="accordion" role="tablist" aria-multiselectable="true">
-                  <%= render( 'gql_gene_detail', {condition: @gql_result.data.condition, index: 9999}) %>
-              </div>
-          <% end %>
-          <% @gql_result.data.condition.genetic_conditions.each do |gc, index| %>
+          
+          <!-- <% @gql_result.data.condition.genetic_conditions.each do |gc, index| %>
               <div class="panel-group panel-group-curated" id="accordion" role="tablist" aria-multiselectable="true">
                   <%= render( 'gql_gene_detail', {condition: gc, index: index}) %>
               </div>
-          <% end %>
+          <% end %> -->
           
         <% else %>
           <div class="alert alert-info text-center" role="alert">

@@ -1,3 +1,20 @@
+class Actionabilityql
+ 
+    include ActiveModel::Model
+    attr_accessor :iri, :label, :report_date, :source, :adult, :doc
+    
+    def initialize(iri, label, report_date, source, adult, doc)
+		@iri = iri
+		@label = label
+		@report_date = report_date
+		@source = source
+		@doc = doc
+		@adult = adult
+	end
+ 
+end
+
+
 class GenesController < ApplicationController
   include ActionView::Helpers::TextHelper
 
@@ -56,6 +73,7 @@ class GenesController < ApplicationController
     expires_in 10.minutes, public: true
     
     @gql_result = ClingenKnowledge::Client.query(GeneQuery, variables: {iri: params[:id]})
+    
     @gene = Gene.find_by(hgnc_id: params[:id])
     
     # @term_label = truncate(@gene.symbol, :length => 20, :omission => '...')
@@ -91,7 +109,45 @@ class GenesController < ApplicationController
     @dosage_detail = @dosage.reduce({}) do |h, i|
       h.update(i.diseases.reduce({}) { |h1, i1| h1.update({i1.iri => i}) })
     end
-
+    
+    
+    # The results from GQL are not really formatted consistent with the other
+    # searches.  Rather than pollute the views with a lot of code, we'll just
+    # refactor it into something similar for consistency and easier changes.
+    #
+    # Hash table has one entry per gene, and each entry has list of conditions
+    # sorted by adult/ped for direct access by views.
+    @gql_actionability = Hash.new
+    if !@gql_result.data.gene.conditions.blank?
+		@gql_result.data.gene.conditions.each_with_index do |c, index|
+			if c.actionability_curations.length > 0
+				if @gql_actionability.key?(c.iri) == false
+					@gql_actionability[c.iri] = Hash.new
+				end
+				c.actionability_curations.each_with_index do |ac, aindex|
+				
+					# remove this if we can pull doc from database
+					doc = ac.source.scan(/doc=([^"]+)/)[0][0]
+					next if doc == nil
+					
+					# group together the reports for easier displaying
+					if @gql_actionability[c.iri].key?(doc) == false
+						@gql_actionability[c.iri][doc] = []
+					end
+					if ac.source.include? "Pediatric"
+						adult = "PEDIATRIC"
+					elsif ac.source.include? "Adult"
+						adult = "ADULT"
+					else
+						adult = "Unknown"
+					end
+					# end adult/ped check
+					@gql_actionability[c.iri][doc] << Actionabilityql.new(c.iri, c.label, ac.report_date, ac.source, adult, doc)
+				end
+			end
+		end
+    end
+    
     @pageTitle = @gene.symbol;
 
     @analyticsDimension7  = "KB Genes - Show"
