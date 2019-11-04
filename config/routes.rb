@@ -16,7 +16,15 @@ Rails.application.routes.draw do
   resources :home, only: [:show, :index]
   resources :phenotypes, only: [:index]
 
+  resources :affiliates, only: [:show, :index, :all] do
+	member do
+		get 'all'
+	end
+  end
 
+  
+
+  
   # Items that need to be secured
   authenticate :agent do
     resources :subscriptions
@@ -31,7 +39,7 @@ Rails.application.routes.draw do
   resources :conditions
   # no phenotypes yet, but soon!
   # resources :phenotypes
-
+  
   devise_for :agents
 
   root to: 'home#index'
