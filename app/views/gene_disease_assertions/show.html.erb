@@ -11,6 +11,8 @@
   <% if @assertionScoreJsonGci.present? %>
     <% if @assertion[:jsonMessageVersion] == "GCI.6" %>
       <%= render 'gci-6'%>
+    <% elsif @assertion[:jsonMessageVersion] == "GCI.7" %>
+      <%= render 'gci-7'%>
     <% else %>
       <%= render 'gci'%>
     <% end %>

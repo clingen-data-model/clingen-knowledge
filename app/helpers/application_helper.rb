@@ -27,6 +27,8 @@ module ApplicationHelper
       return "SOP5"
     elsif(sop == "GCI.6" )
       return "SOP6"
+    elsif(sop == "GCI.7" )
+      return "SOP7"
     else
       return "SOP4"
     end 
