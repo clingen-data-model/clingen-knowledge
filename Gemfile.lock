@@ -154,7 +154,7 @@ GEM
     passenger (5.3.1)
       rack
       rake (>= 0.8.1)
-    rack (2.0.5)
+    rack (2.0.8)
     rack-cache (1.7.2)
       rack (>= 0.4)
     rack-cors (1.0.2)
