@@ -48,7 +48,13 @@
           <% end %>
         </td>
         <td class="">
-          
+        <% if a[:score_string_gci].present? %>
+          <%= print_moi_score_gci(a[:score_string_gci], "abr") %>
+        <% elsif a[:score_string_sop5].present? %>
+          <%= print_moi_score_sop5(a[:score_string_sop5], "abr") %>
+        <% else %>
+          <%= print_moi_score(a[:score_string], "abr") %>
+        <% end %>
         </td>
         <td class="">
           <%= gci_SOP(a[:jsonMessageVersion]) %>

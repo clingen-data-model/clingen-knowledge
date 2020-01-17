@@ -46,7 +46,130 @@ module ApplicationHelper
     end 
   end
 
-  
+  def print_moi_score_gci(score, render=null)
+    ## Send phil curtion tion
+    if(score.present?)
+      jsonD = ActiveSupport::JSON.decode(score)
+      moi =  jsonD['ModeOfInheritance']
+
+      ## The partition is designed to remove the HP info
+      
+      data = moi.partition("(").last
+
+      case data
+      when "HP:0000006)"
+        if(render == "text")
+          text = 'Autosomal Dominant'
+        else
+        text = 'AD'
+        end
+      when "HP:0000007)"
+        if(render == "text")
+          text = 'Autosomal Recessive'
+        else
+          text = 'AR'
+        end
+      when "HP:0001417)"
+        if(render == "text")
+          text = 'X-Linked'
+        else
+          text = 'XL'
+        end
+      when "HP:0001427)"
+        if(render == "text")
+          text = 'Mitochondrial'
+        else
+          text = 'MT'
+        end
+      else
+        text = "Other"
+      end
+
+      return text
+    end 
+  end
+
+  def print_moi_score_sop5(score, render=null)
+    if(score.present?)
+      jsonD = ActiveSupport::JSON.decode(score)
+      moi =  jsonD['scoreJson']['ModeOfInheritance']
+
+      ## The partition is designed to remove the HP info
+      data = moi.partition("(").last
+
+      case data
+      when "HP:0000006)"
+        if(render == "text")
+          text = 'Autosomal Dominant'
+        else
+        text = 'AD'
+        end
+      when "HP:0000007)"
+        if(render == "text")
+          text = 'Autosomal Recessive'
+        else
+          text = 'AR'
+        end
+      when "HP:0001417)"
+        if(render == "text")
+          text = 'X-Linked'
+        else
+          text = 'XL'
+        end
+      when "HP:0001427)"
+        if(render == "text")
+          text = 'Mitochondrial'
+        else
+          text = 'MT'
+        end
+      else
+        text = "Other"
+      end
+
+      return text
+    end 
+  end
+
+  def print_moi_score(score, render=null)
+    if(score.present?)
+      jsonD = ActiveSupport::JSON.decode(score)
+      moi =  jsonD['data']['ModeOfInheritance']
+
+      ## The partition is designed to remove the HP info
+      data = moi.partition("(").last
+
+      case data
+      when "HP:0000006)"
+        if(render == "text")
+          text = 'Autosomal Dominant'
+        else
+        text = 'AD'
+        end
+      when "HP:0000007)"
+        if(render == "text")
+          text = 'Autosomal Recessive'
+        else
+          text = 'AR'
+        end
+      when "HP:0001417)"
+        if(render == "text")
+          text = 'X-Linked'
+        else
+          text = 'XL'
+        end
+      when "HP:0001427)"
+        if(render == "text")
+          text = 'Mitochondrial'
+        else
+          text = 'MT'
+        end
+      else
+        text = "Other"
+      end
+
+      return text
+    end 
+  end
 
   # Return the key for the entity describing which assertions have been performed
   def entity_assertion_key(entity)
