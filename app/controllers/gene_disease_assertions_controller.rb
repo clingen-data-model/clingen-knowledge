@@ -12,7 +12,7 @@ class GeneDiseaseAssertionsController < ApplicationController
     # @assertions = GeneDiseaseAssertion.query_as(:a).return("a {.date, .perm_id, .score_string, genes: [(g:Gene)<-[:has_subject]-(a) | g {.symbol, .hgnc_id}], diseases: [(d:RDFClass)<-[:has_object]-(a) | d {.curie, .label}], interpretation: [(i:Interpretation)<-[:has_predicate]-(a) | i {.label}]}").to_a.map(&:a).sort_by { |r| r[:genes].first[:symbol] }
     @assertions = GeneDiseaseAssertion.query_as(:a)
                     .where("NOT((a)-[:wasInvalidatedBy]->())")
-                    .return("a {.date, .perm_id, .score_string, .jsonMessageVersion, .score_string_gci,
+                    .return("a {.date, .perm_id, .score_string, .jsonMessageVersion, .score_string_gci, .score_string_sop5,
                              genes: [(g:Gene)<-[:has_subject]-(a) | g {.symbol, .hgnc_id}],
                              diseases: [(d:DiseaseConcept)-[:has_object|:equivalentClass*1..2]-(a) | d {.curie, .label}],
                              interpretation: [(i:Interpretation)<-[:has_predicate]-(a) | i {.label}],
