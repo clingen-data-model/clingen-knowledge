@@ -1,0 +1,105 @@
+<h3><%= @geneSymbol %> - <%= @diseaseName %></h3>
+<div class="form-group">
+<table class='table table-striped text-left' style="width:100%;" >
+<tr style="font-size:14px">
+    <td style="width:10%; border-top-width:6px" nowrap class="text-left text-muted">Gene:</td>
+    <td  style="border-top-width:6px"><strong><%= @geneSymbol %> (<%= @geneCurie %>)</td>
+  </tr>
+  <tr style="font-size:14px">
+    <td style="" nowrap class="text-left text-muted">Disease:</td>
+    <td  style=""><strong><%= @diseaseName %> (<%= @diseaseCurie %>)</strong></td>
+  </tr>
+  <% if @assertionScoreJsonGci.dig("ModeOfInheritance") %>
+  <tr style="font-size:14px">
+    <td style="" nowrap class="text-left text-muted">Mode of Inheritance:</td>
+    <td style=""><strong>
+      <%= @assertionScoreJsonGci['ModeOfInheritance'] %>
+      </strong></td>
+  </tr>
+  <% end %>
+  <!--<tr style="font-size:14px">
+    <td style="" nowrap class="text-left text-muted">Calculated Classification:</td>
+    <td style=""><strong>
+		<%= @assertionScoreJsonGci.dig "summary","CalculatedClassification" %>
+	  </strong>
+	</td>
+  </tr>
+  
+  <% if @assertionScoreJsonGci.dig("summary","CuratorClassificationDate") %>
+  <tr style="font-size:14px">
+    <td style="" nowrap class="text-left text-muted">Modified Classification:</td>
+    <td style=""><strong>
+		<%= @assertionScoreJsonGci.dig "summary","CuratorClassification" %>
+	  </strong>
+	  <div><%= @assertionScoreJsonGci.dig "summary","CuratorClassificationNotes" %></div>
+	</td>
+  </tr>
+	<% end %>-->
+  <tr style="font-size:14px">
+    <td style="vertical-align:top; font-size:18px; border-top-width:6px" nowrap class="points-given-bg text-left text-muted">Final Classification:</td>
+    <td style="font-size:18px; border-top-width:6px" class="points-given-bg"><strong>
+		<%= @assertionScoreJsonGci.dig "summary","FinalClassification" %>
+	  </strong>
+	  <div><small><%= PrintDate(@assertionScoreJsonGci.dig "summary","FinalClassificationDate") %></small></div>
+	</td>
+	
+  </tr>
+</tr>
+
+  <tr style="font-size:14px">
+    <td style="" nowrap class="text-left text-muted">Replication over time:</td>
+    <td style=""><strong>
+	<% if @assertionScoreJsonGci.dig("ReplicationOverTime") == "YES" %>
+		YES
+	<% else %>
+		NO
+	<% end %>
+	  </strong>
+	</td>
+  </tr>
+  <tr style="font-size:14px">
+    <td style="" nowrap class="text-left text-muted">Contradictory Evidence:</td>
+    <td style=""><strong>
+		<% if @assertionScoreJsonGci.dig("ValidContradictoryEvidence","Value") == "YES" %>
+		YES
+		<% else %>
+		NO
+		<% end %>
+	  </strong>
+	  <div><%= PrintWrapperPmidSop5Gci((@assertionScoreJsonGci.dig "ValidContradictoryEvidence","Evidence")).html_safe %></div>
+	</td>
+  </tr>
+
+  <tr style="font-size:14px">
+    <td style="vertical-align:top" nowrap class="text-left text-muted">Evidence Summary:</td>
+    <td style="">
+	<%= @assertionScoreJsonGci.dig "summary","FinalClassificationNotes" %>
+      </td>
+  </tr>
+
+  <tr style="font-size:14px">
+  <td style="" nowrap class="text-left text-muted">SOP:</td>
+  <td style="">
+    <a style="color:#000" href="https://www.clinicalgenome.org/curation-activities/gene-disease-validity/educational-and-training-materials/standard-operating-procedures/">
+    Gene Clinical Validity Standard Operating Procedures (SOP) - <%= gci_SOP_version(@assertion[:jsonMessageVersion]) %>
+    </a>
+</td>
+  </tr>
+  <% # if EXPERT PANEL %>
+  <tr style="font-size:14px">
+    <td style="" nowrap class="text-left text-muted">Expert Panel:</td>
+    <td style="">
+      <%= @assertion.attributions.first.label if @assertion.attributions.first %>
+      </td>
+  </tr>
+  <% # end %>
+  <% # if EXPERT PANEL %>
+  <tr style="font-size:14px">
+    <td style="border-bottom-width:6px; border-bottom-color:rgb(221, 221, 221); border-bottom-style:solid" nowrap class="text-left text-muted">Collaborators:</td>
+    <td style="border-bottom-width:6px; border-bottom-color:rgb(221, 221, 221); border-bottom-style:solid">
+     ABC Group, ZYX Group
+      </td>
+  </tr>
+  <% # end %>
+  </table>
+</div>

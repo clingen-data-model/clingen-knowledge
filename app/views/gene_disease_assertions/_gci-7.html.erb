@@ -1,48 +1,4 @@
-<div class="form-group">
-<table style="width:100%;" >
-  <tr style="">
-    <td style="width:15%; padding-top:5px; padding-bottom:5px; padding-right:1%;" valign="top"  nowrap class="text-right text-muted">Gene/Disease Pair:</td>
-    <td style="width:85%; padding-bottom:5px"><h3 style="padding:0; margin:0"><strong style="color:#000"><i>
-      <%= @geneSymbol %>
-      </i>:
-      <%= @diseaseName %>
-      </strong></h3></td>
-  </tr>
-  <tr style="">
-    <td style="width:15%; padding-right:1%;" nowrap class="text-right text-muted"></td>
-    <td style="width:85%; padding-bottom:5px"><strong style="color:#000">
-      <%= @geneCurie %>
-| 
-      <%= @diseaseCurie %>
-      <!-- TODO - Print out equivalents -->   
-      
-      </strong></td>
-  </tr>
-      <% if @assertionScoreJsonGci.dig("ModeOfInheritance") %>
-  <tr style="">
-    <td style="width:15%; padding-right:1%; padding-bottom:5px" nowrap class="text-right text-muted">Mode of Inheritance:</td>
-    <td style="width:85%; padding-bottom:5px"><strong style="color:#000">
-      <%= @assertionScoreJsonGci['ModeOfInheritance'] %>
-      </strong></td>
-  </tr>
-  <% end %>
-   <% # if EXPERT PANEL %>
-  <tr style="">
-    <td style="width:15%; padding-right:1%; padding-bottom:5px" nowrap class="text-right text-muted">Expert Panel:</td>
-    <td style="width:85%; padding-bottom:5px"><strong style="color:#000">
-      <%= @assertion.attributions.first.label if @assertion.attributions.first %>
-      </strong></td>
-  </tr>
-  <tr style="">
-    <td style="width:15%; padding-right:1%; padding-bottom:5px" nowrap class="text-right text-muted">SOP:</td>
-    <td style="width:85%; padding-bottom:5px"><strong style="color:#000">
-      <a href="https://www.clinicalgenome.org/curation-activities/gene-disease-validity/educational-and-training-materials/standard-operating-procedures/">Gene Clinical Validity Standard Operating Procedures (SOP), Version 7</a>
-      </strong></td>
-  </tr>
-  <% # end %>
-</table>
-</div>
-<hr />
+<%= render 'report-heading'%>
 <table class="table table-compact table-bordered table-border-normal">
 	<tbody>
 		<tr>

@@ -1,45 +1,4 @@
-<div class="form-group">
-<table style="width:100%;" >
-  <tr style="">
-    <td style="width:15%; padding-top:5px; padding-bottom:5px; padding-right:1%;" valign="top"  nowrap class="text-right text-muted">Gene/Disease Pair:</td>
-    <td style="width:85%; padding-bottom:5px"><h3 style="padding:0; margin:0"><strong style="color:#000"><i>
-      <%= @assertionScoreJsonSop5['genes']['symbol'] %>
-      </i>:
-      <%= @assertionScoreJsonSop5['condition']['name'] %>
-      </strong></h3></td>
-  </tr>
-  <tr style="">
-    <td style="width:15%; padding-right:1%;" nowrap class="text-right text-muted"></td>
-    <td style="width:85%; padding-bottom:5px"><strong style="color:#000">
-      <%= @assertionScoreJsonSop5['condition']['curie'] %>
-      <% if @assertionScoreJsonSop5.dig("condition","MONDO","curie") %>
-      <%= @assertionScoreJsonSop5['condition']['MONDO']['curie'] %> |
-      <% end %>
-      <% if @assertionScoreJsonSop5.dig("condition","OrphaNet","curie") %>
-      <%= @assertionScoreJsonSop5['condition']['OrphaNet']['curie'] %> |
-      <% end %>
-      <% if @assertionScoreJsonSop5.dig("condition","OMIM","curie") %>
-      <%= @assertionScoreJsonSop5['condition']['OMIM']['curie'] %>
-      <% end %>
-      </strong></td>
-  </tr>
-      <% if @assertionScoreJsonSop5.dig("scoreJson","ModeOfInheritance") %>
-  <tr style="">
-    <td style="width:15%; padding-right:1%; padding-bottom:5px" nowrap class="text-right text-muted">Mode of Inheritance:</td>
-    <td style="width:85%; padding-bottom:5px"><strong style="color:#000">
-      <%= @assertionScoreJsonSop5['scoreJson']['ModeOfInheritance'] %>
-      </strong></td>
-  </tr>
-  <% end %>
-  <tr style="">
-    <td style="width:15%; padding-right:1%; padding-bottom:5px" nowrap class="text-right text-muted">SOP:</td>
-    <td style="width:85%; padding-bottom:5px"><strong style="color:#000">
-      <a href="https://www.clinicalgenome.org/curation-activities/gene-disease-validity/educational-and-training-materials/standard-operating-procedures/">Gene Clinical Validity Standard Operating Procedures (SOP), Version 5</a>
-      </strong></td>
-  </tr>
-</table>
-</div>
-<hr />
+<%= render 'report-heading'%>
 <table class="table table-compact table-bordered table-border-normal">
 	<tbody>
 		<tr>

@@ -34,6 +34,18 @@ module ApplicationHelper
     end 
   end
 
+  def gci_SOP_version(sop)
+    if(sop == "GCI.5" )
+      return "Version 5"
+    elsif(sop == "GCI.6" )
+      return "Version 6"
+    elsif(sop == "GCI.7" )
+      return "Version 7"
+    else
+      return "Version 4"
+    end 
+  end
+
   
 
   # Return the key for the entity describing which assertions have been performed
