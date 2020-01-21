@@ -14,6 +14,70 @@ module ApplicationHelper
     Date.parse(date).strftime('%m/%d/%Y')
   end
 
+  ##	Function:  print_animal_mode
+  ##
+  ##  	Determine if curation is an animal mode only.  There are four
+  ##	distinct score formats in Neo4j.  The 'type' parameter instructs
+  ##	the function which format to use.  The 'isjson' flag tells the
+  ##	function that 'score' has already been converted to json. 
+  ##	
+  ##  
+  def print_animal_mode(type, score, isjson)
+    # if score.present?
+	  # if isjson
+		# jsonD = score
+	  # else
+    #     jsonD = ActiveSupport::JSON.decode(score)
+    #   end
+
+    #   if type == "GCI.7"
+    #   # Make sure the Models hierarchy is even in the score string
+    #       if jsonD['ExperimentalEvidence']['Models'].present? && jsonD['ExperimentalEvidence']['Models']['NonHumanModelOrganism'].present?
+    #     animalmode = (jsonD['summary']['FinalClassification'] == 'No Reported Evidence') \
+    #       && jsonD['ExperimentalEvidence']['Models']['NonHumanModelOrganism']['Count'] > 0 \
+    #       && jsonD['ValidContradictoryEvidence']['Value'] == 'NO'
+    #   else
+    #     return ''
+    #   end
+    #     elsif type == 'GCI.5'
+		# # Make sure the Models hierarchy is even in the score string
+    #     if jsonD['ExperimentalEvidence']['Models'].present? && jsonD['ExperimentalEvidence']['Models']['NonHumanModelOrganism'].present?
+		# 	animalmode = (jsonD['summary']['FinalClassification'] == 'No Reported Evidence') \
+		# 		&& jsonD['ExperimentalEvidence']['Models']['NonHumanModelOrganism']['Count'] > 0 \
+		# 		&& jsonD['ValidContradictoryEvidence']['Value'] == 'NO'
+		# else
+		# 	return ''
+		# end
+    #   elsif type == 'GCI.5'
+		# # Make sure the Models hierarchy is even in the score string
+		# if jsonD['ExperimentalEvidence']['Models'].present? && jsonD['ExperimentalEvidence']['Models']['NonHumanModelOrganism'].present?
+		# 	animalmode = (jsonD['summary']['FinalClassification'] == 'No Reported Evidence') \
+		# 		&& jsonD['ExperimentalEvidence']['Models']['NonHumanModelOrganism']['Value'] > 0 \
+		# 		&& jsonD['ValidContradictoryEvidence']['Value'] == 'NO'
+		# else
+		# 	return ''
+		# end
+    #   elsif type == 'SOP5'
+		# animalmode = (jsonD['scoreJson']['summary']['CalculatedClassification'] == 'No Reported Evidence') \
+		# 	&& jsonD['ExperimentalEvidence']['Models']['NonHumanModelOrganism']['Value'] > 0 \
+		# 	&& jsonD['ValidContradictoryEvidence']['Value'] == 'NO'
+	  # else
+	  #   animalmode = (jsonD['data']['FinalClassification'] == 'No Reported Evidence') \
+		# 	&& jsonD['data']['ExperimentalEvidence']['Models']['NonHumanModelOrganism']['Value'] > 0 \
+		# 	&& jsonD['data']['ValidContradictoryEvidence']['Value'] == 'NO'
+	  # end      
+	       
+    #   if animalmode 
+		# return "Animal Mode Only"
+	  # else
+	  #   return ''
+	  # end
+    # else
+    #   return ''
+    # end 
+  end
+
+
   def print_affilate(affilate)
     if(affilate.first.nil?)
       return "n/a"

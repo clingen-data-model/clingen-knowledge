@@ -21,7 +21,7 @@
           </tr>
         </thead>
         <% if @validity_detail[gene.uuid] %>
-          <%= render "gene_disease_assertions/validity_detail_wide", assertions: @validity_detail[gene.uuid], disease: @condition, gene: gene %>
+          <%= render "gene_disease_assertions/validity_detail_wide", assertions: @validity, disease: @condition, gene: gene, render_as: 'disease' %>
         <% end %>
         <% if @dosage_detail[gene.uuid] %>
           <%= render "gene_dosage/dosage_detail_wide", dosage: @dosage_detail[gene.uuid] %>
