@@ -27,16 +27,25 @@ class GeneDiseaseAssertionsController < ApplicationController
       csv.add_row ["CLINGEN GENE VALIDITY CURATIONS"]
       csv.add_row ["FILE CREATED: #{Date.today}"]
       csv.add_row ["WEBPAGE: #{gene_disease_assertions_url}"]
-      csv.add_row ["+++++++++++","++++++++++++++","+++++++++++++","++++++++++++++++++","+++++++++","++++++++++++++","+++++++++++++","+++++++++++++++++++"]
-      csv.add_row ["GENE SYMBOL","GENE ID (HGNC)","DISEASE LABEL","DISEASE ID (MONDO)","SOP","CLASSIFICATION","ONLINE REPORT","CLASSIFICATION DATE"]
-      csv.add_row ["+++++++++++","++++++++++++++","+++++++++++++","++++++++++++++++++","+++++++++","++++++++++++++","+++++++++++++","+++++++++++++++++++"]
+      csv.add_row ["+++++++++++","++++++++++++++","+++++++++++++","++++++++++++++++++","+++++++++","+++++++++","++++++++++++++","+++++++++++++","+++++++++++++++++++"]
+      csv.add_row ["GENE SYMBOL","GENE ID (HGNC)","DISEASE LABEL","DISEASE ID (MONDO)","MOI","SOP","CLASSIFICATION","ONLINE REPORT","CLASSIFICATION DATE"]
+      csv.add_row ["+++++++++++","++++++++++++++","+++++++++++++","++++++++++++++++++","+++++++++","+++++++++","++++++++++++++","+++++++++++++","+++++++++++++++++++"]
       @assertions.each do |a|
+
+        if a[:score_string_gci].present?
+          moi = print_moi_score_gci(a[:score_string_gci], "text")
+        elsif a[:score_string_sop5].present?
+          moi = print_moi_score_sop5(a[:score_string_sop5], "text")
+        else
+          moi = print_moi_score(a[:score_string], "text")
+        end
 
         csv << [
           a[:genes].first[:symbol],
           a[:genes].first[:hgnc_id],
           a[:diseases].first[:label],
           a[:diseases].first[:curie],
+          moi,
           gci_SOP(a[:jsonMessageVersion]),
           a[:interpretation].first[:label],
           gene_disease_assertions_url+"/"+a[:perm_id],

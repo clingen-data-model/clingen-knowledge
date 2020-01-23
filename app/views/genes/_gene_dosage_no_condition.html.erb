@@ -1,3 +1,8 @@
+<% 
+  ## Clear the CSS set above
+  render_css_border = ""
+  render_logo_inline = info_popover("gene-dosage", "help", "" ,"logo-inline")
+%>
   <div class="panel panel-primary">
     <div class="panel-heading" role="tab" id="headingNone">
       <h3 class="panel-title">
@@ -9,7 +14,8 @@
           <thead class="thead-labels">
             <tr>
               <th class="col-sm-3 th-curation-group text-left">Curated by</th>
-              <th class="col-sm-6 text-left"> Classification</th>
+              <th class="col-sm-4 text-left"> Classification</th>
+              <th class="col-sm-2 text-center"></th>
               <th class="col-sm-2 text-center">Date</th>
               <th class="col-sm-1 text-center">Report</th>
             </tr>
@@ -17,26 +23,33 @@
           <tbody>
             <% if a = @gene.dosage_assertions.select {|i| i.haplo_assertion?}.first %>
               <tr>
-                <td><%= info_popover("gene-dosage", "help", "" ,"logo-inline") %></td>
-                <td>
+                <td class='<%= render_css_border %>'><%= render_logo_inline %></td>
+                <td class='<%= render_css_border %>'>
                   <%= info_popover("gene-dosage", "score", a.interpretation.first.label , "strong") %>
                 </td>
-                <td class="text-center"><%= mdy_date(a.date) %></td>
-                <td class=" text-center">
+                <td class="text-center <%= render_css_border %>"></td>
+                <td class="text-center <%= render_css_border %>"><%= mdy_date(a.date) %></td>
+                <td class=" text-center <%= render_css_border %>">
                   <a id="external_gene_dosage_sensitivity" target="_blank" class="btn btn-xs btn-success" href="<%= gene_dosage_sensitivity("url", @gene.symbol) %>">View report</a>
                 </td>
               </tr>
-            <% end %>
-            <% if a = @gene.dosage_assertions.select {|i| i.triplo_assertion?}.first %>
+            <% 
+
+            render_css_border = "border-0"
+            render_logo_inline = ""
+            end 
+            %>
+            <% if b = @gene.dosage_assertions.select {|i| i.triplo_assertion?}.first %>
               <tr>
-                <td>
-                  <%= info_popover("gene-dosage", "help", "" ,"logo-inline") %>  
+                <td class='<%= render_css_border %>'>
+                  <%= render_logo_inline %>  
                 </td>
-                <td>
-                  <%= info_popover("gene-dosage", "score", a.interpretation.first.label , "strong") %>
+                <td class='<%= render_css_border %>'>
+                  <%= info_popover("gene-dosage", "score", b.interpretation.first.label , "strong") %>
                 </td>
-                <td class="text-center"><%= mdy_date(a.date) %></td>
-                <td class=" text-center">
+                <td class="text-center <%= render_css_border %>"></td>
+                <td class="text-center <%= render_css_border %>"><%= mdy_date(b.date) %></td>
+                <td class=" text-center <%= render_css_border %>">
                   <a id="external_gene_dosage_sensitivity" target="_blank" class="btn btn-xs btn-success" href="<%= gene_dosage_sensitivity("url", @gene.symbol) %>">View report</a>
                 </td>
               </tr>

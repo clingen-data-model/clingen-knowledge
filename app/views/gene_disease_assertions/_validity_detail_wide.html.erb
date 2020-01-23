@@ -11,11 +11,26 @@
 
 <%
   temp = ""
+  temp_prior_moi = "unset"
   @validity.each do |assertion| 
+  temp_this_moi = "unset"
 %>
 <%
+
+    # This was added to allow the MOI to be checked for the current assertion
+    if assertion.score_string_gci.present? 
+      temp_this_moi = ""+print_moi_score_gci(assertion.score_string_gci, "text")+""
+    elsif assertion.score_string_sop5.present?
+      temp_this_moi = ""+print_moi_score_sop5(assertion.score_string_sop5, "text")+""
+    else
+      temp_this_moi = ""+print_moi_score(assertion.score_string, "text")+""
+    end
+
+    # Is this a gene patriggerge?
     if render_as == "gene"
-      if assertion.diseases.first.curie.to_s == disease.curie.to_s
+      # Check to see if this is duplicate AND if the PRIOR assertion has same MOI.
+      # This was checked because the query can't filter the MOI since not easy assessable
+      if (assertion.diseases.first.curie.to_s == disease.curie.to_s && temp_this_moi.to_s != temp_prior_moi.to_s)
         match = "match"
         temp = "render"
       else
@@ -24,8 +39,12 @@
       end
     end
 
+    # OR s this a disease trigger?     
     if render_as == "disease"
-        if assertion.genes.first.hgnc_id.to_s == gene.hgnc_id.to_s
+
+      # Check to see if this is duplicate AND if the PRIOR assertion has same MOI.
+      # This was checked because the query can't filter the MOI since not easy assessable
+      if (assertion.genes.first.hgnc_id.to_s == gene.hgnc_id.to_s && temp_this_moi.to_s != temp_prior_moi.to_s)
         match = "match"
         temp = "render"
       else
@@ -33,6 +52,7 @@
         temp = ""
       end
     end
+
 %>
 <%
   if temp == "render"
@@ -45,13 +65,7 @@
       <td class='<%= render_css_border %>'>
         <%= info_popover("gene-curation", "score", interp.label, "strong") %>
         <div class='small pb-0'> 
-            <% if assertion.score_string_gci.present? %>
-              <%= print_moi_score_gci(assertion.score_string_gci, "text") %>
-            <% elsif assertion.score_string_sop5.present? %>
-              <%= print_moi_score_sop5(assertion.score_string_sop5, "text") %>
-            <% else %>
-              <%= print_moi_score(assertion.score_string, "text") %>
-            <% end %>
+            
           <% if assertion.score_string_gci.present? %>
             <% if assertion.jsonMessageVersion == "GCI.6" %>
               <%= print_animal_mode(assertion.jsonMessageVersion, assertion.score_string_gci, false) %>
@@ -64,6 +78,15 @@
             <%= print_animal_mode('SOP4', assertion.score_string, false) %>
           <% end %>
         </div>
+      </td>
+      <td class=" text-center <%= render_css_border %>">
+        <% if assertion.score_string_gci.present? %>
+          <%= print_moi_score_gci(assertion.score_string_gci, "text") %>
+        <% elsif assertion.score_string_sop5.present? %>
+          <%= print_moi_score_sop5(assertion.score_string_sop5, "text") %>
+        <% else %>
+          <%= print_moi_score(assertion.score_string, "text") %>
+        <% end %>
       </td>
       <td class=" text-center <%= render_css_border %>">
         <% if assertion.respond_to?(:date) %>
@@ -83,6 +106,15 @@
     ## Clear the CSS set above
     render_css_border = "border-0"
     render_logo_inline = ""
+
+    # This was added because the view needs a variable to check if the same MOI was rendered
+    if assertion.score_string_gci.present? 
+      temp_prior_moi = ""+print_moi_score_gci(assertion.score_string_gci, "text")+""
+    elsif assertion.score_string_sop5.present?
+      temp_prior_moi = ""+print_moi_score_sop5(assertion.score_string_sop5, "text")+""
+    else
+      temp_prior_moi = ""+print_moi_score(assertion.score_string, "text")+""
+    end
   %>
 <% end %>
 <% # end %>

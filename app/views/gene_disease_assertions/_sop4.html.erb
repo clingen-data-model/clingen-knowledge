@@ -1,4 +1,4 @@
-<%= render 'report-heading'%>
+<%= render 'report-heading_sop4'%>
 <table class="table table-compact table-bordered table-border-normal">
 <tbody>
   <tr>
@@ -302,7 +302,7 @@
     <td colspan="2" class="table-heading-line-thick table-heading EvidenceDefinitiveBg <%= @assertionScoreJson.dig "summary","CalculatedClassification" %>">12-18 AND replication over time</td>
   </tr>
   <tr>
-    <td class="table-heading-line-thick table-heading">Valid contradictory evidence (Y/N)* <br></td>
+    <td class="table-heading-line-thick table-heading" id="ValidContradictoryEvidence">Valid contradictory evidence (Y/N)* <br></td>
     <td colspan="4" class="table-heading-line-thick text-left"><div class="input-width-pmid">
       <div class="form-group">
         <table>
