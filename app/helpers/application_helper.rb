@@ -39,7 +39,7 @@ module ApplicationHelper
       else
         return ''
       end
-        elsif type == 'GCI.5'
+        elsif type == 'GCI.6'
 		# Make sure the Models hierarchy is even in the score string
         if jsonD['ExperimentalEvidence']['Models'].present? && jsonD['ExperimentalEvidence']['Models']['NonHumanModelOrganism'].present?
 			animalmode = (jsonD['summary']['FinalClassification'] == 'No Reported Evidence') \
@@ -125,25 +125,25 @@ module ApplicationHelper
         if(render == "text")
           text = 'Autosomal Dominant'
         else
-        text = 'AD'
+        text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Autosomal Dominan">AD</span>').html_safe
         end
       when "HP:0000007)"
         if(render == "text")
           text = 'Autosomal Recessive'
         else
-          text = 'AR'
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Autosomal Recessive">AR</span>').html_safe
         end
       when "HP:0001417)"
         if(render == "text")
           text = 'X-Linked'
         else
-          text = 'XL'
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="X-Linked">XL</span>').html_safe
         end
       when "HP:0001427)"
         if(render == "text")
           text = 'Mitochondrial'
         else
-          text = 'MT'
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Mitochondrial">MT</span>').html_safe
         end
       else
         text = "Other"
@@ -166,25 +166,25 @@ module ApplicationHelper
         if(render == "text")
           text = 'Autosomal Dominant'
         else
-        text = 'AD'
+        text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Autosomal Dominan">AD</span>').html_safe
         end
       when "HP:0000007)"
         if(render == "text")
           text = 'Autosomal Recessive'
         else
-          text = 'AR'
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Autosomal Recessive">AR</span>').html_safe
         end
       when "HP:0001417)"
         if(render == "text")
           text = 'X-Linked'
         else
-          text = 'XL'
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="X-Linked">XL</span>').html_safe
         end
       when "HP:0001427)"
         if(render == "text")
           text = 'Mitochondrial'
         else
-          text = 'MT'
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Mitochondrial">MT</span>').html_safe
         end
       else
         text = "Other"
@@ -207,25 +207,25 @@ module ApplicationHelper
         if(render == "text")
           text = 'Autosomal Dominant'
         else
-        text = 'AD'
+        text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Autosomal Dominan">AD</span>').html_safe
         end
       when "HP:0000007)"
         if(render == "text")
           text = 'Autosomal Recessive'
         else
-          text = 'AR'
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Autosomal Recessive">AR</span>').html_safe
         end
       when "HP:0001417)"
         if(render == "text")
           text = 'X-Linked'
         else
-          text = 'XL'
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="X-Linked">XL</span>').html_safe
         end
       when "HP:0001427)"
         if(render == "text")
           text = 'Mitochondrial'
         else
-          text = 'MT'
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Mitochondrial">MT</span>').html_safe
         end
       else
         text = "Other"

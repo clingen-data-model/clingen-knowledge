@@ -16,6 +16,12 @@ Rails.application.routes.draw do
   resources :home, only: [:show, :index]
   resources :phenotypes, only: [:index]
 
+  resources :affiliates, only: [:show, :index, :all] do
+    member do
+      get 'all'
+    end
+  end
+
 
   # Items that need to be secured
   authenticate :agent do

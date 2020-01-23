@@ -45,8 +45,18 @@
   <tr style="font-size:14px">
     <td style="border-bottom-width:6px; border-bottom-color:rgb(221, 221, 221); border-bottom-style:solid" nowrap class="text-left text-muted">Expert Panel:</td>
     <td style="border-bottom-width:6px; border-bottom-color:rgb(221, 221, 221); border-bottom-style:solid"><%= @assertion.attributions.first.label if @assertion.attributions.first %></td>
-    <td style="border-bottom-width:6px; border-bottom-color:rgb(221, 221, 221); border-bottom-style:solid" nowrap class="text-left text-muted">Collaborators:</td>
-    <td style="border-bottom-width:6px; border-bottom-color:rgb(221, 221, 221); border-bottom-style:solid"> ABC Group, ZYX Group </td>
+    <td style="border-bottom-width:6px; border-bottom-color:rgb(221, 221, 221); border-bottom-style:solid" nowrap class="text-left text-muted">
+    <% if @assertionScoreJsonGci.dig("summary","contributors") %>
+        Collaborators:
+        <% end %>
+    </td>
+    <td style="border-bottom-width:6px; border-bottom-color:rgb(221, 221, 221); border-bottom-style:solid">
+    <% if @assertionScoreJsonGci.dig("summary","contributors") %>
+        <% @assertionScoreJsonGci.dig("summary","contributors").each do |contributor| %>
+          <%= contributor.name %>
+        <% end %>
+      <% end %>
+    </td>
   </tr>
 
   <tr style="font-size:14px">
