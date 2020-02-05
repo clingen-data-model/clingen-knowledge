@@ -1,7 +1,6 @@
 <% 
 
   ## This was added for the GeneDiseaseDup
-  interp = assertions.interpretation.first 
 %>
 <% 
   ## Clear the CSS set above
@@ -14,6 +13,7 @@
   temp_prior_moi = "unset"
   @validity.each do |assertion| 
   temp_this_moi = "unset"
+  interp = assertion.interpretation.first 
 %>
 <%
 

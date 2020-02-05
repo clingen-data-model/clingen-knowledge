@@ -11,7 +11,7 @@ module CurationsHelper
     return "" unless assertion
     #link_to gene_path(id: gene_record[:hgnc_id]), :class => "btn btn-success btn-xs"  do
     #  "".html_safe + assertion[:short_label]
-      ("<a class='btn btn-success btn-xs' target='file' href='https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=" + gene_record[:symbol] + "&subject'> " + assertion[:short_label] + "</a>").html_safe
+      ("<a class='btn btn-success btn-xs' target='file' href='https://dciw.clinicalgenome.org/clingen_gene.cgi?sym=" + gene_record[:symbol] + "&subject'> " + assertion[:short_label] + "</a>").html_safe
     #link_to(assertion[:short_label], gene_path(id: gene_record[:hgnc_id]), class: "btn btn-success btn-xs")
   end
 end

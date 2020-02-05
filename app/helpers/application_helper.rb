@@ -125,7 +125,7 @@ module ApplicationHelper
         if(render == "text")
           text = 'Autosomal Dominant'
         else
-        text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Autosomal Dominan">AD</span>').html_safe
+        text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Autosomal Dominant">AD</span>').html_safe
         end
       when "HP:0000007)"
         if(render == "text")
@@ -144,6 +144,12 @@ module ApplicationHelper
           text = 'Mitochondrial'
         else
           text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Mitochondrial">MT</span>').html_safe
+        end
+      when "HP:0032113)"
+        if(render == "text")
+          text = 'Semidominant'
+        else
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Semidominant">SD</span>').html_safe
         end
       else
         text = "Other"
@@ -166,7 +172,7 @@ module ApplicationHelper
         if(render == "text")
           text = 'Autosomal Dominant'
         else
-        text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Autosomal Dominan">AD</span>').html_safe
+        text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Autosomal Dominant">AD</span>').html_safe
         end
       when "HP:0000007)"
         if(render == "text")
@@ -185,6 +191,12 @@ module ApplicationHelper
           text = 'Mitochondrial'
         else
           text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Mitochondrial">MT</span>').html_safe
+        end
+      when "HP:0032113)"
+        if(render == "text")
+          text = 'Semidominant'
+        else
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Semidominant">SD</span>').html_safe
         end
       else
         text = "Other"
@@ -207,7 +219,7 @@ module ApplicationHelper
         if(render == "text")
           text = 'Autosomal Dominant'
         else
-        text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Autosomal Dominan">AD</span>').html_safe
+        text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Autosomal Dominant">AD</span>').html_safe
         end
       when "HP:0000007)"
         if(render == "text")
@@ -227,10 +239,16 @@ module ApplicationHelper
         else
           text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Mitochondrial">MT</span>').html_safe
         end
+      when "HP:0032113)"
+        if(render == "text")
+          text = 'Semidominant'
+        else
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Semidominant">SD</span>').html_safe
+        end
       else
         text = "Other"
       end
-
+      
       return text
     end 
   end
@@ -294,7 +312,7 @@ module ApplicationHelper
       img_color = "dosageSensitivity-on.png"
       title = "Gene Dosage Sensitivity"
       href = "https://www.clinicalgenome.org/curation-activities/dosage-sensitivity/"
-      href_score = "https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/help.shtml#review"
+      href_score = "https://dciw.clinicalgenome.org/help.shtml#review"
       text_score = "Gene Dosage Sensitivity rating system"
     end
 
@@ -380,13 +398,13 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a class='externalresource' title='" + title + "' id=\"external_gene_dosage_sensitivity\" href='https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=" + var + "&subject' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_gene_dosage_sensitivity\" href='https://dciw.clinicalgenome.orgclingen_gene.cgi?sym=" + var + "&subject' target=\"_blank\">" + title + "</a>").html_safe
     
     elsif item == "button"
-      ("<a id=\"external_gene_dosage_sensitivity\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=" + var + "&subject' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_gene_dosage_sensitivity\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://dciw.clinicalgenome.org/clingen_gene.cgi?sym=" + var + "&subject' target=\"_blank\">" + title + "</a>").html_safe
     
     elsif item == "url"
-      ("https://www.ncbi.nlm.nih.gov/projects/dbvar/clingen/clingen_gene.cgi?sym=" + var + "&subject").html_safe
+      ("https://dciw.clinicalgenome.org/clingen_gene.cgi?sym=" + var + "&subject").html_safe
 
     elsif item == "text"
       "The Clinical Genome Resource (ClinGen) consortium is curating genes and regions of the genome to assess whether there is evidence to support that these genes/regions are dosage sensitive and should be targeted on a cytogenomic array."
