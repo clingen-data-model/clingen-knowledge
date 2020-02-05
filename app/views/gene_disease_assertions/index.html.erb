@@ -57,7 +57,15 @@
         <% end %>
         </td>
         <td class="">
-          <%= gci_SOP(a[:jsonMessageVersion]) %>
+          <% if a[:score_string_gci].present? %>
+            <% if a[:score_string_gci]['selectedSOPVersion'].present? %>
+              <%= gci_SOP(a[:score_string_gci]['selectedSOPVersion']) %>
+            <% else %>
+              <%= gci_SOP(a[:jsonMessageVersion]) %>
+            <% end %>
+          <% else %>
+            <%= gci_SOP(a[:jsonMessageVersion]) %>
+          <% end %>
         </td>
         <td class="">
           <%= link_to gene_disease_assertions_path+"/"+a[:perm_id], {class: 'btn btn-default btn-xs'} do %>
