@@ -38,7 +38,7 @@ class GeneDosageController < ApplicationController
             if a = g.dosage_assertions.select {|i| i.triplo_assertion?}.first
               a.interpretation.first.label
             end,
-            "https://dciw.clinicalgenome.org/clingen_gene.cgi?sym=#{g.label}&subject=",
+            "https://dosage.clinicalgenome.org/clingen_gene.cgi?sym=#{g.label}&subject=",
               g.dosage_assertions.first.date
             ]
             #csv << hash
