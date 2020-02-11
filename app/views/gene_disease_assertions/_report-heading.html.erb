@@ -8,7 +8,7 @@
     <div class='badge badge-primary' style="font-size: 20px; padding:15px;">
       <a tabindex="0" class="text-white" data-container="body" data-toggle="popover" data-placement="top" data-trigger="focus" role="button" data-title="Learn more about classifications " data-href="https://www.clinicalgenome.org/site/assets/files/5967/gene-validity_classification.pdf" data-content="Gene-Disease Validity classification and scoring information"><%= @assertionScoreJsonGci.dig "summary","FinalClassification" %>  <i class="glyphicon glyphicon-info-sign text-white"></i></a>
     </div>
-    <div>Classificaton - <%= PrintDate(@assertionScoreJsonGci.dig "summary","FinalClassificationDate") %></div></td>
+    <div>Classification - <%= PrintDate(@assertionScoreJsonGci.dig "summary","FinalClassificationDate") %></div></td>
   </tr>
   <tr style="font-size:14px">
     <td style="" nowrap class="text-left">Disease:</td>
@@ -51,11 +51,13 @@
         <% end %>
     </td>
     <td style="border-bottom-width:6px; border-bottom-color:rgb(221, 221, 221); border-bottom-style:solid">
+    
     <% if @assertionScoreJsonGci.dig("summary","contributors") %>
-        <% @assertionScoreJsonGci.dig("summary","contributors").each do |contributor| %>
-          <%= contributor.name %>
+        <% (@assertionScoreJsonGci.dig "summary","contributors").each do |contributor| %>
+          <%= contributor["name"] %>
         <% end %>
       <% end %>
+      
     </td>
   </tr>
 
