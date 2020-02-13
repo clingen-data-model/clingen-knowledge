@@ -26,12 +26,13 @@ class GeneDosageController < ApplicationController
         csv.add_row ["CLINGEN DOSAGE SENSITIVITY CURATIONS"]
         csv.add_row ["FILE CREATED: #{Date.today}"]
         csv.add_row ["WEBPAGE: #{gene_dosage_index_url}"]
-        csv.add_row ["+++++++++++","++++++++++++++++++","+++++++++++++++++","+++++++++++++","++++"]
-        csv.add_row ["GENE SYMBOL","HAPLOINSUFFICIENCY","TRIPLOSENSITIVITY","ONLINE REPORT","DATE"]
-        csv.add_row ["+++++++++++","++++++++++++++++++","+++++++++++++++++","+++++++++++++","++++"]
+        csv.add_row ["+++++++++++","+++++++","++++++++++++++++++","+++++++++++++++++","+++++++++++++","++++"]
+        csv.add_row ["GENE SYMBOL","HGNC ID","HAPLOINSUFFICIENCY","TRIPLOSENSITIVITY","ONLINE REPORT","DATE"]
+        csv.add_row ["+++++++++++","+++++++","++++++++++++++++++","+++++++++++++++++","+++++++++++++","++++"]
         @allgenes.each do |g|
           csv << [
             g.label,
+            g.hgnc_id,
             if a = g.dosage_assertions.select {|i| i.haplo_assertion?}.first
               a.interpretation.first.label
             end,
