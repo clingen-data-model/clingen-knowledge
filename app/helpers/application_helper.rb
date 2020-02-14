@@ -139,6 +139,12 @@ module ApplicationHelper
         else
           text = ('<span class="" data-toggle="tooltip" data-placement="top" title="X-Linked">XL</span>').html_safe
         end
+      when "HP:0001419)"
+        if(render == "text")
+          text = 'X-linked recessive'
+        else
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="X-linked recessive">XLR</span>').html_safe
+        end
       when "HP:0001427)"
         if(render == "text")
           text = 'Mitochondrial'
@@ -186,6 +192,12 @@ module ApplicationHelper
         else
           text = ('<span class="" data-toggle="tooltip" data-placement="top" title="X-Linked">XL</span>').html_safe
         end
+      when "HP:0001419)"
+        if(render == "text")
+          text = 'X-linked recessive'
+        else
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="X-linked recessive">XLR</span>').html_safe
+        end
       when "HP:0001427)"
         if(render == "text")
           text = 'Mitochondrial'
@@ -232,6 +244,12 @@ module ApplicationHelper
           text = 'X-Linked'
         else
           text = ('<span class="" data-toggle="tooltip" data-placement="top" title="X-Linked">XL</span>').html_safe
+        end
+      when "HP:0001419)"
+        if(render == "text")
+          text = 'X-linked recessive'
+        else
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="X-linked recessive">XLR</span>').html_safe
         end
       when "HP:0001427)"
         if(render == "text")
