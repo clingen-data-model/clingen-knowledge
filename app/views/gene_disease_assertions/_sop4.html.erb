@@ -1,37 +1,4 @@
-<div class="form-group">
-<table style="width:100%;" >
-  <tr style="">
-    <td style="width:15%; padding-top:5px; padding-bottom:5px; padding-right:1%;" valign="top"  nowrap class="text-right text-muted">Gene/Disease Pair:</td>
-    <td style="width:85%; padding-bottom:5px"><h3 style="padding:0; margin:0"><strong style="color:#000"><i>
-      <?=$Gene?><%= @assertionScoreJson['data']['Gene'] %>
-      </i>:
-      <?=$Disease?><%= @assertionScoreJson['data']['Disease'] %>
-      </strong></h3></td>
-  </tr>
-  <tr style="">
-    <td style="width:15%; padding-right:1%;" nowrap class="text-right text-muted"></td>
-    <td style="width:85%; padding-bottom:5px"><strong style="color:#000">
-      HGNC:<%= @assertionScoreJson['data']['Hgnc'] %>
-      <% if @assertionScoreJson['data']['OrphaNet'] %>
-      | OrphaNet:
-      <%= @assertionScoreJson['data']['OrphaNet'] %>
-      <% end %>
-      <% if @assertionScoreJson['data']['Omim'] %>
-      | OMIM:<%= @assertionScoreJson['data']['Omim'] %>
-      <% end %>
-      </strong></td>
-  </tr>
-  <% if @assertionScoreJson['data']['ModeOfInheritance'] %>
-  <tr style="">
-    <td style="width:15%; padding-right:1%; padding-bottom:5px" nowrap class="text-right text-muted">Mode of Inheritance:</td>
-    <td style="width:85%; padding-bottom:5px"><strong style="color:#000">
-      <%= @assertionScoreJson['data']['ModeOfInheritance'] %>
-      </strong></td>
-  </tr>
-  <% end %>
-</table>
-</div>
-<hr />
+<%= render 'report-heading-express'%>
 <table class="table table-compact table-bordered table-border-normal">
 <tbody>
   <tr>
@@ -335,7 +302,7 @@
     <td colspan="2" class="table-heading-line-thick table-heading EvidenceDefinitiveBg <%= @assertionScoreJson.dig "summary","CalculatedClassification" %>">12-18 AND replication over time</td>
   </tr>
   <tr>
-    <td class="table-heading-line-thick table-heading">Valid contradictory evidence (Y/N)* <br></td>
+    <td class="table-heading-line-thick table-heading" id="ValidContradictoryEvidence">Valid contradictory evidence (Y/N)* <br></td>
     <td colspan="4" class="table-heading-line-thick text-left"><div class="input-width-pmid">
       <div class="form-group">
         <table>
@@ -400,7 +367,7 @@
         <?=$FinalClassificationDate?>
       <%= @assertionScoreJson.dig "summary","FinalClassificationDate" %>
       </div>
-      <div class='col-sm-12'>
+      <div class='col-sm-12 text-left'>
         <?=$FinalClassificationNotes?>
       <%= @assertionScoreJson.dig "summary","FinalClassificationNotes" %>
       </div></td>

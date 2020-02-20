@@ -1,27 +1,122 @@
 <% 
 
   ## This was added for the GeneDiseaseDup
-  interp = assertions.interpretation.first 
 %>
-  <tbody>
+<% 
+  ## Clear the CSS set above
+  render_css_border = ""
+  render_logo_inline = info_popover("gene-curation", "help", "" ,"logo-inline")
+%>
+
+<%
+  temp = ""
+  temp_prior_moi = "unset"
+  @validity.each do |assertion| 
+  temp_this_moi = "unset"
+  interp = assertion.interpretation.first 
+%>
+<%
+
+    # This was added to allow the MOI to be checked for the current assertion
+    if assertion.score_string_gci.present? 
+      temp_this_moi = ""+print_moi_score_gci(assertion.score_string_gci, "text")+""
+    elsif assertion.score_string_sop5.present?
+      temp_this_moi = ""+print_moi_score_sop5(assertion.score_string_sop5, "text")+""
+    else
+      temp_this_moi = ""+print_moi_score(assertion.score_string, "text")+""
+    end
+
+    # Is this a gene patriggerge?
+    if render_as == "gene"
+      # Check to see if this is duplicate AND if the PRIOR assertion has same MOI.
+      # This was checked because the query can't filter the MOI since not easy assessable
+      if (assertion.diseases.first.curie.to_s == disease.curie.to_s && temp_this_moi.to_s != temp_prior_moi.to_s)
+        match = "match"
+        temp = "render"
+      else
+        match = ""
+        temp = ""
+      end
+    end
+
+    # OR s this a disease trigger?     
+    if render_as == "disease"
+
+      # Check to see if this is duplicate AND if the PRIOR assertion has same MOI.
+      # This was checked because the query can't filter the MOI since not easy assessable
+      if (assertion.genes.first.hgnc_id.to_s == gene.hgnc_id.to_s && temp_this_moi.to_s != temp_prior_moi.to_s)
+        match = "match"
+        temp = "render"
+      else
+        match = ""
+        temp = ""
+      end
+    end
+
+%>
+<%
+  if temp == "render"
+%>
+  <tbody class='<%= render_css_border %>'>
     <tr>
-      <td>
-        <%= info_popover("gene-curation", "help", "" ,"logo-inline") %>
+      <td class='<%= render_css_border %>'>
+        <%= render_logo_inline %>
       </td>
-      <td>
+      <td class='<%= render_css_border %>'>
         <%= info_popover("gene-curation", "score", interp.label, "strong") %>
+        <div class='small pb-0'> 
+            
+          <% if assertion.score_string_gci.present? %>
+            <% if assertion.jsonMessageVersion == "GCI.6" %>
+              <%= print_animal_mode(assertion.jsonMessageVersion, assertion.score_string_gci, false) %>
+            <% else %>
+              <%= print_animal_mode(assertion.jsonMessageVersion, assertion.score_string_gci, false) %>
+            <% end %>
+          <% elsif assertion.score_string_sop5.present? %>
+            <%= print_animal_mode('SOP5', assertion.score_string_sop5, false) %>
+          <% else %>
+            <%= print_animal_mode('SOP4', assertion.score_string, false) %>
+          <% end %>
+        </div>
       </td>
-      <td class=" text-center">
-        <% if assertions.respond_to?(:date) %>
-          <%= mdy_date(assertions.date) %>
+      <td class=" text-center <%= render_css_border %>">
+        <% if assertion.score_string_gci.present? %>
+          <%= print_moi_score_gci(assertion.score_string_gci, "text") %>
+        <% elsif assertion.score_string_sop5.present? %>
+          <%= print_moi_score_sop5(assertion.score_string_sop5, "text") %>
         <% else %>
-          <%= assertions.first.mdy_date %>
+          <%= print_moi_score(assertion.score_string, "text") %>
         <% end %>
       </td>
-      <td class=" text-center">
-        <%= link_to gene_disease_assertions_path+"/"+assertions.perm_id, :method => :get, :class => "btn btn-xs btn-success"  do %>
-        View report
-      <% end %>
+      <td class=" text-center <%= render_css_border %>">
+        <% if assertion.respond_to?(:date) %>
+          <%= mdy_date(assertion.date) %>
+        <% else %>
+          <%= assertion.first.mdy_date %>
+        <% end %>
+      </td>
+      <td class=" text-center <%= render_css_border %>">
+        <%= link_to gene_disease_assertions_path+"/"+assertion.perm_id, :method => :get, :class => "btn btn-xs btn-success mb-1"  do %>
+          View report
+        <% end %>
       </td>
     </tr>
   </tbody>
+  <% 
+    ## Clear the CSS set above
+    render_css_border = "border-0"
+    render_logo_inline = ""
+
+    # This was added because the view needs a variable to check if the same MOI was rendered
+    if assertion.score_string_gci.present? 
+      temp_prior_moi = ""+print_moi_score_gci(assertion.score_string_gci, "text")+""
+    elsif assertion.score_string_sop5.present?
+      temp_prior_moi = ""+print_moi_score_sop5(assertion.score_string_sop5, "text")+""
+    else
+      temp_prior_moi = ""+print_moi_score(assertion.score_string, "text")+""
+    end
+  %>
+<% end %>
+<% # end %>
+<% end %>
+

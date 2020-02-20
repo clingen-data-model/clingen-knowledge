@@ -14,6 +14,70 @@ module ApplicationHelper
     Date.parse(date).strftime('%m/%d/%Y')
   end
 
+  ##	Function:  print_animal_mode
+  ##
+  ##  	Determine if curation is an animal mode only.  There are four
+  ##	distinct score formats in Neo4j.  The 'type' parameter instructs
+  ##	the function which format to use.  The 'isjson' flag tells the
+  ##	function that 'score' has already been converted to json. 
+  ##	
+  ##  
+  def print_animal_mode(type, score, isjson)
+    if score.present?
+	  if isjson
+		jsonD = score
+	  else
+        jsonD = ActiveSupport::JSON.decode(score)
+      end
+
+      if type == "GCI.7"
+      # Make sure the Models hierarchy is even in the score string
+          if jsonD['ExperimentalEvidence']['Models'].present? && jsonD['ExperimentalEvidence']['Models']['NonHumanModelOrganism'].present?
+        animalmode = (jsonD['summary']['FinalClassification'] == 'No Reported Evidence') \
+          && jsonD['ExperimentalEvidence']['Models']['NonHumanModelOrganism']['Count'] > 0 \
+          && jsonD['ValidContradictoryEvidence']['Value'] == 'NO'
+      else
+        return ''
+      end
+        elsif type == 'GCI.6'
+		# Make sure the Models hierarchy is even in the score string
+        if jsonD['ExperimentalEvidence']['Models'].present? && jsonD['ExperimentalEvidence']['Models']['NonHumanModelOrganism'].present?
+			animalmode = (jsonD['summary']['FinalClassification'] == 'No Reported Evidence') \
+				&& jsonD['ExperimentalEvidence']['Models']['NonHumanModelOrganism']['Count'] > 0 \
+				&& jsonD['ValidContradictoryEvidence']['Value'] == 'NO'
+		else
+			return ''
+		end
+      elsif type == 'GCI.5'
+		# Make sure the Models hierarchy is even in the score string
+		if jsonD['ExperimentalEvidence']['Models'].present? && jsonD['ExperimentalEvidence']['Models']['NonHumanModelOrganism'].present?
+			animalmode = (jsonD['summary']['FinalClassification'] == 'No Reported Evidence') \
+				&& jsonD['ExperimentalEvidence']['Models']['NonHumanModelOrganism']['Value'] > 0 \
+				&& jsonD['ValidContradictoryEvidence']['Value'] == 'NO'
+		else
+			return ''
+		end
+      elsif type == 'SOP5'
+		animalmode = (jsonD['scoreJson']['summary']['CalculatedClassification'] == 'No Reported Evidence') \
+			&& jsonD['ExperimentalEvidence']['Models']['NonHumanModelOrganism']['Value'] > 0 \
+			&& jsonD['ValidContradictoryEvidence']['Value'] == 'NO'
+	  else
+	    animalmode = (jsonD['data']['FinalClassification'] == 'No Reported Evidence') \
+			&& jsonD['data']['ExperimentalEvidence']['Models']['NonHumanModelOrganism']['Value'] > 0 \
+			&& jsonD['data']['ValidContradictoryEvidence']['Value'] == 'NO'
+	  end      
+	       
+      if animalmode 
+		return "Animal Mode Only"
+	  else
+	    return ''
+	  end
+    else
+      return ''
+    end 
+  end
+
+
   def print_affilate(affilate)
     if(affilate.first.nil?)
       return "n/a"
@@ -34,7 +98,178 @@ module ApplicationHelper
     end 
   end
 
-  
+  def gci_SOP_version(sop)
+    if(sop == "GCI.5" )
+      return "Version 5"
+    elsif(sop == "GCI.6" )
+      return "Version 6"
+    elsif(sop == "GCI.7" )
+      return "Version 7"
+    else
+      return "Version 4"
+    end 
+  end
+
+  def print_moi_score_gci(score, render=null)
+    ## Send phil curtion tion
+    if(score.present?)
+      jsonD = ActiveSupport::JSON.decode(score)
+      moi =  jsonD['ModeOfInheritance']
+
+      ## The partition is designed to remove the HP info
+      
+      data = moi.partition("(").last
+
+      case data
+      when "HP:0000006)"
+        if(render == "text")
+          text = 'Autosomal Dominant'
+        else
+        text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Autosomal Dominant">AD</span>').html_safe
+        end
+      when "HP:0000007)"
+        if(render == "text")
+          text = 'Autosomal Recessive'
+        else
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Autosomal Recessive">AR</span>').html_safe
+        end
+      when "HP:0001417)"
+        if(render == "text")
+          text = 'X-Linked'
+        else
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="X-Linked">XL</span>').html_safe
+        end
+      when "HP:0001419)"
+        if(render == "text")
+          text = 'X-linked recessive'
+        else
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="X-linked recessive">XLR</span>').html_safe
+        end
+      when "HP:0001427)"
+        if(render == "text")
+          text = 'Mitochondrial'
+        else
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Mitochondrial">MT</span>').html_safe
+        end
+      when "HP:0032113)"
+        if(render == "text")
+          text = 'Semidominant'
+        else
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Semidominant">SD</span>').html_safe
+        end
+      else
+        text = "Other"
+      end
+
+      return text
+    end 
+  end
+
+  def print_moi_score_sop5(score, render=null)
+    if(score.present?)
+      jsonD = ActiveSupport::JSON.decode(score)
+      moi =  jsonD['scoreJson']['ModeOfInheritance']
+
+      ## The partition is designed to remove the HP info
+      data = moi.partition("(").last
+
+      case data
+      when "HP:0000006)"
+        if(render == "text")
+          text = 'Autosomal Dominant'
+        else
+        text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Autosomal Dominant">AD</span>').html_safe
+        end
+      when "HP:0000007)"
+        if(render == "text")
+          text = 'Autosomal Recessive'
+        else
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Autosomal Recessive">AR</span>').html_safe
+        end
+      when "HP:0001417)"
+        if(render == "text")
+          text = 'X-Linked'
+        else
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="X-Linked">XL</span>').html_safe
+        end
+      when "HP:0001419)"
+        if(render == "text")
+          text = 'X-linked recessive'
+        else
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="X-linked recessive">XLR</span>').html_safe
+        end
+      when "HP:0001427)"
+        if(render == "text")
+          text = 'Mitochondrial'
+        else
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Mitochondrial">MT</span>').html_safe
+        end
+      when "HP:0032113)"
+        if(render == "text")
+          text = 'Semidominant'
+        else
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Semidominant">SD</span>').html_safe
+        end
+      else
+        text = "Other"
+      end
+
+      return text
+    end 
+  end
+
+  def print_moi_score(score, render=null)
+    if(score.present?)
+      jsonD = ActiveSupport::JSON.decode(score)
+      moi =  jsonD['data']['ModeOfInheritance']
+
+      ## The partition is designed to remove the HP info
+      data = moi.partition("(").last
+
+      case data
+      when "HP:0000006)"
+        if(render == "text")
+          text = 'Autosomal Dominant'
+        else
+        text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Autosomal Dominant">AD</span>').html_safe
+        end
+      when "HP:0000007)"
+        if(render == "text")
+          text = 'Autosomal Recessive'
+        else
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Autosomal Recessive">AR</span>').html_safe
+        end
+      when "HP:0001417)"
+        if(render == "text")
+          text = 'X-Linked'
+        else
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="X-Linked">XL</span>').html_safe
+        end
+      when "HP:0001419)"
+        if(render == "text")
+          text = 'X-linked recessive'
+        else
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="X-linked recessive">XLR</span>').html_safe
+        end
+      when "HP:0001427)"
+        if(render == "text")
+          text = 'Mitochondrial'
+        else
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Mitochondrial">MT</span>').html_safe
+        end
+      when "HP:0032113)"
+        if(render == "text")
+          text = 'Semidominant'
+        else
+          text = ('<span class="" data-toggle="tooltip" data-placement="top" title="Semidominant">SD</span>').html_safe
+        end
+      else
+        text = "Other"
+      end
+      
+      return text
+    end 
+  end
 
   # Return the key for the entity describing which assertions have been performed
   def entity_assertion_key(entity)
@@ -95,7 +330,7 @@ module ApplicationHelper
       img_color = "dosageSensitivity-on.png"
       title = "Gene Dosage Sensitivity"
       href = "https://www.clinicalgenome.org/curation-activities/dosage-sensitivity/"
-      href_score = "https://dosage.clinicalgenome.org/clingen/help.shtml#review"
+      href_score = "https://dosage.clinicalgenome.org/help.shtml#review"
       text_score = "Gene Dosage Sensitivity rating system"
     end
 
@@ -181,10 +416,10 @@ module ApplicationHelper
       title
 
     elsif item == "link"
-      ("<a class='externalresource' title='" + title + "' id=\"external_gene_dosage_sensitivity\" href='https://dosage.clinicalgenome.org/clingen_gene.cgi?sym=" + var + "&subject' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a class='externalresource' title='" + title + "' id=\"external_gene_dosage_sensitivity\" href='https://dosage.clinicalgenome.orgclingen_gene.cgi?sym=" + var + "&subject' target=\"_blank\">" + title + "</a>").html_safe
     
     elsif item == "button"
-      ("<a id=\"external_gene_dosage_sensitivity\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://dosage.clinicalgenome.org/clingen/clingen_gene.cgi?sym=" + var + "&subject' target=\"_blank\">" + title + "</a>").html_safe
+      ("<a id=\"external_gene_dosage_sensitivity\" class='btn btn-default btn-xs externalresource' title='" + title + "' href='https://dosage.clinicalgenome.org/clingen_gene.cgi?sym=" + var + "&subject' target=\"_blank\">" + title + "</a>").html_safe
     
     elsif item == "url"
       ("https://dosage.clinicalgenome.org/clingen_gene.cgi?sym=" + var + "&subject").html_safe

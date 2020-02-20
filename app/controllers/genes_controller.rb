@@ -40,12 +40,12 @@ class GenesController < ApplicationController
     expires_in 10.minutes, public: true
 
     @gene = Gene.find_by(hgnc_id: params[:id])
+    
     # @term_label = truncate(@gene.symbol, :length => 20, :omission => '...')
     # @term_id = truncate(@gene.hgnc_id)
     @diseases = @gene.as(:g).assertions.diseases(:d).where("((d)<-[:has_related_phenotype]-(g) or (d)<-[:has_object]-(:GeneDiseaseAssertion)-[:has_subject]->(g) or not (g)-[:has_related_phenotype]->())").distinct
     @concepts = @diseases.equivalent_terms(:t).where("t :DiseaseConcept")
-    @curations = @gene.query_as(:g)
-                   .return("g {.symbol,
+    @curations = @gene.query_as(:g).return("g {.symbol,
 	gene_validity_interps: [(g)<-[:has_subject]-(gv:GeneDiseaseAssertion) | gv {.date,
     	condition: [(gv)-[:has_object|:equivalentClass*..2]->(c:DiseaseConcept) | c {.label, .iri}][0],
     	significance: [(gv)-[:has_predicate]->(i:Interpretation) | i {.label, .iri}][0],
@@ -54,8 +54,7 @@ class GenesController < ApplicationController
     	condition: [(gd)-[:has_object|:equivalentClass*..2]->(c:DiseaseConcept) | c {.label, .iri}][0],
         significance: [(gd)-[:has_predicate]->(i:Interpretation) | i {.label, .iri}]}][0],
     actionability_interps: [(g)<-[:has_subject]-(a:ActionabilityAssertion) | a {.date,
-    	condition: [(a)-[:has_object|:equivalentClass*..2]->(c:DiseaseConcept) | c {.label, .iri}][0]}]}")
-                   .to_a
+    	condition: [(a)-[:has_object|:equivalentClass*..2]->(c:DiseaseConcept) | c {.label, .iri}][0]}]}").to_a
 
 
     @actionability = @gene.actionability_scores
@@ -66,9 +65,9 @@ class GenesController < ApplicationController
     @dosage = @gene.assertions(:a).with_associations(:interpretation, :diseases)
                 .where("a:GeneDosageAssertion")
     @validity = @gene.assertions(:n)
-                  .with_associations(:interpretation, :diseases)
-                  .where("n:GeneDiseaseAssertion")
-                  .where("NOT((n)-[:wasInvalidatedBy]->())")
+                .with_associations(:interpretation, :diseases)
+                .where("n:GeneDiseaseAssertion")
+                .where("NOT((n)-[:wasInvalidatedBy]->())")
     @diseases_detail = @validity.reduce({}) do |h, i|
       h.update(i.diseases.reduce({}) { |h1, i1| h1.update({i1.iri => i}) })
     end

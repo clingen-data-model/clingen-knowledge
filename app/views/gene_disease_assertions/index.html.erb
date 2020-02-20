@@ -22,6 +22,7 @@
     <thead>
       <th class="col-sm-2">Gene</th>
       <th class="col-sm-8">Disease curated</th>
+      <th class="col-sm-2">MOI</th>
       <th class="col-sm-2">SOP</th>
       <th class="col-sm-2">Classification</th>
       <th class="col-sm-2">Released</th>
@@ -47,7 +48,24 @@
           <% end %>
         </td>
         <td class="">
-          <%= gci_SOP(a[:jsonMessageVersion]) %>
+        <% if a[:score_string_gci].present? %>
+          <%= print_moi_score_gci(a[:score_string_gci], "abr") %>
+        <% elsif a[:score_string_sop5].present? %>
+          <%= print_moi_score_sop5(a[:score_string_sop5], "abr") %>
+        <% else %>
+          <%= print_moi_score(a[:score_string], "abr") %>
+        <% end %>
+        </td>
+        <td class="">
+          <% if a[:score_string_gci].present? %>
+            <% if a[:score_string_gci]['selectedSOPVersion'].present? %>
+              <%= gci_SOP(a[:score_string_gci]['selectedSOPVersion']) %>
+            <% else %>
+              <%= gci_SOP(a[:jsonMessageVersion]) %>
+            <% end %>
+          <% else %>
+            <%= gci_SOP(a[:jsonMessageVersion]) %>
+          <% end %>
         </td>
         <td class="">
           <%= link_to gene_disease_assertions_path+"/"+a[:perm_id], {class: 'btn btn-default btn-xs'} do %>

@@ -31,13 +31,14 @@
           <thead class="thead-labels">
             <tr>
               <th class="col-sm-3 th-curation-group text-left">Curated by</th>
-              <th class="col-sm-6 text-left"> Classification</th>
+              <th class="col-sm-4 text-left"> Classification</th>
+              <th class="col-sm-2 text-left"> </th>
               <th class="col-sm-2 text-center">Date</th>
               <th class="col-sm-1 text-center">Report</th>
             </tr>
           </thead>
-        <% if @diseases_detail[disease.iri] %>
-          <%= render "gene_disease_assertions/validity_detail_wide", assertions: @diseases_detail[disease.iri], disease: disease, gene: @gene %>
+          <% if @diseases_detail[disease.iri] %>
+          <%= render "gene_disease_assertions/validity_detail_wide", assertions: @validity, disease: disease, gene: @gene, render_as: 'gene' %>
         <% end %>
         <% if @dosage_detail[disease.iri] %>
           <%= render "gene_dosage/dosage_detail_wide", dosage: @dosage_detail[disease.iri] %>
