@@ -43,21 +43,22 @@
     </td>
   </tr>
   <tr style="font-size:14px">
-    <td style="border-bottom-width:6px; border-bottom-color:rgb(221, 221, 221); border-bottom-style:solid" nowrap class="text-left">Expert Panel:</td>
-    <td style="border-bottom-width:6px; border-bottom-color:rgb(221, 221, 221); border-bottom-style:solid"><%= @assertion.attributions.first.label if @assertion.attributions.first %> GCEP</td>
-    <td style="border-bottom-width:6px; border-bottom-color:rgb(221, 221, 221); border-bottom-style:solid" nowrap class="text-left">
+    <td style="vertical-align:top; border-bottom-width:6px; border-bottom-color:rgb(221, 221, 221); border-bottom-style:solid" nowrap class="text-left">Expert Panel:</td>
+    <td style="vertical-align:top; border-bottom-width:6px; border-bottom-color:rgb(221, 221, 221); border-bottom-style:solid"><%= @assertion.attributions.first.label if @assertion.attributions.first %> EP</td>
+    <td style="vertical-align:top; border-bottom-width:6px; border-bottom-color:rgb(221, 221, 221); border-bottom-style:solid" nowrap class="text-left">
     <% if @assertionScoreJsonGci.dig("summary","contributors") %>
       Contributors:
         <% end %>
     </td>
-    <td style="border-bottom-width:6px; border-bottom-color:rgb(221, 221, 221); border-bottom-style:solid">
+    <td style="vertical-align:top; border-bottom-width:6px; border-bottom-color:rgb(221, 221, 221); border-bottom-style:solid">
     
     <% if @assertionScoreJsonGci.dig("summary","contributors") %>
+    <ul class="list-unstyled margin-bottom-none">
         <% (@assertionScoreJsonGci.dig "summary","contributors").each do |contributor| %>
-          <%= contributor["name"] %>
+          <li><%= contributor["name"] %></li>
         <% end %>
+        </ul>
       <% end %>
-      
     </td>
   </tr>
 
