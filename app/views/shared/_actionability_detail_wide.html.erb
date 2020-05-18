@@ -8,13 +8,21 @@
           </td>
 
           <td class=" text-center">
-            
+          
           </td>
           <td class=" text-center">
             <%= mdy_date(assertion[:date]) %>
           </td>
           <td class=" text-center">
-            <a href="<%= assertion[:report] %>" target='file' class='btn btn-xs btn-success'>View report</a>
+          <% 
+            search_text = assertion[:label].split('-')
+            if @gene.present? 
+              search_gene = @gene.symbol
+            elsif
+              search_gene = gene.label
+            end
+          %>
+          <a href="https://actionability.clinicalgenome.org/ac/?search=<%= URI.encode(search_text.first) %>%20<%= search_gene %>" target='file' class='btn btn-xs btn-success'>View report</a>
           </td>
         </tr>
     <% end  %>
