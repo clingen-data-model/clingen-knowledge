@@ -27,3 +27,7 @@ config/passenger.3000.pid.lock
 deploy/deploy.retry
 passenger*
 vendor/bundle/**
+
+config/neo4j.yml
+**/OLD
+**/*(copy)

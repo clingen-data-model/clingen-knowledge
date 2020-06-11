@@ -24,6 +24,12 @@
       args:
         chdir: /var/www/clingen-knowledge
       environment: 
+        RAILS_ENV: production
+    - name: Copy neo4j config
+      template:
+        src: config.neo4j
+        dest: /var/www/clingen-knowledge/config/neo4j.yml
+      environment: 
         RAILS_ENV: production 
     - name: Restart nginx
       systemd:

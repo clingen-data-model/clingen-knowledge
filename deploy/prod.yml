@@ -3,8 +3,12 @@ webservers:
     search.clinicalgenome.org:
       ansible_user: ubuntu
       ansible_ssh_private_key_file: "~/Dropbox/clingen/clinicalgenome.org.key"
-    search2.clinicalgenome.org:
-      ansible_become: yes
-      ansible_become_user: www-data-user
   vars:
     git_branch: master
+    neo4j_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          62663365396366343230313631323562333532356130376334353062356232636631393965343561
+          6331643032363763343538363633363063333866613837300a393131306565323633633662346262
+          61373330353861393235303064326431666436303536323232323433323930643366323738333964
+          6633303438616638370a663662653034633731346463653966393536636131323366663363366164
+          3335

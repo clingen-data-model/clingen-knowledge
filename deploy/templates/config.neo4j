@@ -1,0 +1,10 @@
+development:
+  type: bolt
+  url: bolt://neo4j:{{ neo4j_password }}@localhost:7687
+  #url: bolt://neo4j:{{ neo4j_password }}@search-staging.clinicalgenome.org:7687
+test:
+  type: bolt
+  url: bolt://neo4j:{{ neo4j_password }}@localhost:7687
+production:
+  type: bolt
+  url: bolt://neo4j:{{ neo4j_password }}@localhost:7687
