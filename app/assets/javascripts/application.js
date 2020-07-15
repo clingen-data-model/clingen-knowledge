@@ -55,6 +55,18 @@ $( ".externalresource" ).on( "click", function() {
     //console.log( title );
     ga('send', 'event', 'external_resource', 'click', title );
 });
+$( ".watchreportclick" ).on( "click", function() {
+    var title = $(this).attr("title");
+    console.log( "watchreportclick" );
+    console.log( title );
+    ga('send', 'event', 'track_report_click', 'click', title );
+});
+$( ".watchdownloadclick" ).on( "click", function() {
+    var title = $(this).attr("title");
+    console.log( "watchdownloadclick" );
+    console.log( title );
+    ga('send', 'event', 'track_download_click', 'click', title );
+});
 
 
 
