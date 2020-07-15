@@ -7,7 +7,7 @@
         <td class="text-center"></td>
         <td class="text-center"><%= dosage.mdy_date %></td>
         <td class=" text-center">
-          <a id="external_gene_dosage_sensitivity" target="_blank" class="btn btn-xs btn-success" href="<%= gene_dosage_sensitivity("url", dosage.genes.first.symbol) %>">View report</a>
+          <a id="external_gene_dosage_sensitivity" target="_blank" class="btn btn-xs btn-success watchreportclick" title="Click Gene Dosage Report" href="<%= gene_dosage_sensitivity("url", dosage.genes.first.symbol) %>">View report</a>
           
         </td>
       </tr>

@@ -30,7 +30,7 @@
                 <td class="text-center <%= render_css_border %>"></td>
                 <td class="text-center <%= render_css_border %>"><%= mdy_date(a.date) %></td>
                 <td class=" text-center <%= render_css_border %>">
-                  <a id="external_gene_dosage_sensitivity" target="_blank" class="btn btn-xs btn-success" href="<%= gene_dosage_sensitivity("url", @gene.symbol) %>">View report</a>
+                  <a id="external_gene_dosage_sensitivity" target="_blank" class="btn btn-xs btn-success watchreportclick" title="Click Gene Dosage Report" href="<%= gene_dosage_sensitivity("url", @gene.symbol) %>">View report</a>
                 </td>
               </tr>
             <% 
@@ -50,7 +50,7 @@
                 <td class="text-center <%= render_css_border %>"></td>
                 <td class="text-center <%= render_css_border %>"><%= mdy_date(b.date) %></td>
                 <td class=" text-center <%= render_css_border %>">
-                  <a id="external_gene_dosage_sensitivity" target="_blank" class="btn btn-xs btn-success" href="<%= gene_dosage_sensitivity("url", @gene.symbol) %>">View report</a>
+                  <a id="external_gene_dosage_sensitivity" target="_blank" class="btn btn-xs btn-success watchreportclick" title="Click Gene Dosage Report" href="<%= gene_dosage_sensitivity("url", @gene.symbol) %>">View report</a>
                 </td>
               </tr>
             <% end %>
