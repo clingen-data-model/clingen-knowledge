@@ -4,20 +4,22 @@
       <h2>Gene Dosage Curations</h2>
     </div>
     <div class="col-sm-6 padding-top-sm">
-      <div class="text-right"><a href="<%= gene_dosage_index_path(format: "csv") %>"><i class="glyphicon glyphicon-download"></i> Download Summary</a></div>
+      <div class="text-right"><a class="watchdownloadclick" target="download" title="Download Gene Dosage Curations Data"  href="<%= gene_dosage_index_path(format: "csv") %>"><i class="glyphicon glyphicon-download"></i> Download Summary</a></div>
                       
     </div>
   </div>
-
-  <div class="form-horizontal row padding-top-xs padding-bottom-xs" id="">
-    <div class="col-sm-12">
-    <div class="input-group">
-      <span class="input-group-addon" id=""><i class="glyphicon glyphicon-search"></i></span>
-        <input type="text" class="form-control input-block" id="interactive_dosage_search" placeholder="Filter table...">
-    </div>
-    </div>
-  </div>
-  <table id="interactive_dosage_table" class="table table-condensed table-striped table-bordered">
+  <%
+  # <div class="form-horizontal row padding-top-xs padding-bottom-xs" id="">
+  #   <div class="col-sm-12">
+  #   <div class="input-group">
+  #     <span class="input-group-addon" id=""><i class="glyphicon glyphicon-search"></i></span>
+  #       <input type="text" class="form-control input-block" id="interactive_dosage_search" placeholder="Filter table...">
+  #   </div>
+  #   </div>
+  # </div>
+  # <table id="interactive_dosage_table" class="table table-condensed table-striped table-bordered">
+  %>
+  <table id="" class="table table-condensed table-striped table-bordered">
     <thead>
       <th class="col-sm-2">Gene</th>
       <th class="col-sm-4">Haploinsufficiency</th>
@@ -42,7 +44,7 @@
             <% end %>
           </td>
           <td>
-            <a href="https://dosage.clinicalgenome.org/clingen_gene.cgi?sym=<%= g.label %>&subject=" target="ncbi" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-new-window"></i> <strong>View Details</strong></a></td>
+            <a href="https://dosage.clinicalgenome.org/clingen_gene.cgi?sym=<%= g.label %>&subject=" target="ncbi" class='btn btn-default btn-xs watchreportclick' title="Click Gene Dosage Report"><i class="glyphicon glyphicon-new-window"></i> <strong>View Details</strong></a></td>
           <td>
             <%= mdy_date(g.dosage_assertions.first.date) %></td>
   	</tr>
