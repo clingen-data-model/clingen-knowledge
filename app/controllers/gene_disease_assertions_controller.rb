@@ -27,9 +27,9 @@ class GeneDiseaseAssertionsController < ApplicationController
       csv.add_row ["CLINGEN GENE VALIDITY CURATIONS"]
       csv.add_row ["FILE CREATED: #{Date.today}"]
       csv.add_row ["WEBPAGE: #{gene_disease_assertions_url}"]
-      csv.add_row ["+++++++++++","++++++++++++++","+++++++++++++","++++++++++++++++++","+++++++++","+++++++++","++++++++++++++","+++++++++++++","+++++++++++++++++++"]
-      csv.add_row ["GENE SYMBOL","GENE ID (HGNC)","DISEASE LABEL","DISEASE ID (MONDO)","MOI","SOP","CLASSIFICATION","ONLINE REPORT","CLASSIFICATION DATE"]
-      csv.add_row ["+++++++++++","++++++++++++++","+++++++++++++","++++++++++++++++++","+++++++++","+++++++++","++++++++++++++","+++++++++++++","+++++++++++++++++++"]
+      csv.add_row ["+++++++++++","++++++++++++++","+++++++++++++","++++++++++++++++++","+++++++++","+++++++++","+++++++++","++++++++++++++","+++++++++++++","+++++++++++++++++++"]
+      csv.add_row ["GENE SYMBOL","GENE ID (HGNC)","DISEASE LABEL","DISEASE ID (MONDO)","MOI","GCEP","SOP","CLASSIFICATION","ONLINE REPORT","CLASSIFICATION DATE"]
+      csv.add_row ["+++++++++++","++++++++++++++","+++++++++++++","++++++++++++++++++","+++++++++","+++++++++","+++++++++","++++++++++++++","+++++++++++++","+++++++++++++++++++"]
       @assertions.each do |a|
 
         if a[:score_string_gci].present?
@@ -46,6 +46,7 @@ class GeneDiseaseAssertionsController < ApplicationController
           a[:diseases].first[:label],
           a[:diseases].first[:curie],
           moi,
+          a[:agent].first[:label],
           gci_SOP(a[:jsonMessageVersion]),
           a[:interpretation].first[:label],
           gene_disease_assertions_url+"/"+a[:perm_id],
