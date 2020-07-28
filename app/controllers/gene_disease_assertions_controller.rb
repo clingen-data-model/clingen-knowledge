@@ -16,7 +16,7 @@ class GeneDiseaseAssertionsController < ApplicationController
                              genes: [(g:Gene)<-[:has_subject]-(a) | g {.symbol, .hgnc_id}],
                              diseases: [(d:DiseaseConcept)-[:has_object|:equivalentClass*1..2]-(a) | d {.curie, .label}],
                              interpretation: [(i:Interpretation)<-[:has_predicate]-(a) | i {.label}],
-                             agent: [(ag:Agent)<-[:wasAttributedto]-(a) | ag {.label}]}")
+                             agent: [(ag:Agent)<-[:wasAttributedto]-(a) | ag {.label, .iri}]}")
                     .to_a
                     .map(&:a)
                     .sort_by { |r| r[:genes].first[:symbol] }

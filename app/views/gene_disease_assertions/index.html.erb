@@ -57,8 +57,8 @@
           <%= print_moi_score(a[:score_string], "abr") %>
         <% end %>
         </td>
-        <td class="">
-          <%= a[:agent].first[:label] %>
+        <td class=""  data-search="<%= a[:agent].first[:iri] %>">
+          <%= a[:agent].first[:label] %> 
         </td>
         <td class="">
           <% if a[:score_string_gci].present? %>
