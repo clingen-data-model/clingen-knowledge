@@ -16,7 +16,7 @@ class GeneDiseaseAssertionsController < ApplicationController
                              genes: [(g:Gene)<-[:has_subject]-(a) | g {.symbol, .hgnc_id}],
                              diseases: [(d:DiseaseConcept)-[:has_object|:equivalentClass*1..2]-(a) | d {.curie, .label}],
                              interpretation: [(i:Interpretation)<-[:has_predicate]-(a) | i {.label}],
-                             agent: [(ag:Agent)<-[:wasAttributedto]-(a) | ag {.label}]}")
+                             agent: [(ag:Agent)<-[:wasAttributedto]-(a) | ag {.label, .iri}]}")
                     .to_a
                     .map(&:a)
                     .sort_by { |r| r[:genes].first[:symbol] }
@@ -27,9 +27,9 @@ class GeneDiseaseAssertionsController < ApplicationController
       csv.add_row ["CLINGEN GENE VALIDITY CURATIONS"]
       csv.add_row ["FILE CREATED: #{Date.today}"]
       csv.add_row ["WEBPAGE: #{gene_disease_assertions_url}"]
-      csv.add_row ["+++++++++++","++++++++++++++","+++++++++++++","++++++++++++++++++","+++++++++","+++++++++","++++++++++++++","+++++++++++++","+++++++++++++++++++"]
-      csv.add_row ["GENE SYMBOL","GENE ID (HGNC)","DISEASE LABEL","DISEASE ID (MONDO)","MOI","SOP","CLASSIFICATION","ONLINE REPORT","CLASSIFICATION DATE"]
-      csv.add_row ["+++++++++++","++++++++++++++","+++++++++++++","++++++++++++++++++","+++++++++","+++++++++","++++++++++++++","+++++++++++++","+++++++++++++++++++"]
+      csv.add_row ["+++++++++++","++++++++++++++","+++++++++++++","++++++++++++++++++","+++++++++","+++++++++","+++++++++","++++++++++++++","+++++++++++++","+++++++++++++++++++"]
+      csv.add_row ["GENE SYMBOL","GENE ID (HGNC)","DISEASE LABEL","DISEASE ID (MONDO)","MOI","SOP","CLASSIFICATION","ONLINE REPORT","CLASSIFICATION DATE","GCEP"]
+      csv.add_row ["+++++++++++","++++++++++++++","+++++++++++++","++++++++++++++++++","+++++++++","+++++++++","+++++++++","++++++++++++++","+++++++++++++","+++++++++++++++++++"]
       @assertions.each do |a|
 
         if a[:score_string_gci].present?
@@ -49,7 +49,8 @@ class GeneDiseaseAssertionsController < ApplicationController
           gci_SOP(a[:jsonMessageVersion]),
           a[:interpretation].first[:label],
           gene_disease_assertions_url+"/"+a[:perm_id],
-          a[:date]
+          a[:date],
+          a[:agent].first[:label]
         ]
         #csv << hash
       end

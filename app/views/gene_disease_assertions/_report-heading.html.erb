@@ -44,7 +44,7 @@
   </tr>
   <tr style="font-size:14px">
     <td style="vertical-align:top; border-bottom-width:6px; border-bottom-color:rgb(221, 221, 221); border-bottom-style:solid" nowrap class="text-left">Expert Panel:</td>
-    <td style="vertical-align:top; border-bottom-width:6px; border-bottom-color:rgb(221, 221, 221); border-bottom-style:solid"><%= @assertion.attributions.first.label if @assertion.attributions.first %> EP</td>
+    <td style="vertical-align:top; border-bottom-width:6px; border-bottom-color:rgb(221, 221, 221); border-bottom-style:solid"><%= @assertion.attributions.first.label if @assertion.attributions.first %></td>
     <td style="vertical-align:top; border-bottom-width:6px; border-bottom-color:rgb(221, 221, 221); border-bottom-style:solid" nowrap class="text-left">
     <% if @assertionScoreJsonGci.dig("summary","contributors") %>
       Contributors:
@@ -55,7 +55,7 @@
     <% if @assertionScoreJsonGci.dig("summary","contributors") %>
     <ul class="list-unstyled margin-bottom-none">
         <% (@assertionScoreJsonGci.dig "summary","contributors").each do |contributor| %>
-          <li><%= contributor["name"] %></li>
+          <li><%= contributor["name"] %> <span style='color:#999; text-transform: capitalize;'>(<%= contributor["role"] %>)<span></li>
         <% end %>
         </ul>
       <% end %>

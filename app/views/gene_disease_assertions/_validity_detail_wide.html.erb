@@ -96,7 +96,7 @@
         <% end %>
       </td>
       <td class=" text-center <%= render_css_border %>">
-        <%= link_to gene_disease_assertions_path+"/"+assertion.perm_id, :method => :get, :class => "btn btn-xs btn-success mb-1"  do %>
+        <%= link_to gene_disease_assertions_path+"/"+assertion.perm_id, :method => :get, :title =>"Click Gene Disease Validity Report" , :class => "btn btn-xs btn-success watchreportclick mb-1"  do %>
           View report
         <% end %>
       </td>

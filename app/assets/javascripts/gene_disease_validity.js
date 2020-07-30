@@ -15,3 +15,13 @@ $(document).ready(function() {
 
 } );
 
+
+$(document).ready(function() {
+    var urlParams       = new URLSearchParams(window.location.search);
+    var searchParam  = urlParams.get('search').replace(/\W/g, '');
+    var table           = $('#interactive_gene_disease_table').DataTable();
+    $('#interactive_gene_disease_search').val(searchParam);
+    table.search( searchParam ).draw();
+    console.log("searchParam" + searchParam);
+    
+});

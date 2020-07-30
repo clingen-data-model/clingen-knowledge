@@ -4,7 +4,7 @@
       <h2>Gene Validity Curations</h2>
     </div>
     <div class="col-sm-6 padding-top-sm">
-      <div class="text-right"><span class="text-muted">Curation Count: </span><STRONG><%= @assertions.count  %></STRONG> | <a href="<%= gene_disease_assertions_path(format: "csv") %>"><i class="glyphicon glyphicon-download"></i> Download Summary</a></div>
+      <div class="text-right"><span class="text-muted">Curation Count: </span><STRONG><%= @assertions.count  %></STRONG> | <a class="watchdownloadclick" target="download" title="Download Gene Disease Validity Curations Data" href="<%= gene_disease_assertions_path(format: "csv") %>"><i class="glyphicon glyphicon-download"></i> Download Summary</a></div>
                       
     </div>
   </div>
@@ -23,6 +23,7 @@
       <th class="col-sm-2">Gene</th>
       <th class="col-sm-8">Disease curated</th>
       <th class="col-sm-2">MOI</th>
+      <th class="col-sm-2">GCEP</th>
       <th class="col-sm-2">SOP</th>
       <th class="col-sm-2">Classification</th>
       <th class="col-sm-2">Released</th>
@@ -56,6 +57,9 @@
           <%= print_moi_score(a[:score_string], "abr") %>
         <% end %>
         </td>
+        <td class=""  data-search="<%= a[:agent].first[:iri] %>">
+          <%= a[:agent].first[:label] %> 
+        </td>
         <td class="">
           <% if a[:score_string_gci].present? %>
             <% if a[:score_string_gci]['selectedSOPVersion'].present? %>
@@ -68,7 +72,7 @@
           <% end %>
         </td>
         <td class="">
-          <%= link_to gene_disease_assertions_path+"/"+a[:perm_id], {class: 'btn btn-default btn-xs'} do %>
+          <%= link_to gene_disease_assertions_path+"/"+a[:perm_id], {class: 'btn btn-default btn-xs watchreportclick', title: 'Click Gene Disease Validity Report'} do %>
             <i class="glyphicon glyphicon-file"></i> <strong><%= a[:interpretation].first[:label] %> </strong>
           <% end %>
         </td>

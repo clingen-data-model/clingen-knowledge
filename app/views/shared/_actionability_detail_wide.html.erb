@@ -22,7 +22,7 @@
               search_gene = gene.label
             end
           %>
-          <a href="https://actionability.clinicalgenome.org/ac/?search=<%= URI.encode(search_text.first) %>%20<%= search_gene %>" target='file' class='btn btn-xs btn-success'>View report</a>
+          <a href="https://actionability.clinicalgenome.org/ac/?search=<%= URI.encode(search_text.first) %>%20<%= search_gene %>" target='file' class='btn btn-xs btn-success watchreportclick' title='Click Actionability Report'>View report</a>
           </td>
         </tr>
     <% end  %>

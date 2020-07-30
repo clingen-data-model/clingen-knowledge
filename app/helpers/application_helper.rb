@@ -328,10 +328,10 @@ module ApplicationHelper
       text = "Is haploinsufficiency or triplosensitivity an established disease mechanism for this gene?"
       img = "dosageSensitivity-off.png"
       img_color = "dosageSensitivity-on.png"
-      title = "Gene Dosage Sensitivity"
+      title = "Dosage Sensitivity"
       href = "https://www.clinicalgenome.org/curation-activities/dosage-sensitivity/"
       href_score = "https://dosage.clinicalgenome.org/help.shtml#review"
-      text_score = "Gene Dosage Sensitivity rating system"
+      text_score = "Dosage Sensitivity rating system"
     end
 
     if option == "logo-inline"
