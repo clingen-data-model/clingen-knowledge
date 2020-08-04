@@ -32,6 +32,11 @@ module ClingenKnowledge
     # Notice embedded db is only available for JRuby
     # config.neo4j.session_type = :embedded  # default :http
     # config.neo4j.session_path = File.expand_path('neo4j-db', Rails.root)
+    # config.neo4j.session.url = ENV['NEO4J_SERVER_PATH'] || 'bolt://localhost'
+    # config.neo4j.session_type = :bolt
+    # config.neo4j.session.url = 'bolt://tndeb:7687'
+    # config.neo4j.session_username = ENV['NEO4J_USER'] || 'neo4j'
+    # config.neo4j.session_password = ENV['NEO4J_PASS'] || 'clingen'
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
