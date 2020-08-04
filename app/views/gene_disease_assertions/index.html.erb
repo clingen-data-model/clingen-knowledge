@@ -57,7 +57,7 @@
           <%= print_moi_score(a[:score_string], "abr") %>
         <% end %>
         </td>
-        <td class=""  data-search="<%= a[:agent].first[:iri] %>">
+        <td class=""  data-search="<%= a[:agent].first[:iri] %> <%= a[:agent].first[:label] %>">
           <%= a[:agent].first[:label] %> 
         </td>
         <td class="">
