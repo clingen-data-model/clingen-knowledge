@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :genes, only: [:show, :index] do
+  resources :genes, only: [:show, :index], defaults: {format: 'html'} do
     resources :external_resources_genes, only: :index
   end
-  resources :conditions, only: [:show, :index] do
+  resources :conditions, only: [:show, :index], defaults: {format: 'html'} do
     resources :external_resources_conditions, only: :index
   end
   resources :drugs, only: [:show, :index] do

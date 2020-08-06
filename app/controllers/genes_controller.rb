@@ -6,11 +6,7 @@ class GenesController < ApplicationController
     expires_in 10.minutes, public: true
 
     respond_to do |format|
-      format.json do
-        @genes = Gene.all(:g).where("g.symbol starts with {symbol}")
-                   .params(symbol: params[:term]).limit(10)
-        render json: @genes, root: false
-      end
+
       format.html do
         @page = params[:page] || 1
 
@@ -27,6 +23,11 @@ class GenesController < ApplicationController
                      .per(20)
         else
           @genes = Gene.all.with_associations(:assertions).page(@page).per(20)
+        end
+        format.json do
+          @genes = Gene.all(:g).where("g.symbol starts with {symbol}")
+                     .params(symbol: params[:term]).limit(10)
+          render json: @genes, root: false
         end
       end
     end

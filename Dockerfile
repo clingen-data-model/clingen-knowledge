@@ -47,9 +47,19 @@ RUN gem install bundler:2.1.4
 COPY --chown=app:app Gemfile Gemfile.lock /home/app/webapp/
 WORKDIR /home/app/webapp
 ENV RAILS_ENV production
+ENV RAILS_LOG_TO_STDOUT true
 RUN bundle install --deployment --without development test
 COPY --chown=app:app . /home/app/webapp
 RUN rake assets:precompile
+RUN chown -R app:app /home/app/webapp
+
+# RUN mkdir /home/app/webapp/log \
+#         && chown app:app /home/app/webapp/log \
+#         && mkdir /home/app/webapp/tmp \
+#         && chown app:app /home/app/webapp/tmp
+
+# RUN chown -R app:app /home/app/webapp/log \
+#         && chown -R app:app /home/app/webapp/tmp
 
 RUN rm /etc/nginx/sites-enabled/default
 ADD webapp.conf /etc/nginx/sites-enabled/webapp.conf

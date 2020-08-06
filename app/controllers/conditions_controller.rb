@@ -17,8 +17,8 @@ class ConditionsController < ApplicationController
       @conditions = Condition.page(@page).per(20)
     end
     respond_to do |format|
-      format.json { render json: @conditions, root: false }
       format.html
+      format.json { render json: @conditions, root: false }
     end
 
 
